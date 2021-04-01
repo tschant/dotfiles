@@ -1,1 +1,8 @@
 packer_compiled.vim
+zsh_other/
+
+.zsh*
+.zcompdump*
+zshrc.d/
+
+.config/zsh/.p10k.zsh
