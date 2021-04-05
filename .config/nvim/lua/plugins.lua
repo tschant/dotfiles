@@ -21,7 +21,8 @@ return require("packer").startup(
 			"neoclide/coc.nvim",
 			"rafamadriz/friendly-snippets",
 			"Shougo/neosnippet.vim",
-			"Shougo/neosnippet-snippets"
+			"Shougo/neosnippet-snippets",
+			"vim-syntastic/syntastic"
 		}
 
 		-- Telescope
@@ -62,6 +63,12 @@ return require("packer").startup(
 			"othree/yajs.vim",
 			"yuezk/vim-js",
 			"ryym/vim-riot"
+		}
+
+		-- Terraform
+		use {
+			"hashivim/vim-terraform",
+			"juliosueiras/vim-terraform-completion"
 		}
 
 		-- Statusline and bufferline
