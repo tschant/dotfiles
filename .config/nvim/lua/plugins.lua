@@ -21,8 +21,7 @@ return require("packer").startup(
 			"neoclide/coc.nvim",
 			"rafamadriz/friendly-snippets",
 			"Shougo/neosnippet.vim",
-			"Shougo/neosnippet-snippets",
-			"vim-syntastic/syntastic"
+			"Shougo/neosnippet-snippets"
 		}
 
 		-- Telescope
@@ -67,8 +66,8 @@ return require("packer").startup(
 
 		-- Terraform
 		use {
-			"hashivim/vim-terraform",
-			"juliosueiras/vim-terraform-completion"
+			'hashivim/vim-terraform',
+			'juliosueiras/vim-terraform-completion'
 		}
 
 		-- Statusline and bufferline
@@ -98,6 +97,7 @@ return require("packer").startup(
 			"christianchiarulli/nvcode-color-schemes.vim",
 			"Th3Whit3Wolf/one-nvim",
 			"Th3Whit3Wolf/space-nvim",
+			"chriskempson/base16-vim",
 			{"npxbr/gruvbox.nvim", requires = "rktjmp/lush.nvim"}
 		}
 	end

@@ -48,3 +48,8 @@ require("gitsigns").setup {
     status_formatter = nil, -- Use default
     use_decoration_api = false
 }
+
+-- CoC
+-- vim.cmd('CocInstal coc-json coc-tsserver coc-html')
+vim.g.coc_global_extensions={'coc-json','coc-tsserver','coc-html','coc-css'}
+
