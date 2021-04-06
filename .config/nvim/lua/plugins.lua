@@ -97,7 +97,8 @@ return require("packer").startup(
 			"christianchiarulli/nvcode-color-schemes.vim",
 			"Th3Whit3Wolf/one-nvim",
 			"Th3Whit3Wolf/space-nvim",
-			"chriskempson/base16-vim",
+			-- "chriskempson/base16-vim",
+			"norcalli/nvim-base16.lua",
 			{"npxbr/gruvbox.nvim", requires = "rktjmp/lush.nvim"}
 		}
 	end

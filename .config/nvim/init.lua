@@ -1,7 +1,5 @@
 -- General settings
 require("options")
-require("config")
-require("handlers")
 require("mappings")
 require("plugins")
 require("colorscheme")
