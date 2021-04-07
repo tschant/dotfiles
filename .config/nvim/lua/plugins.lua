@@ -55,13 +55,17 @@ return require("packer").startup(
 		use {"iamcco/markdown-preview.nvim", run = "cd app && yarn install"}
 		use "junegunn/goyo.vim"
 
-		-- JS
+		-- JS/html
+		-- "othree/yajs.vim",
+		-- "yuezk/vim-js",
+		-- "pangloss/vim-javascript",
 		use {
+			"scrooloose/syntastic",
+			"groenewege/vim-less",
+			"hail2u/vim-css3-syntax",
 			"maxmellon/vim-jsx-pretty",
-			"pangloss/vim-javascript",
-			"othree/yajs.vim",
-			"yuezk/vim-js",
-			"ryym/vim-riot"
+			"ryym/vim-riot",
+			"mattn/emmet-vim"
 		}
 
 		-- Terraform

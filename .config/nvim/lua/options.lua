@@ -48,4 +48,12 @@ u.opt("b", "syntax", "on")
 cmd("set shortmess+=c")
 cmd("set iskeyword+=-")
 cmd("set path+=**")
+cmd("filetype on")
 cmd("filetype plugin on")
+
+-- Folding
+cmd("set nofoldenable")
+cmd("set foldmethod=expr")
+cmd("set foldexpr=nvim_treesitter#foldexpr()")
+cmd("set foldcolumn=1")
+

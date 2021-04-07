@@ -3,6 +3,7 @@ require("options")
 require("mappings")
 require("plugins")
 require("colorscheme")
+require("autocmds")
 
 -- Plugins
 require("plugins/general")

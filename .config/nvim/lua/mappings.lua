@@ -11,7 +11,9 @@ u.map("n", "Q", "<Nop>")
 u.map("n", "<leader>V", ":vs<CR>")
 u.map("n", "<leader>H", ":sp<CR>")
 u.map("n", "<leader><Home>", ":Startify<CR>")
--- u.map("n", "<leader>.", "q:k<CR>")
+u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
+u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
+u.map("x", "<leader>y", "\"+y")
 
 -- Move selected line / block of text in visual mode
 u.map("x", "K", ":move '<-2<CR>gv-gv")
