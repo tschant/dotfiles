@@ -54,7 +54,7 @@ function M.get_git_branch_formatted()
     if diagnostic.has_diagnostics() then
         u.GalaxyBG("GitBranch", "purple")
     else
-        u.GalaxyBG("GitBranch", "act1")
+        u.GalaxyBG("GitBranch", "bg")
     end
     return git.get_branch()
 end

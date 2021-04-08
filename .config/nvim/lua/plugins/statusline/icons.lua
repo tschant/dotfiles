@@ -1,7 +1,7 @@
 local icons = {
     slant = {
-        Right = "",
-        Left = ""
+        Right = " ",
+        Left = " "
     },
     diagnostic = {
         error = "",
