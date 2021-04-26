@@ -90,19 +90,21 @@ return require("packer").startup(
 			"norcalli/nvim-colorizer.lua",
 			"RRethy/vim-illuminate",
 			"vim-scripts/loremipsum",
-			"mg979/vim-visual-multi"
+			"mg979/vim-visual-multi",
+			"tpope/vim-surround"
 		}
 
 		-- Themes
 		use {
 			"arcticicestudio/nord-vim",
 			"ntk148v/vim-horizon",
-			"wadackel/vim-dogrun",
 			"christianchiarulli/nvcode-color-schemes.vim",
 			"Th3Whit3Wolf/one-nvim",
-			"Th3Whit3Wolf/space-nvim",
-			-- "chriskempson/base16-vim",
-			"norcalli/nvim-base16.lua",
+			"chriskempson/base16-vim",
+			--"norcalli/nvim-base16.lua",
+			"ghifarit53/tokyonight-vim",
+			"tiagovla/tokyodark.nvim",
+			"owozsh/amora",
 			{"npxbr/gruvbox.nvim", requires = "rktjmp/lush.nvim"}
 		}
 	end
