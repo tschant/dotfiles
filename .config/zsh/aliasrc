@@ -19,7 +19,8 @@ alias \
     mv="mv -iv" \
     mv="mv -iv" \
     dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
-		reload-profile="source ~/.zshenv"
+    reload-profile="source ~/.zshenv" \
+    weather="curl wttr.in"
 \
 
 # search for all scripts and dotfiles, then open them with editor of choice
@@ -44,5 +45,3 @@ cdf() {
 # enable color support of ls and also add handy aliases
 alias \
 	ll='exa -lh --git --group --modified --icons'
-
-
