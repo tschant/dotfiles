@@ -10,7 +10,7 @@ Opts = {
 
 Theming = {
     -- Press <space>fc to see all available themes
-    colorscheme = "onedark",
+    colorscheme = "base16-gruvbox-dark-pale",
     colorscheme_style = "",
     statusline = "slant"
 }
