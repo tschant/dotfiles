@@ -84,3 +84,8 @@ u.map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>")
 u.map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>")
 u.map("n", "<c-p>", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 u.map("n", "<c-n>", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+
+
+-- CoC Spell checker
+u.map("n", "<leader>cp", ":CocAction<CR>")
+u.map("v", "<leader>cp", ":CocAction<CR>")

@@ -51,5 +51,4 @@ require("gitsigns").setup {
 
 -- CoC
 -- vim.cmd('CocInstal coc-json coc-tsserver coc-html')
-vim.g.coc_global_extensions={'coc-json','coc-tsserver','coc-html','coc-css'}
-
+vim.g.coc_global_extensions={'coc-json','coc-tsserver','coc-html','coc-css','coc-spell-checker'}
