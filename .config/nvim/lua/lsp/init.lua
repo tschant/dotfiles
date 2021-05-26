@@ -27,6 +27,9 @@ nvim_lsp.pyright.setup {}
 -- npm i -g vscode-json-languageserver
 nvim_lsp.jsonls.setup {}
 
+-- npm install -g vscode-html-languageserver-bin
+-- nvim_lsp.html.setup {}
+
 -- npm i -g emmet-ls
 local configs = require "lspconfig/configs"
 
@@ -43,7 +46,7 @@ configs.emmet_ls = {
 nvim_lsp.emmet_ls.setup {}
 
 -- pacman -S clang
-nvim_lsp.clangd.setup {}
+-- nvim_lsp.clangd.setup {}
 
 -- lua  https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 -- install instructions:

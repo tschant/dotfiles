@@ -3,5 +3,9 @@
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
 	"eslint.run": "onSave",
-	"eslint.codeActionsOnSave.mode": "problems"
+  "eslint.codeActionsOnSave.mode": "problems",
+  "cSpell.userWords": [
+    "sref",
+    "unassociate"
+  ]
 }

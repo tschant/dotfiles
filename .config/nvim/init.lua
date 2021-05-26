@@ -16,3 +16,9 @@ require("plugins/terminal")
 require("plugins/telescope")
 require("plugins/emmet")
 require("plugins/treesitter")
+
+require("lsp/init")
+require("lsp/completion")
+
+require("utils/core")
+require("utils/extra")

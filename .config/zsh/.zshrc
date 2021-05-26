@@ -29,6 +29,9 @@ export FZF_ALT_C_COMMAND='fd --type d . --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
+export EDITOR=nvim
+export PATH="$PATH:$(npm -g prefix)/bin"
+
 # aliases
 source ~/.config/zsh/aliasrc
 
