@@ -59,4 +59,5 @@ for i in ~/.config/zsh/zshrc.d/*.zsh; do
 	fi
 done; unset i
 
+eval "$(zoxide init zsh)"
 source ~/.config/zsh/menu.zsh

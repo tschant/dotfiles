@@ -13,7 +13,8 @@ vim.g.space_vim_italic = 1
 
 -- highlights --
 cmd "au ColorScheme * hi LineNr guifg=#383c44 guibg=NONE"
-cmd "au ColorScheme * hi Comment guifg=#3d4149"
+cmd "au ColorScheme * hi Comment guifg=#307050"
+-- cmd "au ColorScheme * hi Comment guifg=#3d4149"
 cmd "au ColorScheme * hi SignColumn guibg=NONE"
 cmd "au ColorScheme * hi VertSplit guibg=NONE guifg=#2a2e36"
 cmd "au ColorScheme * hi EndOfBuffer guifg=#1e222a"
