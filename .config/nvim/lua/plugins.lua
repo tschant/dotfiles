@@ -90,7 +90,8 @@ return require("packer").startup(
 			"norcalli/nvim-colorizer.lua",
 			"RRethy/vim-illuminate",
 			"mg979/vim-visual-multi",
-			"tpope/vim-surround"
+			"tpope/vim-surround",
+			"phaazon/hop.nvim"
 		}
 
 		-- Themes

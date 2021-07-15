@@ -71,6 +71,7 @@ u.map("n", "<leader>fh", ":Telescope help_tags<CR>")
 u.map("n", "<leader>fc", ":Telescope colorscheme<CR>")
 u.map("n", "<leader>fa", ":lua require('utils.core').search_dotfiles()<CR>")
 u.map("n", "<leader>fn", ":lua require('utils.core').search_nvim()<CR>")
+
 u.map("n", "<leader>b", ":Telescope buffers<CR>")
 
 -- LSP
@@ -91,5 +92,8 @@ u.map("v", "<leader>cp", ":CocAction<CR>")
 -- format code
 u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
 
---[[ u.map("n", "<Leader>ss", ":source ~/.config/nvim/session/session.vim")
-u.map("n", "<Leader>sv", ":mksession! ~/.config/nvim/session/session.vim") ]]
+-- Hop
+u.map("n", "<Leader><Leader>w", ":HopWord<CR>")
+u.map("n", "<Leader><Leader>l", ":HopLine<CR>")
+u.map("n", "<Leader><Leader>f", ":HopChar1<CR>")
+u.map("n", "<Leader><Leader>p", ":HopPattern<CR>")
