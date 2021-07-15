@@ -82,26 +82,24 @@ return require("packer").startup(
 
 		-- General plugins
 		use {
+			"karb94/neoscroll.nvim",
 			"mhinz/vim-startify",
-			"mbbill/undotree",
 			"b3nj5m1n/kommentary",
 			"glepnir/indent-guides.nvim",
 			"windwp/nvim-autopairs",
 			"norcalli/nvim-colorizer.lua",
 			"RRethy/vim-illuminate",
-			"vim-scripts/loremipsum",
 			"mg979/vim-visual-multi",
 			"tpope/vim-surround"
 		}
 
 		-- Themes
+			--"norcalli/nvim-base16.lua",
 		use {
 			"arcticicestudio/nord-vim",
 			"ntk148v/vim-horizon",
 			"christianchiarulli/nvcode-color-schemes.vim",
-			"Th3Whit3Wolf/one-nvim",
 			"chriskempson/base16-vim",
-			--"norcalli/nvim-base16.lua",
 			"ghifarit53/tokyonight-vim",
 			"tiagovla/tokyodark.nvim",
 			"owozsh/amora",

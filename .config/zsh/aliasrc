@@ -4,7 +4,6 @@
 alias \
     ls="exa --color=always" \
     grep="grep --color=auto" \
-    diff="diff --color=auto" \
     dir='dir --color=auto' \
 \
 

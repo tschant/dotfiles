@@ -13,7 +13,10 @@ require "colorizer".setup(
 )
 
 -- kommentary
+-- vim.g.kommentary_create_default_mappings = false
 require("kommentary.config").use_extended_mappings()
+
+require("neoscroll").setup()
 
 -- Autopairs
 require("nvim-autopairs").setup()
@@ -26,7 +29,6 @@ vim.g.Illuminate_delay = 500
 -- Git signs
 require("gitsigns").setup {
     signs = {
-        -- TODO add hl to colorscheme
         add = {hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn"},
         change = {hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"},
         delete = {hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
@@ -35,12 +37,7 @@ require("gitsigns").setup {
     },
     numhl = false,
     linehl = false,
-    keymaps = {
-        -- Default keymap options
-        noremap = true,
-        buffer = true
-    },
-    watch_index = {
+   watch_index = {
         interval = 1000
     },
     sign_priority = 6,

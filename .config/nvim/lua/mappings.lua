@@ -1,5 +1,4 @@
 local u = require("utils.core")
-
 vim.g.mapleader = ","
 
 -- Basics
@@ -85,7 +84,12 @@ u.map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>")
 u.map("n", "<c-p>", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 u.map("n", "<c-n>", ":lua vim.lsp.diagnostic.goto_next()<CR>")
 
-
 -- CoC Spell checker
 u.map("n", "<leader>cp", ":CocAction<CR>")
 u.map("v", "<leader>cp", ":CocAction<CR>")
+
+-- format code
+u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
+
+--[[ u.map("n", "<Leader>ss", ":source ~/.config/nvim/session/session.vim")
+u.map("n", "<Leader>sv", ":mksession! ~/.config/nvim/session/session.vim") ]]

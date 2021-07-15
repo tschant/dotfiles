@@ -33,6 +33,8 @@ yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^Discord$" manage=off
 yabai -m rule --add app="^Zoom$" manage=off
 yabai -m rule --add app="^Preview$" manage=off
+yabai -m rule --add app="^Synergy$" manage=off
+yabai -m rule --add app="^Eclipse$" manage=off
 
 # global settings
 yabai -m config status_bar                   on
