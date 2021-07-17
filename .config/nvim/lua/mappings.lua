@@ -61,7 +61,9 @@ u.map("n", "<A-9>", ":BufferGoto 9<CR>")
 u.map("n", "<A-l>", ":BufferLast<CR>")
 
 -- File manager
-u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
+-- u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
+u.map("n", "<leader>e", "<cmd>CHADopen<CR>")
+u.map("n", "<leader>ee", "<cmd>call setqflist([])<cr>")
 
 -- Telescope
 u.map("n", "<leader>ff", ":Telescope find_files<CR>")
