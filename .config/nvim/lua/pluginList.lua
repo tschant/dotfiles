@@ -46,15 +46,11 @@ return require("packer").startup(
 		use "lewis6991/gitsigns.nvim"
 
 		-- File manager
-		--[[ use {
+		use {
 			"kyazdani42/nvim-tree.lua",
 			requires = {"kyazdani42/nvim-web-devicons"}
-		} ]]
-
-		use {
-			"ms-jpq/chadtree",
-			branch = "chad"
 		}
+
 
 		-- Markdown
 		use {"iamcco/markdown-preview.nvim", run = "cd app && yarn install"}
@@ -88,7 +84,7 @@ return require("packer").startup(
 		-- General plugins
 		use {
 			"karb94/neoscroll.nvim",
-			"mhinz/vim-startify",
+			"glepnir/dashboard-nvim",
 			"b3nj5m1n/kommentary",
 			"glepnir/indent-guides.nvim",
 			"windwp/nvim-autopairs",

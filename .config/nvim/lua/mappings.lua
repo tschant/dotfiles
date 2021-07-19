@@ -9,7 +9,7 @@ u.map("i", "jk", "<ESC>")
 u.map("n", "Q", "<Nop>")
 u.map("n", "<leader>V", ":vs<CR>")
 u.map("n", "<leader>H", ":sp<CR>")
-u.map("n", "<leader><Home>", ":Startify<CR>")
+
 u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
 u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
 u.map("x", "<leader>y", "\"+y")
@@ -37,7 +37,7 @@ u.map("n", "<S-l>", ":vertical resize +2<CR>")
 u.map("n", "<leader>tk", ":FloatermKill<CR>")
 
 -- Undotree
-u.map("n", "<leader>u", ":UndotreeToggle<CR>")
+-- u.map("n", "<leader>u", ":UndotreeToggle<CR>")
 
 -- Git
 u.map("n", "<leader>gg", ":FloatermNew lazygit<CR>")
@@ -61,9 +61,7 @@ u.map("n", "<A-9>", ":BufferGoto 9<CR>")
 u.map("n", "<A-l>", ":BufferLast<CR>")
 
 -- File manager
--- u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
-u.map("n", "<leader>e", "<cmd>CHADopen<CR>")
-u.map("n", "<leader>ee", "<cmd>call setqflist([])<cr>")
+u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- Telescope
 u.map("n", "<leader>ff", ":Telescope find_files<CR>")
@@ -73,8 +71,16 @@ u.map("n", "<leader>fh", ":Telescope help_tags<CR>")
 u.map("n", "<leader>fc", ":Telescope colorscheme<CR>")
 u.map("n", "<leader>fa", ":lua require('utils.core').search_dotfiles()<CR>")
 u.map("n", "<leader>fn", ":lua require('utils.core').search_nvim()<CR>")
-
 u.map("n", "<leader>b", ":Telescope buffers<CR>")
+u.map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]])
+
+-- Dashboard
+u.map("n", "<Leader><Home>", [[<Cmd> Dashboard<CR>]])
+u.map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]])
+u.map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]])
+u.map("n", "<leader>sl", [[<Cmd> SessionLoad<CR>]])
+u.map("n", "<leader>ss", [[<Cmd> SessionSave<CR>]])
+
 
 -- LSP
 u.map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>")
