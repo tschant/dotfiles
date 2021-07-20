@@ -12,13 +12,17 @@ return require("packer").startup(
 	function()
 		use {"wbthomason/packer.nvim"}
 
-		-- LSP, Autocomplete and snippets
+		-- LSP, Autocomplete
 		use {
 			"onsails/lspkind-nvim",
 			"neovim/nvim-lspconfig",
 			"hrsh7th/nvim-compe",
 			"sbdchd/neoformat",
-			"neoclide/coc.nvim",
+			"neoclide/coc.nvim"
+		}
+
+		-- Snippets
+		use {
 			"rafamadriz/friendly-snippets",
 			"Shougo/neosnippet.vim",
 			"Shougo/neosnippet-snippets"

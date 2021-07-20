@@ -1,3 +1,20 @@
+local servers = {
+-- npm i -g bash-language-server
+	"bashls",
+-- npm i -g typescript typescript-language-server
+	"tsserver",
+-- npm i -g vscode-css-languageserver-bin
+	"cssls",
+-- npm i -g pyright
+	"pyright",
+-- npm i -g vscode-json-languageserver
+	"jsonls",
+-- npm i -g emmet-ls
+	"emmet_ls"
+-- npm install -g vscode-html-languageserver-bin
+-- "html"
+}
+
 -- Stop lsp diagnostics from showing virtual text
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(
@@ -11,26 +28,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 )
 
 local nvim_lsp = require "lspconfig"
-
--- npm i -g bash-language-server
-nvim_lsp.bashls.setup {}
-
--- npm i -g typescript typescript-language-server
-nvim_lsp.tsserver.setup {}
-
--- npm i -g vscode-css-languageserver-bin
-nvim_lsp.cssls.setup {}
-
--- npm i -g pyright
-nvim_lsp.pyright.setup {}
-
--- npm i -g vscode-json-languageserver
-nvim_lsp.jsonls.setup {}
-
--- npm install -g vscode-html-languageserver-bin
--- nvim_lsp.html.setup {}
-
--- npm i -g emmet-ls
 local configs = require "lspconfig/configs"
 
 configs.emmet_ls = {
@@ -43,20 +40,6 @@ configs.emmet_ls = {
         settings = {}
     }
 }
-nvim_lsp.emmet_ls.setup {}
-
--- pacman -S clang
--- nvim_lsp.clangd.setup {}
-
--- lua  https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
--- install instructions:
--- git clone https://github.com/sumneko/lua-language-server $HOME/.local/share/nvim/lua/sumneko_lua
--- cd ~/.local/share/nvim/lua/sumneko_lua
--- git submodule update --init --recursive
--- cd 3rd/luamake
--- ninja -f ninja/linux.ninja
--- cd ../..
--- ./3rd/luamake/luamake rebuild
 
 local luapath = "/home/rafa/.local/share/nvim/lua/sumneko_lua"
 local luabin = luapath .. "/bin/Linux/lua-language-server"
@@ -90,6 +73,48 @@ nvim_lsp.sumneko_lua.setup {
     }
 }
 
--- no need for hmtl server having emmet-ls and snippets working
--- npm i -g vscode-html-languageserver-bin
--- nvim_lsp.html.setup {}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local function on_attach(client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+    local opts = {noremap = true, silent = true}
+
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+
+    -- Mappings.
+    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+    buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+
+    -- Set some keybinds conditional on server capabilities
+    if client.resolved_capabilities.document_formatting then
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    elseif client.resolved_capabilities.document_range_formatting then
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    end
+end
+
+for i,lang in pairs(servers) do
+	-- print(lang, nvim_lsp)
+	nvim_lsp[lang].setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		root_dir = vim.loop.cwd
+	}
+end

@@ -1,6 +1,5 @@
 local u = require("utils.core")
 
--- TODO figure out why this don't work
 vim.fn.sign_define(
     "LspDiagnosticsSignError",
     {
@@ -33,33 +32,6 @@ vim.fn.sign_define(
         numhl = "LspDiagnosticsSignHint"
     }
 )
-
-require "compe".setup {
-    enabled = true,
-    autocomplete = true,
-    debug = false,
-    min_length = 1,
-    preselect = "enable",
-    throttle_time = 80,
-    source_timeout = 200,
-    incomplete_delay = 400,
-    max_abbr_width = 100,
-    max_kind_width = 100,
-    max_menu_width = 100,
-    documentation = true,
-    source = {
-        path = {kind = "  "},
-        buffer = {kind = "  "},
-        calc = {kind = "   "},
-        vsnip = {kind = " ﬌ "},
-        nvim_lsp = {kind = "  "},
-        nvim_lua = {kind = "  "},
-        spell = {kind = "  "},
-        tags = false,
-        treesitter = false,
-        emoji = false
-    }
-}
 
 -- symbols for autocomplete
 require("lspkind").init(
