@@ -102,14 +102,11 @@ return require("packer").startup(
 		-- Themes
 			--"norcalli/nvim-base16.lua",
 		use {
-			"arcticicestudio/nord-vim",
-			"ntk148v/vim-horizon",
+			"srcery-colors/srcery-vim",
+			-- "ntk148v/vim-horizon",
 			"christianchiarulli/nvcode-color-schemes.vim",
 			"chriskempson/base16-vim",
-			"ghifarit53/tokyonight-vim",
-			"tiagovla/tokyodark.nvim",
-			"owozsh/amora",
-			{"npxbr/gruvbox.nvim", requires = "rktjmp/lush.nvim"}
+			"tiagovla/tokyodark.nvim"
 		}
 	end
 )

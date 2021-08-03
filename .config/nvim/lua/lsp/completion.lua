@@ -82,8 +82,6 @@ _G.tab_complete = function()
         return t "<C-n>"
     elseif vim.fn.call("vsnip#available", {1}) == 1 then
         return t "<Plug>(vsnip-expand-or-jump)"
-    elseif check_back_space() then
-        return t "<Tab>"
     else
         return vim.fn["compe#complete"]()
     end
@@ -99,7 +97,7 @@ _G.s_tab_complete = function()
 end
 
 u.map("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})

@@ -9,8 +9,8 @@ local autocmds = {
         {"FileType", "toggleterm", "setlocal nonumber norelativenumber"}
     },
     cursor = {
-        {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics()"},
-        {"CursorHoldI", "*", "silent! lua vim.lsp.buf.signature_help()"}
+        {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})"},
+        {"CursorHoldI", "*", "silent! lua vim.lsp.buf.signature_help({focusable = false})"}
     }
 }
 
