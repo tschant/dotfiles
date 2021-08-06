@@ -96,7 +96,7 @@ return require("packer").startup(
 			"RRethy/vim-illuminate",
 			"mg979/vim-visual-multi",
 			"tpope/vim-surround",
-			"phaazon/hop.nvim"
+			"ggandor/lightspeed.nvim"
 		}
 
 		-- Themes

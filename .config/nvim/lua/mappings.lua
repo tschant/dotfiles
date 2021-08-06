@@ -101,7 +101,7 @@ u.map("v", "<leader>cp", ":CocAction<CR>")
 u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
 
 -- Hop
-u.map("n", "<Leader><Leader>w", ":HopWord<CR>")
+--[[ u.map("n", "<Leader><Leader>w", ":HopWord<CR>")
 u.map("n", "<Leader><Leader>l", ":HopLine<CR>")
 u.map("n", "<Leader><Leader>f", ":HopChar1<CR>")
-u.map("n", "<Leader><Leader>p", ":HopPattern<CR>")
+u.map("n", "<Leader><Leader>p", ":HopPattern<CR>") ]]
