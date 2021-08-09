@@ -13,7 +13,7 @@ window:
     x: 8
     y: 8
 
-  decorations: full
+  decorations: buttonless
 
 font:
   normal:
