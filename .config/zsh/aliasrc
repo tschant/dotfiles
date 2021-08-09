@@ -18,8 +18,9 @@ alias \
     mv="mv -iv" \
     mv="mv -iv" \
     dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
-    reload-profile="source ~/.zshenv" \
-    weather="curl wttr.in"
+    reload-profile="source ~/.config/zsh/.zshrc" \
+    weather="curl wttr.in" \
+		cd="z"
 \
 
 # search for all scripts and dotfiles, then open them with editor of choice

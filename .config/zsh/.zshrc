@@ -42,6 +42,8 @@ bindkey '^[[B' history-substring-search-down
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
+bindkey	"^[[1~" beginning-of-line
+bindkey	"^[[4~" end-of-line
 
 # add title to terminal to display state,currently executing command, current directory...
 # autoload -Uz add-zsh-hook
