@@ -31,6 +31,7 @@ export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export EDITOR=nvim
 export PATH="$PATH:$(npm -g prefix)/bin"
+export PATH="$PATH:~/.local/bin"
 
 # aliases
 source ~/.config/zsh/aliasrc
@@ -63,3 +64,7 @@ done; unset i
 
 eval "$(zoxide init zsh)"
 source ~/.config/zsh/menu.zsh
+
+# https://gitlab.com/phoneybadger/pokemon-colorscripts
+# ln -s <repo>/pokemon-colorscripts/ ~/.local/bin/
+[[ ! -f ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh ]] || sh ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh -r
