@@ -1,7 +1,7 @@
 local vim = vim
-local i = require("plugins.statusline.icons")
-local u = require("plugins.statusline.utils")
-local diagnostic = require("plugins.statusline.providers.diagnostic")
+local i = require("plugin-configs.statusline.icons")
+local u = require("plugin-configs.statusline.utils")
+local diagnostic = require("plugin-configs.statusline.providers.diagnostic")
 
 local M = {}
 

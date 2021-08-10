@@ -1,5 +1,5 @@
 local vim = vim
-local c = require("plugins.statusline.colors")
+local c = require("plugin-configs.statusline.colors")
 
 local M = {}
 

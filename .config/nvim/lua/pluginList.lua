@@ -18,7 +18,8 @@ return require("packer").startup(
 			"neovim/nvim-lspconfig",
 			"hrsh7th/nvim-compe",
 			"sbdchd/neoformat",
-			"neoclide/coc.nvim"
+			"neoclide/coc.nvim",
+			-- {"ray-x/navigator.lua", requires = {"ray-x/guihua.lua", run = "cd lua/fzy && make"}}
 		}
 
 		-- Snippets
