@@ -1,33 +1,4 @@
 schemes:
-  gruvbox_light: &gruvbox_light
-    # Default colors
-    primary:
-      background: '0xf9f5d7' # hard contrast
-      # background: '0xfbf1c7' # normal
-      foreground: '0x3c3836'
-
-    # Normal colors
-    normal:
-      black:   '0xfbf1c7'
-      red:     '0xcc241d'
-      green:   '0x98971a'
-      yellow:  '0xd79921'
-      blue:    '0x458588'
-      magenta: '0xb16286'
-      cyan:    '0x689d6a'
-      white:   '0x7c6f64'
-
-    # Bright colors
-    bright:
-      black:   '0x928374'
-      red:     '0x9d0006'
-      green:   '0x79740e'
-      yellow:  '0xb57614'
-      blue:    '0x076678'
-      magenta: '0x8f3f71'
-      cyan:    '0x427b58'
-      white:   '0x3c3836'
-
   gruvbox_dark: &gruvbox_dark
     # Default colors
     primary:
@@ -55,117 +26,13 @@ schemes:
       cyan:    '0x8ec07c'
       white:   '0xebdbb2'
 
-  iterm: &iterm
-    # Default colors
-    primary:
-      background: '0x101421'
-      foreground: '0xfffbf6'
-
-    # Normal colors
-    normal:
-      black:   '0x2e2e2e'
-      red:     '0xeb4129'
-      green:   '0xabe047'
-      yellow:  '0xf6c744'
-      blue:    '0x47a0f3'
-      magenta: '0x7b5cb0'
-      cyan:    '0x64dbed'
-      white:   '0xe5e9f0'
-
-    # Bright colors
-    bright:
-      black:   '0x565656'
-      red:     '0xec5357'
-      green:   '0xc0e17d'
-      yellow:  '0xf9da6a'
-      blue:    '0x49a4f8'
-      magenta: '0xa47de9'
-      cyan:    '0x99faf2'
-      white:   '0xffffff'
-
-  schemes: &dark_pastels
-    # Default colors
-    primary:
-      background: '0x2C2C2C'
-      foreground: '0xDCDCCC'
-
-    # Normal colors
-    normal:
-      black:   '0x3F3F3F'
-      red:     '0x705050'
-      green:   '0x60B48A'
-      yellow:  '0xDFAF8F'
-      blue:    '0x9AB8D7'
-      magenta: '0xDC8CC3'
-      cyan:    '0x8CD0D3'
-      white:   '0xDCDCCC'
-
-    # Bright colors
-    bright:
-      black:   '0x709080'
-      red:     '0xDCA3A3'
-      green:   '0x72D5A3'
-      yellow:  '0xF0DFAF'
-      blue:    '0x94BFF3'
-      magenta: '0xEC93D3'
-      cyan:    '0x93E0E3'
-      white:   '0xFFFFFF'
-
-  personal_colors: &personal_colors
-    primary:
-      background: '#1c1b19'
-      foreground: '#d8dee9'
-      dim_foreground: '#a5abb6'
-    cursor:
-      text: '#1c1b19'
-      cursor: '#d8dee9'
-    vi_mode_cursor:
-      text: '#1c1b19'
-      cursor: '#d8dee9'
-    selection:
-      text: CellForeground
-      background: '#4c566a'
-    search:
-      matches:
-        foreground: CellBackground
-        background: '#88c0d0'
-      bar:
-        background: '#434c5e'
-        foreground: '#d8dee9'
-    normal:
-      black: '#3b4252'
-      red: '#bf616a'
-      green: '#a3be8c'
-      yellow: '#ebcb8b'
-      blue: '#81a1c1'
-      magenta: '#b48ead'
-      cyan: '#88c0d0'
-      white: '#e5e9f0'
-    bright:
-      black: '#4c566a'
-      red: '#bf616a'
-      green: '#a3be8c'
-      yellow: '#ebcb8b'
-      blue: '#81a1c1'
-      magenta: '#b48ead'
-      cyan: '#8fbcbb'
-      white: '#eceff4'
-    dim:
-      black: '#373e4d'
-      red: '#94545d'
-      green: '#809575'
-      yellow: '#b29e75'
-      blue: '#68809a'
-      magenta: '#8c738c'
-      cyan: '#6d96a5'
-      white: '#aeb3bb'
-
   schemes: &horizon_dark
     # Primary colors
     primary:
-      background: '0x1c1e26'
-      foreground: '0xe0e0e0'
-
+      background: '#0A0E14'
+      foreground: '#CBCCC6'
+      # background: '0x1c1e26'
+      # foreground: '0xe0e0e0'
     # Normal colors
     normal:
       black: '0x16161c'
@@ -176,7 +43,6 @@ schemes:
       magenta: '0xee64ac'
       cyan: '0x59e1e3'
       white: '0xd5d8da'
-
     # Bright colors
     bright:
       black: '0x5b5858'
@@ -188,5 +54,33 @@ schemes:
       cyan: '0x6be4e6'
       white: '0xd5d8da'
 
+  schemes: &ayu-dark
+    # Default colors
+    primary:
+      background: '#0A0E14'
+      foreground: '#CBCCC6'
+    # Normal colors
+    normal:
+      black:   '0x1D202F'
+      red:     '#FF3333'
+      green:   '#C2D94C'
+      yellow:  '#E6B450'
+      blue:    '#39BAE6'
+      magenta: '#A37ACC'
+      cyan:    '#59C2FF'
+      white:   '#B3B1AD'
+    # Bright colors
+    bright:
+      black:   '0x414868'
+      red:     '#FF3333'
+      green:   '#C2D94C'
+      yellow:  '#E6B450'
+      blue:    '#39BAE6'
+      magenta: '#A37ACC'
+      cyan:    '#59C2FF'
+      white:   '#CBCCC6'
+
 colors: *horizon_dark
+# colors: *gruvbox_dark
+# colors: *ayu-dark
 background_opacity: 0.95

@@ -18,6 +18,6 @@ Theming = {
 Formatting = {
     -- if format_on_save is enable it will always trim trailing white spaces
     format_on_save = false,
-    trim_trailing_space = true,
+    trim_trailing_space = false,
     indent_size = 2
 }
