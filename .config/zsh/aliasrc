@@ -23,6 +23,11 @@ alias \
 		cd="z"
 \
 
+weather-short() {
+	curl -m 1 'wttr.in?format=3' 2>/dev/null
+	sleep 900
+}
+
 # search for all scripts and dotfiles, then open them with editor of choice
 sc() {
     find ~/ ~/.config ~/.local/bin ~/.local/share/rais -type f \

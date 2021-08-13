@@ -43,7 +43,7 @@ selection:
 
 cursor:
   style:
-    shape: Underline
+    shape: Beam
 
 shell:
   program: /usr/local/bin/tmux
