@@ -31,6 +31,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 local nvim_lsp = require "lspconfig"
 local configs = require "lspconfig/configs"
 
+-- npm i -g diagnostic-languageserver
 nvim_lsp.diagnosticls.setup {
 	filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact", "css"},
 	init_options = {
@@ -42,8 +43,8 @@ nvim_lsp.diagnosticls.setup {
 		},
 		linters = {
 			eslint = {
-				sourceName = "eslint",
-				command = "./node_modules/.bin/eslint",
+				sourceName = "eslint_d",
+				command = "eslint_d",
 				rootPatterns = {
 					".eslitrc.js",
 					"package.json"
@@ -74,9 +75,12 @@ nvim_lsp.diagnosticls.setup {
 		},
 		formatters = {
 			eslint = {
-				command = "eslint",
+				command = "eslint_d",
 				args = { "--stdin" },
-				rootPatterns = { "package.json" }
+				rootPatterns = { 
+					"package.json",
+					".eslintrc.js"
+				}
 			}
 		}
 	}
