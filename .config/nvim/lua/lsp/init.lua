@@ -71,6 +71,13 @@ nvim_lsp.diagnosticls.setup {
 					[1] = "warning"
 				}
 			}
+		},
+		formatters = {
+			eslint = {
+				command = "eslint",
+				args = { "--stdin" },
+				rootPatterns = { "package.json" }
+			}
 		}
 	}
 }
