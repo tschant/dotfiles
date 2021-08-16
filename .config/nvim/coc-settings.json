@@ -1,10 +1,5 @@
 {
 	"coc.preferences.enableMessageDialog": false,
-  "eslint.autoFixOnSave": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.format.enable": true,
-	"eslint.run": "onSave",
-  "eslint.codeActionsOnSave.mode": "problems",
   "cSpell.userWords": [
     "sref",
     "unassociate",

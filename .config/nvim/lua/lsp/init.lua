@@ -27,8 +27,53 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     }
 )
 
+-- local coq = require "coq"
 local nvim_lsp = require "lspconfig"
 local configs = require "lspconfig/configs"
+
+nvim_lsp.diagnosticls.setup {
+	filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact", "css"},
+	init_options = {
+		filetypes = {
+			javascript = "eslint",
+			typescript = "eslint",
+			javascriptreact = "eslint",
+			typescriptreact = "eslint"
+		},
+		linters = {
+			eslint = {
+				sourceName = "eslint",
+				command = "./node_modules/.bin/eslint",
+				rootPatterns = {
+					".eslitrc.js",
+					"package.json"
+				},
+				debounce = 100,
+				args = {
+					"--cache",
+					"--stdin",
+					"--stdin-filename",
+					"%filepath",
+					"--format",
+					"json"
+				},
+				parseJson = {
+					errorsRoot = "[0].messages",
+					line = "line",
+					column = "column",
+					endLine = "endLine",
+					endColumn = "endColumn",
+					message = "${message} [${ruleId}]",
+					security = "severity"
+				},
+				securities = {
+					[2] = "error",
+					[1] = "warning"
+				}
+			}
+		}
+	}
+}
 
 configs.emmet_ls = {
     default_config = {
@@ -112,9 +157,11 @@ end
 
 for i,lang in pairs(servers) do
 	-- print(lang, nvim_lsp)
-	nvim_lsp[lang].setup {
+	-- coq.lsp_ensure_capabilities
+
+	nvim_lsp[lang].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		root_dir = vim.loop.cwd
-	}
+	})
 end

@@ -28,24 +28,31 @@ vim.g.Illuminate_delay = 500
 
 -- Git signs
 require("gitsigns").setup {
-    signs = {
-        add = {hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn"},
-        change = {hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"},
-        delete = {hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
-        topdelete = {hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
-        changedelete = {hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"}
-    },
-    numhl = false,
-    linehl = false,
-   watch_index = {
-        interval = 1000
-    },
-    sign_priority = 6,
-    update_debounce = 200,
-    status_formatter = nil, -- Use default
-    use_decoration_api = false
+	signs = {
+		add = {hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn"},
+		change = {hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"},
+		delete = {hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
+		topdelete = {hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
+		changedelete = {hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"}
+	},
+	numhl = false,
+	linehl = false,
+	watch_index = {
+		interval = 1000
+	},
+	sign_priority = 6,
+	update_debounce = 200,
+	status_formatter = nil, -- Use default
+	use_decoration_api = false
 }
 
 -- CoC
 -- vim.cmd('CocInstal coc-json coc-tsserver coc-html')
-vim.g.coc_global_extensions={'coc-json','coc-tsserver','coc-html','coc-css','coc-spell-checker'}
+-- vim.g.coc_global_extensions={'coc-json','coc-tsserver','coc-html','coc-css','coc-spell-checker'}
+vim.g.coc_global_extensions={'coc-spell-checker'}
+
+
+-- Project.nvim
+require("project_nvim").setup({
+	patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "docker-compose.yaml" },
+})

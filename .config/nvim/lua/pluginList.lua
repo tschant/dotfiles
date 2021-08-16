@@ -18,7 +18,9 @@ return require("packer").startup(
 			"neovim/nvim-lspconfig",
 			"hrsh7th/nvim-compe",
 			"sbdchd/neoformat",
-			"neoclide/coc.nvim",
+			-- {"ms-jpq/coq_nvim", branch = "coq"},
+			-- {"ms-jpq/coq.artifacts", branch = "artifacts"}
+			"neoclide/coc.nvim"
 			-- {"ray-x/navigator.lua", requires = {"ray-x/guihua.lua", run = "cd lua/fzy && make"}}
 		}
 
@@ -97,7 +99,8 @@ return require("packer").startup(
 			"RRethy/vim-illuminate",
 			"mg979/vim-visual-multi",
 			"tpope/vim-surround",
-			"ggandor/lightspeed.nvim"
+			"ggandor/lightspeed.nvim",
+			"ahmedkhalf/project.nvim"
 		}
 
 		-- Themes

@@ -66,13 +66,14 @@ u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
 -- Telescope
 u.map("n", "<leader>ff", ":Telescope find_files<CR>")
 u.map("n", "<leader>fg", ":Telescope live_grep<CR>")
-u.map("n", "<leader>fm", ":Telescope media_files<CR>")
+-- u.map("n", "<leader>fm", ":Telescope media_files<CR>")
 u.map("n", "<leader>fh", ":Telescope help_tags<CR>")
 u.map("n", "<leader>fc", ":Telescope colorscheme<CR>")
 u.map("n", "<leader>fa", ":lua require('utils.core').search_dotfiles()<CR>")
 u.map("n", "<leader>fn", ":lua require('utils.core').search_nvim()<CR>")
 u.map("n", "<leader>b", ":Telescope buffers<CR>")
 u.map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]])
+u.map("n", "<leader>fp", ":Telescope projects<CR>")
 
 -- Dashboard
 u.map("n", "<Leader><Home>", [[<Cmd> Dashboard<CR>]])
@@ -94,8 +95,8 @@ u.map("n", "<c-p>", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 u.map("n", "<c-n>", ":lua vim.lsp.diagnostic.goto_next()<CR>")
 
 -- CoC Spell checker
-u.map("n", "<leader>cp", ":CocAction<CR>")
-u.map("v", "<leader>cp", ":CocAction<CR>")
+--[[ u.map("n", "<leader>cp", ":CocAction<CR>")
+u.map("v", "<leader>cp", ":CocAction<CR>") ]]
 
 -- format code
 u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
