@@ -18,8 +18,8 @@ return require("packer").startup(
 			"neovim/nvim-lspconfig",
 			"hrsh7th/nvim-compe",
 			"sbdchd/neoformat",
-			-- {"ms-jpq/coq_nvim", branch = "coq"},
-			-- {"ms-jpq/coq.artifacts", branch = "artifacts"}
+			{"ms-jpq/coq_nvim", branch = "coq"},
+			{"ms-jpq/coq.artifacts", branch = "artifacts"},
 			"neoclide/coc.nvim"
 			-- {"ray-x/navigator.lua", requires = {"ray-x/guihua.lua", run = "cd lua/fzy && make"}}
 		}
@@ -38,7 +38,9 @@ return require("packer").startup(
 				{"nvim-lua/popup.nvim"},
 				{"nvim-lua/plenary.nvim"},
 				{"nvim-telescope/telescope-fzy-native.nvim"},
-				{"nvim-telescope/telescope-media-files.nvim"}
+				{"nvim-telescope/telescope-media-files.nvim"},
+				-- {"nvim-telescope/telescope-project.nvim"},
+				("ahmedkhalf/project.nvim")
 			}
 		}
 
@@ -99,8 +101,7 @@ return require("packer").startup(
 			"RRethy/vim-illuminate",
 			"mg979/vim-visual-multi",
 			"tpope/vim-surround",
-			"ggandor/lightspeed.nvim",
-			"ahmedkhalf/project.nvim"
+			"ggandor/lightspeed.nvim"
 		}
 
 		-- Themes

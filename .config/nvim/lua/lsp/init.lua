@@ -155,13 +155,14 @@ local function on_attach(client, bufnr)
     end
 end
 
-for i,lang in pairs(servers) do
-	-- print(lang, nvim_lsp)
-	-- coq.lsp_ensure_capabilities
+vim.schedule(function ()
+	-- vim.cmd('COQnow')
+	for i,lang in pairs(servers) do
+		nvim_lsp[lang].setup(coq.lsp_ensure_capabilities({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = vim.loop.cwd
+		}))
+	end
+end)
 
-	nvim_lsp[lang].setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		root_dir = vim.loop.cwd
-	})
-end

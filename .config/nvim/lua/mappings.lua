@@ -73,6 +73,7 @@ u.map("n", "<leader>fa", ":lua require('utils.core').search_dotfiles()<CR>")
 u.map("n", "<leader>fn", ":lua require('utils.core').search_nvim()<CR>")
 u.map("n", "<leader>b", ":Telescope buffers<CR>")
 u.map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]])
+-- u.map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>") -- Telescope project
 u.map("n", "<leader>fp", ":Telescope projects<CR>")
 
 -- Dashboard

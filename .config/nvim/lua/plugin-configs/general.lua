@@ -53,6 +53,7 @@ vim.g.coc_global_extensions={'coc-spell-checker'}
 
 
 -- Project.nvim
+-- require'telescope'.load_extension('project')
 require("project_nvim").setup({
 	patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "docker-compose.yaml" },
 })
