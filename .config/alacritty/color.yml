@@ -2,27 +2,28 @@
 schemes:
   gruvbox_dark: &gruvbox_dark
     primary:
-      background: '0x1d2021' # hard contrast
-      # background: '0x282828' # normal contrast
-      foreground: '0xebdbb2'
+      background: '#0A0E14'
+      # foreground: '#CBCCC6'
+      # background: '0x1d2021' # hard contrast
+      foreground: '#ebdbb2'
     normal:
-      black:   '0x282828'
-      red:     '0xcc241d'
-      green:   '0x98971a'
-      yellow:  '0xd79921'
-      blue:    '0x458588'
-      magenta: '0xb16286'
-      cyan:    '0x689d6a'
-      white:   '0xa89984'
+      black:   '#282828'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#a89984'
     bright:
-      black:   '0x928374'
-      red:     '0xfb4934'
-      green:   '0xb8bb26'
-      yellow:  '0xfabd2f'
-      blue:    '0x83a598'
-      magenta: '0xd3869b'
-      cyan:    '0x8ec07c'
-      white:   '0xebdbb2'
+      black:   '#928374'
+      red:     '#fb4934'
+      green:   '#b8bb26'
+      yellow:  '#fabd2f'
+      blue:    '#83a598'
+      magenta: '#d3869b'
+      cyan:    '#8ec07c'
+      white:   '#ebdbb2'
 
   horizon_dark: &horizon_dark
     primary:
@@ -182,10 +183,36 @@ schemes:
       cyan: '#6d96a5'
       white: '#aeb3bb'
 
+  amarena: &amarena
+    primary:
+      background: '#0A0E14'
+      foreground: '#CBCCC6'
+      # background:	'#1A2026'
+      # foreground:	'#FFFFFF'
+    normal: 
+      black:	  '#242D35'
+      red:	    '#FB6396'
+      green:	  '#94CF95'
+      yellow:	  '#F692B2'
+      blue:	    '#6EC1D6'
+      magenta:	'#CD84C8'
+      cyan:	    '#7FE4D2'
+      white:	  '#FFFFFF'
+    bright:
+      black:	  '#526170'
+      red:	    '#F92D72'
+      green:	  '#6CCB6E'
+      yellow:   '#F26190'
+      blue:	    '#4CB9D6'
+      magenta:	'#C269BC'
+      cyan:	    '#58D6BF'
+      white:	  '#F4F5F2'
+
 # colors: *nord
 # colors: *kaolin
 # colors: *ikigai_dark
-colors: *horizon_dark
-# colors: *gruvbox_dark
+colors: *gruvbox_dark
 # colors: *ayu_dark
+# colors: *horizon_dark
+# colors: *amarena
 background_opacity: 0.95
