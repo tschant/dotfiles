@@ -1,5 +1,5 @@
 import:
-  - "/Users/tarryn/.config/alacritty/color.yml"
+  - "~/.config/alacritty/color.yml"
 
 env:
   TERM: xterm-256color
