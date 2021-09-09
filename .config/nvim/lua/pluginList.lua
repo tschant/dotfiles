@@ -18,6 +18,7 @@ return require("packer").startup(
 			"neovim/nvim-lspconfig",
 			"hrsh7th/nvim-compe",
 			"sbdchd/neoformat",
+			"folke/trouble.nvim",
 			{"ms-jpq/coq_nvim", branch = "coq"},
 			{"ms-jpq/coq.artifacts", branch = "artifacts"},
 			"neoclide/coc.nvim"

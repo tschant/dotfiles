@@ -1,6 +1,8 @@
 {
+	"diagnostic.enable": false,
 	"coc.preferences.enableMessageDialog": false,
   "cSpell.userWords": [
+    "sfmc",
     "sref",
     "unassociate",
     "upsell"

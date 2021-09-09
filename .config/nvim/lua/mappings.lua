@@ -9,6 +9,7 @@ u.map("i", "jk", "<ESC>")
 u.map("n", "Q", "<Nop>")
 u.map("n", "<leader>V", ":vs<CR>")
 u.map("n", "<leader>H", ":sp<CR>")
+u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 
 u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
 u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
@@ -94,6 +95,9 @@ u.map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>")
 u.map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>")
 u.map("n", "<c-p>", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 u.map("n", "<c-n>", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+
+-- Trouble
+u.map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
 
 -- CoC Spell checker
 --[[ u.map("n", "<leader>cp", ":CocAction<CR>")
