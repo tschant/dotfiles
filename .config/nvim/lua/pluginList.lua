@@ -21,7 +21,8 @@ return require("packer").startup(
 			"folke/trouble.nvim",
 			{"ms-jpq/coq_nvim", branch = "coq"},
 			{"ms-jpq/coq.artifacts", branch = "artifacts"},
-			"neoclide/coc.nvim"
+			"neoclide/coc.nvim",
+			"natebosch/vim-lsc"
 			-- {"ray-x/navigator.lua", requires = {"ray-x/guihua.lua", run = "cd lua/fzy && make"}}
 		}
 
@@ -76,7 +77,8 @@ return require("packer").startup(
 			"hail2u/vim-css3-syntax",
 			"maxmellon/vim-jsx-pretty",
 			"ryym/vim-riot",
-			"mattn/emmet-vim"
+			"mattn/emmet-vim",
+			{"vuki656/package-info.nvim", requires = "MunifTanjim/nui.nvim"}
 		}
 
 		-- Terraform

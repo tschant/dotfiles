@@ -153,6 +153,14 @@ gls.left[14] = {
     }
 }
 
+--[[ gls.left[15] = {
+    PackageInfoStatus = {
+        provider = function()
+            return require("package-info").get_status()
+        end
+    }
+} ]]
+
 gls.right[1] = {
     FileSize = {
         provider = fileSize,

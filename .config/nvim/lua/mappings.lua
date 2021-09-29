@@ -106,3 +106,19 @@ u.map("v", "<leader>cp", ":CocAction<CR>") ]]
 -- format code
 u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
 
+
+-- Package info
+u.map("n", "<leader>ns", ":lua require('package-info').show()<CR>", { silent = true, noremap = true })
+-- Hide package versions
+u.map("n", "<leader>nc", ":lua require('package-info').hide()<CR>", { silent = true, noremap = true })
+-- Update package on line
+u.map("n", "<leader>nu", ":lua require('package-info').update()<CR>", { silent = true, noremap = true })
+-- Delete package on line
+u.map("n", "<leader>nd", ":lua require('package-info').delete()<CR>", { silent = true, noremap = true })
+-- Install a new package
+u.map("n", "<leader>ni", ":lua require('package-info').install()<CR>", { silent = true, noremap = true })
+-- Reinstall dependencies
+u.map("n", "<leader>nr", ":lua require('package-info').reinstall()<CR>", { silent = true, noremap = true })
+-- Install a different package version
+u.map("n", "<leader>np", ":lua require('package-info').change_version()<CR>", { silent = true, noremap = true })
+

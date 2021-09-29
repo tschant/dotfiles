@@ -58,3 +58,8 @@ require("project_nvim").setup({
 	manual_mode = true,
 	patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "docker-compose.yaml" },
 })
+
+require("package-info").setup({
+	package_manager = "npm",
+	hide_up_to_date = true
+})

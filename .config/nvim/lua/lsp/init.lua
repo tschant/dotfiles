@@ -10,7 +10,8 @@ local servers = {
 	-- npm i -g vscode-json-languageserver
 "jsonls",
 	-- npm i -g emmet-ls
-"emmet_ls"
+"emmet_ls",
+"java_language_server",
 -- npm install -g vscode-html-languageserver-bin
 	-- "html"
 }
@@ -129,6 +130,13 @@ configs.emmet_ls = {
 			return vim.loop.cwd()
 		end,
 		settings = {}
+	}
+}
+
+configs.java_language_server = {
+	default_config = {
+		cmd = {'/Users/tarryn/git/java-language-server/dist/lang_server_mac.sh'},
+		filetypes = {"java"}
 	}
 }
 
