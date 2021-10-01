@@ -8,7 +8,7 @@
 # #
 # # Yabai
 
-alt - return : "${HOME}"/.config/scripts/open_iterm2.sh
+# alt - return : "${HOME}"/.config/scripts/open_iterm2.sh
 # fn + ctrl - b : "${HOME}"/.config/scripts/open_iterm2.sh build
 # fn + ctrl - f1 : "${HOME}"/.config/scripts/open_iterm2.sh mysql
 

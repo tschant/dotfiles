@@ -59,6 +59,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		}
 	)
 
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, { focusable = false }
+)
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, { focusable = false }
 )
