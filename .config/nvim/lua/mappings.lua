@@ -66,6 +66,7 @@ u.map("n", "<A-l>", ":BufferLast<CR>")
 
 -- File manager
 u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
+u.map("n", "<leader>fr", ":NvimTreeRefresh<CR>")
 
 -- Telescope
 u.map("n", "<leader>ff", ":Telescope find_files<CR>")

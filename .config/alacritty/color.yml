@@ -73,42 +73,6 @@ schemes:
       cyan:    '#59C2FF'
       white:   '#CBCCC6'
 
-  ikigai_dark: &ikigai_dark
-    primary:
-      background: '#1d1f21'
-      foreground: '#cfcfcf'
-    cursor:
-      text: CellBackground
-      cursor: CellForeground
-    search:
-      matches:
-        foreground: '#80D1FF'
-        background: '#1F252A'
-      focused_match:
-        foreground: CellBackground
-        background: CellForeground
-    selection:
-      text: "#1F252A"
-      background: "#D5D5D5"
-    normal:
-      black:   '#1F252A'
-      red:     '#FF6161'
-      green:   '#c3e88d'
-      yellow:  '#ffaf60'
-      blue:    '#8BA6C5'
-      magenta: '#8d8bc4'
-      cyan:    '#8bc2c4'
-      white:   '#eeffff'
-    bright:
-      black:   '#384149'
-      red:     '#FF6161'
-      green:   '#c3e88d'
-      yellow:  '#f0c674'
-      blue:    '#8BA6C5'
-      magenta: '#d597ce'
-      cyan:    '#b8e3ea'
-      white:   '#e8e8e8'
-
   kaolin: &kaolin
     primary:
       background: '#18181B'
@@ -208,11 +172,40 @@ schemes:
       cyan:	    '#58D6BF'
       white:	  '#F4F5F2'
 
+  catppuccino: &catppuccino
+    primary:
+      background: '#0e171c'
+      foreground: '#abb2bf'
+    cursor:
+      text: '#0e171c'
+      cursor: '#abb2bf'
+    normal:
+      black:   '#393b44'
+      red:     '#c94f6d'
+      green:   '#97c374'
+      yellow:  '#dbc074'
+      blue:    '#61afef'
+      magenta: '#c678dd'
+      cyan:    '#63cdcf'
+      white:   '#dfdfe0'
+    bright:
+      black:   '#7f8c98'
+      red:     '#e06c75'
+      green:   '#58cd8b'
+      yellow:  '#ffe37e'
+      blue:    '#84cee4'
+      magenta: '#b8a1e3'
+      cyan:    '#59f0ff'
+      white:   '#fdebc3'
+    indexed_colors:
+      - { index: 16, color: '#ffe37e' }
+      - { index: 17, color: '#e06c75' }
+
 # colors: *nord
 # colors: *kaolin
-# colors: *ikigai_dark
-colors: *gruvbox_dark
+# colors: *catppuccino
+# colors: *gruvbox_dark
 # colors: *ayu_dark
-# colors: *horizon_dark
+colors: *horizon_dark
 # colors: *amarena
 background_opacity: 0.95
