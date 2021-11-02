@@ -16,7 +16,7 @@ require("catppuccino").setup({
 	transparency = true,
 	integrations = {
 		nvimtree = {
-			enabled = true
+			enabled = false
 		},
 		dashboard = false,
 		telescope = true,
