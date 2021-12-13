@@ -9,7 +9,7 @@ local autocmds = {
         {"FileType", "toggleterm", "setlocal nonumber norelativenumber"}
     },
     cursor = {
-        {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})"},
+        {"CursorHold", "*", "lua vim.diagnostic.open_float(0, {scope=line, focusable = false})"},
         {"CursorHoldI", "*", "silent! lua vim.lsp.buf.signature_help({focusable = false})"}
     }
 }

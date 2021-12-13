@@ -11,12 +11,10 @@ local function get_nvim_lsp_diagnostic(diag_type)
     end
 
     local active_clients = lsp.get_active_clients()
-
     if active_clients then
         local count = 0
-
         for _, client in ipairs(active_clients) do
-            count = count + lsp.diagnostic.get_count(api.nvim_get_current_buf(), diag_type, client.id)
+            count = count + vim.diagnostic.get(api.nvim_get_current_buf(), diag_type, client.id)
         end
 
         if count ~= 0 then
