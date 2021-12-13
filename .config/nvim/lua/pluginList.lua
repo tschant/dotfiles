@@ -18,7 +18,7 @@ return require("packer").startup(
 			"neovim/nvim-lspconfig",
 			"hrsh7th/nvim-compe",
 			"sbdchd/neoformat",
-			-- "folke/trouble.nvim",
+			"folke/trouble.nvim",
 			{"ms-jpq/coq_nvim", branch = "coq"},
 			{"ms-jpq/coq.artifacts", branch = "artifacts"},
 			"neoclide/coc.nvim",
@@ -57,8 +57,14 @@ return require("packer").startup(
 		use "lewis6991/gitsigns.nvim"
 
 		-- File manager
+		-- Statusline and bufferline
+		-- use { "glepnir/galaxyline.nvim"}
 		use {
+			"romgrk/barbar.nvim",
+			"kyazdani42/nvim-web-devicons",
 			"kyazdani42/nvim-tree.lua",
+			-- "akinsho/bufferline.nvim",
+			"famiu/feline.nvim",
 			requires = {"kyazdani42/nvim-web-devicons"}
 		}
 
@@ -85,12 +91,6 @@ return require("packer").startup(
 		use {
 			'hashivim/vim-terraform',
 			'juliosueiras/vim-terraform-completion'
-		}
-
-		-- Statusline and bufferline
-		-- use {"romgrk/barbar.nvim", "glepnir/galaxyline.nvim"}
-		use {
-			"akinsho/bufferline.nvim",
 		}
 
 		-- Terminal

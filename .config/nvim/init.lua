@@ -9,8 +9,6 @@ require("autocmds")
 -- Plugins
 require("plugin-configs/general")
 require("plugin-configs/nvim-tree")
--- require("plugin-configs/statusline")
-require("plugin-configs/bufferline")
 require("plugin-configs/dashboard")
 require("plugin-configs/indent-guides")
 require("plugin-configs/terminal")
@@ -24,3 +22,6 @@ require("lsp/completion")
 
 -- require("utils/core")
 -- require("utils/extra")
+
+require("plugin-configs/statusline")
+-- require("plugin-configs/bufferline")

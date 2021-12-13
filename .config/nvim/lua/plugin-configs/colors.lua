@@ -9,6 +9,7 @@ M.dark = {
     comp = "#c56ec3",
     func = "#bc6ec5",
     act1 = "#222226",
+    black = "#222226",
     DarkGoldenrod2 = "#eead0e", -- normal / unmodified
     chartreuse3 = "#66cd00", --insert
     SkyBlue2 = "#7ec0ee", -- modified
