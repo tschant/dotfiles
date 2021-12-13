@@ -18,7 +18,7 @@ return require("packer").startup(
 			"neovim/nvim-lspconfig",
 			"hrsh7th/nvim-compe",
 			"sbdchd/neoformat",
-			"folke/trouble.nvim",
+			-- "folke/trouble.nvim",
 			{"ms-jpq/coq_nvim", branch = "coq"},
 			{"ms-jpq/coq.artifacts", branch = "artifacts"},
 			"neoclide/coc.nvim",
@@ -88,7 +88,10 @@ return require("packer").startup(
 		}
 
 		-- Statusline and bufferline
-		use {"romgrk/barbar.nvim", "glepnir/galaxyline.nvim"}
+		-- use {"romgrk/barbar.nvim", "glepnir/galaxyline.nvim"}
+		use {
+			"akinsho/bufferline.nvim",
+		}
 
 		-- Terminal
 		use {"akinsho/nvim-toggleterm.lua", "voldikss/vim-floaterm"}
@@ -110,7 +113,6 @@ return require("packer").startup(
 		-- Themes
 			--"norcalli/nvim-base16.lua",
 		use {
-			"Pocco81/Catppuccino.nvim",
 			"catppuccin/nvim",
 			"EdenEast/nightfox.nvim",
 			"srcery-colors/srcery-vim",

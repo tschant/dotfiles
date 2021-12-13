@@ -97,8 +97,8 @@ u.map("n", "gr", ":Telescope lsp_references<CR>")
 u.map("n", "gh", ":lua vim.lsp.buf.hover()<CR>")
 u.map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>")
 u.map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>")
-u.map("n", "<c-p>", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
-u.map("n", "<c-n>", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+u.map("n", "<c-p>", ":lua vim.diagnostic.goto_prev()<CR>")
+u.map("n", "<c-n>", ":lua vim.diagnostic.goto_next()<CR>")
 
 -- Trouble
 u.map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})

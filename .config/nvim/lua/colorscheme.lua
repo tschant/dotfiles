@@ -4,7 +4,7 @@ local cmd = vim.cmd
 local Theming = {
     -- Press <space>fc to see all available themes
     -- colorscheme = "base16-gruvbox-dark-pale",
-    colorscheme = "catppuccino",
+    colorscheme = "catppuccin",
     -- colorscheme = "srcery",
     -- colorscheme = "nightfox",
     colorscheme_style = "",
@@ -12,20 +12,9 @@ local Theming = {
 }
 
 require("catppuccin").setup({
+	colorscheme = "neon_latte",
 	transparent_background = true,
-	colorscheme = "neon_latte",
-	integrations = {
-		nvimtree = {
-			enabled = false
-		},
-		dashboard = false,
-		telescope = true,
-		gitsigns = true
-	}
-})
-require("catppuccino").setup({
-	colorscheme = "neon_latte",
-	transparency = true,
+	term_colors = true,
 	integrations = {
 		nvimtree = {
 			enabled = false
