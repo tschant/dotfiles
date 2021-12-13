@@ -110,7 +110,8 @@ return require("packer").startup(
 		-- Themes
 			--"norcalli/nvim-base16.lua",
 		use {
-			"Pocco81/Catppuccino.nvim", -- Need to update to remaster
+			"Pocco81/Catppuccino.nvim",
+			"catppuccin/nvim",
 			"EdenEast/nightfox.nvim",
 			"srcery-colors/srcery-vim",
 			-- "ntk148v/vim-horizon",

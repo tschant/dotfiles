@@ -11,6 +11,18 @@ local Theming = {
     statusline = "slant"
 }
 
+require("catppuccin").setup({
+	transparent_background = true,
+	colorscheme = "neon_latte",
+	integrations = {
+		nvimtree = {
+			enabled = false
+		},
+		dashboard = false,
+		telescope = true,
+		gitsigns = true
+	}
+})
 require("catppuccino").setup({
 	colorscheme = "neon_latte",
 	transparency = true,
