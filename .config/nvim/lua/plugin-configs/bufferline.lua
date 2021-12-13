@@ -1,4 +1,4 @@
-local colors = require("plugin-configs.colors").dark
+local colors = require("colors").dark
 local present, bufferline = pcall(require, "bufferline")
 if not present then
 	return

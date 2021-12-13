@@ -1,4 +1,4 @@
-local colors = require("plugin-configs.colors").dark
+local colors = require("colors").dark
 local lsp = require "feline.providers.lsp"
 local config = Statusline
 

@@ -140,8 +140,8 @@ configs.java_language_server = {
 	}
 }
 
-local luapath = "/home/rafa/.local/share/nvim/lua/sumneko_lua"
-local luabin = luapath .. "/bin/Linux/lua-language-server"
+local luapath = "/usr/local/" -- "~/.local/share/nvim/lua/sumneko_lua"
+local luabin = luapath .. "/bin/lua-language-server"
 
 nvim_lsp.sumneko_lua.setup {
 	cmd = {luabin, "-E", luapath .. "/main.lua"},

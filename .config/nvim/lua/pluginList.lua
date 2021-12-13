@@ -113,7 +113,7 @@ return require("packer").startup(
 		-- Themes
 			--"norcalli/nvim-base16.lua",
 		use {
-			"catppuccin/nvim",
+			{"catppuccin/nvim", branch = "old-catppuccino"},
 			"EdenEast/nightfox.nvim",
 			"srcery-colors/srcery-vim",
 			-- "ntk148v/vim-horizon",
