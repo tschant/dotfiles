@@ -10,7 +10,7 @@ local Theming = {
     colorscheme_style = "",
     statusline = "slant"
 }
---[[ New colors aren't as nice, using old branch
+--[[ -- New colors aren't as nice, using old branch
 require("catppuccin").setup({
 	transparent_background = true,
 	term_colors = true,
@@ -35,6 +35,7 @@ require("catppuccino").setup({
 			show_root = true,
 		},
 		barbar = true,
+		bufferline = true,
 		dashboard = false,
 		telescope = true,
 		gitsigns = true

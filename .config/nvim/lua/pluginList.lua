@@ -60,10 +60,10 @@ return require("packer").startup(
 		-- Statusline and bufferline
 		-- use { "glepnir/galaxyline.nvim"}
 		use {
-			"romgrk/barbar.nvim",
+			-- "romgrk/barbar.nvim",
 			"kyazdani42/nvim-web-devicons",
 			"kyazdani42/nvim-tree.lua",
-			-- "akinsho/bufferline.nvim",
+			"akinsho/bufferline.nvim",
 			"famiu/feline.nvim",
 			requires = {"kyazdani42/nvim-web-devicons"}
 		}

@@ -24,4 +24,4 @@ require("lsp/completion")
 -- require("utils/extra")
 
 require("plugin-configs/statusline")
--- require("plugin-configs/bufferline")
+require("plugin-configs/bufferline")
