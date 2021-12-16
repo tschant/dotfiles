@@ -49,8 +49,8 @@ u.map("n", "<leader>gb", ":Telescope git_branches<CR>")
 u.map("n", "<leader>gs", ":Telescope git_status<CR>")
 
 -- buffer navigation
-u.map("n", "<leader>q", ":bdelete!<CR>")
-u.map("n", "<C-w>", ":bdelete!<CR>")
+u.map("n", "<leader>q", ":bp<CR>:bd#<CR>")
+u.map("n", "<C-w>", ":bp<CR>:bd#<CR>")
 u.map("n", "<TAB>", ":BufferLineCycleNext<CR>")
 u.map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>")
 u.map("n", "<Leader>b1", ":BufferLineGoToBuffer 1<CR>")

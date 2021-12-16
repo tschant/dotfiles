@@ -1,8 +1,8 @@
 -- General settings
 require("config")
 require("options")
-require("mappings")
-require("pluginList")
+require("key-maps")
+require("plugin-list")
 require("colorscheme")
 require("autocmds")
 
