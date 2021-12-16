@@ -26,5 +26,5 @@ Statusline = {
 	shown = {},
 	-- truncate statusline on small screens
 	shortline = true,
-	style = "slant", -- default, round , slant , block , arrow
+	style = "block", -- default, round , slant , block , arrow
 }
