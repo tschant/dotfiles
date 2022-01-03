@@ -107,13 +107,15 @@ return require("packer").startup(
 			"RRethy/vim-illuminate",
 			"mg979/vim-visual-multi",
 			"tpope/vim-surround",
-			"ggandor/lightspeed.nvim"
+			"ggandor/lightspeed.nvim",
+			"blueyed/vim-diminactive"
 		}
 
 		-- Themes
 			--"norcalli/nvim-base16.lua",
 		use {
 			{"catppuccin/nvim", branch = "old-catppuccino"},
+			"rebelot/kanagawa.nvim",
 			"EdenEast/nightfox.nvim",
 			"srcery-colors/srcery-vim",
 			-- "ntk148v/vim-horizon",

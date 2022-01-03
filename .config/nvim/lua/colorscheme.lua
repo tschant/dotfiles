@@ -5,6 +5,7 @@ local Theming = {
     -- Press <space>fc to see all available themes
     -- colorscheme = "base16-gruvbox-dark-pale",
     colorscheme = "catppuccino",
+    -- colorscheme = "kanagawa",
     -- colorscheme = "srcery",
     -- colorscheme = "nightfox",
     colorscheme_style = "",
@@ -40,6 +41,18 @@ require("catppuccino").setup({
 		telescope = true,
 		gitsigns = true
 	}
+})
+
+require('kanagawa').setup({
+    undercurl = true,
+    commentStyle = "italic",
+    functionStyle = "NONE",
+    keywordStyle = "italic",
+    statementStyle = "bold",
+    typeStyle = "NONE",
+    transparent = true,
+    colors = {},
+    overrides = {},
 })
 
 -- Nightfox settings
