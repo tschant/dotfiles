@@ -2,7 +2,7 @@
 require("config")
 require("options")
 require("key-maps")
-require("plugin-list")
+require("plugins")
 require("colorscheme")
 require("autocmds")
 

@@ -4,14 +4,14 @@ local cmd = vim.cmd
 local Theming = {
     -- Press <space>fc to see all available themes
     -- colorscheme = "base16-gruvbox-dark-pale",
-    colorscheme = "catppuccino",
+    colorscheme = "catppuccin",
     -- colorscheme = "kanagawa",
     -- colorscheme = "srcery",
     -- colorscheme = "nightfox",
     colorscheme_style = "",
     statusline = "slant"
 }
---[[ -- New colors aren't as nice, using old branch
+-- New colors aren't as nice, using old branch
 require("catppuccin").setup({
 	transparent_background = true,
 	term_colors = true,
@@ -25,8 +25,8 @@ require("catppuccin").setup({
 		telescope = true,
 		gitsigns = true
 	}
-}) ]]
-require("catppuccino").setup({
+})
+--[[ require("catppuccino").setup({
 	colorscheme = "neon_latte",
 	transparency = true,
 	term_colors = true,
@@ -41,7 +41,7 @@ require("catppuccino").setup({
 		telescope = true,
 		gitsigns = true
 	}
-})
+}) ]]
 
 require('kanagawa').setup({
     undercurl = true,
