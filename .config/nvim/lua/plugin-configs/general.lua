@@ -12,6 +12,22 @@ require "colorizer".setup(
     }
 )
 
+require("pretty-fold").setup({
+	keep_indentation = false,
+	fill_char = '━',
+	sections = {
+		left = {
+			function() return string.rep('>', vim.v.foldlevel) end,
+			' ', 'number_of_folded_lines', ':', 'content', 'percentage', ' ┣━━',
+		},
+		right = {
+			'┫'
+		}
+	}
+})
+require("pretty-fold.preview").setup_keybinding('h')
+
+
 -- kommentary
 -- vim.g.kommentary_create_default_mappings = false
 require("kommentary.config").use_extended_mappings()
