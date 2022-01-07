@@ -1,7 +1,19 @@
 local colors = require("colors").dark
 local lsp = require "feline.providers.lsp"
 local lsp_severity = vim.diagnostic.severity
-local config = Statusline
+local config = {
+	-- hide, show on specific filetypes
+	hidden = {
+		"help",
+		"dashboard",
+		"NvimTree",
+		"terminal",
+	},
+	shown = {},
+	-- truncate statusline on small screens
+	shortline = true,
+	style = "block", -- default, round , slant , block , arrow
+}
 
 local icon_styles = {
 	default = {

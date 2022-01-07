@@ -43,7 +43,6 @@ return packer.startup(function(use)
 		{"ms-jpq/coq.artifacts", branch = "artifacts"},
 		"neoclide/coc.nvim",
 		"natebosch/vim-lsc"
-		-- {"ray-x/navigator.lua", requires = {"ray-x/guihua.lua", run = "cd lua/fzy && make"}}
 	}
 
 	-- Snippets
@@ -103,7 +102,7 @@ return packer.startup(function(use)
 		"pangloss/vim-javascript",
 		"ryym/vim-riot",
 		"mattn/emmet-vim",
-		{"vuki656/package-info.nvim", requires = "MunifTanjim/nui.nvim"}
+		-- {"vuki656/package-info.nvim", requires = "MunifTanjim/nui.nvim"}
 	}
 
 	-- Terraform
@@ -128,6 +127,8 @@ return packer.startup(function(use)
 		"tpope/vim-surround",
 		"ggandor/lightspeed.nvim",
 		"anuvyklack/pretty-fold.nvim",
+		"petertriho/nvim-scrollbar",
+		"kevinhwang91/nvim-hlslens",
 		-- "blueyed/vim-diminactive"
 	}
 

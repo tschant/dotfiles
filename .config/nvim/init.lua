@@ -1,27 +1,34 @@
--- General settings
+local modules = {
+	-- General settings
+	"key-maps",
+	"colorscheme",
+	"autocmds",
+	-- Plugins
+	"plugin-configs/general",
+	"plugin-configs/nvim-tree",
+	"plugin-configs/dashboard",
+	"plugin-configs/terminal",
+	"plugin-configs/telescope",
+	"plugin-configs/emmet",
+	"plugin-configs/statusline",
+	"plugin-configs/bufferline",
+	-- LSP
+	"lsp/init",
+	"lsp/completion",
+}
+
+-- No external requires, global configs
 require("config")
 require("options")
-require("key-maps")
 require("plugins")
-require("colorscheme")
-require("autocmds")
-
--- Plugins
-require("plugin-configs/general")
-require("plugin-configs/nvim-tree")
-require("plugin-configs/dashboard")
-require("plugin-configs/indent-guides")
-require("plugin-configs/terminal")
-require("plugin-configs/telescope")
-require("plugin-configs/emmet")
-require("plugin-configs/treesitter")
--- require("plugin-configs/navigator")
-
-require("lsp/init")
-require("lsp/completion")
-
 -- require("utils/core")
 -- require("utils/extra")
 
-require("plugin-configs/statusline")
-require("plugin-configs/bufferline")
+
+for _, module in ipairs(modules) do
+	local ok, err = pcall(require, module)
+	if not ok then
+		-- This was error, updated to keep loading configs without error
+		print("Error loading " .. module .. "\n\n" .. err)
+	end
+end

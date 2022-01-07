@@ -1,5 +1,6 @@
+local setup_plugin = require("utils.core").setup_plugin
 local colors = require("colors").dark
-require("bufferline").setup {
+setup_plugin("bufferline", {
 	options = {
 		offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
 		middle_mouse_command = "bdelete! %d",
@@ -127,4 +128,4 @@ require("bufferline").setup {
 			guibg = colors.black,
 		},
 	}, ]]
-}
+})

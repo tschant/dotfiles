@@ -14,17 +14,3 @@ Formatting = {
 	trim_trailing_space = false,
 	indent_size = 2
 }
-
-Statusline = {
-	-- hide, show on specific filetypes
-	hidden = {
-		"help",
-		"dashboard",
-		"NvimTree",
-		"terminal",
-	},
-	shown = {},
-	-- truncate statusline on small screens
-	shortline = true,
-	style = "block", -- default, round , slant , block , arrow
-}

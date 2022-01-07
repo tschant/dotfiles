@@ -61,4 +61,17 @@ function utils.search_nvim()
     )
 end
 
+function utils.setup_plugin(plugin_name, config)
+	local present, thing = pcall(require, plugin_name)
+	if not present then
+		return
+	end
+
+	if not config then
+		thing.setup()
+	else
+		thing.setup(config)
+	end
+end
+
 return utils
