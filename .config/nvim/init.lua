@@ -13,8 +13,8 @@ local modules = {
 	"plugin-configs/statusline",
 	"plugin-configs/bufferline",
 	-- LSP
-	"lsp/init",
 	"lsp/completion",
+	"lsp/init",
 }
 
 -- No external requires, global configs

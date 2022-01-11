@@ -16,35 +16,35 @@ local servers = {
 	-- "html"
 }
 
---[[ require("trouble").setup({
-	position = "bottom", 
-	icons = true, 
-	mode = "lsp_workspace_diagnostics", 
-	action_keys = { 
-		close = "q", 
-		cancel = "<esc>", 
-		refresh = "r", 
-		jump = {"<cr>", "<tab>"}, 
-		open_split = { "<c-x>" }, 
-		open_vsplit = { "<c-v>" }, 
-		open_tab = { "<c-t>" }, 
-		jump_close = {"o"}, 
-		toggle_mode = "m", 
-		toggle_preview = "P", 
-		hover = "K", 
-		preview = "p", 
-		close_folds = {"zM", "zm"}, 
-		open_folds = {"zR", "zr"}, 
-		toggle_fold = {"zA", "za"}, 
-		previous = "k", 
-		next = "j" 
+require("trouble").setup({
+	position = "bottom",
+	icons = true,
+	mode = "workspace_diagnostics",
+	action_keys = {
+		close = "q",
+		cancel = "<esc>",
+		refresh = "r",
+		jump = {"<cr>", "<tab>"},
+		open_split = { "<c-x>" },
+		open_vsplit = { "<c-v>" },
+		open_tab = { "<c-t>" },
+		jump_close = {"o"},
+		toggle_mode = "m",
+		toggle_preview = "p",
+		hover = "k",
+		preview = "p",
+		close_folds = {"zm", "zm"},
+		open_folds = {"zr", "zr"},
+		toggle_fold = {"za", "za"},
+		previous = "k",
+		next = "j"
 	},
-	auto_open = false, 
-	auto_close = false, 
-	auto_preview = true, 
-	auto_fold = false, 
-	use_lsp_diagnostic_signs = true 
-}) ]]
+	auto_open = false,
+	auto_close = false,
+	auto_preview = true,
+	auto_fold = false,
+	use_diagnostic_signs = true
+})
 
 -- Stop lsp diagnostics from showing virtual text
 vim.diagnostic.config({
@@ -113,7 +113,7 @@ nvim_lsp.diagnosticls.setup {
 			eslint = {
 				command = "eslint_d",
 				args = { "--stdin" },
-				rootPatterns = { 
+				rootPatterns = {
 					"package.json",
 					".eslintrc.js"
 				}
@@ -174,12 +174,12 @@ nvim_lsp.sumneko_lua.setup {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local function on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	local opts = {noremap = true, silent = true}
-
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -210,13 +210,46 @@ local function on_attach(client, bufnr)
 end
 
 vim.schedule(function ()
-	-- vim.cmd('COQnow')
 	for i,lang in pairs(servers) do
-		nvim_lsp[lang].setup(coq.lsp_ensure_capabilities({
+		-- nvim_lsp[lang].setup(coq.lsp_ensure_capabilities({
+		nvim_lsp[lang].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 			root_dir = vim.loop.cwd
-		}))
+		})
 	end
 end)
+
+vim.fn.sign_define(
+	"LspDiagnosticsSignError",
+	{
+		texthl = "LspDiagnosticsSignError",
+		text = "",
+		numhl = "LspDiagnosticsSignError"
+	}
+)
+vim.fn.sign_define(
+	"LspDiagnosticsSignWarning",
+	{
+		texthl = "LspDiagnosticsSignWarning",
+		text = "",
+		numhl = "LspDiagnosticsSignWarning"
+	}
+)
+vim.fn.sign_define(
+	"LspDiagnosticsSignInformation",
+	{
+		texthl = "LspDiagnosticsSignInformation",
+		text = "",
+		numhl = "LspDiagnosticsSignInformation"
+	}
+)
+vim.fn.sign_define(
+	"LspDiagnosticsSignHint",
+	{
+		texthl = "LspDiagnosticsSignHint",
+		text = "",
+		numhl = "LspDiagnosticsSignHint"
+	}
+)
 

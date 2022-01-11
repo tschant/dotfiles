@@ -50,6 +50,7 @@ cmd("set iskeyword+=-")
 cmd("set path+=**")
 cmd("filetype on")
 cmd("filetype plugin on")
+cmd("set spelllang=en,cjk")
 
 -- Folding
 cmd("set nofoldenable")

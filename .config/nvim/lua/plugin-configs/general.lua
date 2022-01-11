@@ -1,5 +1,6 @@
 -- Single Line Configs
-require("kommentary.config").use_extended_mappings()
+-- require("kommentary.config").use_extended_mappings()
+require('Comment').setup()
 require("neoscroll").setup()
 require("nvim-autopairs").setup()
 
@@ -7,9 +8,6 @@ require("nvim-autopairs").setup()
 vim.g.Illuminate_ftblacklist = {"NvimTree"}
 vim.g.Illuminate_highlightUnderCursor = 0
 vim.g.Illuminate_delay = 500
-
--- CoC
-vim.g.coc_global_extensions={'coc-spell-checker'}
 
 -- Scrollbar
 local color = require("colors").dark

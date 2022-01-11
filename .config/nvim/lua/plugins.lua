@@ -36,21 +36,28 @@ return packer.startup(function(use)
 	use {
 		"onsails/lspkind-nvim",
 		"neovim/nvim-lspconfig",
-		"hrsh7th/nvim-compe",
 		"sbdchd/neoformat",
 		"folke/trouble.nvim",
-		{"ms-jpq/coq_nvim", branch = "coq"},
-		{"ms-jpq/coq.artifacts", branch = "artifacts"},
-		"neoclide/coc.nvim",
 		"natebosch/vim-lsc"
 	}
 
-	-- Snippets
+	-- nvim-cmp snippets/completion
 	use {
+		"hrsh7th/nvim-cmp",
 		"rafamadriz/friendly-snippets",
-		"Shougo/neosnippet.vim",
-		"Shougo/neosnippet-snippets"
+		"L3MON4D3/LuaSnip",
+		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"f3fora/cmp-spell",
 	}
+
+	-- COQ snippet/completion
+	--[[ use {
+		{"ms-jpq/coq_nvim", branch = "coq"},
+		{"ms-jpq/coq.artifacts", branch = "artifacts"},
+	} ]]
 
 	-- Telescope
 	use {
@@ -77,9 +84,7 @@ return packer.startup(function(use)
 
 	-- File manager
 	-- Statusline and bufferline
-	-- use { "glepnir/galaxyline.nvim"}
 	use {
-		-- "romgrk/barbar.nvim",
 		"kyazdani42/nvim-web-devicons",
 		"kyazdani42/nvim-tree.lua",
 		"akinsho/bufferline.nvim",
@@ -92,8 +97,6 @@ return packer.startup(function(use)
 	use {"iamcco/markdown-preview.nvim", run = "cd app && yarn install"}
 
 	-- JS/html
-	-- "othree/yajs.vim",
-	-- "yuezk/vim-js",
 	use {
 		"scrooloose/syntastic",
 		"groenewege/vim-less",
@@ -118,7 +121,8 @@ return packer.startup(function(use)
 	use {
 		"karb94/neoscroll.nvim",
 		"glepnir/dashboard-nvim",
-		"b3nj5m1n/kommentary",
+		-- "b3nj5m1n/kommentary",
+		"numToStr/Comment.nvim",
 		"glepnir/indent-guides.nvim",
 		"windwp/nvim-autopairs",
 		"norcalli/nvim-colorizer.lua",
@@ -129,7 +133,6 @@ return packer.startup(function(use)
 		"anuvyklack/pretty-fold.nvim",
 		"petertriho/nvim-scrollbar",
 		"kevinhwang91/nvim-hlslens",
-		-- "blueyed/vim-diminactive"
 	}
 
 	-- Themes
@@ -139,11 +142,9 @@ return packer.startup(function(use)
 		-- {"catppuccin/nvim", branch = "old-catppuccino"},
 		"rebelot/kanagawa.nvim",
 		"EdenEast/nightfox.nvim",
-		-- "srcery-colors/srcery-vim",
-		-- "ntk148v/vim-horizon",
+		"srcery-colors/srcery-vim",
 		"christianchiarulli/nvcode-color-schemes.vim",
 		"chriskempson/base16-vim",
-		-- "tiagovla/tokyodark.nvim"
 	}
 
 	if packer_bootstrap then

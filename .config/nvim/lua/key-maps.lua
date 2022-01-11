@@ -27,7 +27,7 @@ u.map("n", "<C-k>", "<C-w>k")
 u.map("n", "<C-l>", "<C-w>l")
 
 -- Check file in shellcheck
-u.map("n", "<leader>sc", ":!clear && shellcheck -x %<CR>")
+-- u.map("n", "<leader>sc", ":!clear && shellcheck -x %<CR>")
 
 -- Resize windows
 u.map("n", "<S-k>", ":resize -2<CR>")
@@ -71,7 +71,6 @@ u.map("n", "<leader>fr", ":NvimTreeRefresh<CR>")
 -- Telescope
 u.map("n", "<leader>ff", ":Telescope find_files<CR>")
 u.map("n", "<leader>fg", ":Telescope live_grep<CR>")
--- u.map("n", "<leader>fm", ":Telescope media_files<CR>")
 u.map("n", "<leader>fh", ":Telescope help_tags<CR>")
 u.map("n", "<leader>fc", ":Telescope colorscheme<CR>")
 u.map("n", "<leader>fa", ":lua require('utils.core').search_dotfiles()<CR>")
@@ -88,7 +87,6 @@ u.map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]])
 u.map("n", "<leader>sl", [[<Cmd> SessionLoad<CR>]])
 u.map("n", "<leader>ss", [[<Cmd> SessionSave<CR>]])
 
-
 -- LSP
 u.map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>")
 u.map("n", "gd", ":Telescope lsp_definitions<CR>")
@@ -103,15 +101,19 @@ u.map("n", "<c-n>", ":lua vim.diagnostic.goto_next()<CR>")
 -- Trouble
 u.map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
 
--- CoC Spell checker
---[[ u.map("n", "<leader>cp", ":CocAction<CR>")
-u.map("v", "<leader>cp", ":CocAction<CR>") ]]
+-- Spell checker
+u.map("n", "<leader>ck", ":set spell!<cr>")
+-- u.map("n", "<F11>", "<C-O>:set spell!<cr>")
 
 -- format code
 u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
 
+-- Comment
+u.map('n', '<c-_>', ':lua require("Comment.api").toggle_current_linewise()<CR>') -- ctrl-/
+u.map('x', '<c-_>', ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>') -- ctrl-/
 
--- Package info
+
+--[[ -- Package info
 u.map("n", "<leader>ns", ":lua require('package-info').show()<CR>", { silent = true, noremap = true })
 -- Hide package versions
 u.map("n", "<leader>nc", ":lua require('package-info').hide()<CR>", { silent = true, noremap = true })
@@ -125,4 +127,4 @@ u.map("n", "<leader>ni", ":lua require('package-info').install()<CR>", { silent 
 u.map("n", "<leader>nr", ":lua require('package-info').reinstall()<CR>", { silent = true, noremap = true })
 -- Install a different package version
 u.map("n", "<leader>np", ":lua require('package-info').change_version()<CR>", { silent = true, noremap = true })
-
+ ]]
