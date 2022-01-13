@@ -2,26 +2,26 @@
 
 # add color to commands
 alias \
-    ls="exa --color=always" \
-    grep="grep --color=auto" \
-    dir='dir --color=auto' \
-\
+	ls="exa --color=always" \
+	grep="grep --color=auto" \
+	dir='dir --color=auto' \
+	\
 
 # shortcuts
 alias \
-    sysinfo="inxi -Fxz" \
-    untar="tar -xvf" \
-    vim="nvim" \
-    v="nvim" \
-    cp="cp -iv" \
-    ..="cd .." \
-    mv="mv -iv" \
-    mv="mv -iv" \
-    dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
-    reload-profile="source ~/.config/zsh/.zshrc" \
-    weather="curl wttr.in" \
-		cd="z"
-\
+	sysinfo="inxi -Fxz" \
+	untar="tar -xvf" \
+	vim="nvim" \
+	v="nvim" \
+	cp="cp -iv" \
+	..="cd .." \
+	mv="mv -iv" \
+	mv="mv -iv" \
+	dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
+	reload-profile="source ~/.config/zsh/.zshrc" \
+	weather="curl wttr.in" \
+	cd="z" \
+	chk="git checkout"
 
 weather-short() {
 	curl -m 1 'wttr.in?format=3' 2>/dev/null
@@ -30,21 +30,21 @@ weather-short() {
 
 # search for all scripts and dotfiles, then open them with editor of choice
 sc() {
-    find ~/ ~/.config ~/.local/bin ~/.local/share/rais -type f \
-      | fzf  --preview 'bat --color=always --line-range :50 {}' | xargs -r "$EDITOR" ;
-}
+	find ~/ ~/.config ~/.local/bin ~/.local/share/rais -type f \
+		| fzf  --preview 'bat --color=always --line-range :50 {}' | xargs -r "$EDITOR" ;
+	}
 
 # fd - cd into any hidden directory of the current folder
 fcd() {
-  local dir
-  dir=$(find "${1:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir"
+	local dir
+	dir=$(find "${1:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
 # cdf - cd into the directory of the selected file
 cdf() {
-   local file
-   local dir
-   file=$(find "${1:-.}" -type f | fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+	local file
+	local dir
+	file=$(find "${1:-.}" -type f | fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
 # enable color support of ls and also add handy aliases
