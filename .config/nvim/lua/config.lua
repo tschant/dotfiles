@@ -5,7 +5,8 @@ Opts = {
 	scrolloff = 10,
 	wrap = false,
 	cursorline = true,
-	listchars = true
+	listchars = true,
+	language = "en,cjk"
 }
 
 Formatting = {

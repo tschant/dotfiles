@@ -23,7 +23,7 @@ nest.applyKeymaps {
 			{"Q", "<Nop>"},
 			{"n", "nzz"},
 			{"N", "Nzz"},
-			{"q", ":bp<CR>:bd#<CR>"},
+			{"q", ":BufDel<CR>"},
 			{"bb", ":Telescope buffers<CR>"},
 			-- Undotree
 			-- {"u", ":UndotreeToggle<CR>"},
@@ -89,7 +89,7 @@ nest.applyKeymaps {
 			{"j>", "<C-w>j"},
 			{"k>", "<C-w>k"},
 			{"l>", "<C-w>l"},
-			{"w>", ":bp<CR>:bd#<CR>"},
+			{"w>", ":BufDel<CR>"},
 			-- Comment
 			{'_>', ':lua require("Comment.api").toggle_current_linewise()<CR>'},
 		}},

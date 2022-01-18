@@ -5,6 +5,7 @@ local icons = {
 	Constructor = "  ",
 	Variable = "  ",
 	Class = "  ",
+	TypeParameter = "  ",
 	Interface = "  ",
 	Module = "  ",
 	Property = "  ",
@@ -18,7 +19,11 @@ local icons = {
 	Folder = "  ",
 	EnumMember = "  ",
 	Constant = "   ",
-	Struct = "   "
+	Struct = "   ",
+	Event = "  ",
+	Operator = "  ",
+	Field = " ﰠ ",
+	Reference = "  ",
 }
 
 -- symbols for autocomplete
@@ -26,6 +31,16 @@ require("lspkind").init( {
 	with_text = true,
 	symbol_map = icons
 })
+
+local present, luasnip = pcall(require, "luasnip")
+if present then
+	luasnip.config.set_config {
+		history = true,
+		updateevents = "TextChanged,TextChangedI",
+	}
+	luasnip.filetype_extend("javascript", {"react"})
+	luasnip.filetype_extend("typescript", {"react-ts"})
+end
 
 vim.opt.completeopt = "menuone,noselect"
 
@@ -38,17 +53,18 @@ cmp.setup {
 		end,
 	},
 	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-
-			vim_item.menu = ({
+		format = require("lspkind").cmp_format({
+			with_text = true,
+			menu = {
 				nvim_lsp = "[LSP]",
-				nvim_lua = "[Lua]",
+				nvim_lua = "[VIM]",
+				luasnip = "[SNIP]",
 				buffer = "[BUF]",
-			})[entry.source.name]
-
-			return vim_item
-		end,
+				path = "[PATH]",
+				emoji = "[EMOJI]",
+				spell = "[SP]",
+			}
+		}),
 	},
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -61,34 +77,37 @@ cmp.setup {
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		},
-		["<Tab>"] = function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif require("luasnip").expand_or_jumpable() then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
-		end,
-		["<S-Tab>"] = function(fallback)
+		end, {'i', 's'}),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif require("luasnip").jumpable(-1) then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+			elseif luasnip.jumpable(-1) then
+				luasnip.expand_or_jump(-1)
 			else
 				fallback()
 			end
-		end,
+		end, {'i', 's'}),
 	},
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
-		{ name = "nvim_lua" },
-		{ name = "path" },
-		{ name = "spell" },
+		{ name = "nvim_lsp_signature_help", priority = 10 },
+		{ name = "nvim_lsp", priority = 9 },
+		{ name = "luasnip", priority = 8 },
+		{ name = "buffer", priority = 7 },
+		{ name = "nvim_lua", priority = 5 },
+		{ name = "path", priority = 5 },
+		{ name = "emoji", priority = 3 },
+		{ name = "spell", priority = 1 },
 	},
 }
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+require("luasnip/loaders/from_vscode").lazy_load()
 

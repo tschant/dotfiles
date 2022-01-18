@@ -24,6 +24,13 @@ require("scrollbar").setup({
 	}
 })
 
+-- Buf delete
+require('bufdel').setup {
+  next = 'cycle',  -- or 'alternate'
+  quit = true,
+}
+
+
 -- hlslens (search function)
 require("hlslens").setup({
 	build_position_cb = function(plist, bufnr, changedtick, pattern)

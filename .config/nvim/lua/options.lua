@@ -22,6 +22,8 @@ u.opt("o", "hidden", true)
 u.opt("o", "splitbelow", true)
 u.opt("o", "splitright", true)
 u.opt("o", "completeopt", "menuone,noinsert,noselect")
+-- u.opt("o", "spell", true)
+u.opt("o", "spelllang", Opts.language)
 
 -- Window
 u.opt("w", "relativenumber", true)
@@ -50,7 +52,6 @@ cmd("set iskeyword+=-")
 cmd("set path+=**")
 cmd("filetype on")
 cmd("filetype plugin on")
-cmd("set spelllang=en,cjk")
 
 -- Folding
 cmd("set nofoldenable")
