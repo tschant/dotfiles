@@ -1,19 +1,25 @@
 local servers = {
-	-- npm i -g bash-language-server
+-- npm i -g bash-language-server
 "bashls",
-	-- npm i -g typescript typescript-language-server
+-- npm i -g typescript typescript-language-server
 "tsserver",
-	-- npm i -g vscode-css-languageserver-bin
+-- npm i -g vscode-css-languageserver-bin
 "cssls",
-	-- npm i -g pyright
+-- npm i -g pyright
 "pyright",
-	-- npm i -g vscode-json-languageserver
+-- npm i -g vscode-json-languageserver
 "jsonls",
-	-- npm i -g emmet-ls
+-- npm i -g emmet-ls
 "emmet_ls",
 "java_language_server",
 -- npm install -g vscode-html-languageserver-bin
-	-- "html"
+-- "html"
+-- brew install tflint
+"tflint",
+-- brew install hashicorp/tap/terraform-ls
+"terraform_lsp",
+-- npm install -g yaml@next
+"yamlls",
 }
 
 require("trouble").setup({
@@ -137,6 +143,13 @@ configs.java_language_server = {
 	default_config = {
 		cmd = {'/Users/tarryn/git/java-language-server/dist/lang_server_mac.sh'},
 		filetypes = {"java"}
+	}
+}
+
+configs.terraform_lsp = {
+	default_config = {
+		cmd = {'terraform-lsp'},
+		filetypes = { 'terraform', 'hcl', 'tf' }
 	}
 }
 
