@@ -131,7 +131,7 @@ return packer.startup(function(use)
 
 	-- General plugins
 	use {
-		"LionC/nest.nvim",
+		"mbbill/undotree",
 		"karb94/neoscroll.nvim",
 		"glepnir/dashboard-nvim",
 		-- "b3nj5m1n/kommentary",
