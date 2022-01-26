@@ -9,6 +9,7 @@ nest.applyKeymaps {
 		{"jk", "<ESC>"},
 	}},
 	{mode = "n", {
+		{"<CR>", "<cmd>NeoZoomToggle<CR>"},
 		{"<TAB>", ":BufferLineCycleNext<CR>"},
 		{"<S-TAB>", ":BufferLineCyclePrev<CR>"},
 		{"<space>rn", ":lua vim.lsp.buf.rename()<CR>"},
@@ -35,6 +36,11 @@ nest.applyKeymaps {
 			{"bm", [[<Cmd> DashboardJumpMarks<CR>]]},
 			{"sl", [[<Cmd> SessionLoad<CR>]]},
 			{"ss", [[<Cmd> SessionSave<CR>]]},
+			-- Tab splitting
+			{'h', ':FocusSplitLeft<CR>'},
+			{'j', ':FocusSplitDown<CR>'},
+			{'k', ':FocusSplitUp<CR>'},
+			{'l', ':FocusSplitRight<CR>'},
 			-- Trouble
 			{"xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true}},
 			-- Spell checker
@@ -89,7 +95,7 @@ nest.applyKeymaps {
 			{"j>", "<C-w>j"},
 			{"k>", "<C-w>k"},
 			{"l>", "<C-w>l"},
-			{"w>", ":BufDel<CR>"},
+			{"q>", ":BufDel<CR>"},
 			-- Comment
 			{'_>', ':lua require("Comment.api").toggle_current_linewise()<CR>'},
 		}},

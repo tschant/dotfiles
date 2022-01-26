@@ -35,6 +35,10 @@ export MYVIMRC="$HOME/.config/nvim/init.lua"
 export EDITOR=nvim
 export PATH="$PATH:$(npm -g prefix)/bin"
 export PATH="$PATH:~/.local/bin"
+# export PATH="$PATH:~/.gem/ruby/2.6.0/bin"
+if which ruby >/dev/null && which gem >/dev/null; then
+	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 # aliases
 source ~/.config/zsh/aliasrc

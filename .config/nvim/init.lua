@@ -15,6 +15,7 @@ local modules = {
 	-- LSP
 	"lsp/completion",
 	"lsp/init",
+	-- "lsp/jdtls",
 }
 
 -- No external requires, global configs

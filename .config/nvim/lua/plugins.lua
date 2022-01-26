@@ -38,7 +38,9 @@ return packer.startup(function(use)
 		"neovim/nvim-lspconfig",
 		"sbdchd/neoformat",
 		"folke/trouble.nvim",
-		"natebosch/vim-lsc"
+		"natebosch/vim-lsc",
+		-- "mfussenegger/nvim-jdtls",
+		"j-hui/fidget.nvim"
 	}
 
 	-- nvim-cmp snippets/completion
@@ -120,6 +122,12 @@ return packer.startup(function(use)
 
 	-- Terminal
 	use {"akinsho/nvim-toggleterm.lua", "voldikss/vim-floaterm"}
+
+	-- Window splitting
+	use {
+		"nyngwang/NeoZoom.lua",
+		"beauwilliams/focus.nvim",
+	}
 
 	-- General plugins
 	use {

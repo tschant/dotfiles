@@ -3,6 +3,8 @@ local servers = {
 "bashls",
 -- npm i -g typescript typescript-language-server
 "tsserver",
+-- npm i -g vscode-langservers-extracted
+-- "eslint",
 -- npm i -g vscode-css-languageserver-bin
 "cssls",
 -- npm i -g pyright
@@ -11,7 +13,8 @@ local servers = {
 "jsonls",
 -- npm i -g emmet-ls
 "emmet_ls",
-"java_language_server",
+"jdtls",
+-- "java_language_server",
 -- npm install -g vscode-html-languageserver-bin
 -- "html"
 -- brew install tflint
@@ -20,8 +23,11 @@ local servers = {
 "terraform_lsp",
 -- npm install -g yaml@next
 "yamlls",
+-- gem install --user-install solargraph
+"solargraph",
 }
 
+require("fidget").setup{}
 require("trouble").setup({
 	position = "bottom",
 	icons = true,
@@ -139,12 +145,12 @@ configs.emmet_ls = {
 	}
 }
 
-configs.java_language_server = {
-	default_config = {
-		cmd = {'/Users/tarryn/git/java-language-server/dist/lang_server_mac.sh'},
-		filetypes = {"java"}
-	}
-}
+-- configs.java_language_server = {
+-- 	default_config = {
+-- 		cmd = {'/Users/tarryn/git/java-language-server/dist/lang_server_mac.sh'},
+-- 		filetypes = {"java"}
+-- 	}
+-- }
 
 configs.terraform_lsp = {
 	default_config = {
