@@ -40,7 +40,8 @@ return packer.startup(function(use)
 		"folke/trouble.nvim",
 		"natebosch/vim-lsc",
 		-- "mfussenegger/nvim-jdtls",
-		"j-hui/fidget.nvim"
+		"j-hui/fidget.nvim",
+		"fladson/vim-kitty"
 	}
 
 	-- nvim-cmp snippets/completion
