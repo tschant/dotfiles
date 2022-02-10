@@ -24,12 +24,16 @@ yabai -m space 4 --label 4
 yabai -m space 5 --label 5
 
 # float preferences
-yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Synergy$" manage=off
+# Title based rules
+yabai -m rule --add title="Preferences" manage=off topmost=on
+yabai -m rule --add title="^Open Resource$" manage=off
+yabai -m rule --add title="^Import$" manage=off
 # yabai -m rule --add app="^Eclipse$" manage=off
 
 # global settings
