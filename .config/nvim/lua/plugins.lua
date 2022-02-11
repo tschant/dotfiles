@@ -138,6 +138,7 @@ return packer.startup(function(use)
 		-- "b3nj5m1n/kommentary",
 		"numToStr/Comment.nvim",
 		"glepnir/indent-guides.nvim",
+		"lukas-reineke/indent-blankline.nvim",
 		"windwp/nvim-autopairs",
 		"norcalli/nvim-colorizer.lua",
 		"RRethy/vim-illuminate",
