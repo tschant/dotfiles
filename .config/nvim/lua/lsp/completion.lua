@@ -27,10 +27,10 @@ local icons = {
 }
 
 -- symbols for autocomplete
-require("lspkind").init( {
-	with_text = true,
-	symbol_map = icons
-})
+-- require("lspkind").init( {
+-- 	mode = 'symbol_text',
+-- 	symbol_map = icons
+-- })
 
 local present, luasnip = pcall(require, "luasnip")
 if present then
@@ -54,7 +54,8 @@ cmp.setup {
 	},
 	formatting = {
 		format = require("lspkind").cmp_format({
-			with_text = true,
+			mode = 'symbol_text',
+			symbol_map = icons,
 			menu = {
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[VIM]",
