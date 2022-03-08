@@ -86,6 +86,16 @@ return packer.startup(function(use)
 		"p00f/nvim-ts-rainbow"
 	}
 
+	use {
+		'rmagatti/auto-session',
+		config = function()
+			require('auto-session').setup {
+				log_level = 'info',
+				auto_session_suppress_dirs = {'~/', '~/git', '~/Downloads'}
+			}
+		end
+	}
+
 	-- Git
 	use "lewis6991/gitsigns.nvim"
 
@@ -149,6 +159,7 @@ return packer.startup(function(use)
 		"petertriho/nvim-scrollbar",
 		"kevinhwang91/nvim-hlslens",
 		"ojroques/nvim-bufdel",
+		"dstein64/vim-startuptime",
 	}
 
 	-- Themes

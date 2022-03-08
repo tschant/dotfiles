@@ -3,7 +3,8 @@ local colors = require("colors").dark
 setup_plugin("bufferline", {
 	options = {
 		offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
-		middle_mouse_command = "bdelete! %d",
+		numbers = "buffer_id",
+		middle_mouse_command = "BufDel",
 		right_mouse_command = "vertical sbuffer %d",
 		indicator_icon = '▎',
 		buffer_close_icon = '',

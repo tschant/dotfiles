@@ -27,7 +27,7 @@ local list = {
 }
 
 require"nvim-tree".setup({
-	disable_netrw = false,
+	disable_netrw = true,
 	hijack_netrw = false,
 	auto_close = false,
 	update_focused_file = {

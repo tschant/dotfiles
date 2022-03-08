@@ -88,8 +88,8 @@ u.map("n", "<leader>fp", ":Telescope projects<CR>")
 u.map("n", "<Leader><Home>", [[<Cmd> Dashboard<CR>]])
 u.map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]])
 u.map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]])
-u.map("n", "<leader>sl", [[<Cmd> SessionLoad<CR>]])
-u.map("n", "<leader>ss", [[<Cmd> SessionSave<CR>]])
+u.map("n", "<leader>sl", [[<Cmd> RestoreSession<CR>]])
+u.map("n", "<leader>ss", [[<Cmd> SaveSession<CR>]])
 
 -- LSP
 u.map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>")
