@@ -49,4 +49,4 @@ cdf() {
 
 # enable color support of ls and also add handy aliases
 alias \
-	ll='exa -lh --git --group --modified --icons'
+	ll='exa -lh --group --modified --icons'

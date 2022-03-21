@@ -14,6 +14,7 @@ autoload -Uz compinit
 compinit
 
 source ~/.config/zsh/prompt.zsh
+eval "$(zoxide init zsh)"
 source <(antibody init)
 antibody bundle < ~/.config/zsh/plugins/zsh_plugins.txt
 
@@ -33,15 +34,14 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export EDITOR=nvim
-export PATH="$PATH:$(npm -g prefix)/bin"
+# export PATH="$PATH:$(npm -g prefix)/bin"
 export PATH="$PATH:~/.local/bin"
+[[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:~/.cargo/bin"
 # export PATH="$PATH:~/.gem/ruby/2.6.0/bin"
 if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
-
-# aliases
-source ~/.config/zsh/aliasrc
 
 # completion menu
 # source ~/.config/zsh/menu.zsh
@@ -69,8 +69,11 @@ for i in ~/.config/zsh/zshrc.d/*.zsh; do
 	fi
 done; unset i
 
-eval "$(zoxide init zsh)"
 source ~/.config/zsh/menu.zsh
+eval "$(nodenv init -)"
+
+# aliases
+source ~/.config/zsh/aliasrc
 
 # https://gitlab.com/phoneybadger/pokemon-colorscripts
 # ln -s <repo>/pokemon-colorscripts/ ~/.local/bin/
