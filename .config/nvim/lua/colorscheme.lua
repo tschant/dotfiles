@@ -8,6 +8,7 @@ local Theming = {
     -- colorscheme = "kanagawa",
     -- colorscheme = "srcery",
     -- colorscheme = "nightfox",
+    -- colorscheme = "nordfox",
     colorscheme_style = "",
     statusline = "slant"
 }
@@ -56,10 +57,6 @@ require('kanagawa').setup({
 })
 
 -- Nightfox settings
-vim.g.nightfox_style = "nordfox"
-vim.g.nightfox_transparent = true
-vim.g.nightfox_color_delimiter = "red"
-vim.g.nightfox_italic_comments = 1
 
 cmd("colorscheme " .. Theming.colorscheme)
 
