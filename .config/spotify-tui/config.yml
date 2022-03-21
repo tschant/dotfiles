@@ -1,0 +1,28 @@
+theme:
+  active: "226,140,140"                # current playing song in list
+  banner: "240,175,225"                 # the "spotify-tui" banner on launch
+  error_border: "226,140,140"          # error dialog border
+  error_text: "226,140,140"            # error message text (e.g. "Spotify API reported error 404")
+  hint: "234,221,160"                 # hint text in errors
+  hovered: "198,170,232"               # hovered pane border
+  inactive: "110,108,124"              # borders of inactive panes
+  playbar_background: "22,19,32"       # background of progress bar
+  playbar_progress: "201,203,255"      # filled-in part of the progress bar
+  playbar_progress_text: "110,108,124" # song length and time played/left indicator in the progress bar
+  playbar_text: "179,225,163"          # artist name in player pane
+  selected: "164,185,239"               # a) selected pane border, b) hovered item in list, & c) track title in player
+  text: "215,218,224"                  # text in panes
+  header: "110,108,124"                # header text in panes (e.g. 'Title', 'Artist', etc.)
+
+# Catpuccin colors
+#161320 22,19,32
+#6E6C7C 110,108,124
+#E28C8C 226,140,140
+#B3E1A3 179,225,163
+#EADDA0 234,221,160
+#A4B9EF 164,185,239
+#C6AAE8 198,170,232
+#F0AFE1 240,175,225
+#D7DAE0 215,218,224
+#C9CBFF 201,203,255
+
