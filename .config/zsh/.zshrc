@@ -34,7 +34,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export EDITOR=nvim
-# export PATH="$PATH:$(npm -g prefix)/bin"
 export PATH="$PATH:~/.local/bin"
 [[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:~/.cargo/bin"
@@ -72,6 +71,7 @@ done; unset i
 
 source ~/.config/zsh/menu.zsh
 eval "$(nodenv init -)"
+export PATH="$PATH:$(npm -g prefix)/bin"
 
 # aliases
 source ~/.config/zsh/aliasrc
