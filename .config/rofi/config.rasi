@@ -1,5 +1,5 @@
 configuration{
-    modi: "run,drun,window,ssh";
+    modi: "combi,drun,window,run,ssh";
     lines: 5;
     font: "Hasklug Nerd Font 14";
     show-icons: true;
@@ -9,9 +9,11 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-window: " 﩯  window";
+    display-drun: "  ";
+    display-run: "  ";
+    display-window: " 﩯";
+		display-ssh: " 🗔";
+		display-combi: "All";
     sidebar-mode: true;
 }
 
