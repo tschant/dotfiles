@@ -41,14 +41,11 @@ if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-# aliases
-source ~/.config/zsh/aliasrc
-
 bindkey "$key[Up]" history-substring-search-up
 bindkey "$key[Down]" history-substring-search-up
-bindkey  "$key[Home]"   beginning-of-line
-bindkey  "$key[End]"   end-of-line
-bindkey  "$key[Delete]"  delete-char
+bindkey "$key[Home]"   beginning-of-line
+bindkey "$key[End]"   end-of-line
+bindkey "$key[Delete]"  delete-char
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
@@ -63,12 +60,16 @@ for i in ~/.config/zsh/zshrc.d/*.zsh; do
 	fi
 done; unset i
 
-if ! command -v z &> /dev/null; then
-	eval "$(zoxide init zsh)"
-fi
 source ~/.config/zsh/menu.zsh
 eval "$(nodenv init -)"
 export PATH="$PATH:$(npm -g prefix)/bin"
+
+if ! command -v z &> /dev/null; then
+	eval "$(zoxide init zsh)"
+fi
+
+# aliases
+source ~/.config/zsh/aliasrc
 
 # https://gitlab.com/phoneybadger/pokemon-colorscripts
 # ln -s <repo>/pokemon-colorscripts/ ~/.local/bin/
