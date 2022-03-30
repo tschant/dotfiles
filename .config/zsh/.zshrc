@@ -23,7 +23,6 @@ antibody bundle < ~/.config/zsh/plugins/zsh_plugins.txt
 [[ ! -d ~/.local/share/zsh ]] && mkdir -p ~/.local/share/zsh
 
 # Exports
-# export PATH="$PATH:${$(find ~/.local/bin ~/.local/share/npm/bin -type d -printf %p:)%%:}"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'
 export FZF_DEFAULT_OPTS='--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
@@ -44,18 +43,11 @@ fi
 # aliases
 source ~/.config/zsh/aliasrc
 
-# completion menu
-# source ~/.config/zsh/menu.zsh
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[3~"  delete-char
-bindkey	"^[[1~" beginning-of-line
-bindkey	"^[[4~" end-of-line
-
-# add title to terminal to display state,currently executing command, current directory...
-# autoload -Uz add-zsh-hook
+bindkey "$key[Up]" history-substring-search-up
+bindkey "$key[Down]" history-substring-search-up
+bindkey  "$key[Home]"   beginning-of-line
+bindkey  "$key[End]"   end-of-line
+bindkey  "$key[Delete]"  delete-char
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
@@ -70,7 +62,9 @@ for i in ~/.config/zsh/zshrc.d/*.zsh; do
 	fi
 done; unset i
 
-eval "$(zoxide init zsh)"
+if ! command -v z &> /dev/null; then
+	eval "$(zoxide init zsh)"
+fi
 source ~/.config/zsh/menu.zsh
 
 # https://gitlab.com/phoneybadger/pokemon-colorscripts
