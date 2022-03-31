@@ -1,0 +1,12 @@
+[core]
+	pager = delta --dark --diff-so-fancy
+[delta]
+	; color = true
+	navigate = true
+	line-numbers = true
+	; side-by-side = true
+	hunk-header-style = line-number
+	syntax-theme = gruvbox-dark
+	hunk-header-decoration-style = blue
+	hunk-header-file-style = blue box
+

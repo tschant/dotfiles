@@ -32,10 +32,17 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export EDITOR=nvim
-export PATH="$PATH:$(npm -g prefix)/bin"
 export PATH="$PATH:~/.local/bin"
-export PATH="$PATH:~/.nodenv/shims"
-# export PATH="$PATH:~/.gem/ruby/2.6.0/bin"
+
+if which npm >/dev/null; then
+	export PATH="$PATH:$(npm -g prefix)/bin"
+fi
+if which nodenv >/dev/null; then
+	export PATH="$PATH:~/.nodenv/shims"
+fi
+if which cargo >/dev/null; then
+	export PATH="$PATH:~/.cargo/bin"
+fi
 if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
@@ -44,7 +51,7 @@ fi
 source ~/.config/zsh/aliasrc
 
 bindkey "$key[Up]" history-substring-search-up
-bindkey "$key[Down]" history-substring-search-up
+bindkey "$key[Down]" history-substring-search-down
 bindkey  "$key[Home]"   beginning-of-line
 bindkey  "$key[End]"   end-of-line
 bindkey  "$key[Delete]"  delete-char
