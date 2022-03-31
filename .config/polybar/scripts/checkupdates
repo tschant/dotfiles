@@ -102,10 +102,10 @@ trap 'rm -f $CHECKUPDATES_DB/db.lck' INT TERM EXIT
 mkdir -p "$CHECKUPDATES_DB"
 echo $(apt-cache stats) > "$CHECKUPDATES_DB/stats" &> /dev/null
 if ! fakeroot -- apt-get update &> /dev/null; then
-       error 'Cannot fetch updates'
-       exit 1
+	error 'Cannot fetch updates'
+	exit 1
 fi
-apt list --upgradable 2> /dev/null | grep -v '\[.*\]'
+fakeroot -- apt list --upgradable 2> /dev/null | grep -v 'Listing'
 
 exit 0
 

@@ -42,7 +42,7 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 
 bindkey "$key[Up]" history-substring-search-up
-bindkey "$key[Down]" history-substring-search-up
+bindkey "$key[Down]" history-substring-search-down
 bindkey "$key[Home]"   beginning-of-line
 bindkey "$key[End]"   end-of-line
 bindkey "$key[Delete]"  delete-char
