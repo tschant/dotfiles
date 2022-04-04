@@ -35,6 +35,11 @@ export EDITOR=nvim
 export PATH="$PATH:~/.local/bin"
 [[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
+if [[ -d /home/tarryn/.spicetify ]]; then 
+	export PATH="$PATH:/home/tarryn/.spicetify"
+	export SPICETIFY_INSTALL="/home/tarryn/.spicetify"
+fi
+
 if which npm >/dev/null; then
 	export PATH="$PATH:$(npm -g prefix)/bin"
 fi
