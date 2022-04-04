@@ -56,6 +56,14 @@ bindkey  "$key[Home]"   beginning-of-line
 bindkey  "$key[End]"   end-of-line
 bindkey  "$key[Delete]"  delete-char
 
+if [[ $(uname -a) =~ "Darwin" ]]; then
+	bindkey "^[[A" history-substring-search-up
+	bindkey "^[[B" history-substring-search-down
+	bindkey  "^[[H"   beginning-of-line
+	bindkey  "^[[F"   end-of-line
+	bindkey  "^[[3~"  delete-char
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
