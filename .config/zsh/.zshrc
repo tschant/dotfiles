@@ -34,18 +34,33 @@ export MYVIMRC="$HOME/.config/nvim/init.lua"
 export EDITOR=nvim
 export PATH="$PATH:~/.local/bin"
 [[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:~/.cargo/bin"
-export PATH="$PATH:~/.nodenv/shims"
-# export PATH="$PATH:~/.gem/ruby/2.6.0/bin"
+
+if which npm >/dev/null; then
+	export PATH="$PATH:$(npm -g prefix)/bin"
+fi
+if which nodenv >/dev/null; then
+	export PATH="$PATH:~/.nodenv/shims"
+fi
+if which cargo >/dev/null; then
+	export PATH="$PATH:~/.cargo/bin"
+fi
 if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
 bindkey "$key[Up]" history-substring-search-up
 bindkey "$key[Down]" history-substring-search-down
-bindkey "$key[Home]"   beginning-of-line
-bindkey "$key[End]"   end-of-line
-bindkey "$key[Delete]"  delete-char
+bindkey  "$key[Home]"   beginning-of-line
+bindkey  "$key[End]"   end-of-line
+bindkey  "$key[Delete]"  delete-char
+
+if [[ $(uname -a) =~ "Darwin" ]]; then
+	bindkey "^[[A" history-substring-search-up
+	bindkey "^[[B" history-substring-search-down
+	bindkey  "^[[H"   beginning-of-line
+	bindkey  "^[[F"   end-of-line
+	bindkey  "^[[3~"  delete-char
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
