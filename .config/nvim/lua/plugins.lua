@@ -142,13 +142,16 @@ return packer.startup(function(use)
 		"beauwilliams/focus.nvim",
 	}
 
+	use {
+		"numToStr/Comment.nvim", tag = "v0.6"
+	}
+
 	-- General plugins
 	use {
 		"mbbill/undotree",
 		"karb94/neoscroll.nvim",
 		"glepnir/dashboard-nvim",
 		-- "b3nj5m1n/kommentary",
-		"numToStr/Comment.nvim",
 		"glepnir/indent-guides.nvim",
 		"lukas-reineke/indent-blankline.nvim",
 		"windwp/nvim-autopairs",
