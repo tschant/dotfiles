@@ -59,6 +59,12 @@ cdf() {
 	file=$(find "${1:-.}" -type f | fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-# enable color support of ls and also add handy aliases
-alias \
-	ll='exa -lh --git --group --modified --icons'
+if which exa >/dev/null; then
+	# enable color support of ls and also add handy aliases
+	alias ll='exa -lh --git --group --modified --icons'
+fi
+if which fzf >/dev/null; then
+	alias ,ff='v $(fzf)'
+fi
+
+

@@ -75,7 +75,7 @@ u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
 u.map("n", "<leader>fr", ":NvimTreeRefresh<CR>")
 
 -- Telescope
-u.map("n", "<leader>ff", ":Telescope find_files<CR>")
+u.map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({hidden = true})<CR>")
 u.map("n", "<leader>fg", ":Telescope live_grep<CR>")
 u.map("n", "<leader>fh", ":Telescope help_tags<CR>")
 u.map("n", "<leader>fc", ":Telescope colorscheme<CR>")
