@@ -11,7 +11,6 @@ u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 u.map("n", "n", "nzz")
 u.map("n", "N", "Nzz")
 u.map("n", "<leader>c", ":let @+=expand('%:p')<CR>")
-u.map("n", "<C-g>", ":Gitsigns blame_line<CR>")
 
 u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
 u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
@@ -53,6 +52,7 @@ u.map("n", "<leader>gf", ":Telescope git_files<CR>")
 u.map("n", "<leader>gc", ":Telescope git_commits<CR>")
 u.map("n", "<leader>gb", ":Telescope git_branches<CR>")
 u.map("n", "<leader>gs", ":Telescope git_status<CR>")
+u.map("n", "<C-g>", ":Gitsigns blame_line<CR>")
 
 -- buffer navigation
 u.map("n", "<leader>q", ":BufDel<CR>")
