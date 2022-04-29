@@ -21,7 +21,19 @@ alias \
 	reload-profile="source ~/.config/zsh/.zshrc" \
 	weather="curl wttr.in" \
 	cd="z" \
-	chk="git checkout"
+	chk="git checkout" \
+	lg="lazygit"
+
+# Git things, use `,` as vimprefix so....
+alias ,=git	\
+	,s="git status"	\
+	,l="git log" \
+	,f="git fetch --all" \
+	,c="git checkout" \
+	,stash="git stash" \
+	,glog="git glog" \
+	,show="git sshow" \
+	,dft="git dft"
 
 weather-short() {
 	curl -m 1 'wttr.in?format=3' 2>/dev/null
