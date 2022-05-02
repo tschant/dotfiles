@@ -33,6 +33,12 @@ export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export EDITOR=nvim
 export PATH="$PATH:~/.local/bin"
+[[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+
+if [[ -d /home/tarryn/.spicetify ]]; then 
+	export PATH="$PATH:/home/tarryn/.spicetify"
+	export SPICETIFY_INSTALL="/home/tarryn/.spicetify"
+fi
 
 if which npm >/dev/null; then
 	export PATH="$PATH:$(npm -g prefix)/bin"
@@ -46,9 +52,6 @@ fi
 if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
-
-# aliases
-source ~/.config/zsh/aliasrc
 
 bindkey "$key[Up]" history-substring-search-up
 bindkey "$key[Down]" history-substring-search-down
@@ -77,10 +80,16 @@ for i in ~/.config/zsh/zshrc.d/*.zsh; do
 	fi
 done; unset i
 
+source ~/.config/zsh/menu.zsh
+eval "$(nodenv init -)"
+export PATH="$PATH:$(npm -g prefix)/bin"
+
 if ! command -v z &> /dev/null; then
 	eval "$(zoxide init zsh)"
 fi
-source ~/.config/zsh/menu.zsh
+
+# aliases
+source ~/.config/zsh/aliasrc
 
 # https://gitlab.com/phoneybadger/pokemon-colorscripts
 # ln -s <repo>/pokemon-colorscripts/ ~/.local/bin/

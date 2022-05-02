@@ -7,3 +7,6 @@ zshrc.d/
 
 .config/zsh/.p10k.zsh
 .config/nvim/plugin/packer_compiled.lua
+
+# Ignore for now
+spicetify

@@ -67,4 +67,3 @@ if which fzf >/dev/null; then
 	alias ,ff='v $(fzf)'
 fi
 
-
