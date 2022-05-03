@@ -26,6 +26,7 @@ local servers = {
 -- gem install --user-install solargraph
 "solargraph",
 }
+-- npm i -g yaml@next emmet-ls vscode-json-languageserver pyright vscode-css-languageserver-bin typescript-language-server
 
 require("fidget").setup{}
 require("trouble").setup({
@@ -203,9 +204,9 @@ local function on_attach(client, bufnr)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
 	-- Set some keybinds conditional on server capabilities
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.document_formatting then
 		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	elseif client.resolved_capabilities.document_range_formatting then
+	elseif client.server_capabilities.document_range_formatting then
 		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 	end
 end

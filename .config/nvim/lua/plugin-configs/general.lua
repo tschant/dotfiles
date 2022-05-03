@@ -93,11 +93,30 @@ require("pretty-fold").setup({
 		}
 	}
 })
-require("pretty-fold.preview").setup_keybinding('h')
+-- require("pretty-fold.preview").setup_keybinding('h')
 
 -- Treesitter
 require "nvim-treesitter.configs".setup {
-	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	ensure_installed = {
+		"bash",
+		"html",
+		"css",
+		"dockerfile",
+		"http",
+		"java",
+		"javascript",
+		"json",
+		"json5",
+		"lua",
+		"markdown",
+		"python",
+		"regex",
+		"ruby",
+		"rust",
+		"typescript",
+		"vim",
+		"yaml",
+	},-- "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
 		enable = true -- false will disable the whole extension
 	},

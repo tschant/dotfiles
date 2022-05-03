@@ -29,7 +29,6 @@ local list = {
 require"nvim-tree".setup({
 	disable_netrw = true,
 	hijack_netrw = false,
-	auto_close = false,
 	update_focused_file = {
 		enable = true
 	},
@@ -43,8 +42,16 @@ require"nvim-tree".setup({
 			custom_only = true,
 			list = list
 		}
-	}
+	},
+	
 })
+
+require"nvim-tree.events".on_tree_close(function() 
+	require'bufferline.state'.set_offset(0, 'FileTree')
+end)
+require"nvim-tree.events".on_tree_open(function() 
+	require'bufferline.state'.set_offset(40, 'FileTree')
+end)
 
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_auto_ignore_ft = {"startify", "dashboard"}
