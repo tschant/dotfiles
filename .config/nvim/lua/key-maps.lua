@@ -54,8 +54,8 @@ u.map("n", "<leader>gb", ":Telescope git_branches<CR>")
 u.map("n", "<leader>gs", ":Telescope git_status<CR>")
 u.map("n", "<C-g>", ":Gitsigns blame_line<CR>")
 
--- buffer navigation
-u.map("n", "<leader>q", ":BufDel<CR>")
+-- buffer navigation Bufferline
+--[[ u.map("n", "<leader>q", ":BufDel<CR>")
 u.map("n", "<C-q>", ":BufDel<CR>")
 u.map("n", "<TAB>", ":BufferLineCycleNext<CR>")
 u.map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>")
@@ -68,7 +68,23 @@ u.map("n", "<Leader>b6", ":BufferLineGoToBuffer 6<CR>")
 u.map("n", "<Leader>b7", ":BufferLineGoToBuffer 7<CR>")
 u.map("n", "<Leader>b8", ":BufferLineGoToBuffer 8<CR>")
 u.map("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>")
-u.map("n", "<Leader>bp", ":BufferLinePick<CR>")
+u.map("n", "<Leader>bp", ":BufferLinePick<CR>") ]]
+
+-- buffer navigation BarBar
+u.map("n", "<leader>q", ":BufferClose<CR>")
+u.map("n", "<C-q>", ":BufferClose<CR>")
+u.map("n", "<TAB>", ":BufferNext<CR>")
+u.map("n", "<S-TAB>", ":BufferPrev<CR>")
+u.map("n", "<Leader>b1", ":BufferGoto 1<CR>")
+u.map("n", "<Leader>b2", ":BufferGoto 2<CR>")
+u.map("n", "<Leader>b3", ":BufferGoto 3<CR>")
+u.map("n", "<Leader>b4", ":BufferGoto 4<CR>")
+u.map("n", "<Leader>b5", ":BufferGoto 5<CR>")
+u.map("n", "<Leader>b6", ":BufferGoto 6<CR>")
+u.map("n", "<Leader>b7", ":BufferGoto 7<CR>")
+u.map("n", "<Leader>b8", ":BufferGoto 8<CR>")
+u.map("n", "<Leader>b9", ":BufferGoto 9<CR>")
+u.map("n", "<Leader>bp", ":BufferPick<CR>")
 
 -- File manager
 u.map("n", "<leader>e", ":NvimTreeToggle<CR>")

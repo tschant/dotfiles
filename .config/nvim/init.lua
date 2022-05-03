@@ -11,7 +11,7 @@ local modules = {
 	"plugin-configs/telescope",
 	"plugin-configs/emmet",
 	"plugin-configs/statusline",
-	"plugin-configs/bufferline",
+	-- "plugin-configs/bufferline",
 	-- LSP
 	"lsp/completion",
 	"lsp/init",

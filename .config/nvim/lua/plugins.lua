@@ -106,8 +106,9 @@ return packer.startup(function(use)
 	use {
 		"kyazdani42/nvim-web-devicons",
 		"kyazdani42/nvim-tree.lua",
-		"akinsho/bufferline.nvim",
-		{"feline-nvim/feline.nvim", tag = 'v0.3.3'},
+		-- {"akinsho/bufferline.nvim", branch = "main"},
+		"romgrk/barbar.nvim",
+		"feline-nvim/feline.nvim",
 		requires = {"kyazdani42/nvim-web-devicons"}
 	}
 
@@ -134,7 +135,10 @@ return packer.startup(function(use)
 	}
 
 	-- Terminal
-	use {"akinsho/nvim-toggleterm.lua", "voldikss/vim-floaterm"}
+	use {
+		{"akinsho/nvim-toggleterm.lua", branch = "main"}, 
+		"voldikss/vim-floaterm"
+	}
 
 	-- Window splitting
 	use {
