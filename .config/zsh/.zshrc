@@ -40,16 +40,16 @@ if [[ -d /home/tarryn/.spicetify ]]; then
 	export SPICETIFY_INSTALL="/home/tarryn/.spicetify"
 fi
 
-if which npm >/dev/null; then
+if type npm &>/dev/null; then
 	export PATH="$PATH:$(npm -g prefix)/bin"
 fi
-if which nodenv >/dev/null; then
+if type nodenv &>/dev/null; then
 	export PATH="$PATH:~/.nodenv/shims"
 fi
-if which cargo >/dev/null; then
+if type cargo &>/dev/null; then
 	export PATH="$PATH:~/.cargo/bin"
 fi
-if which ruby >/dev/null && which gem >/dev/null; then
+if type ruby &>/dev/null && type gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 

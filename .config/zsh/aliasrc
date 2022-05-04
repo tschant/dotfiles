@@ -55,15 +55,15 @@ cdf() {
 	local dir
 	file=$(find "${1:-.}" -type f | fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
-if which z >/dev/null; then
+if type z &>/dev/null; then
 	alias cd="z"
 fi
-if which exa >/dev/null; then
+if type exa &>/dev/null; then
 	# enable color support of ls and also add handy aliases
 	alias ls="exa --color=always" \
 		ll='exa -lh --git --group --modified --icons'
 fi
-if which fzf >/dev/null; then
+if type fzf &>/dev/null; then
 	alias ,ff='v $(fzf)'
 fi
 
