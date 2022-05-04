@@ -2,10 +2,8 @@
 
 # add color to commands
 alias \
-	ls="exa --color=always" \
 	grep="grep --color=auto" \
-	dir='dir --color=auto' \
-	\
+	dir='dir --color=auto'
 
 # shortcuts
 alias \
@@ -20,7 +18,6 @@ alias \
 	dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
 	reload-profile="source ~/.config/zsh/.zshrc" \
 	weather="curl wttr.in" \
-	cd="z" \
 	chk="git checkout" \
 	lg="lazygit"
 
@@ -58,10 +55,13 @@ cdf() {
 	local dir
 	file=$(find "${1:-.}" -type f | fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
-
+if which z >/dev/null; then
+	alias cd="z"
+fi
 if which exa >/dev/null; then
 	# enable color support of ls and also add handy aliases
-	alias ll='exa -lh --git --group --modified --icons'
+	alias ls="exa --color=always" \
+		ll='exa -lh --git --group --modified --icons'
 fi
 if which fzf >/dev/null; then
 	alias ,ff='v $(fzf)'
