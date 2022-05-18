@@ -41,7 +41,9 @@ u.map("n", "<S-h>", ":vertical resize -2<CR>")
 u.map("n", "<S-l>", ":vertical resize +2<CR>")
 
 -- Floaterm
-u.map("n", "<leader>tk", ":FloatermKill<CR>")
+u.map("n", "<leader>ft", ":FloatermToggle!<CR>")
+u.map("n", "<leader>tk", ":FloatermKill!<CR>")
+u.map("n", "<leader>wn", ":FloatermNew nvim +VimwikiIndex<CR>")
 
 -- Undotree
 u.map("n", "<leader>u", ":UndotreeToggle<CR>")

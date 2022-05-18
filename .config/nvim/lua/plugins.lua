@@ -150,6 +150,11 @@ return packer.startup(function(use)
 		"numToStr/Comment.nvim", tag = "v0.6"
 	}
 
+	-- Notes
+	use {
+		"vimwiki/vimwiki"
+	}
+
 	-- General plugins
 	use {
 		"mbbill/undotree",
