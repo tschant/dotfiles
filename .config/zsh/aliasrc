@@ -18,11 +18,11 @@ alias \
 	dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
 	reload-profile="source ~/.config/zsh/.zshrc" \
 	weather="curl wttr.in" \
-	chk="git checkout" \
-	lg="lazygit"
+	chk="git checkout"
 
 # Git things, use `,` as vimprefix so....
 alias ,=git	\
+	,gg=lazygit \
 	,s="git status"	\
 	,l="git log" \
 	,f="git fetch --all" \

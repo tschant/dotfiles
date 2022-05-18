@@ -93,7 +93,10 @@ require("pretty-fold").setup({
 		}
 	}
 })
--- require("pretty-fold.preview").setup_keybinding('h')
+require('pretty-fold.preview').setup()
+require("hlslens").setup({
+	calm_down = true
+})
 
 -- Treesitter
 require "nvim-treesitter.configs".setup {

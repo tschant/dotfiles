@@ -169,7 +169,7 @@ return packer.startup(function(use)
 		"mg979/vim-visual-multi",
 		"tpope/vim-surround",
 		"ggandor/lightspeed.nvim",
-		"anuvyklack/pretty-fold.nvim",
+		{"anuvyklack/pretty-fold.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		"petertriho/nvim-scrollbar",
 		"kevinhwang91/nvim-hlslens",
 		"ojroques/nvim-bufdel",
