@@ -6,7 +6,8 @@ Opts = {
 	wrap = false,
 	cursorline = true,
 	listchars = true,
-	language = "en,cjk"
+	language = "en,cjk",
+	winbar = "%{%v:lua.require'winbar'.eval()%}"
 }
 
 Formatting = {

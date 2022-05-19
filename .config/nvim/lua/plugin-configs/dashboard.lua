@@ -41,7 +41,7 @@ g.dashboard_custom_section = {
     d = {description = {"  Find Word                 , f g"}, command = "Telescope live_grep"},
     e = {description = {"洛 New File                  , f n"}, command = "DashboardNewFile"},
     f = {description = {"  Bookmarks                 , b m"}, command = "Telescope marks"},
-    g = {description = {"  Load Last Session         , s l"}, command = "SessionLoad"}
+    g = {description = {"  Load Last Session         , s r"}, command = "RestoreSession"}
 }
 
 g.dashboard_custom_footer = {

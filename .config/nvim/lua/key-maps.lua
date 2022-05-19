@@ -10,7 +10,7 @@ u.map("n", "<leader>H", ":sp<CR>")
 u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 u.map("n", "n", "nzz")
 u.map("n", "N", "Nzz")
-u.map("n", "<leader>c", ":let @+=expand('%:p')<CR>")
+u.map("n", "<leader>cc", ":let @+=expand('%:p')<CR>")
 
 u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
 u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
@@ -107,7 +107,7 @@ u.map("n", "<leader>fp", ":Telescope projects<CR>")
 u.map("n", "<Leader><Home>", [[<Cmd> Dashboard<CR>]])
 u.map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]])
 u.map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]])
-u.map("n", "<leader>sl", [[<Cmd> RestoreSession<CR>]])
+u.map("n", "<leader>sr", [[<Cmd> RestoreSession<CR>]])
 u.map("n", "<leader>ss", [[<Cmd> SaveSession<CR>]])
 
 -- LSP
@@ -133,7 +133,6 @@ u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
 -- Comment
 u.map('n', '<c-_>', ':lua require("Comment.api").toggle_current_linewise()<CR>') -- ctrl-/
 u.map('x', '<c-_>', ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>') -- ctrl-/
-
 
 --[[ -- Package info
 u.map("n", "<leader>ns", ":lua require('package-info').show()<CR>", { silent = true, noremap = true })

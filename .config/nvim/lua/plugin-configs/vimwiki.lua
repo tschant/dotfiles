@@ -19,7 +19,9 @@ wiki_prime = {
 		python = "python",
 		lua = "lua"
 	},
-	path = '~/Notes'
+	path = '~/Notes',
+	syntax = 'markdown',
+	ext = '.md'
 }
 
 vim.g.vimwiki_list = {wiki_prime}
