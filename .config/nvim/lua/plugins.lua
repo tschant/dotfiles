@@ -112,7 +112,7 @@ return packer.startup(function(use)
 		"kyazdani42/nvim-tree.lua",
 		-- {"akinsho/bufferline.nvim", branch = "main"},
 		"romgrk/barbar.nvim",
-		"feline-nvim/feline.nvim",
+		{"feline-nvim/feline.nvim", branch = "master"},
 		requires = {"kyazdani42/nvim-web-devicons"}
 	}
 

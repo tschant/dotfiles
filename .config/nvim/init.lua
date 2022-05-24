@@ -19,9 +19,11 @@ local modules = {
 	-- "lsp/jdtls",
 }
 
-local impatientOk, impatientError = pcall(require,'impatient')
-if not impatientOk then
-	print("Impatient failed to load" .. impatientError)
+local impatientOk, retval = pcall(require,'impatient')
+if impatientOk then
+	retval.enable_profile()
+else
+	print("Impatient failed to load" .. retval)
 end
 -- No external requires, global configs
 require("config")
