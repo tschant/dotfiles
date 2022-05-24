@@ -19,6 +19,10 @@ local modules = {
 	-- "lsp/jdtls",
 }
 
+local impatientOk, impatientError = pcall(require,'impatient')
+if not impatientOk then
+	print("Impatient failed to load" .. impatientError)
+end
 -- No external requires, global configs
 require("config")
 require("options")
