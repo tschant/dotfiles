@@ -83,7 +83,8 @@ return packer.startup(function(use)
 	use {
 		{"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
 		"windwp/nvim-ts-autotag",
-		"p00f/nvim-ts-rainbow"
+		"p00f/nvim-ts-rainbow",
+		"ziontee113/syntax-tree-surfer"
 	}
 
 	use {
@@ -91,7 +92,7 @@ return packer.startup(function(use)
 		config = function()
 			require('auto-session').setup {
 				log_level = 'info',
-				auto_restore_enabled = false,
+				auto_restore_enabled = true,
 				auto_session_use_git_branch = true,
 				auto_session_suppress_dirs = {'~/', '~/git', '~/Downloads'}
 			}
@@ -162,7 +163,6 @@ return packer.startup(function(use)
 		"mbbill/undotree",
 		"karb94/neoscroll.nvim",
 		"glepnir/dashboard-nvim",
-		-- "b3nj5m1n/kommentary",
 		"glepnir/indent-guides.nvim",
 		"lukas-reineke/indent-blankline.nvim",
 		"windwp/nvim-autopairs",

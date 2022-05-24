@@ -16,7 +16,7 @@ u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
 u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
 u.map("x", "<leader>y", "\"*y")
 
--- Move selected line / block of text in visual mode
+-- -- Move selected line / block of text in visual mode
 u.map("x", "K", ":move '<-2<CR>gv-gv")
 u.map("x", "J", ":move '>+1<CR>gv-gv")
 
@@ -43,7 +43,7 @@ u.map("n", "<S-l>", ":vertical resize +2<CR>")
 -- Floaterm
 u.map("n", "<leader>ft", ":FloatermToggle!<CR>")
 u.map("n", "<leader>tk", ":FloatermKill!<CR>")
-u.map("n", "<leader>wn", ":FloatermNew nvim +VimwikiIndex<CR>")
+u.map("n", "<leader>wn", ":FloatermNew nvim +VimwikiIndex .<CR>")
 
 -- Undotree
 u.map("n", "<leader>u", ":UndotreeToggle<CR>")
@@ -120,6 +120,25 @@ u.map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>")
 u.map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>")
 u.map("n", "<c-p>", ":lua vim.diagnostic.goto_prev()<CR>")
 u.map("n", "<c-n>", ":lua vim.diagnostic.goto_next()<CR>")
+
+-- Syntax Tree Surfer - treesitter smart selection
+u.map("n", "gv", ":lua require('syntax-tree-surfer').targeted_jump({'variable_declaration'})<CR>")
+u.map("n", "gfu", ":lua require('syntax-tree-surfer').targeted_jump({'function'})<CR>")
+u.map("n", "gif", ":lua require('syntax-tree-surfer').targeted_jump({'if_statement'})<CR>")
+u.map("n", "gj", ":lua require('syntax-tree-surfer').targeted_jump({'function', 'if_statement', 'else_clause', 'else_statement', 'elseif_statement', 'for_statement', 'while_statement', 'switch_statement'})<CR>")
+u.map("n", "gn", ":lua require('syntax-tree-surfer').filtered_jump('default', true)<CR>")
+u.map("n", "gN", ":lua require('syntax-tree-surfer').filtered_jump('default', false)<CR>")
+u.map("n", "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', {noremap = true, silent = true})
+u.map("n", "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', {noremap = true, silent = true})
+-- .select() will show you what you will be swapping with .move(), you'll get used to .select() and .move() behavior quite soon!
+u.map("n", "vx", '<cmd>lua require("syntax-tree-surfer").select()<cr>', {noremap = true, silent = true})
+-- .select_current_node() will select the current node at your cursor
+u.map("n", "vn", '<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', {noremap = true, silent = true})
+-- u.map("x", "J", '<cmd>lua require("syntax-tree-surfer").surf("next", "visual")<cr>', {noremap = true, silent = true})
+-- u.map("x", "K", '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual")<cr>', {noremap = true, silent = true})
+u.map("x", "H", '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', {noremap = true, silent = true})
+u.map("x", "L", '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', {noremap = true, silent = true})
+
 
 -- Trouble
 u.map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
