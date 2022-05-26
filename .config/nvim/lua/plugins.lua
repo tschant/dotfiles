@@ -61,12 +61,6 @@ return packer.startup(function(use)
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 	}
 
-	-- COQ snippet/completion
-	--[[ use {
-		{"ms-jpq/coq_nvim", branch = "coq"},
-		{"ms-jpq/coq.artifacts", branch = "artifacts"},
-	} ]]
-
 	-- Telescope
 	use {
 		"nvim-telescope/telescope.nvim",
@@ -108,12 +102,11 @@ return packer.startup(function(use)
 	-- File manager
 	-- Statusline and bufferline
 	use {
-		"kyazdani42/nvim-web-devicons",
 		"kyazdani42/nvim-tree.lua",
+		"kyazdani42/nvim-web-devicons",
 		-- {"akinsho/bufferline.nvim", branch = "main"},
 		"romgrk/barbar.nvim",
 		{"feline-nvim/feline.nvim", branch = "master"},
-		requires = {"kyazdani42/nvim-web-devicons"}
 	}
 
 
@@ -176,19 +169,19 @@ return packer.startup(function(use)
 		"petertriho/nvim-scrollbar",
 		"kevinhwang91/nvim-hlslens",
 		"ojroques/nvim-bufdel",
-		"dstein64/vim-startuptime",
+		-- "dstein64/vim-startuptime",
 	}
 
 	-- Themes
 	--"norcalli/nvim-base16.lua",
 	use {
-		{"catppuccin/nvim", branch = "main"},
+		"catppuccin/nvim", branch = "main"
 		-- {"catppuccin/nvim", branch = "old-catppuccino"},
-		"rebelot/kanagawa.nvim",
-		"EdenEast/nightfox.nvim",
-		"srcery-colors/srcery-vim",
-		"christianchiarulli/nvcode-color-schemes.vim",
-		"chriskempson/base16-vim",
+		-- "rebelot/kanagawa.nvim",
+		-- "EdenEast/nightfox.nvim",
+		-- "srcery-colors/srcery-vim",
+		-- "christianchiarulli/nvcode-color-schemes.vim",
+		-- "chriskempson/base16-vim",
 	}
 
 	if packer_bootstrap then

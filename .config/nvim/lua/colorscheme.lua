@@ -44,17 +44,17 @@ require("catppuccin").setup({
 	}
 }) ]]
 
-require('kanagawa').setup({
-    undercurl = true,
-    commentStyle = "italic",
-    functionStyle = "NONE",
-    keywordStyle = "italic",
-    statementStyle = "bold",
-    typeStyle = "NONE",
-    transparent = true,
-    colors = {},
-    overrides = {},
-})
+-- require('kanagawa').setup({
+--     undercurl = true,
+--     commentStyle = "italic",
+--     functionStyle = "NONE",
+--     keywordStyle = "italic",
+--     statementStyle = "bold",
+--     typeStyle = "NONE",
+--     transparent = true,
+--     colors = {},
+--     overrides = {},
+-- })
 
 -- Nightfox settings
 
