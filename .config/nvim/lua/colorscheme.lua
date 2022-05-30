@@ -27,22 +27,9 @@ require("catppuccin").setup({
 		gitsigns = true
 	}
 })
---[[ require("catppuccino").setup({
-	colorscheme = "neon_latte",
-	transparency = true,
-	term_colors = true,
-	integrations = {
-		nvimtree = {
-			enabled = false,
-			show_root = true,
-		},
-		barbar = true,
-		bufferline = true,
-		dashboard = false,
-		telescope = true,
-		gitsigns = true
-	}
-}) ]]
+-- vim.g.catppuccin_flavour = "macchiato"
+vim.g.catppuccin_flavour = "mocha"
+-- vim.g.catppuccin_flavour = "latte"
 
 -- require('kanagawa').setup({
 --     undercurl = true,
