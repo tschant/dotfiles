@@ -12,6 +12,7 @@ local modules = {
 	"plugin-configs/emmet",
 	"plugin-configs/statusline",
 	"plugin-configs/vimwiki",
+	"plugin-configs/git-signs",
 	-- "plugin-configs/bufferline",
 	-- LSP
 	"lsp/completion",

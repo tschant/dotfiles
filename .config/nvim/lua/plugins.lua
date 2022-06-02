@@ -96,7 +96,8 @@ return packer.startup(function(use)
 
 	-- Git
 	use {
-		"lewis6991/gitsigns.nvim"
+		"lewis6991/gitsigns.nvim",
+		"tpope/vim-fugitive",
 	}
 
 	-- File manager
