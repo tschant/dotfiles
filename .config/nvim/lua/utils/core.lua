@@ -39,7 +39,8 @@ function utils.map(mode, key, result, opts)
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
-    vim.api.nvim_set_keymap(mode, key, result, options)
+    -- vim.api.nvim_set_keymap(mode, key, result, options)
+    vim.keymap.set(mode, key, result, options)
 end
 
 -- Telescope

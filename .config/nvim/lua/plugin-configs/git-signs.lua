@@ -1,3 +1,5 @@
+local u = require("utils.core")
+
 -- Git signs
 require("gitsigns").setup {
 	signs = {
@@ -18,36 +20,30 @@ require("gitsigns").setup {
 	-- use_decoration_api = false
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
-		local function map(mode, l, r, opts)
-			opts = opts or {}
-			opts.buffer = bufnr
-			-- u.map(mode, l, r, opts)
-			vim.keymap.set(mode, l, r, opts)
-		end
 
 		-- Navigation
-		map('n', ']c', function()
+		u.map('n', ']c', function()
 			if vim.wo.diff then return ']c' end
 			vim.schedule(function() gs.next_hunk() end)
 			return '<Ignore>'
-		end, {expr=true})
+		end, {expr=true, buffer = bufnr})
 
-		map('n', '[c', function()
+		u.map('n', '[c', function()
 			if vim.wo.diff then return '[c' end
 			vim.schedule(function() gs.prev_hunk() end)
 			return '<Ignore>'
-		end, {expr=true})
+		end, {expr=true, buffer = bufnr})
 
 		-- Actions
-		map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-		map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-		map('n', '<leader>hS', gs.stage_buffer)
-		map('n', '<leader>hu', gs.undo_stage_hunk)
-		map('n', '<leader>hR', gs.reset_buffer)
-		map('n', '<leader>hp', gs.preview_hunk)
-		map('n', '<leader>hd', gs.diffthis)
-		map('n', '<leader>hD', function() gs.diffthis('~') end)
-		map('n', '<leader>td', gs.toggle_deleted)
+		u.map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>', {buffer = bufnr})
+		u.map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>', {buffer = bufnr})
+		u.map('n', '<leader>hS', gs.stage_buffer, {buffer = bufnr})
+		u.map('n', '<leader>hu', gs.undo_stage_hunk, {buffer = bufnr})
+		u.map('n', '<leader>hR', gs.reset_buffer, {buffer = bufnr})
+		u.map('n', '<leader>hp', gs.preview_hunk, {buffer = bufnr})
+		u.map('n', '<leader>hd', gs.diffthis, {buffer = bufnr})
+		u.map('n', '<leader>hD', function() gs.diffthis('~') end, {buffer = bufnr})
+		u.map('n', '<leader>td', gs.toggle_deleted, {buffer = bufnr})
 	end
 }
 
