@@ -41,7 +41,6 @@ return packer.startup(function(use)
 		"folke/trouble.nvim",
 		"natebosch/vim-lsc",
 		-- "mfussenegger/nvim-jdtls",
-		"j-hui/fidget.nvim",
 		"fladson/vim-kitty"
 	}
 
@@ -94,6 +93,12 @@ return packer.startup(function(use)
 		end
 	}
 
+	-- Hydra
+	use {
+		'anuvyklack/hydra.nvim',
+		requires = 'anuvyklack/keymap-layer.nvim'
+	}
+
 	-- Git
 	use {
 		"lewis6991/gitsigns.nvim",
@@ -140,7 +145,6 @@ return packer.startup(function(use)
 
 	-- Window splitting
 	use {
-		"nyngwang/NeoZoom.lua",
 		"beauwilliams/focus.nvim",
 	}
 

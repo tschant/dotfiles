@@ -18,6 +18,7 @@ local modules = {
 	"lsp/completion",
 	"lsp/init",
 	-- "lsp/jdtls",
+	"hydra/all",
 }
 
 local impatientOk, retval = pcall(require,'impatient')

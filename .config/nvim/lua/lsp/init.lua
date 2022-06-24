@@ -1,34 +1,33 @@
 local servers = {
--- npm i -g bash-language-server
-"bashls",
--- npm i -g typescript typescript-language-server
-"tsserver",
--- npm i -g vscode-langservers-extracted
--- "eslint",
--- npm i -g vscode-css-languageserver-bin
-"cssls",
--- npm i -g pyright
-"pyright",
--- npm i -g vscode-json-languageserver
-"jsonls",
--- npm i -g emmet-ls
-"emmet_ls",
-"jdtls",
--- "java_language_server",
--- npm install -g vscode-html-languageserver-bin
--- "html"
--- brew install tflint
-"tflint",
--- brew install hashicorp/tap/terraform-ls
-"terraform_lsp",
--- npm install -g yaml@next
-"yamlls",
--- gem install --user-install solargraph
-"solargraph",
+	-- npm i -g bash-language-server
+	"bashls",
+	-- npm i -g typescript typescript-language-server
+	"tsserver",
+	-- npm i -g vscode-langservers-extracted
+	"html",
+	-- "eslint",
+	-- npm i -g vscode-css-languageserver-bin
+	"cssls",
+	-- npm i -g pyright
+	"pyright",
+	-- npm i -g vscode-json-languageserver
+	"jsonls",
+	-- npm i -g emmet-ls
+	"emmet_ls",
+	"jdtls",
+	-- "java_language_server",
+	-- npm install -g vscode-html-languageserver-bin
+	-- brew install tflint
+	"tflint",
+	-- brew install hashicorp/tap/terraform-ls
+	"terraform_lsp",
+	-- npm install -g yaml@next
+	"yamlls",
+	-- gem install --user-install solargraph
+	"solargraph",
 }
 -- npm i -g yaml@next emmet-ls vscode-json-languageserver pyright vscode-css-languageserver-bin typescript-language-server
 
-require("fidget").setup{}
 require("trouble").setup({
 	position = "bottom",
 	icons = true,
@@ -204,11 +203,11 @@ local function on_attach(client, bufnr)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
 	-- Set some keybinds conditional on server capabilities
-	if client.server_capabilities.document_formatting then
-		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	elseif client.server_capabilities.document_range_formatting then
-		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-	end
+	-- if client.server_capabilities.document_formatting then
+	-- 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	-- elseif client.server_capabilities.document_range_formatting then
+	-- 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+	-- end
 end
 
 vim.schedule(function ()

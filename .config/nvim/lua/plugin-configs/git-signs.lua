@@ -44,6 +44,7 @@ require("gitsigns").setup {
 		u.map('n', '<leader>hd', gs.diffthis, {buffer = bufnr})
 		u.map('n', '<leader>hD', function() gs.diffthis('~') end, {buffer = bufnr})
 		u.map('n', '<leader>td', gs.toggle_deleted, {buffer = bufnr})
+		u.map("n", "<C-g>", ":Gitsigns blame_line<CR>")
 	end
 }
 

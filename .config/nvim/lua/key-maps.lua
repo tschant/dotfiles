@@ -21,11 +21,10 @@ u.map("x", "K", ":move '<-2<CR>gv-gv")
 u.map("x", "J", ":move '>+1<CR>gv-gv")
 
 -- Better window navigation
-u.map("n", "<CR>", ":NeoZoomToggle<CR>")
-u.map("n", "<C-h>", "<C-w>h")
-u.map("n", "<C-j>", "<C-w>j")
-u.map("n", "<C-k>", "<C-w>k")
-u.map("n", "<C-l>", "<C-w>l")
+-- u.map("n", "<C-h>", "<C-w>h")
+-- u.map("n", "<C-j>", "<C-w>j")
+-- u.map("n", "<C-k>", "<C-w>k")
+-- u.map("n", "<C-l>", "<C-w>l")
 u.map("n", "<leader>h", ":FocusSplitLeft<CR>")
 u.map("n", "<leader>j", ":FocusSplitDown<CR>")
 u.map("n", "<leader>k", ":FocusSplitUp<CR>")
@@ -34,11 +33,6 @@ u.map("n", "<leader>l", ":FocusSplitRight<CR>")
 -- Check file in shellcheck
 -- u.map("n", "<leader>sc", ":!clear && shellcheck -x %<CR>")
 
--- Resize windows
-u.map("n", "<S-k>", ":resize -2<CR>")
-u.map("n", "<S-j>", ":resize +2<CR>")
-u.map("n", "<S-h>", ":vertical resize -2<CR>")
-u.map("n", "<S-l>", ":vertical resize +2<CR>")
 
 -- Floaterm
 u.map("n", "<leader>ft", ":FloatermToggle!<CR>")
@@ -54,7 +48,6 @@ u.map("n", "<leader>gf", ":Telescope git_files<CR>")
 u.map("n", "<leader>gc", ":Telescope git_commits<CR>")
 u.map("n", "<leader>gb", ":Telescope git_branches<CR>")
 u.map("n", "<leader>gs", ":Telescope git_status<CR>")
-u.map("n", "<C-g>", ":Gitsigns blame_line<CR>")
 
 -- buffer navigation Bufferline
 --[[ u.map("n", "<leader>q", ":BufDel<CR>")
@@ -117,9 +110,9 @@ u.map("n", "gt", ":lua vim.lsp.buf.type_definition()<CR>")
 u.map("n", "gr", ":Telescope lsp_references<CR>")
 u.map("n", "gh", ":lua vim.lsp.buf.hover()<CR>")
 u.map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>")
-u.map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>")
-u.map("n", "<c-p>", ":lua vim.diagnostic.goto_prev()<CR>")
-u.map("n", "<c-n>", ":lua vim.diagnostic.goto_next()<CR>")
+u.map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+u.map("n", "gp", ":lua vim.diagnostic.goto_prev()<CR>")
+u.map("n", "gP", ":lua vim.diagnostic.goto_next()<CR>")
 
 -- Syntax Tree Surfer - treesitter smart selection
 u.map("n", "gv", ":lua require('syntax-tree-surfer').targeted_jump({'variable_declaration'})<CR>")
