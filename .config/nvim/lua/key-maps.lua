@@ -21,6 +21,7 @@ u.map("x", "K", ":move '<-2<CR>gv-gv")
 u.map("x", "J", ":move '>+1<CR>gv-gv")
 
 -- Better window navigation
+u.map("n", "<CR>", "<CR>")
 -- u.map("n", "<C-h>", "<C-w>h")
 -- u.map("n", "<C-j>", "<C-w>j")
 -- u.map("n", "<C-k>", "<C-w>k")
@@ -33,6 +34,11 @@ u.map("n", "<leader>l", ":FocusSplitRight<CR>")
 -- Check file in shellcheck
 -- u.map("n", "<leader>sc", ":!clear && shellcheck -x %<CR>")
 
+-- Resize windows
+-- u.map("n", "<S-k>", ":resize -2<CR>")
+-- u.map("n", "<S-j>", ":resize +2<CR>")
+-- u.map("n", "<S-h>", ":vertical resize -2<CR>")
+-- u.map("n", "<S-l>", ":vertical resize +2<CR>")
 
 -- Floaterm
 u.map("n", "<leader>ft", ":FloatermToggle!<CR>")

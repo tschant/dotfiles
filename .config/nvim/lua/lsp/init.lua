@@ -26,7 +26,7 @@ local servers = {
 	-- gem install --user-install solargraph
 	"solargraph",
 }
--- npm i -g yaml@next emmet-ls vscode-json-languageserver pyright vscode-css-languageserver-bin typescript-language-server
+-- npm i -g yaml@next yaml-language-server emmet-ls vscode-json-languageserver pyright vscode-css-languageserver-bin typescript-language-server
 
 require("trouble").setup({
 	position = "bottom",
