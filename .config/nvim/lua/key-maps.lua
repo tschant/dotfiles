@@ -11,6 +11,7 @@ u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 u.map("n", "n", "nzz")
 u.map("n", "N", "Nzz")
 u.map("n", "<leader>cc", ":let @+=expand('%:p')<CR>")
+u.map("t", "<leader><ESC>", "<C-\\><C-n>")
 
 u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
 u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
