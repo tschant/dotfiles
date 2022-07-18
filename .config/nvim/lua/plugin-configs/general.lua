@@ -78,6 +78,11 @@ require("hlslens").setup({
 	calm_down = true
 })
 
+-- Surround
+require("nvim-surround").setup({
+	-- Configuration here, or leave empty to use defaults
+})
+
 -- Treesitter
 require "nvim-treesitter.configs".setup {
 	ensure_installed = {

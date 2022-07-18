@@ -102,7 +102,6 @@ return packer.startup(function(use)
 	-- Git
 	use {
 		"lewis6991/gitsigns.nvim",
-		"tpope/vim-fugitive",
 	}
 
 	-- File manager
@@ -168,7 +167,8 @@ return packer.startup(function(use)
 		"norcalli/nvim-colorizer.lua",
 		"RRethy/vim-illuminate",
 		"mg979/vim-visual-multi",
-		"tpope/vim-surround",
+		-- "tpope/vim-surround",
+		"kylechui/nvim-surround",
 		"ggandor/lightspeed.nvim",
 		{"anuvyklack/pretty-fold.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		"petertriho/nvim-scrollbar",
