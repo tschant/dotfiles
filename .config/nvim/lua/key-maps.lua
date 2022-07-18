@@ -7,14 +7,14 @@ u.map("i", "jk", "<ESC>")
 u.map("n", "Q", "<Nop>")
 u.map("n", "<leader>V", ":vs<CR>")
 u.map("n", "<leader>H", ":sp<CR>")
-u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
+-- u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 u.map("n", "n", "nzz")
 u.map("n", "N", "Nzz")
 u.map("n", "<leader>cc", ":let @+=expand('%:p')<CR>")
 u.map("t", "<leader><ESC>", "<C-\\><C-n>")
 
-u.map("n", "<leader>fi", ":setlocal foldmethod=indent<CR>")
-u.map("n", "<leader>fs", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
+u.map("n", "<leader>si", ":setlocal foldmethod=indent<CR>")
+u.map("n", "<leader>ss", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
 u.map("x", "<leader>y", "\"*y")
 
 -- -- Move selected line / block of text in visual mode
@@ -42,8 +42,8 @@ u.map("n", "<leader>l", ":FocusSplitRight<CR>")
 -- u.map("n", "<S-l>", ":vertical resize +2<CR>")
 
 -- Floaterm
-u.map("n", "<leader>ft", ":FloatermToggle!<CR>")
-u.map("n", "<leader>tk", ":FloatermKill!<CR>")
+-- u.map("n", "<leader>ft", ":FloatermToggle!<CR>")
+-- u.map("n", "<leader>tk", ":FloatermKill!<CR>")
 u.map("n", "<leader>wn", ":FloatermNew nvim +VimwikiIndex .<CR>")
 
 -- Undotree
@@ -90,25 +90,14 @@ u.map("n", "<Leader>bp", ":BufferPick<CR>")
 
 -- File manager
 u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
-u.map("n", "<leader>fr", ":NvimTreeRefresh<CR>")
-
--- Telescope
-u.map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({hidden = true})<CR>")
-u.map("n", "<leader>fg", ":Telescope live_grep<CR>")
-u.map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
-u.map("n", "<leader>fc", ":lua require('telescope.builtin').colorscheme()<CR>")
-u.map("n", "<leader>fa", ":lua require('utils.core').search_dotfiles()<CR>")
--- u.map("n", "<leader>fn", ":lua require('utils.core').search_nvim()<CR>")
-u.map("n", "<leader>bb", ":lua require('telescope.builtin').buffers()<CR>")
-u.map("n", "<Leader>fo", ":lua require('telescope.builtin').oldfiles()<CR>")
-u.map("n", "<leader>fp", ":Telescope projects<CR>")
+u.map("n", "<leader>rr", ":NvimTreeRefresh<CR>")
 
 -- Dashboard
 u.map("n", "<Leader><Home>", [[<Cmd> Dashboard<CR>]])
-u.map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]])
+u.map("n", "<Leader>nn", [[<Cmd> DashboardNewFile<CR>]])
 u.map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]])
 u.map("n", "<leader>sr", [[<Cmd> RestoreSession<CR>]])
-u.map("n", "<leader>ss", [[<Cmd> SaveSession<CR>]])
+u.map("n", "<leader>sv", [[<Cmd> SaveSession<CR>]])
 
 -- LSP
 u.map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>")
@@ -145,9 +134,8 @@ u.map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = tru
 
 -- Spell checker
 u.map("n", "<leader>ck", ":set spell!<cr>")
-
 -- format code
-u.map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {})
+u.map("n", "<Leader>cm", [[<Cmd> Neoformat<CR>]], {})
 
 -- Comment
 u.map('n', '<c-_>', ':lua require("Comment.api").toggle_current_linewise()<CR>') -- ctrl-/
