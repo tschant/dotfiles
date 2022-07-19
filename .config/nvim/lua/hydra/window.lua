@@ -2,6 +2,10 @@ local Hydra = require("hydra")
 
 Hydra({
 	name = "Change / Resize Window",
+	config = {
+		color = 'teal',
+		hint = 'statusline',
+	},
 	mode = { "n" },
 	body = "<C-w>",
 	config = {
@@ -27,7 +31,6 @@ Hydra({
 		-- close active window
 		{ "Q", ":q<cr>" },
 		{ "<C-q>", ":q<cr>" },
-
 
 		-- exit this Hydra
 		{ "q", nil, { exit = true, nowait = true } },

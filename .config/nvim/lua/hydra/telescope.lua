@@ -18,18 +18,6 @@ local hint = [[
                  _<Enter>_: Telescope           _<Esc>_
 ]]
 
-
--- Telescope
--- u.map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({hidden = true})<CR>")
--- u.map("n", "<leader>fg", ":Telescope live_grep<CR>")
--- u.map("n", "<Leader>fo", ":lua require('telescope.builtin').oldfiles()<CR>")
--- u.map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
--- u.map("n", "<leader>fc", ":lua require('telescope.builtin').colorscheme()<CR>")
--- u.map("n", "<leader>fa", ":lua require('utils.core').search_dotfiles()<CR>")
--- -- u.map("n", "<leader>fn", ":lua require('utils.core').search_nvim()<CR>")
--- u.map("n", "<leader>bb", ":lua require('telescope.builtin').buffers()<CR>")
--- u.map("n", "<leader>fp", ":Telescope projects<CR>")
-
 Hydra({
    name = 'Telescope',
    hint = hint,
