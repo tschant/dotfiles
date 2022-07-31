@@ -4,7 +4,8 @@ local cmd = vim.cmd
 local Theming = {
     -- Press <space>fc to see all available themes
     -- colorscheme = "base16-gruvbox-dark-pale",
-    colorscheme = "catppuccin",
+    colorscheme = "oxocarbon",
+    -- colorscheme = "catppuccin",
     -- colorscheme = "kanagawa",
     -- colorscheme = "srcery",
     -- colorscheme = "nightfox",
