@@ -73,7 +73,7 @@ require("pretty-fold").setup({
 		}
 	}
 })
-require('pretty-fold.preview').setup()
+require('fold-preview').setup()
 require("hlslens").setup({
 	calm_down = true
 })

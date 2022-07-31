@@ -171,6 +171,7 @@ return packer.startup(function(use)
 		"kylechui/nvim-surround",
 		"ggandor/lightspeed.nvim",
 		{"anuvyklack/pretty-fold.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
+		{"anuvyklack/fold-preview.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		"petertriho/nvim-scrollbar",
 		"kevinhwang91/nvim-hlslens",
 		"ojroques/nvim-bufdel",
@@ -180,7 +181,8 @@ return packer.startup(function(use)
 	-- Themes
 	--"norcalli/nvim-base16.lua",
 	use {
-		"catppuccin/nvim", branch = "main"
+		"catppuccin/nvim", branch = "main",
+		{"shaunsingh/oxocarbon.nvim", run = "./install.sh"},
 		-- {"catppuccin/nvim", branch = "old-catppuccino"},
 		-- "rebelot/kanagawa.nvim",
 		-- "EdenEast/nightfox.nvim",
