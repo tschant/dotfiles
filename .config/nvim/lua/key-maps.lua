@@ -122,3 +122,6 @@ u.map("n", "<leader>nr", ":lua require('package-info').reinstall()<CR>", { silen
 -- Install a different package version
 u.map("n", "<leader>np", ":lua require('package-info').change_version()<CR>", { silent = true, noremap = true })
  ]]
+
+-- " Output the current syntax group
+u.map('n', '<f10>', [[<Cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>]])

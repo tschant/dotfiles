@@ -52,7 +52,9 @@ cmd("colorscheme " .. Theming.colorscheme)
 cmd "hi Normal ctermbg=none guibg=none"
 
 -- highlights --
--- cmd "hi LineNr guifg=#383c44 guibg=NONE"
+cmd "hi EndOfBuffer guifg=#525252 guibg=NONE"
+cmd "hi gitcommitOverflow guifg=#525252 guibg=NONE"
+cmd "hi gitcommitTrailers guifg=#525252 guibg=NONE"
 -- cmd "hi Comment guifg=#307050"
 -- cmd "au ColorScheme * hi Comment guifg=#3d4149"
 -- cmd "hi SignColumn guibg=NONE"
