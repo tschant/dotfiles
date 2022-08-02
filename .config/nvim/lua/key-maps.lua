@@ -23,10 +23,10 @@ u.map("x", "J", ":move '>+1<CR>gv-gv")
 
 -- Better window navigation
 u.map("n", "<CR>", "<CR>")
--- u.map("n", "<C-h>", "<C-w>h")
--- u.map("n", "<C-j>", "<C-w>j")
--- u.map("n", "<C-k>", "<C-w>k")
--- u.map("n", "<C-l>", "<C-w>l")
+u.map("n", "<C-h>", "<C-w>h")
+u.map("n", "<C-j>", "<C-w>j")
+u.map("n", "<C-k>", "<C-w>k")
+u.map("n", "<C-l>", "<C-w>l")
 u.map("n", "<leader>h", ":FocusSplitLeft<CR>")
 u.map("n", "<leader>j", ":FocusSplitDown<CR>")
 u.map("n", "<leader>k", ":FocusSplitUp<CR>")
@@ -35,15 +35,7 @@ u.map("n", "<leader>l", ":FocusSplitRight<CR>")
 -- Check file in shellcheck
 -- u.map("n", "<leader>sc", ":!clear && shellcheck -x %<CR>")
 
--- Resize windows
--- u.map("n", "<S-k>", ":resize -2<CR>")
--- u.map("n", "<S-j>", ":resize +2<CR>")
--- u.map("n", "<S-h>", ":vertical resize -2<CR>")
--- u.map("n", "<S-l>", ":vertical resize +2<CR>")
-
 -- Floaterm
--- u.map("n", "<leader>ft", ":FloatermToggle!<CR>")
--- u.map("n", "<leader>tk", ":FloatermKill!<CR>")
 u.map("n", "<leader>wn", ":FloatermNew nvim +VimwikiIndex .<CR>")
 
 -- Undotree
@@ -56,37 +48,11 @@ u.map("n", "<leader>gc", ":Telescope git_commits<CR>")
 u.map("n", "<leader>gb", ":Telescope git_branches<CR>")
 u.map("n", "<leader>gs", ":Telescope git_status<CR>")
 
--- buffer navigation Bufferline
---[[ u.map("n", "<leader>q", ":BufDel<CR>")
-u.map("n", "<C-q>", ":BufDel<CR>")
-u.map("n", "<TAB>", ":BufferLineCycleNext<CR>")
-u.map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>")
-u.map("n", "<Leader>b1", ":BufferLineGoToBuffer 1<CR>")
-u.map("n", "<Leader>b2", ":BufferLineGoToBuffer 2<CR>")
-u.map("n", "<Leader>b3", ":BufferLineGoToBuffer 3<CR>")
-u.map("n", "<Leader>b4", ":BufferLineGoToBuffer 4<CR>")
-u.map("n", "<Leader>b5", ":BufferLineGoToBuffer 5<CR>")
-u.map("n", "<Leader>b6", ":BufferLineGoToBuffer 6<CR>")
-u.map("n", "<Leader>b7", ":BufferLineGoToBuffer 7<CR>")
-u.map("n", "<Leader>b8", ":BufferLineGoToBuffer 8<CR>")
-u.map("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>")
-u.map("n", "<Leader>bp", ":BufferLinePick<CR>") ]]
-
 -- buffer navigation BarBar
 u.map("n", "<leader>q", ":BufferClose<CR>")
 u.map("n", "<C-q>", ":BufferClose<CR>")
 u.map("n", "<TAB>", ":BufferNext<CR>")
 u.map("n", "<S-TAB>", ":BufferPrev<CR>")
-u.map("n", "<Leader>b1", ":BufferGoto 1<CR>")
-u.map("n", "<Leader>b2", ":BufferGoto 2<CR>")
-u.map("n", "<Leader>b3", ":BufferGoto 3<CR>")
-u.map("n", "<Leader>b4", ":BufferGoto 4<CR>")
-u.map("n", "<Leader>b5", ":BufferGoto 5<CR>")
-u.map("n", "<Leader>b6", ":BufferGoto 6<CR>")
-u.map("n", "<Leader>b7", ":BufferGoto 7<CR>")
-u.map("n", "<Leader>b8", ":BufferGoto 8<CR>")
-u.map("n", "<Leader>b9", ":BufferGoto 9<CR>")
-u.map("n", "<Leader>bp", ":BufferPick<CR>")
 
 -- File manager
 u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
@@ -95,7 +61,7 @@ u.map("n", "<leader>rr", ":NvimTreeRefresh<CR>")
 -- Dashboard
 u.map("n", "<Leader><Home>", [[<Cmd> Dashboard<CR>]])
 u.map("n", "<Leader>nn", [[<Cmd> DashboardNewFile<CR>]])
-u.map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]])
+-- u.map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]])
 u.map("n", "<leader>sr", [[<Cmd> RestoreSession<CR>]])
 u.map("n", "<leader>sv", [[<Cmd> SaveSession<CR>]])
 

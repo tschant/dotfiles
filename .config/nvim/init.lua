@@ -13,6 +13,7 @@ local modules = {
 	"plugin-configs/statusline",
 	"plugin-configs/vimwiki",
 	"plugin-configs/git-signs",
+	"plugin-configs/barbar",
 	-- "plugin-configs/bufferline",
 	-- LSP
 	"lsp/completion",

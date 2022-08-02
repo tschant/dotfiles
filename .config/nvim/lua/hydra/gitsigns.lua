@@ -6,7 +6,7 @@ local hint = [[
  _K_: prev hunk   _u_: undo stage hunk   _p_: preview hunk   _B_: blame show full 
  ^ ^              _S_: stage buffer      ^ ^                 _/_: show base file
  ^
- ^ ^              _<Enter>_: LazyGit              _q_: exit
+ ^ ^              _<Enter>_: LazyGit              _q_: exit _<Esc>_: exit
 ]]
 
 Hydra({
@@ -53,5 +53,6 @@ Hydra({
       { '/', gitsigns.show, { exit = true } }, -- show the base of the file
       { '<Enter>', ':FloatermNew lazygit<CR>', { exit = true } },
       { 'q', nil, { exit = true, nowait = true } },
+      { '<Esc>', nil, { exit = true, nowait = true } },
    }
 })
