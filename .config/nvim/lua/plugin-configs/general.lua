@@ -3,8 +3,7 @@
 require('Comment').setup()
 require("neoscroll").setup()
 require("nvim-autopairs").setup()
-require("focus").setup({winhighlight = true})
-vim.cmd('hi link UnfocusedWindow BufferInactive')
+require("focus").setup()
 
 -- Illuminate
 vim.g.Illuminate_ftblacklist = {"NvimTree"}

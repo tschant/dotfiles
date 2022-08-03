@@ -6,7 +6,6 @@ local Theming = {
     -- colorscheme = "base16-gruvbox-dark-pale",
     colorscheme = "oxocarbon",
     -- colorscheme = "catppuccin",
-    -- colorscheme = "kanagawa",
     -- colorscheme = "srcery",
     -- colorscheme = "nightfox",
     -- colorscheme = "nordfox",
@@ -32,24 +31,11 @@ require("catppuccin").setup({
 vim.g.catppuccin_flavour = "mocha"
 -- vim.g.catppuccin_flavour = "latte"
 
--- require('kanagawa').setup({
---     undercurl = true,
---     commentStyle = "italic",
---     functionStyle = "NONE",
---     keywordStyle = "italic",
---     statementStyle = "bold",
---     typeStyle = "NONE",
---     transparent = true,
---     colors = {},
---     overrides = {},
--- })
-
--- Nightfox settings
-
 cmd("colorscheme " .. Theming.colorscheme)
 
 -- Use terminal background color instead of colorscheme
 cmd "hi Normal ctermbg=none guibg=none"
+cmd "hi NormalNC ctermbg=none guibg=#262626"
 
 -- highlights --
 cmd "hi EndOfBuffer guifg=#525252 guibg=NONE"
