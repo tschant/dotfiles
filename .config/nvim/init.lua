@@ -5,7 +5,8 @@ local modules = {
 	"autocmds",
 	-- Plugins
 	"plugin-configs/general",
-	"plugin-configs/nvim-tree",
+	-- "plugin-configs/nvim-tree",
+	"plugin-configs/neo-tree",
 	"plugin-configs/dashboard",
 	"plugin-configs/terminal",
 	"plugin-configs/telescope",

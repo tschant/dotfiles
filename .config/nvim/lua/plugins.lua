@@ -107,7 +107,20 @@ return packer.startup(function(use)
 	-- File manager
 	-- Statusline and bufferline
 	use {
-		"kyazdani42/nvim-tree.lua",
+		-- "kyazdani42/nvim-tree.lua",
+		{
+			"mrbjarksen/neo-tree-diagnostics.nvim",
+			requires = "nvim-neo-tree/neo-tree.nvim",
+		},
+		{
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
+			requires = { 
+				"nvim-lua/plenary.nvim",
+				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+				"MunifTanjim/nui.nvim",
+			}
+		},
 		"kyazdani42/nvim-web-devicons",
 		-- {"akinsho/bufferline.nvim", branch = "main"},
 		"romgrk/barbar.nvim",

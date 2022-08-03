@@ -43,10 +43,9 @@ u.map("n", "<leader>u", ":UndotreeToggle<CR>")
 
 -- Git
 u.map("n", "<leader>gg", ":FloatermNew lazygit<CR>")
-u.map("n", "<leader>gf", ":Telescope git_files<CR>")
-u.map("n", "<leader>gc", ":Telescope git_commits<CR>")
-u.map("n", "<leader>gb", ":Telescope git_branches<CR>")
-u.map("n", "<leader>gs", ":Telescope git_status<CR>")
+-- u.map("n", "<leader>gf", ":Telescope git_files<CR>")
+-- u.map("n", "<leader>gc", ":Telescope git_commits<CR>")
+-- u.map("n", "<leader>gb", ":Telescope git_branches<CR>")
 
 -- buffer navigation BarBar
 u.map("n", "<leader>q", ":BufferClose<CR>")
@@ -55,8 +54,13 @@ u.map("n", "<TAB>", ":BufferNext<CR>")
 u.map("n", "<S-TAB>", ":BufferPrev<CR>")
 
 -- File manager
-u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
-u.map("n", "<leader>rr", ":NvimTreeRefresh<CR>")
+-- u.map("n", "<leader>e", ":NvimTreeToggle<CR>")
+-- u.map("n", "<leader>rr", ":NvimTreeRefresh<CR>")
+
+-- Neotree
+u.map("n", "<leader>gs", ":Neotree git_status reveal bottom toggle=true<CR>")
+u.map("n", "<leader>e", ":Neotree filesystem reveal left toggle=true<CR>")
+u.map("n", "<leader>xx", ":Neotree diagnostics reveal bottom toggle=true<cr>")
 
 -- Dashboard
 u.map("n", "<Leader><Home>", [[<Cmd> Dashboard<CR>]])
@@ -93,10 +97,6 @@ u.map("n", "vn", '<cmd>lua require("syntax-tree-surfer").select_current_node()<c
 -- u.map("x", "K", '<cmd>lua require("syntax-tree-surfer").surf("prev", "visual")<cr>', {noremap = true, silent = true})
 u.map("x", "H", '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', {noremap = true, silent = true})
 u.map("x", "L", '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', {noremap = true, silent = true})
-
-
--- Trouble
-u.map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
 
 -- Spell checker
 u.map("n", "<leader>ck", ":set spell!<cr>")
