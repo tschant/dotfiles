@@ -8,7 +8,7 @@ setup_plugin("neo-tree", {
 	},
 	close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 	enable_git_status = true,
-	enable_diagnostics = true,
+	-- enable_diagnostics = true,
 	sort_case_insensitive = false, -- used when sorting files and directories in the tree
 	default_component_configs = {
 		container = {
@@ -113,7 +113,7 @@ setup_plugin("neo-tree", {
 		filtered_items = {
 			visible = false,
 			hide_dotfiles = false,
-			hide_gitignored = false,
+			hide_gitignored = true,
 			hide_hidden = false,
 			hide_by_name = {
 			},

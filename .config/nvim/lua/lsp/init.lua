@@ -60,7 +60,7 @@ require("trouble").setup({
 
 -- Stop lsp diagnostics from showing virtual text
 vim.diagnostic.config({
-	virtual_text = {spacing = 4}, -- = false,
+	virtual_text = {spacing = 6, severity = "error"}, -- = false,
 	update_in_insert = false,
 	underline = true,
 	signs = true,

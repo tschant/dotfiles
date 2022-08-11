@@ -58,8 +58,8 @@ u.map("n", "<S-TAB>", ":BufferPrev<CR>")
 -- u.map("n", "<leader>rr", ":NvimTreeRefresh<CR>")
 
 -- Neotree
-u.map("n", "<leader>gs", ":Neotree git_status reveal bottom toggle=true<CR>")
 u.map("n", "<leader>e", ":Neotree filesystem reveal left toggle=true<CR>")
+u.map("n", "<leader>gs", ":Neotree git_status reveal bottom toggle=true<CR>")
 u.map("n", "<leader>xx", ":Neotree diagnostics reveal bottom toggle=true<cr>")
 
 -- Dashboard

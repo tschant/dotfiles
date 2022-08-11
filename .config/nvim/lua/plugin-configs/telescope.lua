@@ -1,10 +1,25 @@
+local present, telescope = pcall(require, "telescope")
+
+if not present then
+  return
+end
+
+vim.g.theme_switcher_loaded = true
 local actions = require("telescope.actions")
 -- Global remapping
 ------------------------------
 -- '--color=never',
-require("telescope").setup {
+telescope.setup {
 	defaults = {
-		vimgrep_arguments = {"rg", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case"},
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case"
+		},
 		prompt_prefix = " ",
 		selection_caret = " ",
 		entry_prefix = "  ",
@@ -13,7 +28,11 @@ require("telescope").setup {
 		sorting_strategy = "descending",
 		layout_strategy = "horizontal",
 		layout_config = {
-			horizontal = {mirror = false},
+			horizontal = {
+				preview_width = 0.55,
+        results_width = 0.8,
+				mirror = false
+			},
 			vertical = {mirror = false},
 			width = 0.75,
 			prompt_position = "bottom",
@@ -24,7 +43,7 @@ require("telescope").setup {
 			"^.git/"
 		},
 		generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-		path_display = {},
+		path_display = {"truncate"},
 		winblend = 0,
 		border = {},
 		borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
@@ -73,6 +92,6 @@ require("telescope").setup {
 		}
 	}
 }
-require("telescope").load_extension("fzy_native")
-require("telescope").load_extension("media_files")
-require("telescope").load_extension("projects")
+telescope.load_extension("fzy_native")
+telescope.load_extension("media_files")
+telescope.load_extension("projects")

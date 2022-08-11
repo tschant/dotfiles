@@ -40,7 +40,7 @@ return packer.startup(function(use)
 		"sbdchd/neoformat",
 		"folke/trouble.nvim",
 		"natebosch/vim-lsc",
-		-- "mfussenegger/nvim-jdtls",
+		"mfussenegger/nvim-jdtls",
 		"fladson/vim-kitty"
 	}
 
