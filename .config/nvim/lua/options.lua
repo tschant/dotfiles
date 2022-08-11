@@ -42,7 +42,6 @@ u.opt("b", "expandtab", false)
 u.opt("b", "autoindent", true)
 u.opt("b", "smartindent", true)
 u.opt("b", "swapfile", false)
-u.opt("b", "undofile", true)
 u.opt("b", "fileencoding", "utf-8")
 u.opt("b", "syntax", "on")
 

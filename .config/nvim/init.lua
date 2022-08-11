@@ -21,6 +21,7 @@ local modules = {
 	"lsp/init",
 	-- "lsp/jdtls",
 	"hydra/all",
+	"plugin-configs/undotree",
 }
 
 -- No external requires, global configs

@@ -1,4 +1,4 @@
-local extra = {}
+local utils = {}
 local G = {}
 local Git = {}
 local api, fn, ft = vim.api, vim.fn, vim.bo.filetype
@@ -19,7 +19,7 @@ function G.exists(file)
     return ok, err
 end
 
-function G.isdir(path)
+function utils.isdir(path)
     if path == "" or path == nil then
         return false
     end
@@ -43,7 +43,7 @@ function Git.get_root_dir(path)
     -- Checks if provided directory contains git directory
     local function has_git_dir(dir)
         local git_dir = dir .. "/.git"
-        if G.isdir(git_dir) then
+        if utils.isdir(git_dir) then
             return git_dir
         end
     end
@@ -73,7 +73,7 @@ function Git.get_root_dir(path)
         (parent_path ~= path and Git.get_root_dir(parent_path) or nil)
 end
 
-function extra.get_branch()
+function utils.get_branch()
     if ft == "help" then
         return
     end
@@ -135,7 +135,7 @@ function extra.get_branch()
     return branch_name .. " "
 end
 
-function extra.check_workspace()
+function utils.check_workspace()
     local current_file = fn.expand("%:p")
     if current_file == "" or current_file == nil then
         return false
@@ -155,4 +155,4 @@ function extra.check_workspace()
     return true
 end
 
-return extra
+return utils
