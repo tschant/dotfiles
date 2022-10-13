@@ -1,0 +1,15 @@
+xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Button Scrolling Button' 12
+xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Scroll Method Enabled' 0 0 1
+
+######
+# \M - Meta 
+# \A - Alt
+# \C - Ctrl
+# \S - Shift
+
+# Button 6 mac back
+"xvkbd -text '\M\[Left]'"  # Sends Meta-left
+b:6
+# Button 7 mac forward
+"xvkbd -text '\M\[Right]'" # Sends Meta-Right
+b:7
