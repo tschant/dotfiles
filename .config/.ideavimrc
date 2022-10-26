@@ -1,0 +1,95 @@
+set nocompatible
+set modelines=5
+
+syntax on
+filetype off
+
+" setlocal spell spelllang=en_us
+set spell
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#rc()
+
+set t_Co=256
+set background=dark
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set nowrap
+set autoindent
+set rnu
+
+let mapleader = ','
+
+nnoremap ; :
+set encoding=utf-8
+
+Bundle 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'mg979/vim-visual-multi'
+Plugin 'kien/ctrlp.vim'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+
+Bundle 'terryma/vim-multiple-cursors'
+
+set backspace=indent,eol,start  " backspace for dummies
+set linespace=0                 " No extra spaces between rows
+set nu                          " Line numbers on
+set showmatch                   " show matching brackets/parenthesis
+set incsearch                   " find as you type search
+set hlsearch                    " highlight search terms
+set winminheight=0              " windows can be 0 line high
+set ignorecase                  " case insensitive search
+set smartcase                   " case sensitive when uc present
+set wildmenu                    " show list instead of just completing
+set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
+set scrolljump=5                " lines to scroll when cursor leaves screen
+set scrolloff=3                 " minimum lines to keep above and below cursor
+set foldenable                  " auto fold code
+set list
+set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+
+set timeoutlen=1000 ttimeoutlen=0
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
+nnoremap <leader>i :set invpaste paste?<CR>
+set pastetoggle=<leader>i
+set showmode
+let g:Tlist_Use_Right_Window   = 1
+let Tlist_WinWidth = 50
+
+map <leader>fi :setlocal foldmethod=indent<cr>
+map <leader>fs :setlocal foldmethod=syntax<cr>
+filetype plugin indent on
+let g:is_bash = 1
+let g:sh_fold_enabled = 3
+set foldmethod=syntax
+
+" http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+" do not regard "-" as word seperator (css Files!)
+set iskeyword+=-
+
+let g:xml_syntax_folding=1
+
+" For dragvisuals
+runtime plugin/dragvisuals.vim
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+
+" For Gundo
+nnoremap <leader>u :GundoToggle<CR>
+
+" ctrlp settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*.class,*.encrypted
+
+vmap <leader>y "+y
+nmap <leader>yy "+y

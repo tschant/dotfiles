@@ -3,17 +3,15 @@ local cmd = vim.cmd
 
 local Theming = {
     -- Press <space>fc to see all available themes
-    -- colorscheme = "base16-gruvbox-dark-pale",
-    colorscheme = "oxocarbon",
+    -- colorscheme = "oxocarbon",
     -- colorscheme = "catppuccin",
-    -- colorscheme = "srcery",
-    -- colorscheme = "nightfox",
-    -- colorscheme = "nordfox",
+    colorscheme = "noctis",
     colorscheme_style = "",
     statusline = "slant"
 }
 -- New colors aren't as nice, using old branch
 require("catppuccin").setup({
+	flavour = 'macchiato',
 	transparent_background = true,
 	term_colors = true,
 	integrations = {
@@ -28,7 +26,7 @@ require("catppuccin").setup({
 	}
 })
 -- vim.g.catppuccin_flavour = "macchiato"
-vim.g.catppuccin_flavour = "mocha"
+vim.g.catppuccin_flavour = "macchiato"
 -- vim.g.catppuccin_flavour = "latte"
 
 cmd("colorscheme " .. Theming.colorscheme)
