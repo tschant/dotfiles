@@ -10,7 +10,7 @@ u.map("n", "<leader>H", ":sp<CR>")
 -- u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 u.map("n", "n", "nzz")
 u.map("n", "N", "Nzz")
-u.map("n", "<leader>cc", ":let @+=expand('%:p')<CR>")
+u.map("n", "<leader>cc", ":let @+=expand('%')<CR>")
 u.map("t", "<leader><ESC>", "<C-\\><C-n>")
 
 u.map("n", "<leader>si", ":setlocal foldmethod=indent<CR>")
@@ -18,7 +18,9 @@ u.map("n", "<leader>ss", ":setlocal foldmethod=expr<CR>") -- expr for treesitter
 u.map("x", "<leader>y", "\"*y")
 
 -- -- Move selected line / block of text in visual mode
+-- u.map("n", "K", ":move '<-2<CR>gv-gv")
 u.map("x", "K", ":move '<-2<CR>gv-gv")
+-- u.map("n", "J", ":move '>+1<CR>gv-gv")
 u.map("x", "J", ":move '>+1<CR>gv-gv")
 
 -- Better window navigation
@@ -58,8 +60,8 @@ u.map("n", "<S-TAB>", ":BufferPrev<CR>")
 -- u.map("n", "<leader>rr", ":NvimTreeRefresh<CR>")
 
 -- Neotree
-u.map("n", "<leader>gs", ":Neotree git_status reveal bottom toggle=true<CR>")
 u.map("n", "<leader>e", ":Neotree filesystem reveal left toggle=true<CR>")
+u.map("n", "<leader>gs", ":Neotree git_status reveal bottom toggle=true<CR>")
 u.map("n", "<leader>xx", ":Neotree diagnostics reveal bottom toggle=true<cr>")
 
 -- Dashboard

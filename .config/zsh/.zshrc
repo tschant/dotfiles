@@ -5,6 +5,11 @@ SAVEHIST=10000
 setopt HIST_IGNORE_ALL_DUPS
 setopt INC_APPEND_HISTORY
 # setopt SHARE_HISTORY
+# preexec_custom_history() {
+# 	echo "$HOSTNAME $$ $(date "+%Y-%m-%dT%H:%M:%S%z") $1" >> "$HISTFILE"
+# }
+# preexec_functions+=(preexec_custom_history)
+
 
 # vi mode
 bindkey -v

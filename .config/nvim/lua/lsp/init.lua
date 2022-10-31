@@ -60,7 +60,7 @@ require("trouble").setup({
 
 -- Stop lsp diagnostics from showing virtual text
 vim.diagnostic.config({
-	virtual_text = {spacing = 4}, -- = false,
+	virtual_text = {spacing = 6, severity = "error"}, -- = false,
 	update_in_insert = false,
 	underline = true,
 	signs = true,
@@ -193,7 +193,7 @@ nvim_lsp.sumneko_lua.setup {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local function on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")

@@ -4,6 +4,7 @@ require('Comment').setup()
 require("neoscroll").setup()
 require("nvim-autopairs").setup()
 require("focus").setup()
+require('leap').add_default_mappings()
 
 -- Illuminate
 vim.g.Illuminate_ftblacklist = {"NvimTree"}

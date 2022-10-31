@@ -7,18 +7,15 @@ alias \
 
 # shortcuts
 alias \
-	sysinfo="inxi -Fxz" \
 	untar="tar -xvf" \
 	vim="nvim" \
 	v="nvim" \
 	cp="cp -iv" \
 	..="cd .." \
 	mv="mv -iv" \
-	mv="mv -iv" \
 	dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
 	reload-profile="source ~/.config/zsh/.zshrc" \
-	weather="curl wttr.in" \
-	chk="git checkout"
+	weather="curl wttr.in"
 
 # Git things, use `,` as vimprefix so....
 alias ,=git	\
@@ -65,5 +62,8 @@ if type exa &>/dev/null; then
 fi
 if type fzf &>/dev/null; then
 	alias ,ff='v $(fzf)'
+fi
+if type wishlist &>/dev/null; then
+	alias sshlist=wishlist
 fi
 

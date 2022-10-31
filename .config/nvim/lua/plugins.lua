@@ -40,7 +40,7 @@ return packer.startup(function(use)
 		"sbdchd/neoformat",
 		"folke/trouble.nvim",
 		"natebosch/vim-lsc",
-		-- "mfussenegger/nvim-jdtls",
+		"mfussenegger/nvim-jdtls",
 		"fladson/vim-kitty"
 	}
 
@@ -182,7 +182,7 @@ return packer.startup(function(use)
 		"mg979/vim-visual-multi",
 		-- "tpope/vim-surround",
 		"kylechui/nvim-surround",
-		"ggandor/lightspeed.nvim",
+		"ggandor/leap.nvim",
 		{"anuvyklack/pretty-fold.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		{"anuvyklack/fold-preview.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		"petertriho/nvim-scrollbar",
@@ -195,13 +195,8 @@ return packer.startup(function(use)
 	--"norcalli/nvim-base16.lua",
 	use {
 		"catppuccin/nvim", branch = "main",
-		{"shaunsingh/oxocarbon.nvim", run = "./install.sh"},
-		-- {"catppuccin/nvim", branch = "old-catppuccino"},
-		-- "rebelot/kanagawa.nvim",
-		-- "EdenEast/nightfox.nvim",
-		-- "srcery-colors/srcery-vim",
-		-- "christianchiarulli/nvcode-color-schemes.vim",
-		-- "chriskempson/base16-vim",
+		{"shaunsingh/oxocarbon.nvim", branch = "fennel"},
+		{'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }},
 	}
 
 	if packer_bootstrap then
