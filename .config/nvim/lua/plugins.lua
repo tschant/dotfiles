@@ -182,7 +182,7 @@ return packer.startup(function(use)
 		"mg979/vim-visual-multi",
 		-- "tpope/vim-surround",
 		"kylechui/nvim-surround",
-		"ggandor/leap.nvim",
+		"ggandor/lightspeed.nvim",
 		{"anuvyklack/pretty-fold.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		{"anuvyklack/fold-preview.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		"petertriho/nvim-scrollbar",
@@ -197,6 +197,7 @@ return packer.startup(function(use)
 		"catppuccin/nvim", branch = "main",
 		{"shaunsingh/oxocarbon.nvim", branch = "fennel"},
 		{'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }},
+		'LunarVim/horizon.nvim',
 	}
 
 	if packer_bootstrap then

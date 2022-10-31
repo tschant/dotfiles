@@ -6,6 +6,7 @@ local Theming = {
     -- colorscheme = "oxocarbon",
     -- colorscheme = "catppuccin",
     colorscheme = "noctis",
+    -- colorscheme = "horizon",
     colorscheme_style = "",
     statusline = "slant"
 }
@@ -39,6 +40,7 @@ cmd "hi NormalNC ctermbg=none guibg=#262626"
 cmd "hi EndOfBuffer guifg=#525252 guibg=NONE"
 cmd "hi gitcommitOverflow guifg=#525252 guibg=NONE"
 cmd "hi gitcommitTrailers guifg=#525252 guibg=NONE"
+cmd "hi Visual guibg=#525252"
 -- cmd "hi Comment guifg=#307050"
 -- cmd "au ColorScheme * hi Comment guifg=#3d4149"
 -- cmd "hi SignColumn guibg=NONE"
