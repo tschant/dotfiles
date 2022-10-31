@@ -197,6 +197,7 @@ return packer.startup(function(use)
 		"catppuccin/nvim", branch = "main",
 		{"shaunsingh/oxocarbon.nvim", branch = "fennel"},
 		{'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }},
+		'LunarVim/horizon.nvim',
 	}
 
 	if packer_bootstrap then
