@@ -15,6 +15,7 @@ local modules = {
 	"plugin-configs/vimwiki",
 	"plugin-configs/git-signs",
 	"plugin-configs/barbar",
+	"plugin-configs/indent-blankline",
 	-- "plugin-configs/bufferline",
 	-- LSP
 	"lsp/completion",

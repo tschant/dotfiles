@@ -4,7 +4,6 @@ require('Comment').setup()
 require("neoscroll").setup()
 require("nvim-autopairs").setup()
 require("focus").setup()
-require('leap').add_default_mappings()
 
 -- Illuminate
 vim.g.Illuminate_ftblacklist = {"NvimTree"}
@@ -120,24 +119,3 @@ require "nvim-treesitter.configs".setup {
 	autotag = {enable = true}
 }
 
--- Indent Guides
-require("indent_guides").setup(
-	{
-		indent_levels = 30,
-		indent_guide_size = 1,
-		indent_start_level = 1,
-		indent_space_guides = true,
-		indent_tab_guides = true,
-		indent_soft_pattern = "\\s",
-		exclude_filetypes = {"help", "dashboard", "startify", "NvimTree", "vista", "sagahover"},
-		even_colors = {fg = "#2a383477", bg = "#332b36"},
-		odd_colors = {fg = "#332b3677", bg = "#2a3834"}
-	}
-)
-
-require("indent_blankline").setup {
-	space_char_blankline = " ",
-	show_current_context = true,
-	show_current_context_start = true,
-	filetype_exclude = {"help", "dashboard", "startify", "NvimTree", "vista", "sagahover"},
-}
