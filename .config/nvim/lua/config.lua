@@ -5,9 +5,11 @@ Opts = {
 	scrolloff = 10,
 	wrap = false,
 	cursorline = true,
+	list = true,
 	listchars = true,
 	language = "en,cjk",
-	winbar = "%{%v:lua.require'winbar'.eval()%}"
+	winbar = "%{%v:lua.require'winbar'.eval()%}",
+	encoding = "utf-8",
 }
 
 Formatting = {
