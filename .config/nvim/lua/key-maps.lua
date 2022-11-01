@@ -15,7 +15,11 @@ u.map("t", "<leader><ESC>", "<C-\\><C-n>")
 
 u.map("n", "<leader>si", ":setlocal foldmethod=indent<CR>")
 u.map("n", "<leader>ss", ":setlocal foldmethod=expr<CR>") -- expr for treesitter based folding
-u.map("x", "<leader>y", "\"*y")
+u.map("x", "<leader>y", "\"+y")
+
+-- VimMulti
+u.map("n", "<M-Up>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>")
+u.map("n", "<M-Down>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>")
 
 -- -- Move selected line / block of text in visual mode
 -- u.map("n", "K", ":move '<-2<CR>gv-gv")

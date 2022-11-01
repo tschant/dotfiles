@@ -1,6 +1,7 @@
+local u = require("utils.core")
 local db = require('dashboard')
 
-db.disable_at_vimenter = 0 -- dashboard is disabled by default
+-- db.disable_at_vimenter = 0 -- dashboard is disabled by default
 db.hide_statusline = 1
 db.hide_tabline = 1
 
@@ -65,3 +66,20 @@ db.custom_footer = {
     "   ",
     "TDS"
 }
+
+--[[ db.session_directory = "~/.local/share/nvim/sessions/"
+db.session_auto_save_on_exit = 1
+
+local autocmds = {
+	dashboard = {
+		{"User", "DBSessionSavePre", "NeoTreeClose"}
+	}
+}
+u.define_augroups(autocmds) ]]
+
+--[[ autocmd('User', {
+    pattern = 'DBSessionSavePre',
+    callback = function()
+      pcall(vim.cmd, 'NeotreeClose')
+    end,
+}) ]]
