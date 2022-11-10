@@ -1,6 +1,7 @@
 local u = require("utils.core")
 local cmd = vim.cmd
 
+vim.g.mapleader = ","
 -- Global
 u.opt("o", "incsearch", true)
 u.opt("o", "ignorecase", true)

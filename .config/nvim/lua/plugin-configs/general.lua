@@ -4,6 +4,7 @@ require('Comment').setup()
 require("neoscroll").setup()
 require("nvim-autopairs").setup()
 require("focus").setup()
+require('portal').setup()
 
 -- Illuminate
 vim.g.Illuminate_ftblacklist = {"NvimTree"}
@@ -119,3 +120,13 @@ require "nvim-treesitter.configs".setup {
 	autotag = {enable = true}
 }
 
+require('dressing').setup({
+	select = {
+		telescope = {
+			layout_config = {
+				width = 120,
+				height = 25,
+			},
+		},
+	},
+})
