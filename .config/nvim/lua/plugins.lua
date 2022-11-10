@@ -70,7 +70,8 @@ return packer.startup(function(use)
 			{"nvim-telescope/telescope-media-files.nvim"},
 			-- {"nvim-telescope/telescope-project.nvim"},
 			("ahmedkhalf/project.nvim")
-		}
+		},
+		"stevearc/dressing.nvim"
 	}
 
 	-- Treesitter
@@ -93,10 +94,11 @@ return packer.startup(function(use)
 		end
 	}
 
-	-- Hydra
+	-- key-map fun
 	use {
-		'anuvyklack/hydra.nvim',
-		requires = 'anuvyklack/keymap-layer.nvim'
+		{'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim'},
+		'folke/which-key.nvim',
+		'mrjones2014/legendary.nvim'
 	}
 
 	-- Git
@@ -180,6 +182,7 @@ return packer.startup(function(use)
 		"norcalli/nvim-colorizer.lua",
 		"RRethy/vim-illuminate",
 		"mg979/vim-visual-multi",
+		"cbochs/portal.nvim",
 		-- "tpope/vim-surround",
 		"kylechui/nvim-surround",
 		"ggandor/lightspeed.nvim",
