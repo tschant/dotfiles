@@ -174,7 +174,6 @@ return packer.startup(function(use)
 	-- General plugins
 	use {
 		"mbbill/undotree",
-		"karb94/neoscroll.nvim",
 		"glepnir/dashboard-nvim",
 		-- "glepnir/indent-guides.nvim",
 		"lukas-reineke/indent-blankline.nvim",
@@ -188,6 +187,7 @@ return packer.startup(function(use)
 		"ggandor/lightspeed.nvim",
 		{"anuvyklack/pretty-fold.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
 		{"anuvyklack/fold-preview.nvim", requires = 'anuvyklack/nvim-keymap-amend'},
+		"karb94/neoscroll.nvim",
 		"petertriho/nvim-scrollbar",
 		"kevinhwang91/nvim-hlslens",
 		"ojroques/nvim-bufdel",

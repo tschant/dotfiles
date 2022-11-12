@@ -1,6 +1,6 @@
 local winbar = {}
 
-local colors = require("colors").get()
+local colors = require("utils.colors")
 vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.grey })
 vim.api.nvim_set_hl(0, "WinBarContent", { fg = colors.green, bg = colors.grey })
 

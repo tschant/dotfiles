@@ -1,5 +1,4 @@
 local setup_plugin = require("utils.core").setup_plugin
-local colors = require("colors").dark
 setup_plugin("bufferline", {
 	options = {
 		offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
@@ -45,88 +44,4 @@ setup_plugin("bufferline", {
 	},
 	highlights = {
 	}
-	--[[ ,
-		background = {
-			guifg = colors.grey,
-		-- guibg = colors.bg2,
-		},
-		buffer_selected = {
-			guifg = colors.grey,
-			guibg = colors.bg,
-			gui = "bold",
-		},
-		buffer_visible = {
-			guifg = colors.grey,
-		-- guibg = colors.bg2,
-		},
-			-- for diagnostics = "nvim_lsp"
-		error = {
-			guifg = colors.grey,
-			-- guibg = colors.bg2,
-		},
-		error_diagnostic = {
-			guifg = colors.grey,
-		-- guibg = colors.bg2,
-		},
-	-- close buttons
-		close_button = {
-			guifg = colors.grey,
-		-- guibg = colors.bg2,
-		},
-		close_button_visible = {
-			guifg = colors.grey,
-		-- guibg = colors.bg2,
-		},
-		close_button_selected = {
-			guifg = colors.red,
-		-- guibg = colors.bg2,
-		},
-		fill = {
-			guifg = colors.grey,
-		-- guibg = colors.bg2,
-		},
-		indicator_selected = {
-			guifg = colors.bg2,
-		-- guibg = colors.bg2,
-		},
-		-- modified
-		modified = {
-			guifg = colors.red,
-		-- guibg = colors.bg2,
-		},
-		modified_visible = {
-			guifg = colors.red,
-		-- guibg = colors.bg2,
-		},
-		modified_selected = {
-			guifg = colors.green,
-			guibg = colors.bg,
-		},
-		-- separators
-		separator = {
-			guifg = colors.grey,
-			guibg = colors.grey,
-		},
-		separator_visible = {
-			guifg = colors.grey,
-			guibg = colors.grey,
-		},
-		separator_selected = {
-			guifg = colors.grey,
-			guibg = colors.grey,
-		},
-		-- tabs
-		tab = {
-			guifg = colors.grey,
-			guibg = colors.bg,
-		},
-		tab_selected = {
-			guifg = colors.bg2,
-			guibg = colors.blue,
-		},
-		tab_close = {
-			guifg = colors.red,
-			guibg = colors.black,
-		},
-	}, ]]
 })

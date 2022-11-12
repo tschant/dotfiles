@@ -12,7 +12,7 @@ vim.g.Illuminate_highlightUnderCursor = 0
 vim.g.Illuminate_delay = 500
 
 -- Scrollbar
-local color = require("colors").dark
+local color = require("utils.colors")
 require("scrollbar").setup({
 	handle = {
 		color = color.bg2
@@ -22,7 +22,7 @@ require("scrollbar").setup({
 		Warn = { color = color.warning },
 		Info = { color = color.info },
 		Hint = { color = color.comments },
-		Search = { color = color.DarkGoldenrod2 },
+		Search = { color = color.orange },
 	}
 })
 

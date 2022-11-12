@@ -1,5 +1,5 @@
--- require("handlers")
 local cmd = vim.cmd
+local colors = require("utils.colors")
 
 local Theming = {
     -- Press <space>fc to see all available themes
@@ -12,7 +12,8 @@ local Theming = {
 }
 -- New colors aren't as nice, using old branch
 require("catppuccin").setup({
-	flavour = 'macchiato',
+	-- flavour = 'latte',
+	flavour = 'mocha',
 	transparent_background = true,
 	term_colors = true,
 	integrations = {
@@ -27,7 +28,7 @@ require("catppuccin").setup({
 	}
 })
 -- vim.g.catppuccin_flavour = "macchiato"
-vim.g.catppuccin_flavour = "macchiato"
+-- vim.g.catppuccin_flavour = "mocha"
 -- vim.g.catppuccin_flavour = "latte"
 
 cmd("colorscheme " .. Theming.colorscheme)

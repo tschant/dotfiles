@@ -1,4 +1,5 @@
 Opts = {
+	color_mode = 'dark',
 	jump_last_pos = true,
 	highlight_yank = true,
 	relativenumber = true,

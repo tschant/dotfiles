@@ -1,4 +1,4 @@
-local colors = require("colors").dark
+local colors = require("utils.colors")
 local lsp = require "feline.providers.lsp"
 local lsp_severity = vim.diagnostic.severity
 local config = {
@@ -82,17 +82,18 @@ local mode_colors = {
 	["v"] = { "VISUAL", colors.cyan },
 	["V"] = { "V-LINE", colors.cyan },
 	[""] = { "V-BLOCK", colors.cyan },
+	["V-M"] = { "V-MULTI", colors.cyan },
 	["R"] = { "REPLACE", colors.orange },
 	["Rv"] = { "V-REPLACE", colors.orange },
 	["s"] = { "SELECT", colors.blue },
 	["S"] = { "S-LINE", colors.blue },
 	[""] = { "S-BLOCK", colors.blue },
-	["c"] = { "COMMAND", colors.plum3 },
-	["cv"] = { "COMMAND", colors.plum3 },
-	["ce"] = { "COMMAND", colors.plum3 },
-	["r"] = { "PROMPT", colors.SkyBlue2 },
-	["rm"] = { "MORE", colors.SkyBlue2 },
-	["r?"] = { "CONFIRM", colors.SkyBlue2 },
+	["c"] = { "COMMAND", colors.magenta },
+	["cv"] = { "COMMAND", colors.magenta },
+	["ce"] = { "COMMAND", colors.magenta },
+	["r"] = { "PROMPT", colors.lightblue },
+	["rm"] = { "MORE", colors.lightblue },
+	["r?"] = { "CONFIRM", colors.lightblue },
 	["!"] = { "SHELL", colors.green },
 }
 
@@ -128,7 +129,7 @@ components.active[1][3] = {
 	end,
 	hl = function ()
 		return {
-			fg = colors.comments,
+			fg = colors.lightblue,
 			bg = mode_colors[vim.fn.mode()][2],
 		}
 	end,
@@ -147,15 +148,15 @@ components.active[1][4] = {
 	end,
 
 	hl = {
-		fg = colors.grey,
-		bg = colors.bg2,
+		fg = colors.blue,
+		bg = colors.bg,
 	},
 	right_sep = { str = statusline_style.right, hl = { fg = colors.bg2, bg = colors.bg } },
 }
 
 components.active[1][5] = {
 	provider = function()
-		local filename = vim.fn.expand "%:t"
+		local filename = vim.fn.expand "%"
 		local extension = vim.fn.expand "%:e"
 		local icon = require("nvim-web-devicons").get_icon(filename, extension)
 		if icon == nil then
@@ -177,26 +178,26 @@ components.active[1][5] = {
 components.active[1][6] = {
 	provider = "git_diff_added",
 	hl = {
-		fg = colors.grey,
-		bg = colors.bg,
+		fg = colors.green,
+		bg = colors.bg2,
 	},
-	icon = " ",
+	icon = "  ",
 }
 -- diffModfified
 components.active[1][7] = {
 	provider = "git_diff_changed",
 	hl = {
-		fg = colors.grey_fg2,
-		bg = colors.statusline_bg,
+		fg = colors.blue,
+		bg = colors.bg2,
 	},
-	icon = "   ",
+	icon = "  ",
 }
 -- diffRemove
 components.active[1][8] = {
 	provider = "git_diff_removed",
 	hl = {
-		fg = colors.grey,
-		bg = colors.bg,
+		fg = colors.red,
+		bg = colors.bg2,
 	},
 	icon = "  ",
 }
@@ -225,7 +226,7 @@ components.active[1][11] = {
 	enabled = function()
 		return lsp.diagnostics_exist(lsp_severity.HINT)
 	end,
-	hl = { fg = colors.grey },
+	hl = { fg = colors.blue },
 	icon = "  ",
 }
 
@@ -234,7 +235,7 @@ components.active[1][12] = {
 	enabled = function()
 		return lsp.diagnostics_exist(lsp_severity.INFO)
 	end,
-	hl = { fg = colors.chartreuse3 },
+	hl = { fg = colors.green },
 	icon = "  ",
 }
 
@@ -274,7 +275,10 @@ components.active[2][1] = {
 	enabled = shortline or function(winid)
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 80
 	end,
-	hl = { fg = colors.green },
+	hl = {
+		fg = colors.green,
+		bg = colors.bg2
+	},
 }
 
 -- Right section
@@ -301,7 +305,7 @@ components.active[3][2] = {
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
 	end,
 	hl = {
-		fg = colors.grey,
+		fg = colors.blue,
 		bg = colors.bg,
 	},
 	icon = "  ",
@@ -321,8 +325,8 @@ components.active[3][4] = {
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
 	end,
 	hl = {
-		fg = colors.comments,
-		bg = colors.comments,
+		fg = colors.lightblue,
+		bg = colors.lightblue,
 	},
 }
 
@@ -333,7 +337,7 @@ components.active[3][5] = {
 	end,
 	hl = {
 		fg = colors.black,
-		bg = colors.comments,
+		bg = colors.lightblue,
 	},
 }
 
@@ -357,7 +361,7 @@ components.active[3][6] = {
 
 	hl = {
 		fg = colors.bg,
-		bg = colors.comments,
+		bg = colors.lightblue,
 	},
 }
 
