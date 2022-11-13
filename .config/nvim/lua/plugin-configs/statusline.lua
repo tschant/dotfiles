@@ -12,7 +12,8 @@ local config = {
 	shown = {},
 	-- truncate statusline on small screens
 	shortline = true,
-	style = "block", -- default, round , slant , block , arrow
+	-- default, round , slant , block , arrow
+	style = "arrow",
 }
 
 local icon_styles = {
@@ -24,8 +25,8 @@ local icon_styles = {
 		position_icon = " ",
 	},
 	arrow = {
-		left = "",
-		right = "",
+		left = " ",
+		right = " ",
 		main_icon = "  ",
 		vi_mode_icon = " ",
 		position_icon = " ",
@@ -48,7 +49,7 @@ local icon_styles = {
 	},
 
 	slant = {
-		left = " ",
+		left = " ",
 		right = " ",
 		main_icon = "  ",
 		vi_mode_icon = " ",
@@ -82,7 +83,7 @@ local mode_colors = {
 	["v"] = { "VISUAL", colors.cyan },
 	["V"] = { "V-LINE", colors.cyan },
 	[""] = { "V-BLOCK", colors.cyan },
-	["V-M"] = { "V-MULTI", colors.cyan },
+	["v-m"] = { "V-MULTI", colors.cyan },
 	["R"] = { "REPLACE", colors.orange },
 	["Rv"] = { "V-REPLACE", colors.orange },
 	["s"] = { "SELECT", colors.blue },
@@ -129,17 +130,25 @@ components.active[1][3] = {
 	end,
 	hl = function ()
 		return {
-			fg = colors.lightblue,
 			bg = mode_colors[vim.fn.mode()][2],
+			fg = mode_colors[vim.fn.mode()][2],
 		}
 	end,
-	right_sep = { str = statusline_style.right, hl = { fg = colors.bg2, bg = colors.bg2 } },
+	right_sep = {
+		str = statusline_style.right,
+		hl = function ()
+			return {
+				bg = colors.bg3,
+				fg = mode_colors[vim.fn.mode()][2]
+			}
+		end
+	},
 }
 
 -- File info
 components.active[1][4] = {
 	provider = function()
-		local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+		local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
 		return "  " .. dir_name .. " "
 	end,
 
@@ -148,15 +157,21 @@ components.active[1][4] = {
 	end,
 
 	hl = {
-		fg = colors.blue,
-		bg = colors.bg,
+		fg = colors.white,
+		bg = colors.bg3,
 	},
-	right_sep = { str = statusline_style.right, hl = { fg = colors.bg2, bg = colors.bg } },
+	right_sep = {
+		str = statusline_style.right,
+		hl = {
+			fg = colors.bg3,
+			bg = colors.bg2
+		}
+	},
 }
 
 components.active[1][5] = {
 	provider = function()
-		local filename = vim.fn.expand "%"
+		local filename = vim.fn.expand "%:~:."
 		local extension = vim.fn.expand "%:e"
 		local icon = require("nvim-web-devicons").get_icon(filename, extension)
 		if icon == nil then
@@ -170,8 +185,15 @@ components.active[1][5] = {
 	end,
 	hl = {
 		fg = colors.white,
-		bg = colors.bg,
-	}
+		bg = colors.bg2,
+	},
+	right_sep = {
+		str = statusline_style.right,
+		hl = {
+			fg = colors.bg2,
+			bg = colors.bg
+		}
+	},
 }
 
 -- Lines changed start
@@ -179,7 +201,7 @@ components.active[1][6] = {
 	provider = "git_diff_added",
 	hl = {
 		fg = colors.green,
-		bg = colors.bg2,
+		bg = colors.bg,
 	},
 	icon = "  ",
 }
@@ -188,7 +210,7 @@ components.active[1][7] = {
 	provider = "git_diff_changed",
 	hl = {
 		fg = colors.blue,
-		bg = colors.bg2,
+		bg = colors.bg,
 	},
 	icon = "  ",
 }
@@ -197,7 +219,7 @@ components.active[1][8] = {
 	provider = "git_diff_removed",
 	hl = {
 		fg = colors.red,
-		bg = colors.bg2,
+		bg = colors.bg,
 	},
 	icon = "  ",
 }
@@ -277,7 +299,7 @@ components.active[2][1] = {
 	end,
 	hl = {
 		fg = colors.green,
-		bg = colors.bg2
+		bg = colors.bg
 	},
 }
 
@@ -294,8 +316,15 @@ components.active[3][1] = {
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
 	end,
 	hl = {
-		fg = colors.grey,
-		bg = colors.bg
+		fg = colors.bg3,
+		bg = colors.bg2
+	},
+	left_sep = {
+		str = statusline_style.left,
+		hl = {
+			fg = colors.bg2,
+			bg = colors.bg
+		}
 	},
 }
 
@@ -305,21 +334,20 @@ components.active[3][2] = {
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
 	end,
 	hl = {
-		fg = colors.blue,
-		bg = colors.bg,
+		fg = colors.white,
+		bg = colors.bg3,
 	},
 	icon = "  ",
+	left_sep = {
+		str = statusline_style.left,
+		hl = {
+			fg = colors.bg3,
+			bg = colors.bg
+		}
+	},
 }
 
 components.active[3][3] = {
-	provider = " " .. statusline_style.left,
-	hl = {
-		fg = colors.bg,
-		bg = colors.bg,
-	},
-}
-
-components.active[3][4] = {
 	provider = statusline_style.left,
 	enabled = shortline or function(winid)
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
@@ -328,9 +356,16 @@ components.active[3][4] = {
 		fg = colors.lightblue,
 		bg = colors.lightblue,
 	},
+	left_sep = {
+		str = statusline_style.left,
+		hl = {
+			fg = colors.lightblue,
+			bg = colors.bg3
+		}
+	},
 }
 
-components.active[3][5] = {
+components.active[3][4] = {
 	provider = statusline_style.position_icon,
 	enabled = shortline or function(winid)
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
@@ -341,7 +376,7 @@ components.active[3][5] = {
 	},
 }
 
-components.active[3][6] = {
+components.active[3][5] = {
 	provider = function()
 		local current_line = vim.fn.line "."
 		local total_line = vim.fn.line "$"

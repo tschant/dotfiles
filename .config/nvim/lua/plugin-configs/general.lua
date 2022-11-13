@@ -11,6 +11,10 @@ vim.g.Illuminate_ftblacklist = {"NvimTree"}
 vim.g.Illuminate_highlightUnderCursor = 0
 vim.g.Illuminate_delay = 500
 
+-- vim-multi-visual
+vim.g.VM_silent_exit = 1
+-- vim.g.VM_set_statusline = 0
+
 -- Scrollbar
 local color = require("utils.colors")
 require("scrollbar").setup({
@@ -35,6 +39,7 @@ require('bufdel').setup {
 
 -- hlslens (search function)
 require("hlslens").setup({
+	calm_down = true,
 	build_position_cb = function(plist, bufnr, changedtick, pattern)
 		require('scrollbar').search_handler.show(plist.start_pos)
 	end
@@ -75,9 +80,6 @@ require("pretty-fold").setup({
 	}
 })
 require('fold-preview').setup()
-require("hlslens").setup({
-	calm_down = true
-})
 
 -- Surround
 require("nvim-surround").setup({

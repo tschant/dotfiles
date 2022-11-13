@@ -4,43 +4,63 @@ local latte = require("catppuccin.palettes").get_palette "latte"
 
 M = {}
 M.dark = {
-	bg = mocha.crust,
-	bg2 = mocha.mantle,
-	base = mocha.base,
+	bg = mocha.mantle,
+	bg2 = mocha.surface0,
+	bg3 = mocha.surface1,
 	black = mocha.mantle,
 	yellow = mocha.yellow,
 	cyan = mocha.sky,
+	lightblue = mocha.sapphire,
+	blue = mocha.blue,
 	green = mocha.green,
 	orange = mocha.peach,
-	purple = mocha.lavender, --act2
+	purple = mocha.lavender,
 	magenta = mocha.mauve,
-	grey = mocha.overlay0,
-	gray = mocha.overlay1, -- visual
-	blue = mocha.blue,
-	lightblue = mocha.sapphire, -- modified
 	red = mocha.red,
+	grey = mocha.overlay0,
+	lightgrey = mocha.subtext0,
 	white = mocha.text,
 	-- custom colors
 	comments = "#2aa1ae",
 	error = "#FC5C94",
 	warning = "#F3EA98",
 	info = "#8DE6F7"
+	-- bg = "#161616",
+	-- bg2 = "#181825",
+	-- bg3 = "#181825",
+	-- black = "#131313",
+	-- yellow = "#d5971a",
+	-- cyan = "#16a3b6",
+	-- lightblue = "#49d6e9",
+	-- blue = "#49ace9",
+	-- green = "#16b673",
+	-- orange = "#e66533",
+	-- purple = "#7060eb",
+	-- magenta = "#7f659a",
+	-- red = "#df769b",
+	-- grey = "#525252",
+	-- lightgrey = mocha.subtext0,
+	-- white = "#dde1e6",
+	-- -- custom colors
+	-- comments = "#2aa1ae",
+	-- error = "#FC5C94",
+	-- warning = "#e4b781",
+	-- info = "#8DE6F7"
 }
 
 M.light = {
 	bg = latte.surface0,
 	bg2 = latte.surface1,
-	base = latte.base,
+	bg3 = latte.surface2,
 	yellow = latte.yellow,
 	cyan = latte.sky,
 	green = latte.green,
 	orange = latte.peach,
-	purple = latte.lavender, --act2
+	purple = latte.lavender,
 	magenta = latte.mauve,
 	grey = latte.overlay0,
-	gray = latte.overlay1, -- visual
 	blue = latte.blue,
-	lightblue = latte.sapphire, -- modified
+	lightblue = latte.sapphire,
 	red = latte.red,
 	white = mocha.text,
 	-- custom colors
@@ -49,26 +69,5 @@ M.light = {
 	warning = "#F3EA98",
 	info = "#8DE6F7"
 }
-
--- function M.Color(val)
---     return function()
---         local dark = M.dark
---         local light = M.light
---
---         if vim.o.background ~= nil and vim.o.background == "light" then
---             if light[val] ~= nil then
---                 return light[val]
---             else
---                 return light.error
---             end
---         elseif vim.o.background ~= nil and vim.o.background == "dark" then
---             if dark[val] ~= nil then
---                 return dark[val]
---             else
---                 return dark.error
---             end
---         end
---     end
--- end
 
 return M[Opts.color_mode]

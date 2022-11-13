@@ -27,9 +27,6 @@ require("catppuccin").setup({
 		gitsigns = true
 	}
 })
--- vim.g.catppuccin_flavour = "macchiato"
--- vim.g.catppuccin_flavour = "mocha"
--- vim.g.catppuccin_flavour = "latte"
 
 cmd("colorscheme " .. Theming.colorscheme)
 
