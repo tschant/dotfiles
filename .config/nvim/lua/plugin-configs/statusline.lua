@@ -316,7 +316,7 @@ components.active[3][1] = {
 		return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
 	end,
 	hl = {
-		fg = colors.bg3,
+		fg = colors.white,
 		bg = colors.bg2
 	},
 	left_sep = {
@@ -342,7 +342,7 @@ components.active[3][2] = {
 		str = statusline_style.left,
 		hl = {
 			fg = colors.bg3,
-			bg = colors.bg
+			bg = colors.bg2
 		}
 	},
 }
