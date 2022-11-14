@@ -18,15 +18,19 @@ vim.g.VM_silent_exit = 1
 -- Scrollbar
 local color = require("utils.colors")
 require("scrollbar").setup({
+	show = true,
 	handle = {
 		color = color.bg2
 	},
 	marks = {
-		Error = { color = color.error },
-		Warn = { color = color.warning },
-		Info = { color = color.info },
-		Hint = { color = color.comments },
-		Search = { color = color.orange },
+		Error     = { color = color.error },
+		Warn      = { color = color.warning },
+		Info      = { color = color.info },
+		Hint      = { color = color.comments },
+		Search    = { text = "", color = color.white },
+		GitAdd    = { text = "⊕", color = color.green },
+		GitChange = { text = "⌾", color = color.blue },
+		GitDelete = { text = "⊖", color = color.red },
 	}
 })
 
@@ -36,11 +40,10 @@ require('bufdel').setup {
   quit = true,
 }
 
-
 -- hlslens (search function)
 require("hlslens").setup({
-	calm_down = true,
 	build_position_cb = function(plist, bufnr, changedtick, pattern)
+		-- require('scrollbar.handlers.search').handler.show(plist.start_pos)
 		require('scrollbar').search_handler.show(plist.start_pos)
 	end
 })

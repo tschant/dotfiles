@@ -48,4 +48,4 @@ require("gitsigns").setup {
 	end
 }
 
-
+require("scrollbar.handlers.gitsigns").setup()

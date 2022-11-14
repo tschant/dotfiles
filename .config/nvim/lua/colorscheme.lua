@@ -47,6 +47,7 @@ cmd "hi Visual guibg=#525252"
 -- cmd "hi Pmenu  guibg=#282c34"
 --
 -- -- git signs
-cmd "hi DiffAdd guifg=#81A1C1 guibg = none"
-cmd "hi DiffChange guifg =#3A3E44 guibg = none"
-cmd "hi DiffModified guifg = #81A1C1 guibg = none"
+cmd("hi DiffAdd guifg=" .. colors.green .. " guibg = none")
+cmd("hi DiffChange guifg =" .. colors.blue .. " guibg = none")
+cmd("hi DiffModified guifg =" .. colors.orange .. " guibg = none")
+cmd("hi DiffDeleted guifg =" .. colors.red .. " guibg = none")
