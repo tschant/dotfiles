@@ -70,8 +70,7 @@ return packer.startup(function(use)
 				"nvim-lua/plenary.nvim",
 				"nvim-telescope/telescope-fzy-native.nvim",
 				"nvim-telescope/telescope-media-files.nvim",
-				-- "nvim-telescope/telescope-project.nvim",
-				"ahmedkhalf/project.nvim"
+				"nvim-telescope/telescope-project.nvim",
 			}
 		},
 	}
@@ -85,6 +84,7 @@ return packer.startup(function(use)
 	}
 
 	use {
+		'rmagatti/session-lens',
 		'rmagatti/auto-session',
 		config = function()
 			require('auto-session').setup {

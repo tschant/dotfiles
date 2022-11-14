@@ -5,6 +5,16 @@ require("neoscroll").setup()
 require("nvim-autopairs").setup()
 require("focus").setup()
 require('portal').setup()
+require('session-lens').setup({
+	theme_conf = {
+		prompt_title = 'Sessions',
+		previewer = false,
+		borderchars = {
+			prompt = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
+			results = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
+		}
+	},
+})
 
 -- Illuminate
 vim.g.Illuminate_ftblacklist = {"NvimTree"}
@@ -46,12 +56,6 @@ require("hlslens").setup({
 		-- require('scrollbar.handlers.search').handler.show(plist.start_pos)
 		require('scrollbar').search_handler.show(plist.start_pos)
 	end
-})
-
--- Project.nvim
-require("project_nvim").setup({
-	manual_mode = true,
-	patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "docker-compose.yaml" },
 })
 
 -- Colorizer

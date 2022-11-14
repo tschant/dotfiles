@@ -88,9 +88,11 @@ wk.register({
 		":let @+=expand('%')<CR>", "Copy file path from PWD"
 	},
 	s = {
-		name = "Fold Method",
-		i = {":setlocal foldmethod=indent<CR>", "Indent"},
-		s = {":setlocal foldmethod=expr<CR>", "Expression/Syntax"},
+		i = {":setlocal foldmethod=indent<CR>", "Fold Indent/Whitespace"},
+		s = {":setlocal foldmethod=expr<CR>", "Fold Expression/Syntax"},
+		v = {":SaveSession<cr>", "Save Session"},
+		r = {":RestoreSession<cr>", "Restore Session"},
+		-- p = {":AddWorkspace<cr>", "Add Project Workspace"},
 	},
 	V = {":vs<CR>", "Vertical Split"},
 	H = {":sp<CR>", "Horizontal Split"},
@@ -122,8 +124,6 @@ wk.register({
 	-- Session + Dashboard
 	["<Home>"] = {":Dashboard<cr>", "Dashboard"},
 	nn = {":DashboardNewFile<cr>", "New file dashboard"},
-	sv = {":SaveSession<cr>", "Save Session"},
-	sr = {":RestoreSession<cr>", "Restore Session"},
 	-- 
 	c = {
 		k = {":set spell!<cr>", "Toggle spell check"},

@@ -8,10 +8,11 @@ local hint = [[
                  _f_: files       _m_: marks
    🭇🬭🬭🬭🬭🬭🬭🬭🬭🬼    _o_: old files   _g_: live grep
   🭉🭁🭠🭘    🭣🭕🭌🬾   _p_: projects    _/_: search in file
-  🭅█ ▁     █🭐
-  ██🬿      🭊██   _r_: resume      _u_: undotree
- 🭋█🬝🮄🮄🮄🮄🮄🮄🮄🮄🬆█🭀  _h_: vim help    _c_: execute command
- 🭤🭒🬺🬹🬱🬭🬭🬭🬭🬵🬹🬹🭝🭙  _k_: keymaps     _;_: commands history 
+  🭅█ ▁     █🭐   _s_: sessions    
+	██🬿      🭊██
+ 🭋█🬝🮄🮄🮄🮄🮄🮄🮄🮄🬆█🭀  _r_: resume      _u_: undotree
+ 🭤🭒🬺🬹🬱🬭🬭🬭🬭🬵🬹🬹🭝🭙  _h_: vim help    _c_: spell suggest
+                 _k_: keymaps     _;_: commands history 
                  _O_: options     _?_: search history
                  _b_: buffers     _x_: colorscheme
  ^
@@ -41,12 +42,15 @@ Hydra({
       { 'k', cmd 'Telescope keymaps' },
       { 'O', cmd 'Telescope vim_options' },
       { 'r', cmd 'Telescope registers' },
-      { 's', cmd 'Telescope spell_suggest' },
-      { 'p', cmd 'Telescope projects', { desc = 'projects' } },
+      { 's', cmd 'Telescope session-lens search_session', { desc = 'sessions' } },
+      -- { 'p', cmd 'Telescope projects', { desc = 'projects' } },
+      { 'p', function ()
+				require'telescope'.extensions.project.project{ display_type = 'full' }
+			end, { desc = 'projects' } },
       { '/', cmd 'Telescope current_buffer_fuzzy_find', { desc = 'search in file' } },
       { '?', cmd 'Telescope search_history',  { desc = 'search history' } },
       { ';', cmd 'Telescope command_history', { desc = 'command-line history' } },
-      { 'c', cmd 'Telescope commands', { desc = 'execute command' } },
+      { 'c', cmd 'Telescope spell_suggest', { desc = 'spell suggest' } },
       { 'x', cmd 'Telescope colorscheme', { desc = 'choose colorscheme' } },
       { 'u', cmd 'silent! %foldopen! | UndotreeToggle', { desc = 'undotree' }},
       { '<Enter>', cmd 'Telescope', { exit = true, desc = 'list all pickers' } },
