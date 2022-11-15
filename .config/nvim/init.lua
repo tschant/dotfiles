@@ -16,6 +16,7 @@ local modules = {
 	"plugin-configs/git-signs",
 	"plugin-configs/barbar",
 	"plugin-configs/indent-blankline",
+	"plugin-configs/projections",
 	-- "plugin-configs/bufferline",
 	-- LSP
 	"lsp/completion",

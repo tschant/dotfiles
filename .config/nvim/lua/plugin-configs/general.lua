@@ -25,6 +25,14 @@ vim.g.Illuminate_delay = 500
 vim.g.VM_silent_exit = 1
 -- vim.g.VM_set_statusline = 0
 
+-- sesions stuff
+require('auto-session').setup {
+	log_level = 'info',
+	auto_restore_enabled = true,
+	auto_session_use_git_branch = true,
+	auto_session_suppress_dirs = {'~/', '~/git', '~/Downloads'}
+}
+
 -- Scrollbar
 local color = require("utils.colors")
 require("scrollbar").setup({

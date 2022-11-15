@@ -90,22 +90,23 @@ telescope.setup {
 			filetypes = {"png", "webp", "jpg", "jpeg"},
 			find_cmd = "rg" -- find command (defaults to `fd`)
 		},
-		project = {
-			display_type = 'full',
-			base_dirs = {
-				'~/git/analyst-ng',
-				'~/git/team-ea/terraform_ea',
-				'~/git/team-ea/d12y-tools',
-				'~/git/team-ea/ea-configs',
-				'~/git/team-ea/ea-dotfiles',
-				'~/git/tschant/dotfiles',
-				'~/git/tschant/schant-server',
-				'~/git/team-ea/sfmc-InboxtrackerProd',
-			}
-		}
+		-- project = {
+		-- 	display_type = 'full',
+		-- 	base_dirs = {
+		-- 		'~/git/analyst-ng',
+		-- 		'~/git/team-ea/terraform_ea',
+		-- 		'~/git/team-ea/d12y-tools',
+		-- 		'~/git/team-ea/ea-configs',
+		-- 		'~/git/team-ea/ea-dotfiles',
+		-- 		'~/git/tschant/dotfiles',
+		-- 		'~/git/tschant/schant-server',
+		-- 		'~/git/team-ea/sfmc-InboxtrackerProd',
+		-- 	}
+		-- }
 	}
 }
 telescope.load_extension("fzy_native")
 telescope.load_extension("media_files")
 telescope.load_extension("session-lens")
+telescope.load_extension("projections")
 -- telescope.load_extension("projects")

@@ -92,7 +92,7 @@ wk.register({
 		s = {":setlocal foldmethod=expr<CR>", "Fold Expression/Syntax"},
 		v = {":SaveSession<cr>", "Save Session"},
 		r = {":RestoreSession<cr>", "Restore Session"},
-		-- p = {":AddWorkspace<cr>", "Add Project Workspace"},
+		p = {":AddWorkspace<cr>", "Add Project Workspace"},
 	},
 	V = {":vs<CR>", "Vertical Split"},
 	H = {":sp<CR>", "Horizontal Split"},

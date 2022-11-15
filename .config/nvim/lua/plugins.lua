@@ -70,7 +70,8 @@ return packer.startup(function(use)
 				"nvim-lua/plenary.nvim",
 				"nvim-telescope/telescope-fzy-native.nvim",
 				"nvim-telescope/telescope-media-files.nvim",
-				"nvim-telescope/telescope-project.nvim",
+				-- "nvim-telescope/telescope-project.nvim",
+				"gnikdroy/projections.nvim",
 			}
 		},
 	}
@@ -83,17 +84,10 @@ return packer.startup(function(use)
 		"ziontee113/syntax-tree-surfer"
 	}
 
+	-- Session things
 	use {
 		'rmagatti/session-lens',
 		'rmagatti/auto-session',
-		config = function()
-			require('auto-session').setup {
-				log_level = 'info',
-				auto_restore_enabled = true,
-				auto_session_use_git_branch = true,
-				auto_session_suppress_dirs = {'~/', '~/git', '~/Downloads'}
-			}
-		end
 	}
 
 	-- key-map fun
