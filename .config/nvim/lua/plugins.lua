@@ -187,6 +187,7 @@ return packer.startup(function(use)
 		"petertriho/nvim-scrollbar",
 		"kevinhwang91/nvim-hlslens",
 		"ojroques/nvim-bufdel",
+		"ziontee113/icon-picker.nvim",
 		-- "dstein64/vim-startuptime",
 	}
 

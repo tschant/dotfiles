@@ -97,6 +97,7 @@ wk.register({
 	V = {":vs<CR>", "Vertical Split"},
 	H = {":sp<CR>", "Horizontal Split"},
 	w = {":update<CR>", "Save file"},
+	ic = {":IconPickerNormal<CR>", "Pick Icon"},
 	-- Portal
 	o = {':lua require("portal").jump_backward()<CR>', "Portal Back"},
 	i = {':lua require("portal").jump_forward()<CR>', "Portal Forward"},

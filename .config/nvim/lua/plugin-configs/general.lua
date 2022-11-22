@@ -16,6 +16,8 @@ require('session-lens').setup({
 	},
 })
 
+require("icon-picker").setup({ disable_legacy_commands = true })
+
 -- Illuminate
 vim.g.Illuminate_ftblacklist = {"NvimTree"}
 vim.g.Illuminate_highlightUnderCursor = 0
