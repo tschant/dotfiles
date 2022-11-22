@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-WIDTH="35"
+WIDTH="0"
 if [ "$SELECTED" = "true" ]; then
 	WIDTH="dynamic"
 fi
