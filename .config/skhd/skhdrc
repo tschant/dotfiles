@@ -81,14 +81,6 @@ cmd + ctrl + alt + shift - l : yabai -m window --insert east
 shift + alt - space : \
     yabai -m window --toggle float; \
 
-# # focus display
-# ctrl + alt - 1 : yabai -m display --focus 1
-# ctrl + alt - 2 : yabai -m display --focus 2
-# ctrl + alt - s : yabai -m display --focus next || yabai -m display --focus first; yabai -m space --focus next
-
-# # Close active application
-# ctrl + alt + cmd - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
-
 # # Make window native fullscreen
 # cmd + ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
 
