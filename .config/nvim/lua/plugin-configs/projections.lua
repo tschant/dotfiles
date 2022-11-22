@@ -1,15 +1,20 @@
 require("projections").setup({
 	workspaces = {
-		"~/git/",
+		"~/git",
 		"~/git/analyst-ng",
-		"~/git/analyst-ng/source/webapp-analyst-ng/src/main/web-src",
-		patterns = {
-			".git",
-			".svn",
-			".hg",
-			"package.json",
-		},
-	}
+		"~/git/analyst-ng/boxbe/webapp-boxbe/src/main",
+		"~/git/analyst-ng/source/webapp-analyst-ng/src/main",
+		"~/git/analyst-ng/source/webapp-admin-ng/src/main",
+		"~/git/analyst-ng/source/webapp-delivery-index/src/main",
+		"~/git/team-ea",
+		"~/git/tschant",
+	},
+	patterns = {
+		".git",
+		".svn",
+		".hg",
+		"package.json",
+	},
 })
 
 -- Add workspace command

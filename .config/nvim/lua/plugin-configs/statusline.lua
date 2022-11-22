@@ -171,7 +171,8 @@ components.active[1][4] = {
 
 components.active[1][5] = {
 	provider = function()
-		local filename = vim.fn.expand "%:~:."
+		-- local filename = vim.fn.expand "%:~:."
+		local filename = vim.fn.expand "%:t"
 		local extension = vim.fn.expand "%:e"
 		local icon = require("nvim-web-devicons").get_icon(filename, extension)
 		if icon == nil then

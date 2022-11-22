@@ -53,7 +53,7 @@ alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
 # # Move focus container to workspace
-# # TODO: needs work
+# # TODO: focus space/display doesn't work without `sudo yabai --install-sa` which required SIP disabled
 # # shift + alt - p : yabai -m space --focus prev
 # # shift + alt - n : yabai -m space --focus next
 shift + alt - m : yabai -m window --space last; yabai -m space --focus last
@@ -91,3 +91,6 @@ shift + alt - space : \
 
 # # Make window native fullscreen
 # cmd + ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
+
+shift + ctrl + alt - return : ~/.local/bin/switch-audio-devices.sh
+
