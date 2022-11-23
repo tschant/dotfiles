@@ -19,7 +19,6 @@ sketchybar --add item sound right                                  \
            --set sound icon.drawing=on                             \
 											 label.drawing=on                            \
 											 label.color=$WHITE                          \
-											 icon.color=$WHITE                           \
 											 background.padding_right=5                  \
 											 background.padding_left=10                  \
 											 align=right                                 \
