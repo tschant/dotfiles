@@ -6,11 +6,8 @@ sketchybar --add       event        window_focus                     \
            --add       event        windows_on_spaces                \
            --add       item         system.yabai left                \
            --set       system.yabai script="$PLUGIN_DIR/yabai.sh"    \
-                                    icon.font="$FONT:Bold:16.0"      \
                                     icon.width=18                    \
-                                    icon=$YABAI_GRID                 \
-                                    icon.color=$CYAN                 \
-																		label.font="sketchybar-app-font:Regular:14.0" \
+																		icon.font="$FONT:Regular:14.0" \
 																		label.width=18 \
                                     updates=on                       \
                                     associated_display=active        \

@@ -1,141 +1,111 @@
 case "$1" in
-"Final Cut Pro")
-  icon_result=":final_cut_pro:"
-  ;;
-"FaceTime")
-  icon_result=":face_time:"
-  ;;
-"Messages" | "Nachrichten")
-  icon_result=":messages:"
-  ;;
-"Thunderbird")
-  icon_result=":thunderbird:"
-  ;;
-"Notes")
-  icon_result=":notes:"
+"Messages")
+  icon_result=
   ;;
 "GitHub Desktop")
-  icon_result=":git_hub:"
+  icon_result=
   ;;
 "App Store")
-  icon_result=":app_store:"
+  icon_result=
   ;;
 "Chromium" | "Google Chrome" | "Google Chrome Canary")
-  icon_result=":google_chrome:"
-  ;;
-"zoom.us")
-  icon_result=":zoom:"
+  icon_result=
   ;;
 "Color Picker")
-  icon_result=":color_picker:"
+  icon_result=
   ;;
 "Microsoft Word")
-  icon_result=":microsoft_word:"
+  icon_result=
   ;;
 "Neovide" | "MacVim" | "Vim" | "VimR" | "NVim")
-  icon_result=":vim:"
+  icon_result=
   ;;
 "Sublime Text")
-  icon_result=":sublime_text:"
-  ;;
-"Microsoft Excel")
-  icon_result=":microsoft_excel:"
+  icon_result=
   ;;
 "Microsoft PowerPoint")
-  icon_result=":microsoft_power_point:"
+  icon_result=
   ;;
-"Numbers")
-  icon_result=":numbers:"
+"Numbers" | "Microsoft Excel")
+  icon_result=
   ;;
 "Default")
-  icon_result=":default:"
+  icon_result=ﬓ
   ;;
-"Firefox Developer Edition" | "Firefox Nightly")
-  icon_result=":firefox_developer_edition:"
-  ;;
-"Firefox")
-  icon_result=":firefox:"
-  ;;
-"Notion")
-  icon_result=":notion:"
-  ;;
-"Live")
-  icon_result=":ableton:"
+"Firefox" | "Firefox Developer Edition" | "Firefox Nightly")
+  icon_result=
   ;;
 "Calendar" | "Fantastical")
-  icon_result=":calendar:"
+  icon_result=
   ;;
 "Slack")
-  icon_result=":slack:"
+  icon_result=
   ;;
-"Sequel Pro" | "DataGrip")
-  icon_result=":sequel_pro:"
+"Sequel Ace" | "Sequel Pro" | "DataGrip")
+  icon_result=
   ;;
 "System Preferences")
-  icon_result=":gear:"
+  icon_result=
   ;;
 "Discord" | "Discord Canary" | "Discord PTB")
-  icon_result=":discord:"
+  icon_result=ﭮ
   ;;
 "Vivaldi")
-  icon_result=":vivaldi:"
+  icon_result=
   ;;
 "Skype")
-  icon_result=":skype:"
+  icon_result=
   ;;
-"Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件")
-  icon_result=":mail:"
+"Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Thunderbird")
+  icon_result=
   ;;
 "Safari" | "Safari Technology Preview")
-  icon_result=":safari:"
+  icon_result=
   ;;
 "Keynote")
-  icon_result=":keynote:"
+  icon_result=蠟
   ;;
 "Spotify")
-  icon_result=":spotify:"
+  icon_result=
   ;;
 "Spotlight")
-  icon_result=":spotlight:"
+  icon_result=劉
   ;;
 "Music")
-  icon_result=":music:"
+  icon_result=
   ;;
 "Pages")
-  icon_result=":pages:"
+  icon_result=
   ;;
 "Eclipse")
-  icon_result=":idea:"
+  icon_result=
   ;;
 "Drafts")
-  icon_result=":drafts:"
+  icon_result=
   ;;
-"Obsidian")
-  icon_result=":obsidian:"
+"Obsidian" | "Notion" | "Notes")
+  icon_result=
   ;;
 "Reminders")
-  icon_result=":reminders:"
+  icon_result=
   ;;
 "Preview" | "Skim" | "zathura")
-  icon_result=":pdf:"
+  icon_result=
   ;;
 "1Password 7")
-  icon_result=":one_password:"
+  icon_result= # ":one_password:"
   ;;
 "Code" | "Code - Insiders")
-  icon_result=":code:"
+  icon_result= # ":code:"
   ;;
 "Finder")
-  icon_result=":finder:"
+  icon_result= # ":finder:"
   ;;
 "Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "WezTerm")
-  icon_result=":terminal:"
-  ;;
-"Sequel Ace")
-  icon_result=":sequel_ace:"
+  icon_result= # ":terminal:"
   ;;
 *)
-  icon_result=":default:"
+  icon_result=ﬓ
   ;;
 esac
 echo $icon_result

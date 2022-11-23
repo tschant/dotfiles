@@ -11,17 +11,18 @@ sketchybar --add item volume right                      \
                         background.drawing=on           \
                         background.color=$BACKGROUND_2  \
                         background.height=8             \
-                        background.corner_radius=3      \
+                        background.corner_radius=0      \
                         align=left                      \
            --subscribe volume volume_change
 
-sketchybar --add alias "Control Center,Sound" right                      \
-           --rename "Control Center,Sound" volume_alias                  \
-           --set volume_alias icon.drawing=off                           \
-                              label.drawing=off                          \
-                              alias.color=$WHITE                         \
-                              background.padding_right=0                 \
-                              background.padding_left=0                  \
-                              width=35                                   \
-                              align=right                                \
-                              click_script="$PLUGIN_DIR/volume_click.sh"
+sketchybar --add item sound right                                  \
+           --set sound icon.drawing=on                             \
+											 label.drawing=on                            \
+											 label.color=$WHITE                          \
+											 icon.color=$WHITE                           \
+											 background.padding_right=5                  \
+											 background.padding_left=10                  \
+											 align=right                                 \
+											 script="$PLUGIN_DIR/sound.sh"               \
+											 click_script="$PLUGIN_DIR/volume_click.sh"  \
+           --subscribe sound volume_change

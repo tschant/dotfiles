@@ -10,15 +10,16 @@ do
   sketchybar --add space      space.$sid left                               \
              --set space.$sid associated_space=$sid                         \
                               icon=${SPACE_ICONS[i]}                        \
-                              icon.padding_left=14                          \
-                              icon.padding_right=14                         \
-                              icon.highlight_color=$CYAN                    \
-                              background.padding_left=-8                    \
+                              icon.padding_left=10                          \
+                              icon.padding_right=10                         \
+                              icon.highlight_color=$GREY                    \
+                              background.padding_left=0                     \
                               background.padding_right=0                    \
-                              background.color=$BACKGROUND_1                \
                               background.drawing=on                         \
+															label.y_offset=0                              \
                               label.padding_right=24                        \
-                              label.font="sketchybar-app-font:Regular:14.0" \
+															label.padding_left=-5                         \
+                              label.font="$FONT:Semibold:13.0"              \
 															label.color=$WHITE                            \
                               label.background.height=26                    \
                               label.background.drawing=on                   \
@@ -32,7 +33,7 @@ done
 sketchybar   --add item       separator left                          \
              --set separator  icon=⎹                                  \
                               icon.font="$FONT:Regular:16.0"          \
-                              background.padding_left=18              \
+                              background.padding_left=-5              \
                               background.padding_right=0              \
                               label.drawing=off                       \
 															label.font="$FONT:Regular:13.0"         \

@@ -48,13 +48,10 @@ source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # # Right
-source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/calendar.sh"
-# source "$ITEM_DIR/divider.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/volume.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
-
-sleep 1
-sketchybar --trigger windows_on_spaces
 echo "sketchybar configuation loaded.."

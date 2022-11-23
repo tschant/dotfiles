@@ -8,25 +8,25 @@ window_state() {
   CURRENT=$(echo "$WINDOW" | jq '.["stack-index"]')
 
   args=()
-	app=$(yabai -m query --windows --window | jq -r '.["app"]')
+	app=$(echo $WINDOW | jq -r '.["app"]')
 	APP_ICON=$($HOME/.config/sketchybar/plugins/icon_map.sh "$app")
   if [[ $CURRENT -gt 0 ]]; then
     LAST=$(yabai -m query --windows --window stack.last | jq '.["stack-index"]')
-    args+=(--set $NAME label="$APP_ICON" icon=$YABAI_STACK icon.color=$RED label.color=$RED label.drawing=on label=$(printf "[%s/%s]" "$CURRENT" "$LAST"))
+    args+=(--set $NAME label=$(printf "[%s/%s]" "$CURRENT" "$LAST") icon="$APP_ICON" icon.color=$RED icon.drawing=on)
   else 
     args+=(--set $NAME label.drawing=off)
     case "$(echo "$WINDOW" | jq '.["is-floating"]')" in
       "false")
         if [ "$(echo "$WINDOW" | jq '.["has-fullscreen-zoom"]')" = "true" ]; then
-          args+=(--set $NAME label="$APP_ICON" label.drawing=on icon=$YABAI_FULLSCREEN_ZOOM label.color=$GREEN icon.color=$GREEN)
+          args+=(--set $NAME icon="$APP_ICON" icon.color=$GREEN icon.drawing=on)
         elif [ "$(echo "$WINDOW" | jq '.["has-parent-zoom"]')" = "true" ]; then
-          args+=(--set $NAME label="$APP_ICON" label.drawing=on icon=$YABAI_PARENT_ZOOM label.color=$BLUE icon.color=$BLUE)
+          args+=(--set $NAME icon="$APP_ICON" icon.color=$BLUE icon.drawing=on)
         else
-          args+=(--set $NAME label="$APP_ICON" label.drawing=on icon=$YABAI_GRID label.color=$CYAN icon.color=$CYAN)
+          args+=(--set $NAME icon="$APP_ICON" icon.color=$CYAN icon.drawing=on)
         fi
         ;;
       "true")
-        args+=(--set $NAME label="$APP_ICON" label.drawing=on icon=$YABAI_FLOAT label.color=$MAGENTA icon.color=$MAGENTA)
+        args+=(--set $NAME icon="$APP_ICON" icon.color=$MAGENTA icon.drawing=on)
         ;;
     esac
   fi
@@ -60,7 +60,7 @@ windows_on_spaces () {
 
 
 case "$SENDER" in
-  "forced") exit 0
+  "forced") window_state && windows_on_spaces
   ;;
   "window_focus") window_state 
   ;;

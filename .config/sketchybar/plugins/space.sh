@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
+source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
 
-WIDTH="0"
+WIDTH="dynamic"
+BACKGROUND="$BACKGROUND_1"
 if [ "$SELECTED" = "true" ]; then
-	WIDTH="dynamic"
+	BACKGROUND="$CYAN"
 fi
 
-sketchybar --set $NAME icon.highlight=$SELECTED label.width=$WIDTH
+sketchybar --set $NAME icon.highlight=$SELECTED label.width=$WIDTH background.color=$BACKGROUND
