@@ -50,10 +50,11 @@ source "$ITEM_DIR/front_app.sh"
 # Center
 source "$ITEM_DIR/upcoming.sh"
 
-# # Right
+# Right (reverse order of how they are displayed)
+source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/wifi.sh"
-source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/weather.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
