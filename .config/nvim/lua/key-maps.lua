@@ -22,9 +22,9 @@ wk.register({
 	jk = {"<esc>", "Escape insert mode"},
 }, {mode = "i"})
 
-wk.register({
-	["<ESC>"] = {"<C-\\><C-n>", ""},
-}, {mode = "t"})
+-- wk.register({
+-- 	["<ESC>"] = {"<C-\\><C-n>", ""},
+-- }, {mode = "t"})
 
 -- LSP Based key-maps
 wk.register({

@@ -201,11 +201,38 @@ schemes:
       - { index: 16, color: '#ffe37e' }
       - { index: 17, color: '#e06c75' }
 
+  oxocarbon: &oxocarbon
+    primary:
+      background: '#161616'
+      foreground: '#dde1e6'
+    cursor:
+      text: '#161616'
+      cursor: '#f2f4f8'
+    normal:
+      black: '#393939'
+      red: '#ee5396'
+      green: '#42be65'
+      yellow: '#F9E2AF'
+      blue: '#78a9ff'
+      magenta: '#be95ff'
+      cyan: '#33b1ff'
+      white: '#dde1e6'
+    bright:
+      black: '#393939'
+      red: '#ee5396'
+      green: '#42be65'
+      yellow: '#F9E2AF'
+      blue: '#78a9ff'
+      magenta: '#be95ff'
+      cyan: '#33b1ff'
+      white: '#dde1e6'
+
 # colors: *nord
 # colors: *kaolin
 # colors: *catppuccino
 # colors: *gruvbox_dark
 # colors: *ayu_dark
-colors: *horizon_dark
+
+# colors: *horizon_dark
+colors: *oxocarbon
 # colors: *amarena
-background_opacity: 0.95
