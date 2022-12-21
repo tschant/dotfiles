@@ -2,7 +2,7 @@ unbind C-b
 set -g prefix C-f
 bind C-f send-prefix
 
-# set -g default-terminal "alacritty"
+set -g default-terminal "alacritty"
 set-option -g default-shell /bin/zsh
 
 # Start windows and pane numbering with index 1 instead of 0
@@ -102,14 +102,18 @@ bind C-s if -F '#{pane_synchronized}' \
                      'setw synchronize-panes off; \
                       setw pane-active-border-style fg=colour63,bg=default; \
                       setw pane-border-format       " #P "' \
-                   'setw synchronize-panes on; \
-                    setw pane-active-border-style fg=red; \
-                    setw pane-border-format       " #P - Pane Synchronization ON "'
+                     'setw synchronize-panes on; \
+                      setw pane-active-border-style fg=red; \
+                      setw pane-border-format       " #P - Pane Synchronization ON "'
 
 set -g status-interval 2
 set -g status-justify left
-set -g status-left-length 50
-# set -g status-right-length 140
+# set -g status-left-length 55
+set -g status-right-length 140
+
+set-window-option -g window-status-style fg=colour7,bg=default
+set-window-option -g window-status-current-style fg=colour4,bg=default
+set -g status-bg colour16
 
 # set -g status-left '\
 # 	#[fg=colour247,bg=colour236,nobold,noitalics,nounderscore] #(curl -m 1 'wttr.in?format=2' 2>/dev/null; sleep 900;) \
