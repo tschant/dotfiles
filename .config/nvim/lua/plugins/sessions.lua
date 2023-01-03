@@ -1,9 +1,15 @@
 local M = {
-	{"~/git/tschant/tds-projections.nvim", event = "VeryLazy"},
-	{"rmagatti/session-lens", event = "VeryLazy"},
+	{
+		"~/git/tschant/tds-projections.nvim",
+		event = "VeryLazy"
+	},
+	{
+		"rmagatti/session-lens",
+		event = "VeryLazy"
+	},
 	{
 		"rmagatti/auto-session",
-		lazy = false
+		event = "VimEnter"
 	}
 }
 

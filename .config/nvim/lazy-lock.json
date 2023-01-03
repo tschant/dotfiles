@@ -75,6 +75,7 @@
   "vim-less": { "branch": "master", "commit": "6e818d5614d5fc18d95a48c92b89e6db39f9e3d6" },
   "vim-lsc": { "branch": "master", "commit": "25d625aa0274b4c9845afd49a5c8f21aceb25073" },
   "vim-riot": { "branch": "master", "commit": "a5ac4896b183695e85facc08a9c2c207dd1afc99" },
+  "vim-startuptime": { "branch": "master", "commit": "5f52ed26e0296a3e1d1453935f417e5808eefab8" },
   "vim-terraform": { "branch": "master", "commit": "f0b17ac9f1bbdf3a29dba8b17ab429b1eed5d443" },
   "vim-terraform-completion": { "branch": "master", "commit": "32907dd793aa5d7fbc011fb43283e84b3e8ae13d" },
   "vim-visual-multi": { "branch": "master", "commit": "1c9207b28c8898ab01b54e6d6b61b0b820a814bc" },

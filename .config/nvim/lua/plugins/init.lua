@@ -132,4 +132,13 @@ return {
 			require("icon-picker").setup({ disable_legacy_commands = true })
 		end
 	},
+
+	-- Measure startuptime
+	{
+		"dstein64/vim-startuptime",
+		cmd = "StartupTime",
+		config = function()
+			vim.g.startuptime_tries = 10
+		end,
+	},
 }
