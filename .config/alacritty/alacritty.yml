@@ -1,6 +1,7 @@
 import:
   - "~/.config/alacritty/color.yml"
-  - "~/.config/alacritty/key-bindings.linux.yml"
+  - "~/.config/alacritty/key-bindings.yml"
+  - "~/.config/alacritty/os-overrides.yml"
 
 env:
   TERM: xterm-256color
@@ -14,8 +15,6 @@ window:
   padding:
     x: 5
     y: 5
-
-  decorations: None
 
 font:
   normal:
