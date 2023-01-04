@@ -37,7 +37,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export EDITOR=nvim
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 [[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 if [[ -d /home/tarryn/.spicetify ]]; then 
@@ -49,10 +49,10 @@ if type npm &>/dev/null; then
 	export PATH="$PATH:$(npm -g prefix)/bin"
 fi
 if type nodenv &>/dev/null; then
-	export PATH="$PATH:~/.nodenv/shims"
+	export PATH="$PATH:$HOME/.nodenv/shims"
 fi
 if type cargo &>/dev/null; then
-	export PATH="$PATH:~/.cargo/bin"
+	export PATH="$PATH:$HOME/.cargo/bin"
 fi
 if type ruby &>/dev/null && type gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"

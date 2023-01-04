@@ -82,6 +82,7 @@ M.config = function()
 			filetypes = { "go", "gomod" },
 		},
 		html = { init_options = { provideFormatter = false } },
+		jdtls = {},
 		jsonls = {
 			init_options = { provideFormatter = false },
 			settings = {
