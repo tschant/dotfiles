@@ -7,16 +7,16 @@ end
 local hint = [[
                  _f_: files       _m_: marks
    🭇🬭🬭🬭🬭🬭🬭🬭🬭🬼    _o_: old files   _g_: live grep
-  🭉🭁🭠🭘    🭣🭕🭌🬾   _p_: projects    _/_: search in file
-  🭅█ ▁     █🭐   _s_: sessions    
-	██🬿      🭊██
- 🭋█🬝🮄🮄🮄🮄🮄🮄🮄🮄🬆█🭀  _r_: resume      _u_: undotree
- 🭤🭒🬺🬹🬱🬭🬭🬭🬭🬵🬹🬹🭝🭙  _h_: vim help    _c_: spell suggest
-                 _k_: keymaps     _;_: commands history 
+  🭉🭁🭠🭘    🭣🭕🭌🬾   _s_: sessions    _/_: search in file
+  🭅█ ▁     █🭐       
+	██🬿      🭊██   _r_: resume      _u_: undotree
+ 🭋█🬝🮄🮄🮄🮄🮄🮄🮄🮄🬆█🭀  _h_: vim help    _c_: spell suggest
+ 🭤🭒🬺🬹🬱🬭🬭🬭🬭🬵🬹🬹🭝🭙  _k_: keymaps     _;_: commands history 
                  _O_: options     _?_: search history
                  _b_: buffers     _x_: colorscheme
- ^
-                 _<Enter>_: Telescope           _<Esc>_
+                                                         
+ ^               _<Enter>_: Telescope           _<Esc>_
+                 
 ]]
 
 Hydra({
@@ -43,19 +43,7 @@ Hydra({
       { 'O', cmd 'Telescope vim_options' },
       { 'r', cmd 'Telescope registers' },
       { 's', cmd 'Telescope session-lens search_session', { desc = 'sessions' } },
-      { 'p', cmd 'Telescope projections', { desc = 'projects' } },
-      --{ 'p', function ()
-			--	-- require'telescope'.extensions.project.project{ display_type = 'full' }
-			--	local find_projects = require("telescope").extensions.projections.projections
-			--	find_projects({
-			--		action = function(selection)
-			--			-- chdir is required since there might not be a session file
-			--			vim.fn.chdir(selection.value)
-			--			vim.api.nvim_command('RestoreSession')
-			--		end,
-			--	})
-			--end, { desc = 'projects' } },
-      { '/', cmd 'Telescope current_buffer_fuzzy_find', { desc = 'search in file' } },
+			{ '/', cmd 'Telescope current_buffer_fuzzy_find', { desc = 'search in file' } },
       { '?', cmd 'Telescope search_history',  { desc = 'search history' } },
       { ';', cmd 'Telescope command_history', { desc = 'command-line history' } },
       { 'c', cmd 'Telescope spell_suggest', { desc = 'spell suggest' } },

@@ -116,7 +116,6 @@ M.config = function()
 	telescope.load_extension("fzy_native")
 	telescope.load_extension("media_files")
 	telescope.load_extension("session-lens")
-	telescope.load_extension("projections")
 	-- telescope.load_extension("projects")
 end
 
