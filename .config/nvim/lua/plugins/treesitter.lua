@@ -6,7 +6,7 @@ local M = {
 		"ziontee113/syntax-tree-surfer",
 		"windwp/nvim-ts-autotag",
 	},
-	event = "BufReadPost",
+	-- event = "BufReadPost",
 }
 
 M.config = function()
@@ -16,7 +16,9 @@ M.config = function()
 			"bash",
 			"html",
 			"css",
+			"comment",
 			"dockerfile",
+			"go",
 			"http",
 			"java",
 			"javascript",
@@ -28,12 +30,16 @@ M.config = function()
 			"regex",
 			"ruby",
 			"rust",
+			"tsx",
 			"typescript",
 			"vim",
 			"yaml",
 		},-- "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+		ignore_install = {},
+		sync_install = true,
 		highlight = {
-			enable = true -- false will disable the whole extension
+			enable = true,
+			use_languagetree = true,
 		},
 		indent = {enable = true},
 		playground = {
@@ -42,7 +48,7 @@ M.config = function()
 			updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
 			persist_queries = false -- Whether the query persists across vim sessions
 		},
-		rainbow = {enable = true},
+		rainbow = {enable = true, max_file_lines = 2000},
 		autotag = {enable = true}
 	}
 end

@@ -19,10 +19,28 @@ return {
 	{'juliosueiras/vim-terraform-completion', event = "BufRead *.tf"},
 
 	-- General plugins
-	{"numToStr/Comment.nvim", tag = "v0.6", event = "BufReadPost"},
-	{"cbochs/portal.nvim", event = "VeryLazy"},
-	{"karb94/neoscroll.nvim", event = "BufReadPre"},
-	{"kylechui/nvim-surround", event = "BufReadPre"},
+	{ "cbochs/portal.nvim", event = "VeryLazy" },
+	{
+		"numToStr/Comment.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("Comment").setup()
+		end
+	},
+	{
+		"karb94/neoscroll.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("neoscroll").setup()
+		end
+	},
+	{
+		"kylechui/nvim-surround",
+		event = "BufReadPre",
+		config = function()
+			require("nvim-surround").setup()
+		end
+	},
 	{"ggandor/lightspeed.nvim", event = "BufReadPre"},
 
 	-- Multi-line plugins

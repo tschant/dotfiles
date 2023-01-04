@@ -43,18 +43,18 @@ Hydra({
       { 'O', cmd 'Telescope vim_options' },
       { 'r', cmd 'Telescope registers' },
       { 's', cmd 'Telescope session-lens search_session', { desc = 'sessions' } },
-      -- { 'p', cmd 'Telescope projections', { desc = 'projects' } },
-      { 'p', function ()
-				-- require'telescope'.extensions.project.project{ display_type = 'full' }
-				local find_projects = require("telescope").extensions.projections.projections
-				find_projects({
-					action = function(selection)
-						-- chdir is required since there might not be a session file
-						vim.fn.chdir(selection.value)
-						vim.api.nvim_command('RestoreSession')
-					end,
-				})
-			end, { desc = 'projects' } },
+      { 'p', cmd 'Telescope projections', { desc = 'projects' } },
+      --{ 'p', function ()
+			--	-- require'telescope'.extensions.project.project{ display_type = 'full' }
+			--	local find_projects = require("telescope").extensions.projections.projections
+			--	find_projects({
+			--		action = function(selection)
+			--			-- chdir is required since there might not be a session file
+			--			vim.fn.chdir(selection.value)
+			--			vim.api.nvim_command('RestoreSession')
+			--		end,
+			--	})
+			--end, { desc = 'projects' } },
       { '/', cmd 'Telescope current_buffer_fuzzy_find', { desc = 'search in file' } },
       { '?', cmd 'Telescope search_history',  { desc = 'search history' } },
       { ';', cmd 'Telescope command_history', { desc = 'command-line history' } },
