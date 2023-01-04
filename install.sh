@@ -28,7 +28,7 @@ elif [[ "$OS_NAME" =~ "Darwin" ]]; then
 	echo "Mac OS Detected"
 	[[ ! -e $HOME/.tmux.conf ]] && ln -s $(pwd)/.tmux.conf.mac $HOME/.tmux.conf
 	[[ ! -e $HOME/.config/alacritty/key-bindings.yml ]] && ln -s $(pwd)/.config/alacritty/key-bindings.mac.yml $HOME/.config/alacritty/key-bindings.yml
-	[[ ! -d $HOME/.config/alacritty/os-overrides.yml ]] && ln -s $(pwd)/.config/alacritty/os-overrides.mac.yml $HOME/.config/alacritty/os-overrides.yml
+	[[ ! -e $HOME/.config/alacritty/os-overrides.yml ]] && ln -s $(pwd)/.config/alacritty/os-overrides.mac.yml $HOME/.config/alacritty/os-overrides.yml
 	[[ ! -d $HOME/.config/sketchybar ]] && ln -s $(pwd)/.config/sketchybar $HOME/.config/sketchybar
 	[[ ! -d $HOME/.config/skhd ]] && ln -s $(pwd)/.config/skhd $HOME/.config/skhd
 	[[ ! -d $HOME/.config/yabai ]] && ln -s $(pwd)/.config/yabai $HOME/.config/yabai

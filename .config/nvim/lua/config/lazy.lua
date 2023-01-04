@@ -8,6 +8,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
 	defaults = { lazy = true, version = "*" },
 	install = { colorscheme = { "noctis" } },
+	-- checker = { enabled = true },
 	performance = {
 		rtp = {
 			disabled_plugins = {

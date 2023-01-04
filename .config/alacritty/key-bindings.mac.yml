@@ -83,9 +83,9 @@ key_bindings:
   - { key: T,        mods: Command,       chars: "\x06\x63" }
   - { key: T,        mods: Control|Shift,       chars: "\x06\x63" }
   # - { key: RBracket, mods: Command|Shift, chars: "\x06\x6e" }
-  - { key: RBracket, mods: Control|Shift, chars: "\x06\x6e" }
+  - { key: RBracket, mods: Control, chars: "\x06\x6e" }
   # - { key: LBracket, mods: Command|Shift, chars: "\x06\x70" }
-  - { key: LBracket, mods: Control|Shift, chars: "\x06\x70" }
+  - { key: LBracket, mods: Control, chars: "\x06\x70" }
   - { key: Return,   mods: Command|Shift, chars: "\x06\x7a" }
   - { key: Return,   mods: Control|Shift, chars: "\x06\x7a" }
   - { key: Key1,     mods: Control|Shift,       chars: "\x06\x31" }

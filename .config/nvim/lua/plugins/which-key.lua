@@ -135,7 +135,7 @@ M.config = function()
 		-- 
 		c = {
 			k = {":set spell!<cr>", "Toggle spell check"},
-			m = {":Neoformat<cr>", "Format file"},
+			m = {":lua vim.lsp.buf.format()<cr>", "Format file"},
 		},
 		-- Git signs
 		h = {
