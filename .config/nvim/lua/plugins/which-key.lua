@@ -1,7 +1,8 @@
 local M = {
 	"folke/which-key.nvim",
 	dependencies = {"mrjones2014/legendary.nvim"},
-	event = "VimEnter",
+	-- event = "VimEnter",
+	event = "VeryLazy",
 }
 
 M.config = function()
@@ -73,8 +74,8 @@ M.config = function()
 			h = {":lua vim.lsp.buf.hover()<CR>", "Hover details"},
 			I = {":lua vim.lsp.buf.implementation()<CR>", "Implementation"},
 			rn = {":lua vim.lsp.buf.rename()<CR>", "Rename"},
-			p = {":lua vim.diagnostic.goto_prev()<CR>", "Goto Next"}, 
-			P = {":lua vim.diagnostic.goto_next()<CR>", "Goto Prev"}, 
+			p = {":lua vim.diagnostic.goto_prev()<CR>", "Goto Next"},
+			P = {":lua vim.diagnostic.goto_next()<CR>", "Goto Prev"},
 			-- Syntax Tree Surfer - treesitter smart selection
 			v  = {":lua require('syntax-tree-surfer').targeted_jump({'variable_declaration'})<CR>", "Jump Var declaration"},
 			fu = {":lua require('syntax-tree-surfer').targeted_jump({'function'})<CR>", "Jump Funct declaration"},
