@@ -1,7 +1,8 @@
 local M = {
 	'anuvyklack/hydra.nvim',
 	dependencies = {'anuvyklack/keymap-layer.nvim'},
-	event = 'VeryLazy'
+	event = "VimEnter",
+	-- event = 'VeryLazy'
 }
 
 M.config = function()

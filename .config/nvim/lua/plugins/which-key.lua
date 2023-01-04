@@ -1,17 +1,50 @@
 local M = {
 	"folke/which-key.nvim",
 	dependencies = {"mrjones2014/legendary.nvim"},
-	lazy = false
+	event = "VimEnter",
 }
 
 M.config = function()
 	local wk = require("which-key")
+	wk.setup({
+		plugins = {
+			marks = true, -- shows a list of your marks on ' and `
+			registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+			presets = {
+				operators = true, -- adds help for operators like d, y, ...
+				motions = true, -- adds help for motions
+				text_objects = true, -- help for text objects triggered after entering an operator
+				windows = true, -- default bindings on <c-w>
+				nav = true, -- misc bindings to work with windows
+				z = true, -- bindings for folds, spelling and others prefixed with z
+				g = true, -- bindings for prefixed with g
+			},
+			spelling = { enabled = true, suggestions = 20 }, -- use which-key for spelling hints
+		},
+		icons = {
+			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+			separator = "—", -- symbol used between a key and it's label
+			group = "+", -- symbol prepended to a group
+		},
+		hidden = {
+			"<silent>",
+			"<cmd>",
+			"<Cmd>",
+			"<cr>",
+			"<CR>",
+			"<Cr>",
+			"call",
+			"lua",
+			"^:",
+			"^ ",
+		},
+	})
 	require('legendary').setup({
 		which_key = {
 			auto_register = true
-		}
+		},
 	})
-
+	--
 	-- Random key-maps
 	wk.register({
 		Q = {"<Nop>", "no-op"},
@@ -23,15 +56,11 @@ M.config = function()
 		['<f10>'] = {[[<Cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>]], "Output the current syntax/highlight group"},
 		["<M-Up>"] = {":call vm#commands#add_cursor_up(0, v:count1)<cr>", "Select next line up (vm)"},
 		["<M-Down>"] = {":call vm#commands#add_cursor_down(0, v:count1)<cr>", "Select next line down (vm)"},
-		}, {mode = "n"})
+	}, {mode = "n"})
 
 	wk.register({
 		jk = {"<esc>", "Escape insert mode"},
-		}, {mode = "i"})
-
-	-- wk.register({
-	-- 	["<ESC>"] = {"<C-\\><C-n>", ""},
-	-- }, {mode = "t"})
+	}, {mode = "i"})
 
 	-- LSP Based key-maps
 	wk.register({
@@ -62,7 +91,7 @@ M.config = function()
 			-- .select_current_node() will select the current node at your cursor
 			n = {'<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', "Select current node"},
 		}
-		}, {mode = "n"})
+	}, {mode = "n"})
 
 	wk.register({
 		K = {":move '<-2<CR>gv-gv", "Move line up"},
@@ -71,7 +100,7 @@ M.config = function()
 		H = {'<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', "Syntax Surfer prev"},
 		L = {'<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', "Syntax surfer next"},
 		['<c-_>'] = {':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', 'Comment line'},
-		}, {mode = "x"})
+	}, {mode = "x"})
 
 	-- Ctrl key-maps
 	wk.register({
@@ -84,8 +113,8 @@ M.config = function()
 		["q>"] = {":BufferClose<CR>", 'Close buffer'},
 		-- Comment
 		['_>'] = {':lua require("Comment.api").toggle_current_linewise()<CR>', "ctrl-/"},
-		['p>'] = {require('legendary').find, 'Search keybinds and commands'}
-		}, {prefix = "<C-", mode = "n"})
+		['p>'] = {":lua require('legendary').find()<cr>", 'Search keybinds and commands'}
+	}, {prefix = "<C-", mode = "n"})
 
 	-- Leader key-maps
 	wk.register({
@@ -100,6 +129,11 @@ M.config = function()
 			v = {":SaveSession<cr>", "Save Session"},
 			r = {":RestoreSession<cr>", "Restore Session"},
 			p = {":AddWorkspace<cr>", "Add Project Workspace"},
+			
+			h = { ":lua require'focus'.split_command('h')<CR>", "Focus Left"},
+			j = { ":lua require'focus'.split_command('j')<CR>", "Focus Down"},
+			k = { ":lua require'focus'.split_command('k')<CR>", "Focus Up"},
+			l = { ":lua require'focus'.split_command('l')<CR>", "Focus Right"},
 		},
 		V = {":vs<CR>", "Vertical Split"},
 		H = {":sp<CR>", "Horizontal Split"},
@@ -110,10 +144,6 @@ M.config = function()
 		i = {':lua require("portal").jump_forward()<CR>', "Portal Forward"},
 		m = {':lua require("portal.tag").toggle()<CR>', "Portal toggle"},
 
-		-- h = { ":FocusSplitLeft<CR>", "Focus Left"},
-		j = { ":lua require'focus'.split_command('j')<CR>", "Focus Down"},
-		k = { ":lua require'focus'.split_command('k')<CR>", "Focus Up"},
-		l = { ":lua require'focus'.split_command('l')<CR>", "Focus Right"},
 		-- wiki notes
 		wn = {":FloatermNew nvim +VimwikiIndex .<CR>", "Open wiki notes"},
 		-- Undo tree
@@ -150,7 +180,7 @@ M.config = function()
 			D = {"Diff this -"},
 		},
 		td = {"Toggle deleted (git signs)"},
-		}, { prefix = "<leader>" })
+	}, { prefix = "<leader>" })
 
 
 

@@ -2,6 +2,25 @@ local cmd = vim.cmd
 
 local Theme = "noctis"
 local config_load = function() 
+	if Theme == "catppuccin" then
+		require("catppuccin").setup({
+			-- flavour = 'latte',
+			flavour = 'mocha',
+			transparent_background = true,
+			term_colors = true,
+			integrations = {
+				nvimtree = {
+					enabled = false,
+					show_root = true,
+				},
+				barbar = true,
+				dashboard = false,
+				telescope = true,
+				gitsigns = true
+			}
+		})
+	end
+
 	cmd("colorscheme " .. Theme)
 
 	-- Use terminal background color instead of colorscheme
@@ -41,41 +60,20 @@ return {
 	{
 		"catppuccin/nvim",
 		branch = "main",
-		event = "VeryLazy",
-		config = function()
-			require("catppuccin").setup({
-				-- flavour = 'latte',
-				flavour = 'mocha',
-				transparent_background = true,
-				term_colors = true,
-				integrations = {
-					nvimtree = {
-						enabled = false,
-						show_root = true,
-					},
-					barbar = true,
-					dashboard = false,
-					telescope = true,
-					gitsigns = true
-				}
-			})
-
-			-- cmd("colorscheme catppuccin")
-		end
+		-- event = "VeryLazy",
+		config = config_load
 	},
 	{
-		"shaunsingh/oxocarbon.nvim",
-		branch = "fennel",
-		event = "VeryLazy",
-		-- config = function()
-		-- 	cmd("colorscheme oxocarbon")
-		-- end
+		"nyoom-engineering/oxocarbon.nvim",
+		-- branch = "fennel",
+		-- event = "VeryLazy",
+		-- lazy = false,
+		-- priority = 1000,
+		config = config_load
 	},
 	{
 		'LunarVim/horizon.nvim',
-		event = "VeryLazy",
-		-- config = function()
-		-- 	cmd("colorscheme horizon")
-		-- end
+		-- event = "VeryLazy",
+		config = config_load
 	},
 }

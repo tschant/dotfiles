@@ -2,21 +2,10 @@ local M = {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPre",
 	dependencies = {
-		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-nvim-lsp",
 		-- LSP Installer
 		"williamboman/mason.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		-- Completion/Snippets
-		"onsails/lspkind-nvim",
-		"L3MON4D3/LuaSnip",
-		"rafamadriz/friendly-snippets",
-		"hrsh7th/cmp-nvim-lua",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"f3fora/cmp-spell",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-nvim-lsp",
 	},
 }
 
@@ -25,6 +14,7 @@ M.config = function()
 	require('mason-tool-installer').setup({
 		ensure_installed = {
 			"tflint",
+			"stylelint-lsp",
 			-- LSP
 			"bash-language-server",
 			"deno",
@@ -42,8 +32,6 @@ M.config = function()
 		run_on_start = true,
 		start_delay = 3000,
 	})
-	require("plugins.lsp.completion")
-
 
 	local lspconfig = require("lspconfig")
 	local cmp_lsp = require("cmp_nvim_lsp")

@@ -10,6 +10,10 @@ require("lazy").setup("plugins", {
 	install = { colorscheme = { "noctis" } },
 	-- checker = { enabled = true },
 	performance = {
+		cache = {
+      enabled = true,
+      -- disable_events = {},
+    },
 		rtp = {
 			disabled_plugins = {
 				"gzip",
@@ -24,3 +28,4 @@ require("lazy").setup("plugins", {
 		},
 	},
 })
+vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")

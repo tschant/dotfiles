@@ -1,6 +1,6 @@
 local M = {
 	"vimwiki/vimwiki",
-	event = "VeryLazy"
+	cmd = "VimwikiIndex"
 }
 
 M.config = function()

@@ -19,7 +19,9 @@ return {
 	{'juliosueiras/vim-terraform-completion', event = "BufRead *.tf"},
 
 	-- General plugins
-	{ "cbochs/portal.nvim", event = "VeryLazy" },
+	{
+		"cbochs/portal.nvim",
+	},
 	{
 		"numToStr/Comment.nvim",
 		event = "BufReadPre",
@@ -81,7 +83,7 @@ return {
 	},
 	{
 		"kevinhwang91/nvim-hlslens",
-		event = "VeryLazy",
+		event = "BufReadPre",
 		config = function()
 			require("hlslens").setup({
 				build_position_cb = function(plist, bufnr, changedtick, pattern)
@@ -93,7 +95,7 @@ return {
 	},
 	{
 		"petertriho/nvim-scrollbar",
-		event = "VeryLazy",
+		event = "BufReadPost",
 		config = function()
 			local color = require("utils.colors")
 			require("scrollbar").setup({
@@ -116,7 +118,7 @@ return {
 	},
 	{
 		"ojroques/nvim-bufdel",
-		event = "VimEnter",
+		event = "BufAdd",
 		config = function()
 			require('bufdel').setup {
 				next = 'cycle',  -- or 'alternate'
@@ -127,7 +129,7 @@ return {
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
-		event = "VimEnter",
+		event = "BufReadPre",
 		config = function()
 			require "colorizer".setup(
 				{"*"},

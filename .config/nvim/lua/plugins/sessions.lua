@@ -1,7 +1,7 @@
 local M = {
 	{
 		"rmagatti/session-lens",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		config = function()
 			-- sesions stuff
 			require('session-lens').setup({

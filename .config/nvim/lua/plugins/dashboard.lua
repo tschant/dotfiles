@@ -1,11 +1,10 @@
 local M = {
 	"glepnir/dashboard-nvim",
-	lazy = false
+	event = "VimEnter"
 }
 
 
 M.config = function()
-	require("telescope")
 	local u = require("utils.core")
 	local db = require('dashboard')
 

@@ -34,7 +34,7 @@ local M = {
 					null_ls.builtins.diagnostics.eslint_d,
 					null_ls.builtins.diagnostics.luacheck,
 					null_ls.builtins.diagnostics.shellcheck,
-					null_ls.builtins.diagnostics.stylelint,
+					-- null_ls.builtins.diagnostics.stylelint,
 					null_ls.builtins.diagnostics.sqlfluff,
 					null_ls.builtins.diagnostics.yamllint,
 				}

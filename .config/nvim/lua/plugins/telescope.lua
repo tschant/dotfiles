@@ -7,7 +7,8 @@ local M = {
 		"nvim-telescope/telescope-media-files.nvim",
 		-- "nvim-telescope/telescope-project.nvim",
 	},
-	event = "VimEnter"
+	cmd = "Telescope",
+	-- event = "VimEnter"
 }
 
 M.config = function()
@@ -115,7 +116,7 @@ M.config = function()
 	}
 	telescope.load_extension("fzy_native")
 	telescope.load_extension("media_files")
-	telescope.load_extension("session-lens")
+	-- telescope.load_extension("session-lens")
 	-- telescope.load_extension("projects")
 end
 
