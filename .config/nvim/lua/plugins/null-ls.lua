@@ -32,6 +32,7 @@ local M = {
 					null_ls.builtins.formatting.sqlfluff.with({
 						extra_args = {"--dialect", "mysql", "-e", "L003,L059,L063,L013,L016,L006,L048"}
 					}),
+					null_ls.builtins.formatting.terraform_fmt,
 					-- Linters
 					null_ls.builtins.diagnostics.codespell,
 					null_ls.builtins.diagnostics.eslint_d,

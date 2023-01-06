@@ -6,13 +6,7 @@ return {
 	{"iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md"},
 
 	-- JS/html
-	{"scrooloose/syntastic", event = "BufReadPre"},
-	{"groenewege/vim-less", event = "BufReadPre *.(js|html|less|css|scss)"},
-	{"hail2u/vim-css3-syntax", event = "BufReadPre *.(css|less|scss)"},
-	{"maxmellon/vim-jsx-pretty", event = "BufReadPre *.(js|ts)x"},
-	{"pangloss/vim-javascript", event = "BufReadPre *.(js|ts)x?"},
-	{"ryym/vim-riot", event = "BufReadPre *.(js|tag)"},
-	{"mattn/emmet-vim", event = "BufReadPre"},
+	{"ryym/vim-riot", ft = {"javascript", "tag"}},
 
 	-- Terraform
 	{'hashivim/vim-terraform', event = "BufReadPre *.tf"},
@@ -25,23 +19,17 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = "BufReadPre",
-		config = function()
-			require("Comment").setup()
-		end
+		config = true
 	},
 	{
 		"karb94/neoscroll.nvim",
 		event = "BufReadPre",
-		config = function()
-			require("neoscroll").setup()
-		end
+		config = true
 	},
 	{
 		"kylechui/nvim-surround",
 		event = "BufReadPre",
-		config = function()
-			require("nvim-surround").setup()
-		end
+		config = true
 	},
 	{"ggandor/lightspeed.nvim", event = "BufReadPre"},
 
@@ -70,9 +58,7 @@ return {
 		"anuvyklack/fold-preview.nvim",
 		event = "BufReadPre",
 		dependencies = 'anuvyklack/nvim-keymap-amend',
-		config = function() 
-			require('fold-preview').setup()
-		end
+		config = true
 	},
 	{
 		"mg979/vim-visual-multi",
@@ -145,14 +131,7 @@ return {
 			)
 		end
 	},
-	{
-		"ziontee113/icon-picker.nvim",
-		event = "BufReadPost",
-		config = function() 
-			require("icon-picker").setup({ disable_legacy_commands = true })
-		end
-	},
-
+	
 	-- Measure startuptime
 	{
 		"dstein64/vim-startuptime",

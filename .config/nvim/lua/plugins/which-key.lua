@@ -67,22 +67,23 @@ M.config = function()
 	wk.register({
 		g = {
 			-- LSP
-			D = {":lua vim.lsp.buf.declaration()<CR>", "Declarations"},
-			d = {":Telescope lsp_definitions<CR>", "Definitions"},
-			t = {":lua vim.lsp.buf.type_definition()<CR>", "Type Defs"},
-			r = {":Telescope lsp_references<CR>", "References"},
-			h = {":lua vim.lsp.buf.hover()<CR>", "Hover details"},
-			I = {":lua vim.lsp.buf.implementation()<CR>", "Implementation"},
+			D  = {":lua vim.lsp.buf.declaration()<CR>", "Declarations"},
+			d  = {":Telescope lsp_definitions<CR>", "Definitions"},
+			t  = {":lua vim.lsp.buf.type_definition()<CR>", "Type Defs"},
+			r  = {":Telescope lsp_references<CR>", "References"},
+			h  = {":lua vim.lsp.buf.hover()<CR>", "Hover details"},
+			I  = {":lua vim.lsp.buf.implementation()<CR>", "Implementation"},
 			rn = {":lua vim.lsp.buf.rename()<CR>", "Rename"},
-			p = {":lua vim.diagnostic.goto_prev()<CR>", "Goto Next"},
-			P = {":lua vim.diagnostic.goto_next()<CR>", "Goto Prev"},
+			p  = {":lua vim.diagnostic.goto_prev()<CR>", "Goto Next"},
+			P  = {":lua vim.diagnostic.goto_next()<CR>", "Goto Prev"},
 			-- Syntax Tree Surfer - treesitter smart selection
 			v  = {":lua require('syntax-tree-surfer').targeted_jump({'variable_declaration'})<CR>", "Jump Var declaration"},
 			fu = {":lua require('syntax-tree-surfer').targeted_jump({'function'})<CR>", "Jump Funct declaration"},
-			i = {f = {":lua require('syntax-tree-surfer').targeted_jump({'if_statement'})<CR>", "Jump If"}},
+			i  = {f = {":lua require('syntax-tree-surfer').targeted_jump({'if_statement'})<CR>", "Jump If"}},
 			j  = {":lua require('syntax-tree-surfer').targeted_jump({'function', 'if_statement', 'else_clause', 'else_statement', 'elseif_statement', 'for_statement', 'while_statement', 'switch_statement'})<CR>", "Jump ALL"},
 			n  = {":lua require('syntax-tree-surfer').filtered_jump('default', true)<CR>", "Filter Jump Next"},
 			N  = {":lua require('syntax-tree-surfer').filtered_jump('default', false)<CR>", "Filter Jump Prev"},
+			K  = {":lua require('ts-node-action').node_action()<CR>", "Trigger node action"}
 		},
 		v = {
 			d = {'<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', "Move Up (syntax)"},
@@ -139,7 +140,6 @@ M.config = function()
 		V = {":vs<CR>", "Vertical Split"},
 		H = {":sp<CR>", "Horizontal Split"},
 		w = {":update<CR>", "Save file"},
-		ic = {":IconPickerNormal<CR>", "Pick Icon"},
 		-- Portal
 		o = {':lua require("portal").jump_backward()<CR>', "Portal Back"},
 		i = {':lua require("portal").jump_forward()<CR>', "Portal Forward"},

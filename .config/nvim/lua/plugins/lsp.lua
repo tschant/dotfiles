@@ -17,7 +17,6 @@ M.config = function()
 			"stylelint-lsp",
 			-- LSP
 			"bash-language-server",
-			"deno",
 			"typescript-language-server",
 			"tailwindcss-language-server",
 			"css-lsp",
@@ -28,6 +27,7 @@ M.config = function()
 			"jdtls",
 			"sqlls",
 			"emmet-ls",
+			"dockerfile-language-server",
 		},
 		run_on_start = true,
 		start_delay = 3000,
@@ -93,9 +93,7 @@ M.config = function()
 		},
 		pyright = {},
 		rust_analyzer = {},
-		stylelint_lsp = {
-			autostart = false,
-		},
+		stylelint_lsp = { autostart = false, },
 		sumneko_lua = {
 			cmd = { "lua-language-server" },
 			settings = {
@@ -131,7 +129,8 @@ M.config = function()
 		},
 		svelte = {},
 		tailwindcss = {},
-		texlab = {},
+		terraform_lsp = {},
+		tflint = {},
 		tsserver = {},
 		yamlls = {},
 	}
@@ -150,8 +149,16 @@ M.config = function()
 		setup_server(server, config)
 	end
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+	-- Stop lsp diagnostics from showing virtual text
+	vim.diagnostic.config({
+		virtual_text = {spacing = 6, severity = "error"}, -- = false,
+		update_in_insert = false,
+		underline = true,
+		signs = true,
+		update_in_insert = false
+	})
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false, border = "single" })
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { focusable = false, border = "single" })
 
 	vim.fn.sign_define(
 		"LspDiagnosticsSignError",

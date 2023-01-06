@@ -5,6 +5,7 @@ local M = {
 		"p00f/nvim-ts-rainbow",
 		"ziontee113/syntax-tree-surfer",
 		"windwp/nvim-ts-autotag",
+		"ckolkey/ts-node-action",
 	},
 	-- event = "BufReadPost",
 }

@@ -13,6 +13,8 @@ local M = {
 		"f3fora/cmp-spell",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-emoji",
+		"chrisgrieser/cmp-nerdfont",
+		"ray-x/cmp-treesitter",
 	}
 }
 
@@ -57,8 +59,9 @@ M.config = function()
 			history = true,
 			updateevents = "TextChanged,TextChangedI",
 		}
-		luasnip.filetype_extend("javascript", {"react"})
-		luasnip.filetype_extend("typescript", {"react-ts"})
+		luasnip.filetype_extend("javascript", {"javascriptreact", "react"})
+		luasnip.filetype_extend("typescript", {"typescriptreact", "react-ts"})
+		-- luasnip.filetype_extend("docker", {"docker", "docker-compose"})
 	end
 
 	vim.opt.completeopt = "menuone,noselect"
@@ -88,6 +91,8 @@ M.config = function()
 					path = "[PATH]",
 					emoji = "[EMOJI]",
 					spell = "[SP]",
+					treesitter = "[TREE]",
+					nerdfont = "[NERD]",
 				}
 			}),
 		},
@@ -128,7 +133,9 @@ M.config = function()
 			{ name = "buffer", priority = 7 },
 			{ name = "nvim_lua", priority = 5 },
 			{ name = "path", priority = 5 },
+			{ name = "nerdfont", priority = 4},
 			{ name = "emoji", priority = 3 },
+			{ name = "treesitter", priority = 2 },
 			{ name = "spell", priority = 1 },
 		},
 	}
