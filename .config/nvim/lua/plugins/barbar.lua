@@ -3,7 +3,23 @@ local M = {
 	dependencies = {
 		"kyazdani42/nvim-web-devicons",
 	},
-	event = "BufAdd",
+	cmd = {
+		"BufferPrev",
+		"BufferNext",
+		"BufferClose",
+		"BufferCloseAllButCurrentOrPinned",
+		"BufferCloseBuffersLeft",
+		"BufferCloseBuffersRight",
+		"BufferPin",
+		"BufferFirst",
+		"BufferLast",
+		"BufferMovePrevious",
+		"BufferMoveNext",
+		"BufferOrderByDirectory",
+		"BufferOrderByBufferNumber",
+		"BufferOrderByWindowNumber",
+		"BufferGoto",
+	},
 }
 
 M.config = function() 
