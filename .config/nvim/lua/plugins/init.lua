@@ -105,13 +105,10 @@ return {
 	{
 		"ojroques/nvim-bufdel",
 		event = "BufAdd",
-		config = function()
-			require('bufdel').setup {
-				next = 'cycle',  -- or 'alternate'
-				quit = true,
-			}
-
-		end
+		config = {
+			next = 'cycle',  -- or 'alternate'
+			quit = true,
+		}
 	},
 	{
 		"norcalli/nvim-colorizer.lua",

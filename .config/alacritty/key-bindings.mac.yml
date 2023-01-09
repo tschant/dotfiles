@@ -76,39 +76,39 @@ key_bindings:
   - { key: Down,     mods: Alt,     chars: "\x1b[1;3B"                   }
   - { key: Down,                    chars: "\x1b[B",   mode: ~AppCursor  }
   - { key: Down,                    chars: "\x1bOB",   mode: AppCursor   }
-  - { key: S,        mods: Command,       chars: "\x06\x76" }
-  - { key: S,        mods: Command|Shift, chars: "\x06\x73" }
-  - { key: W,        mods: Command,       chars: "\x06\x78" }
-  - { key: W,        mods: Control|Shift,       chars: "\x06\x78" }
-  - { key: T,        mods: Command,       chars: "\x06\x63" }
-  - { key: T,        mods: Control|Shift,       chars: "\x06\x63" }
-  # - { key: RBracket, mods: Command|Shift, chars: "\x06\x6e" }
-  - { key: RBracket, mods: Control, chars: "\x06\x6e" }
-  # - { key: LBracket, mods: Command|Shift, chars: "\x06\x70" }
-  - { key: LBracket, mods: Control, chars: "\x06\x70" }
-  - { key: Return,   mods: Command|Shift, chars: "\x06\x7a" }
-  - { key: Return,   mods: Control|Shift, chars: "\x06\x7a" }
-  - { key: Key1,     mods: Control|Shift,       chars: "\x06\x31" }
-  - { key: Key2,     mods: Control|Shift,       chars: "\x06\x32" }
-  - { key: Key3,     mods: Control|Shift,       chars: "\x06\x33" }
-  - { key: Key4,     mods: Control|Shift,       chars: "\x06\x34" }
-  - { key: Key5,     mods: Control|Shift,       chars: "\x06\x35" }
-  - { key: Key6,     mods: Control|Shift,       chars: "\x06\x36" }
-  - { key: Key7,     mods: Control|Shift,       chars: "\x06\x37" }
-  - { key: Key8,     mods: Control|Shift,       chars: "\x06\x38" }
-  - { key: Key9,     mods: Control|Shift,       chars: "\x06\x39" }
-  - { key: Left,     mods: Command,       chars: "\x06\x68" }
-  - { key: Down,     mods: Command,       chars: "\x06\x6a" }
-  - { key: Up,       mods: Command,       chars: "\x06\x6b" }
-  - { key: Right,    mods: Command,       chars: "\x06\x6c" }
-  # - { key: Left,     mods: Command|Shift,       chars: "\x06\x48" }
-  - { key: Left,     mods: Control|Shift,       chars: "\x06\x48" }
-  # - { key: Down,     mods: Command|Shift,       chars: "\x06\x4a" }
-  - { key: Down,     mods: Control|Shift,       chars: "\x06\x4a" }
-  # - { key: Up,       mods: Command|Shift,       chars: "\x06\x4b" }
-  - { key: Up,       mods: Control|Shift,       chars: "\x06\x4b" }
-  # - { key: Right,    mods: Command|Shift,       chars: "\x06\x4c" }
-  - { key: Right,    mods: Control|Shift,       chars: "\x06\x4c" }
+  - { key: S,        mods: Command,       chars: "\x02\x76" }
+  - { key: S,        mods: Command|Shift, chars: "\x02\x73" }
+  - { key: W,        mods: Command,       chars: "\x02\x78" }
+  - { key: W,        mods: Control|Shift,       chars: "\x02\x78" }
+  - { key: T,        mods: Command,       chars: "\x02\x63" }
+  - { key: T,        mods: Control|Shift,       chars: "\x02\x63" }
+  # - { key: RBracket, mods: Command|Shift, chars: "\x02\x6e" }
+  - { key: RBracket, mods: Control, chars: "\x02\x6e" }
+  # - { key: LBracket, mods: Command|Shift, chars: "\x02\x70" }
+  - { key: LBracket, mods: Control, chars: "\x02\x70" }
+  - { key: Return,   mods: Command|Shift, chars: "\x02\x7a" }
+  - { key: Return,   mods: Control|Shift, chars: "\x02\x7a" }
+  - { key: Key1,     mods: Control|Shift,       chars: "\x02\x31" }
+  - { key: Key2,     mods: Control|Shift,       chars: "\x02\x32" }
+  - { key: Key3,     mods: Control|Shift,       chars: "\x02\x33" }
+  - { key: Key4,     mods: Control|Shift,       chars: "\x02\x34" }
+  - { key: Key5,     mods: Control|Shift,       chars: "\x02\x35" }
+  - { key: Key6,     mods: Control|Shift,       chars: "\x02\x36" }
+  - { key: Key7,     mods: Control|Shift,       chars: "\x02\x37" }
+  - { key: Key8,     mods: Control|Shift,       chars: "\x02\x38" }
+  - { key: Key9,     mods: Control|Shift,       chars: "\x02\x39" }
+  - { key: Left,     mods: Command,       chars: "\x02\x68" }
+  - { key: Down,     mods: Command,       chars: "\x02\x6a" }
+  - { key: Up,       mods: Command,       chars: "\x02\x6b" }
+  - { key: Right,    mods: Command,       chars: "\x02\x6c" }
+  # - { key: Left,     mods: Command|Shift,       chars: "\x02\x48" }
+  - { key: Left,     mods: Control|Shift,       chars: "\x02\x48" }
+  # - { key: Down,     mods: Command|Shift,       chars: "\x02\x4a" }
+  - { key: Down,     mods: Control|Shift,       chars: "\x02\x4a" }
+  # - { key: Up,       mods: Command|Shift,       chars: "\x02\x4b" }
+  - { key: Up,       mods: Control|Shift,       chars: "\x02\x4b" }
+  # - { key: Right,    mods: Command|Shift,       chars: "\x02\x4c" }
+  - { key: Right,    mods: Control|Shift,       chars: "\x02\x4c" }
 
 
   # - { key: F1,                      chars: "\x1bOP"                      }

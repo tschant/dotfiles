@@ -1,10 +1,7 @@
 local M = {
 	"stevearc/dressing.nvim",
 	event = "VeryLazy",
-}
-
-M.config = function()
-	require('dressing').setup({
+	config = {
 		select = {
 			telescope = {
 				layout_config = {
@@ -13,7 +10,7 @@ M.config = function()
 				},
 			},
 		},
-	})
-end
+	}
+}
 
 return M
