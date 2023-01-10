@@ -1,6 +1,6 @@
 local M = {
 	"hrsh7th/nvim-cmp",
-	event = "BufReadPost",
+	event = "InsertEnter",
 	dependencies = {
 		"windwp/nvim-autopairs",
 		-- Completion/Snippets
