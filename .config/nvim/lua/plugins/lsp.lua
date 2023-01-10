@@ -151,45 +151,55 @@ M.config = function()
 
 	-- Stop lsp diagnostics from showing virtual text
 	vim.diagnostic.config({
-		virtual_text = {spacing = 6, severity = "error"}, -- = false,
+		virtual_text = false, -- {spacing = 6, severity = "error"},
 		update_in_insert = false,
 		underline = true,
 		signs = true,
 		update_in_insert = false
 	})
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false, border = "single" })
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { focusable = false, border = "single" })
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+		vim.lsp.handlers.hover,
+		{ focusable = false, border = "single" }
+	)
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+		vim.lsp.handlers.signature_help,
+		{ focusable = false, border = "single" }
+	)
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics,
+		{ signs = true, }
+	)
 
 	vim.fn.sign_define(
-		"LspDiagnosticsSignError",
+		"DiagnosticSignError",
 		{
-			texthl = "LspDiagnosticsSignError",
+			texthl = "DiagnosticSignError",
 			text = "",
-			numhl = "LspDiagnosticsSignError"
+			numhl = "DiagnosticSignError"
 		}
 	)
 	vim.fn.sign_define(
-		"LspDiagnosticsSignWarning",
+		"DiagnosticSignWarning",
 		{
-			texthl = "LspDiagnosticsSignWarning",
+			texthl = "DiagnosticSignWarning",
 			text = "",
-			numhl = "LspDiagnosticsSignWarning"
+			numhl = "DiagnosticSignWarning"
 		}
 	)
 	vim.fn.sign_define(
-		"LspDiagnosticsSignInformation",
+		"DiagnosticSignInfo",
 		{
-			texthl = "LspDiagnosticsSignInformation",
+			texthl = "DiagnosticSignInfo",
 			text = "",
-			numhl = "LspDiagnosticsSignInformation"
+			numhl = "DiagnosticSignInfo"
 		}
 	)
 	vim.fn.sign_define(
-		"LspDiagnosticsSignHint",
+		"DiagnosticSignHint",
 		{
-			texthl = "LspDiagnosticsSignHint",
+			texthl = "DiagnosticSignHint",
 			text = "",
-			numhl = "LspDiagnosticsSignHint"
+			numhl = "DiagnosticSignHint"
 		}
 	)
 

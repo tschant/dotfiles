@@ -59,6 +59,7 @@
   "portal.nvim": { "branch": "main", "commit": "6198977abbfe30e19075edf106a507a6a708402c" },
   "pretty-fold.nvim": { "branch": "master", "commit": "04f30fde0ce9c32eca8500ade5bc1b45efec24af" },
   "session-lens": { "branch": "main", "commit": "b15e36782d01abacf6cd44e12f3292632064ab91" },
+  "statuscol.nvim": { "branch": "main", "commit": "77c9f3794b4a0b64697111ccdd962a76fa4c80b9" },
   "syntax-tree-surfer": { "branch": "master", "commit": "d6d518f48dcc4441b11ee3e6cefd48fa1e09568a" },
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
   "telescope-media-files.nvim": { "branch": "master", "commit": "513e4ee385edd72bf0b35a217b7e39f84b6fe93c" },
