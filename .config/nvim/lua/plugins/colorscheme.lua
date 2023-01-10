@@ -45,6 +45,10 @@ local config_load = function()
 	cmd("hi DiffChange guifg =" .. colors.blue .. " guibg = none")
 	cmd("hi DiffModified guifg =" .. colors.orange .. " guibg = none")
 	cmd("hi DiffDeleted guifg =" .. colors.red .. " guibg = none")
+	cmd("hi DiagnosticError guifg =" .. colors.error .. " guibg = none")
+	cmd("hi DiagnosticWarn guifg =" .. colors.warning .. " guibg = none")
+	cmd("hi DiagnosticInfo guifg =" .. colors.info .. " guibg = none")
+	-- cmd("hi DiagnosticHint guifg =" .. colors.hint .. " guibg = none")
 end
 
 return {

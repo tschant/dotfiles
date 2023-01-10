@@ -83,6 +83,7 @@ return {
 		"petertriho/nvim-scrollbar",
 		event = "BufReadPost",
 		config = function()
+			local icons = require('utils.icons')
 			local color = require("utils.colors")
 			require("scrollbar").setup({
 				show = true,
@@ -90,14 +91,14 @@ return {
 					color = color.bg2
 				},
 				marks = {
-					Error     = { color = color.error },
-					Warn      = { color = color.warning },
-					Info      = { color = color.info },
-					Hint      = { color = color.comments },
+					Error     = { text = {icons.error, icons.error}, color = color.error },
+					Warn      = { text = {icons.warn, icons.warn}, color = color.warning },
+					Info      = { text = {icons.info, icons.info}, color = color.info },
+					Hint      = { text = {icons.hint, icons.hint}, color = color.comments },
 					Search    = { text = "", color = color.white },
-					GitAdd    = { text = "⊕", color = color.green },
-					GitChange = { text = "⌾", color = color.blue },
-					GitDelete = { text = "⊖", color = color.red },
+					GitAdd    = { text = icons.git_add, color = color.green },
+					GitChange = { text = icons.git_change, color = color.blue },
+					GitDelete = { text = icons.git_delete, color = color.red },
 				}
 			})
 		end

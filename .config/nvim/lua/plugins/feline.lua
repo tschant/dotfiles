@@ -6,6 +6,7 @@ local M = {
 
 M.config = function()
 	local colors = require("utils.colors")
+	local icons = require("utils.icons")
 	local lsp = require "feline.providers.lsp"
 	local lsp_severity = vim.diagnostic.severity
 	local config = {
@@ -156,7 +157,7 @@ M.config = function()
 	components.active[1][4] = {
 		provider = function()
 			local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
-			return "  " .. dir_name .. " "
+			return " " .. icons.file .. " " .. dir_name .. " "
 		end,
 
 		enabled = shortline or function(winid)
@@ -211,7 +212,7 @@ M.config = function()
 			fg = colors.green,
 			bg = colors.bg,
 		},
-		icon = "  ",
+		icon = " " .. icons.git_add .. " ",
 	}
 	-- diffModfified
 	components.active[1][7] = {
@@ -220,7 +221,7 @@ M.config = function()
 			fg = colors.blue,
 			bg = colors.bg,
 		},
-		icon = "  ",
+		icon = " " .. icons.git_change .. " ",
 	}
 	-- diffRemove
 	components.active[1][8] = {
@@ -229,7 +230,7 @@ M.config = function()
 			fg = colors.red,
 			bg = colors.bg,
 		},
-		icon = "  ",
+		icon = " " .. icons.git_delete .. " ",
 	}
 
 	components.active[1][9] = {
@@ -239,7 +240,7 @@ M.config = function()
 end,
 
 hl = { fg = colors.red },
-		icon = "  ",
+		icon = " " .. icons.error .. " ",
 	}
 
 	components.active[1][10] = {
@@ -248,7 +249,7 @@ hl = { fg = colors.red },
 			return lsp.diagnostics_exist(lsp_severity.WARN)
 		end,
 		hl = { fg = colors.yellow },
-		icon = "  ",
+		icon = " " .. icons.warn .. " ",
 	}
 
 	components.active[1][11] = {
@@ -257,7 +258,7 @@ hl = { fg = colors.red },
 			return lsp.diagnostics_exist(lsp_severity.HINT)
 		end,
 		hl = { fg = colors.blue },
-		icon = "  ",
+		icon = " " .. icons.hint .. " ",
 	}
 
 	components.active[1][12] = {
@@ -266,7 +267,7 @@ hl = { fg = colors.red },
 			return lsp.diagnostics_exist(lsp_severity.INFO)
 		end,
 		hl = { fg = colors.green },
-		icon = "  ",
+		icon = " " .. icons.info .. " ",
 	}
 
 	-- Middle Section
@@ -345,7 +346,7 @@ hl = { fg = colors.red },
 			fg = colors.white,
 			bg = colors.bg3,
 		},
-		icon = "  ",
+		icon = " " .. icons.branch .. " ",
 		left_sep = {
 			str = statusline_style.left,
 			hl = {

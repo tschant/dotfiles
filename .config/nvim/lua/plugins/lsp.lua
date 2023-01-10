@@ -170,27 +170,28 @@ M.config = function()
 		{ signs = true, }
 	)
 
+	local icons = require('utils.icons')
 	vim.fn.sign_define(
 		"DiagnosticSignError",
 		{
 			texthl = "DiagnosticSignError",
-			text = "",
+			text = icons.error,
 			numhl = "DiagnosticSignError"
 		}
 	)
 	vim.fn.sign_define(
-		"DiagnosticSignWarning",
+		"DiagnosticSignWarn",
 		{
-			texthl = "DiagnosticSignWarning",
-			text = "",
-			numhl = "DiagnosticSignWarning"
+			texthl = "DiagnosticSignWarn",
+			text = icons.warn,
+			numhl = "DiagnosticSignWarn"
 		}
 	)
 	vim.fn.sign_define(
 		"DiagnosticSignInfo",
 		{
 			texthl = "DiagnosticSignInfo",
-			text = "",
+			text = icons.info,
 			numhl = "DiagnosticSignInfo"
 		}
 	)
@@ -198,7 +199,7 @@ M.config = function()
 		"DiagnosticSignHint",
 		{
 			texthl = "DiagnosticSignHint",
-			text = "",
+			text = icons.hint,
 			numhl = "DiagnosticSignHint"
 		}
 	)
