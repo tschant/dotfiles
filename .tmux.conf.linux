@@ -106,22 +106,33 @@ bind C-s if -F '#{pane_synchronized}' \
                       setw pane-active-border-style fg=red; \
                       setw pane-border-format       " #P - Pane Synchronization ON "'
 
-set -g status-interval 2
+set -g status-interval 3
+set -g automatic-rename on
+set -g automatic-rename-format '#{=|-25|...:pane_current_path}  #{pane_current_command}'
+
 set -g status-justify left
 # set -g status-left-length 55
-set -g status-right-length 140
+set -g status-right-length 175
 
-set-window-option -g window-status-style fg=colour7,bg=default
-set-window-option -g window-status-current-style fg=colour4,bg=default
+setw -g window-status-style fg=colour7,bg=default
+setw -g window-status-current-style fg=colour4,bg=default
+setw -g window-status-separator ""
+setw -g window-status-format "#[fg=colour16,bg=colour233] #[fg=colour7,bg=colour233] #I: #W #[fg=colour233,bg=default] "
+setw -g window-status-current-format ' #[fg=colour16,bg=colour236] #[fg=colour4,bg=colour236] #I: #[fg=colour4]#W #[fg=colour236,bg=default] '
+
+
 set -g status-bg colour16
+# set -g status-fg colour255
 
-# set -g status-left '\
-# 	#[fg=colour247,bg=colour236,nobold,noitalics,nounderscore] #(curl -m 1 'wttr.in?format=2' 2>/dev/null; sleep 900;) \
-# 	#[fg=colour236,bg=default,nobold,noitalics,nounderscore] \
-# '
+#set -g status-left ''
+#set -g status-left "\
+#	#[fg=colour7,bg=colour233,nobold,noitalics,nounderscore] #(curl -m 1 "wttr.in?format=2" 2>/dev/null; sleep 900;) \
+#	#[fg=colour233,bg=default,nobold,noitalics,nounderscore] \
+#"
 set -g status-right "\
-	#[fg=colour233,bg=default,nobold,noitalics,nounderscore] #[fg=colour247,bg=colour233,nobold,noitalics,nounderscore] ↑ #(uptime | awk '{print $3, $4, $5}' | awk -F',|:| ' '{print $1\"d \"$4\"h \"int($5)\"m\"}')\
-	#[fg=colour236,bg=colour233,nobold,noitalics,nounderscore] #[fg=colour247,bg=colour236,nobold,noitalics,nounderscore] %Y-%m-%d\
-	#[fg=colour241,bg=colour236,nobold,noitalics,nounderscore] #[fg=colour252,bg=colour236,bold,noitalics,nounderscore] %l:%M:%S %p\
+	#[fg=colour233,bg=default,nobold,noitalics,nounderscore] #[fg=colour7,bg=colour233,nobold,noitalics,nounderscore] #(curl -s -m 1 wttr.in/66061?format='%%c+%%t') \
+	#[fg=colour236,bg=colour233,nobold,noitalics,nounderscore] #[fg=colour7,bg=colour236,nobold,noitalics,nounderscore] ↑ #(uptime | awk '{print $3, $4, $5}' | awk -F',|:| ' '{print $1\"d \"$4\"h \"int($5)\"m\"}')\
+	#[fg=colour239,bg=colour236,nobold,noitalics,nounderscore] #[fg=colour7,bg=colour239,nobold,noitalics,nounderscore] %Y-%m-%d\
+	#[fg=colour241,bg=colour239,nobold,noitalics,nounderscore] #[fg=colour7,bg=colour239,nobold,noitalics,nounderscore]%l:%M:%S %p\
 "
-	#[fg=colour252,bg=colour236,nobold,noitalics,nounderscore] #[fg=colour16,bg=colour252,bold,noitalics,nounderscore] #H
+#[fg=colour252,bg=colour236,nobold,noitalics,nounderscore] #[fg=colour16,bg=colour252,bold,noitalics,nounderscore] #H

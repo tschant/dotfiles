@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local Theme = "noctis"
+local Theme = "horizon"
 local config_load = function() 
 	if Theme == "catppuccin" then
 		require("catppuccin").setup({
@@ -55,10 +55,16 @@ return {
 	{
 		'kartikp10/noctis.nvim',
 		dependencies = { 'rktjmp/lush.nvim' },
+		-- lazy = false,
+		-- priority = 1000,
+		config = config_load
+	}, 
+	--[[ {
+		'talha-akram/noctis.nvim',
 		lazy = false,
 		priority = 1000,
 		config = config_load
-	},
+	}, ]]
 	-- Themes
 	--"norcalli/nvim-base16.lua",
 	{
@@ -77,7 +83,8 @@ return {
 	},
 	{
 		'LunarVim/horizon.nvim',
-		-- event = "VeryLazy",
+		lazy = false,
+		priority = 1000,
 		config = config_load
 	},
 }
