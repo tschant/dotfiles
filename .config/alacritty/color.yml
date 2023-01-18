@@ -231,8 +231,7 @@ schemes:
 # colors: *kaolin
 # colors: *catppuccino
 # colors: *gruvbox_dark
-# colors: *ayu_dark
-
+colors: *ayu_dark
 # colors: *horizon_dark
-colors: *oxocarbon
+# colors: *oxocarbon
 # colors: *amarena
