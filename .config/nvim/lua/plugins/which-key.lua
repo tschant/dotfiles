@@ -106,21 +106,117 @@ M.config = function()
 
 	-- Ctrl key-maps
 	wk.register({
-		-- Better window navigation
-		["h>"] = {"<C-w>h", "Window left"},
-		["j>"] = {"<C-w>j", "Window down"},
-		["k>"] = {"<C-w>k", "Window up"},
-		["l>"] = {"<C-w>l", 'Window right'},
-		-- buffer navigation BarBar
-		["q>"] = {":BufferClose<CR>", 'Close buffer'},
 		-- Comment
 		['_>'] = {':lua require("Comment.api").toggle_current_linewise()<CR>', "ctrl-/"},
 		['p>'] = {":lua require('legendary').find()<cr>", 'Search keybinds and commands'}
 	}, {prefix = "<C-", mode = "n"})
 
+	-- Window keybinds
+	wk.register({
+		-- buffer navigation BarBar
+		["<C-q>"] = {":BufferClose<CR>", 'Close buffer'},
+		-- Better window navigation
+		["<C-h>"] = {"<C-w>h", "Window left"},
+		["<C-j>"] = {"<C-w>j", "Window down"},
+		["<C-k>"] = {"<C-w>k", "Window up"},
+		["<C-l>"] = {"<C-w>l", 'Window right'},
+		["<C-w>H"] = {"<C-w>3<", "Resize window left"},
+		["<C-w>L"] = {"<C-w>3>", "Resize window right"},
+		["<C-w>K"] = {"<C-w>2+", "Resize window up"},
+		["<C-w>J"] = {"<C-w>2-", "Resize window down"},
+		["<C-w>e"] = {"<C-w>=", "Equal window sizes"},
+		["<C-w><CR>"] = {":FocusMaxOrEqual<CR>"},
+		["<C-w>Q"] = {":q<cr>" },
+		["<C-w><C-q>"] = {":q<cr>" },
+	})
+
+	-- Buffer
+	wk.register({
+		d =  {'<cmd>BufferClose<CR>' },
+		ca = {'<cmd>BufferCloseAllButCurrentOrPinned<CR>' },
+		cl = {'<cmd>BufferCloseBuffersLeft<CR>' },
+		cr = {'<cmd>BufferCloseBuffersRight<CR>' },
+		b =  {'<cmd>Telescope buffers<CR>' },
+		pp = {'<cmd>BufferPin<CR>' },
+		n =  {'<cmd>tabnew<CR>' },
+		k =  {'<cmd>BufferFirst<CR>' },
+		j =  {'<cmd>BufferLast<CR>' },
+		h =  {'<cmd>BufferMovePrevious<CR>' },
+		l =  {'<cmd>BufferMoveNext<CR>' },
+		od = {'<cmd>BufferOrderByDirectory<CR>',    'by directory' },
+		on = {'<cmd>BufferOrderByBufferNumber<CR>', 'by buffer number' },
+		ow = {'<cmd>BufferOrderByWindowNumber<CR>', 'by window number' },
+		['1'] =  {'<cmd>BufferGoto 1<CR>', 'goto buffer 1' },
+		['2'] =  {'<cmd>BufferGoto 2<CR>', 'goto buffer 2' },
+		['3'] =  {'<cmd>BufferGoto 3<CR>', 'goto buffer 3' },
+		['4'] =  {'<cmd>BufferGoto 4<CR>', 'goto buffer 4' },
+		['5'] =  {'<cmd>BufferGoto 5<CR>', 'goto buffer 5' },
+		['6'] =  {'<cmd>BufferGoto 6<CR>', 'goto buffer 6' },
+		['7'] =  {'<cmd>BufferGoto 7<CR>', 'goto buffer 7' },
+		['8'] =  {'<cmd>BufferGoto 8<CR>', 'goto buffer 8' },
+		['9'] =  {'<cmd>BufferGoto 9<CR>', 'goto buffer 9' },
+	}, {prefix = "<leader>b"})
+
+	-- Telescope keybinds
+	wk.register({
+		f = {'<cmd>Telescope find_files<cr>' },
+		g = {'<cmd>Telescope live_grep<cr>' },
+		o = {'<cmd>Telescope oldfiles<cr>','recently opened files' },
+		h = {'<cmd>Telescope help_tags<cr>', 'vim help' },
+		b = {'<cmd>Telescope buffers<cr>' },
+		m = {'<cmd>Telescope marks<cr>', 'marks' },
+		k = {'<cmd>Telescope keymaps<cr>' },
+		O = {'<cmd>Telescope vim_options<cr>' },
+		r = {'<cmd>Telescope registers<cr>' },
+		s = {'<cmd>Telescope session-lens search_session<cr>', 'sessions' },
+		['/'] = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'search in file' },
+		['?'] = {'<cmd>Telescope search_history<cr>',  'search history' },
+		[';'] = {'<cmd>Telescope command_history<cr>', 'command-line history' },
+		c = {'<cmd>Telescope spell_suggest<cr>', 'spell suggest' },
+		x = {'<cmd>Telescope colorscheme<cr>', 'choose colorscheme' },
+		u = {'<cmd>silent! %foldopen! | UndotreeToggle<cr>', 'undotree' },
+	}, {prefix = '<leader>f'})
+
+	-- GitSigns 
+	wk.register({
+		J = {
+			function()
+				local gitsigns = require('gitsigns')
+				if vim.wo.diff then return ']c' end
+				vim.schedule(function() gitsigns.next_hunk() end)
+				return '<Ignore>'
+			end,
+			"next hunk"
+		},
+		K = {
+			function()
+				local gitsigns = require('gitsigns')
+				if vim.wo.diff then return '[c' end
+				vim.schedule(function() gitsigns.prev_hunk() end)
+				return '<Ignore>'
+			end,
+			"prev hunk"
+		},
+		s = {':Gitsigns stage_hunk<CR>', 'Stage hunk'},
+		u = {':Gitsigns undo_stage_hunk<CR>', 'Undo stage' },
+		S = {':Gitsigns stage_buffer<CR>', 'Stage all file' },
+		p = {':Gitsigns preview_hunk<CR>', 'Preview changes' },
+		d = {':Gitsigns toggle_deleted<CR>', 'Show deleted' },
+		b = {':Gitsigns blame_line<CR>', 'Blame line' },
+		B = {
+			function()
+				local gitsigns = require('gitsigns')
+				gitsigns.blame_line{ full = true }
+			end,
+			"Blame line"
+		},
+		['/'] = {':Gitsigns show<cr>', "show the base of the file"},
+		['<Enter>'] = {':FloatermNew lazygit<CR>', "Show lazygit"},
+	}, {prefix = '<leader>ga'})
+
 	-- Leader key-maps
 	wk.register({
-		-- u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
+		 -- u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 		q = {":BufferClose<CR>", "Close buffer"},
 		cc = {
 			":let @+=expand('%')<CR>", "Copy file path from PWD"
