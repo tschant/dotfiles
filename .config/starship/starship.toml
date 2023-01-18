@@ -65,8 +65,8 @@ format = 'via [$symbol$profile]($style) '
 symbol = '☁️ '
 
 [cmd_duration]
-show_notifications = true
-min_time_to_notify = 60_000
+show_notifications = false
+min_time_to_notify = 2_000
 
 [directory]
 read_only = " "
@@ -122,4 +122,5 @@ deleted = '\[ [$count](bright-white bold)\]'
 format = "[  $time]($style)"
 disabled = false
 
-
+# [nodejs]
+# symbol = " "
