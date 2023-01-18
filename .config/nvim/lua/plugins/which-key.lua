@@ -159,23 +159,25 @@ M.config = function()
 
 	-- Telescope keybinds
 	wk.register({
-		f = {'<cmd>Telescope find_files<cr>' },
-		g = {'<cmd>Telescope live_grep<cr>' },
-		o = {'<cmd>Telescope oldfiles<cr>','recently opened files' },
-		h = {'<cmd>Telescope help_tags<cr>', 'vim help' },
-		b = {'<cmd>Telescope buffers<cr>' },
-		m = {'<cmd>Telescope marks<cr>', 'marks' },
-		k = {'<cmd>Telescope keymaps<cr>' },
-		O = {'<cmd>Telescope vim_options<cr>' },
-		r = {'<cmd>Telescope registers<cr>' },
-		s = {'<cmd>Telescope session-lens search_session<cr>', 'sessions' },
-		['/'] = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'search in file' },
-		['?'] = {'<cmd>Telescope search_history<cr>',  'search history' },
-		[';'] = {'<cmd>Telescope command_history<cr>', 'command-line history' },
-		c = {'<cmd>Telescope spell_suggest<cr>', 'spell suggest' },
-		x = {'<cmd>Telescope colorscheme<cr>', 'choose colorscheme' },
-		u = {'<cmd>silent! %foldopen! | UndotreeToggle<cr>', 'undotree' },
-	}, {prefix = '<leader>f'})
+		f = {
+			f = {'<cmd>Telescope find_files<cr>', 'find files'},
+			g = {'<cmd>Telescope live_grep<cr>', 'grep files' },
+			o = {'<cmd>Telescope oldfiles<cr>','show recently opened files' },
+			h = {'<cmd>Telescope help_tags<cr>', 'show vim help' },
+			b = {'<cmd>Telescope buffers<cr>', 'list buffers' },
+			m = {'<cmd>Telescope marks<cr>', 'show marks' },
+			k = {'<cmd>Telescope keymaps<cr>', 'show keymaps' },
+			O = {'<cmd>Telescope vim_options<cr>', 'show vim opts' },
+			r = {'<cmd>Telescope registers<cr>', 'show copy registers' },
+			s = {'<cmd>Telescope session-lens search_session<cr>', 'show sessions' },
+			['/'] = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'search in file' },
+			['?'] = {'<cmd>Telescope search_history<cr>',  'search history' },
+			[';'] = {'<cmd>Telescope command_history<cr>', 'show command-line history' },
+			c = {'<cmd>Telescope spell_suggest<cr>', 'show spell suggest' },
+			x = {'<cmd>Telescope colorscheme<cr>', 'show colorscheme picker' },
+			u = {'<cmd>silent! %foldopen! | UndotreeToggle<cr>', 'show undotree' },
+		}
+	}, {prefix = '<leader>'})
 
 	-- GitSigns 
 	wk.register({
