@@ -55,11 +55,11 @@ cursor:
     shape: Beam
 
 # shell:
-#   program: /bin/zsh
+#   program: ~/.cargo/bin/zellij
 #   args:
-#     - -l
-#     - -c
-#     - "tmux new-session" #  -A -D -s main
+#     - options
+#     - --default-shell
+#     - zsh
 shell:
   program: /usr/local/bin/tmux
   args:
@@ -68,5 +68,4 @@ shell:
     # - -D
     # - -s
     # - main
-
 
