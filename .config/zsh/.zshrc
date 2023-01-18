@@ -70,6 +70,4 @@ source ~/.config/zsh/aliasrc
 [[ ! -f ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh ]] || sh ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh -r
 
 # source antidote
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
-antidote load
+source ~/.config/zsh/antidote.zsh
