@@ -5,7 +5,7 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-autosuggestions
 
-romkatv/powerlevel10k
+# romkatv/powerlevel10k
 
 # ohmyzsh/ohmyzsh path:plugins/npm
 # ohmyzsh/ohmyzsh path:plugins/brew

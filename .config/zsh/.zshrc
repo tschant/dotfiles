@@ -35,6 +35,7 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 export FZF_ALT_C_COMMAND='fd --type d . --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
+export AWS_PROFILE=default
 
 export EDITOR=nvim
 export PATH="$PATH:$HOME/.local/bin"
