@@ -29,7 +29,9 @@ return {
 	{
 		"kylechui/nvim-surround",
 		event = "BufReadPre",
-		config = true
+		config = function()
+			require("nvim-surround").setup()
+		end
 	},
 	{"ggandor/lightspeed.nvim", event = "BufReadPre"},
 

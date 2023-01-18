@@ -15,13 +15,9 @@ setopt INC_APPEND_HISTORY
 bindkey -v
 export KEYTIMEOUT=1
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 source ~/.config/zsh/prompt.zsh
-source <(antibody init)
-antibody bundle < ~/.config/zsh/plugins/zsh_plugins.txt
-
 source ~/.config/zsh/exports.zsh
 
 # these directories are necessary for zsh, to
@@ -45,7 +41,7 @@ if [[ $(uname -a) =~ "Darwin" ]]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+# [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 for i in ~/.config/zsh/zshrc.d/*.zsh; do
 	if [[ $__bashrc_bench ]]; then
@@ -72,3 +68,8 @@ source ~/.config/zsh/aliasrc
 # https://gitlab.com/phoneybadger/pokemon-colorscripts
 # ln -s <repo>/pokemon-colorscripts/ ~/.local/bin/
 [[ ! -f ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh ]] || sh ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh -r
+
+# source antidote
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
