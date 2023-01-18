@@ -1,5 +1,6 @@
 format = """
 $username\
+$hostname\
 $kubernetes\
 $directory\
 ${custom.git_host}\
@@ -122,5 +123,8 @@ deleted = '\[ [$count](bright-white bold)\]'
 format = "[  $time]($style)"
 disabled = false
 
-# [nodejs]
-# symbol = " "
+[username]
+format = "[$user]($style)"
+[hostname]
+format = '@[$hostname]($style) '
+
