@@ -4,7 +4,7 @@ $hostname\
 $kubernetes\
 $directory\
 ${custom.git_host}\
-$git_branch\
+${custom.git_branch}\
 $git_commit\
 $git_state\
 $git_status\
@@ -98,11 +98,27 @@ when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 shell = ["bash","--norc","--noprofile"]
 style = "bright-yellow bold"
 format = " [$output]($style)"
-[git_commit]
-commit_hash_length = 4
+[custom.git_branch]
+command = """
+BRANCH=$(command git branch --show-current 2> /dev/null)
+if [[ -z "$BRANCH" ]]; then 
+	BRANCH=$(command git status | head -1 | sed 's/HEAD //')
+fi 
+printf "%s" "$BRANCH"
+"""
+directories = [".git"]
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+shell = ["bash","--norc","--noprofile"]
+style = "bold green"
+symbol = " "
+format = "|[$output]($style)"
 [git_branch]
-format = '|[$symbol$branch]($style)'
+format = '|[$symbol$branch]($style) '
 symbol = ' '
+disabled = true
+[git_commit]
+disabled = true
+commit_hash_length = 7
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\)'
 [git_status]
