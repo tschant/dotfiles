@@ -111,7 +111,7 @@ printf "%s" "$BRANCH"
 directories = [".git"]
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 shell = ["bash","--norc","--noprofile"]
-style = "bold green"
+style = "bold purple"
 symbol = " "
 format = "|[$output]($style)"
 [git_branch]
