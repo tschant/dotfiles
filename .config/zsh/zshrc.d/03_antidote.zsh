@@ -23,3 +23,4 @@ source $static_file
 
 # cleanup
 unset antidote_dir plugins_txt static_file
+
