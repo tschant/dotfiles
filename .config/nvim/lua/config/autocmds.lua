@@ -8,10 +8,10 @@ local autocmds = {
 		{"FileType", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"},
 		{"FileType", "toggleterm", "setlocal nonumber norelativenumber"}
 	},
-	cursor = {
-		{"CursorHold", "*", "lua vim.diagnostic.open_float(0, {scope=line, focusable = false})"},
-		{"CursorHoldI", "*", "silent! lua vim.lsp.buf.signature_help({focusable = false})"}
-	},
+	-- cursor = {
+	-- 	{"CursorHold", "*", "lua vim.diagnostic.open_float(0, {scope=line, focusable = false})"},
+	-- 	{"CursorHoldI", "*", "silent! lua vim.lsp.buf.signature_help({focusable = false})"}
+	-- },
 	packer_user_config = {
 		{"BufWritePost", "plugins.lua", "source <afile> | PackerSync"}
 	}

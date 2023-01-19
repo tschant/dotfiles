@@ -155,21 +155,8 @@ M.config = function()
 		update_in_insert = false,
 		underline = true,
 		signs = true,
-		update_in_insert = false
 	})
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-		vim.lsp.handlers.hover,
-		{ focusable = false, border = "single" }
-	)
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-		vim.lsp.handlers.signature_help,
-		{ focusable = false, border = "single" }
-	)
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-		vim.lsp.diagnostic.on_publish_diagnostics,
-		{ signs = true, }
-	)
-
+	
 	local icons = require('utils.icons')
 	vim.fn.sign_define(
 		"DiagnosticSignError",
@@ -205,16 +192,16 @@ M.config = function()
 	)
 
 	-- suppress error messages from lang servers
-	vim.notify = function(msg, log_level, _)
-		if msg:match("exit code") then
-			return
-		end
-		if log_level == vim.log.levels.ERROR then
-			vim.api.nvim_err_writeln(msg)
-		else
-			vim.api.nvim_echo({ { msg } }, true, {})
-		end
-	end
+	-- vim.notify = function(msg, log_level, _)
+	-- 	if msg:match("exit code") then
+	-- 		return
+	-- 	end
+	-- 	if log_level == vim.log.levels.ERROR then
+	-- 		vim.api.nvim_err_writeln(msg)
+	-- 	else
+	-- 		vim.api.nvim_echo({ { msg } }, true, {})
+	-- 	end
+	-- end
 end
 
 return M
