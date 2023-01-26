@@ -116,10 +116,17 @@ _G.StatusColumn = {
   end
 }
 
-vim.opt.statuscolumn = StatusColumn.build({
-  StatusColumn.sections.folds,
-  StatusColumn.sections.sign_column,
-  StatusColumn.sections.line_number,
-  StatusColumn.sections.border,
-  StatusColumn.sections.padding
-})
+local present, err = pcall(function ()
+	vim.opt.statuscolumn = StatusColumn.build({
+		StatusColumn.sections.folds,
+		StatusColumn.sections.sign_column,
+		StatusColumn.sections.line_number,
+		StatusColumn.sections.border,
+		StatusColumn.sections.padding
+	})
+end)
+
+
+if not present then
+	print("statuscolumn error during setup", err)
+end
