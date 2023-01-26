@@ -2,6 +2,7 @@ if _G.StatusColumn then
   return
 end
 
+local icons = require('utils.icons')
 _G.StatusColumn = {
   handler = {
     fold = function()
@@ -26,15 +27,18 @@ _G.StatusColumn = {
   display = {
     line = function()
       local lnum = tostring(vim.v.lnum)
+      local relnum = tostring(vim.v.relnum)
 
       if vim.v.wrap then
         return " " .. string.rep(" ", #lnum)
       end
 
-      if #lnum == 1 then
-        return " " .. lnum
+			if relnum == "0" then
+				return lnum
+			elseif #relnum == 1 then
+        return " " .. relnum
       else
-        return lnum
+        return relnum
       end
     end,
 
@@ -57,9 +61,9 @@ _G.StatusColumn = {
       end
 
       if vim.fn.foldclosed(lnum) == -1 then
-        icon = Icons.misc.expanded
+        icon = icons.fold_expanded
       else
-        icon = Icons.misc.collapsed
+        icon = icons.fold_collapsed
       end
 
       return icon
@@ -112,11 +116,10 @@ _G.StatusColumn = {
   end
 }
 
--- vim.opt.statuscolumn = StatusColumn.build({
---   StatusColumn.sections.sign_column,
---   StatusColumn.sections.line_number,
---   StatusColumn.sections.spacing,
---   StatusColumn.sections.folds,
---   StatusColumn.sections.border,
---   StatusColumn.sections.padding
--- })
+vim.opt.statuscolumn = StatusColumn.build({
+  StatusColumn.sections.folds,
+  StatusColumn.sections.sign_column,
+  StatusColumn.sections.line_number,
+  StatusColumn.sections.border,
+  StatusColumn.sections.padding
+})
