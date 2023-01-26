@@ -179,7 +179,7 @@ M.config = function()
 		}
 	}, {prefix = '<leader>'})
 
-	-- GitSigns 
+	-- GitSigns
 	wk.register({
 		J = {
 			function()
