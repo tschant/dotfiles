@@ -1,4 +1,5 @@
 local u = require("utils.core")
+require("utils.colors")
 local cmd = vim.cmd
 
 vim.g.mapleader = ","

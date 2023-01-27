@@ -9,6 +9,10 @@ require("lazy").setup("plugins", {
 	defaults = { lazy = true, version = "*" },
 	install = { colorscheme = { "noctis" } },
 	-- checker = { enabled = true },
+	change_detection = {
+		enabled = true,
+		notify = false,
+	},
 	performance = {
 		cache = {
       enabled = true,
