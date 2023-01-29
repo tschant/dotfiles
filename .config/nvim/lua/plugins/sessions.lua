@@ -16,7 +16,7 @@ local M = {
 	{
 		"rmagatti/auto-session",
 		-- event = "VimEnter",
-		cmd = "RestoreSession",
+		cmd = {"RestoreSession", "SaveSession"},
 		config = {
 			log_level = 'info',
 			auto_restore_enabled = false,
