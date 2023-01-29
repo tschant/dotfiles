@@ -12,6 +12,7 @@ local icons = {
 	fold_expanded = "-", --"",
 	fold_collapsed = "+", --""",
 	gitsigns_bar = "│",
+	-- gitsigns_bar = "┃",
 }
 
 icons.diag_signs = {

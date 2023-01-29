@@ -28,6 +28,7 @@ local config_load = function()
 	cmd "hi NormalNC ctermbg=none guibg=#262626"
 	cmd "hi SignColumn ctermbg=none guibg=none"
 	cmd "hi FoldColumn ctermbg=none guibg=none"
+	cmd "hi FocusedLine ctermbg=none guibg=none guifg=#525252"
 	-- cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
 	-- cmd "hi StatusColumnGitSigns guifg=SignColumn guibg=SignColumn"
 

@@ -6,7 +6,8 @@ local hl_groups = {
 		GitSignsDelete       = "DiagnosticError",
 		GitSignsTopdelete    = "DiagnosticError",
 		GitSignsUntracked    = "NonText",
-	}
+	},
+	focused_line = "FocusedLine"
 }
 
 return hl_groups

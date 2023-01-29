@@ -23,7 +23,20 @@ _G.StatusColumn = {
       end
 
       vim.cmd.execute("'" .. lnum .. "fold" .. state .. "'")
-    end
+    end,
+		gitsign = function()
+			StatusColumn.handler.move_cursor(minwid, clicks, button, mods)
+			vim.schedule(function() require('gitsigns').preview_hunk() end)
+		end,
+		diag = function(minwid, clicks, button, mods)
+			StatusColumn.handler.move_cursor(minwid, clicks, button, mods)
+			vim.schedule(function() vim.diagnostic.open_float() end)
+		end,
+		move_cursor = function()
+			local mousepos = vim.fn.getmousepos()
+			vim.api.nvim_set_current_win(mousepos.winid)
+			vim.api.nvim_win_set_cursor(0, {mousepos.line, 0})
+		end,
   },
 
   display = {
@@ -40,10 +53,6 @@ _G.StatusColumn = {
 			local relnum = tostring(vim.v.relnum)
 			local max_lines = tostring(vim.fn.line("$"))
 			local current_mode = vim.fn.mode()
-
-      if vim.v.wrap then
-        return " " .. string.rep(" ", #lnum)
-      end
 
 			if current_mode == "i" then
 				return pad_line_num(lnum, max_lines)	
@@ -84,12 +93,15 @@ _G.StatusColumn = {
     end,
 
 		gitsign = function(bufnr, lnum)
+			local curr_lnum, column = unpack(vim.api.nvim_win_get_cursor(0))
 			local cur_sign_nm = utils.get_name_from_group(bufnr, lnum, "gitsigns_vimfn_signs_")
 
 			if cur_sign_nm ~= nil then
 				return utils.make_hl_statuscolum(hl_groups.gitsigns[cur_sign_nm], icons.gitsigns_bar)
+			elseif lnum == curr_lnum then
+				return utils.make_hl_statuscolum("FocusedLine", icons.gitsigns_bar)
 			else
-				return icons.gitsigns_bar
+				return utils.make_hl_statuscolum("NonText", icons.gitsigns_bar)
 			end
 		end,
 
@@ -97,7 +109,6 @@ _G.StatusColumn = {
 			local cur_sign_nm = utils.get_name_from_group(bufnum, lnum, "*")
 
 			if cur_sign_nm ~= nil and vim.startswith(cur_sign_nm, "DiagnosticSign") then
-				-- return mk_hl(cur_sign_nm, diag_signs_icons[cur_sign_nm])
 				return utils.make_hl_statuscolum(cur_sign_nm, icons.diag_signs[cur_sign_nm])
 			else
 				return " "
@@ -120,9 +131,11 @@ _G.StatusColumn = {
     },
 		gitsign   = {
 			[[%#StatusColumnGitSigns#]],
+			[[%@v:lua.StatusColumn.handler.gitsign@]],
 			[[%{%v:lua.StatusColumn.display.gitsign(bufnr(), v:lnum)%}]]
 		},
 		diag   = {
+			[[%@v:lua.StatusColumn.handler.diag@]],
 			[[%{%v:lua.StatusColumn.display.diag(bufnr(), v:lnum)%}]]
 		},
     border      = {
@@ -149,17 +162,18 @@ _G.StatusColumn = {
     return table.concat(statuscolumn)
   end,
 
-  set_window = function(value)
-    vim.defer_fn(function()
-      vim.api.nvim_win_set_option(vim.api.nvim_get_current_win(), "statuscolumn", value)
-    end, 1)
-  end
+  -- set_window = function(value)
+  --   vim.defer_fn(function()
+  --     vim.api.nvim_win_set_option(vim.api.nvim_get_current_win(), "statuscolumn", value)
+  --   end, 1)
+  -- end
 }
 
 
 local present, err = pcall(function ()
 	vim.opt.statuscolumn = StatusColumn.build({
 		StatusColumn.sections.folds,
+		-- StatusColumn.sections.padding,
 		StatusColumn.sections.diag,
 		StatusColumn.sections.padding,
 		StatusColumn.sections.line_number,
