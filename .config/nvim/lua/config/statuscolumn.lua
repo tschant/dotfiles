@@ -119,6 +119,7 @@ _G.StatusColumn = {
       [[%{v:lua.StatusColumn.display.fold()}]]
     },
 		gitsign   = {
+			[[%#StatusColumnGitSigns#]],
 			[[%{%v:lua.StatusColumn.display.gitsign(bufnr(), v:lnum)%}]]
 		},
 		diag   = {
