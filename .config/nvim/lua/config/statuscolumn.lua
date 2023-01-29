@@ -3,6 +3,8 @@ if _G.StatusColumn then
 end
 
 local icons = require('utils.icons')
+local hl_groups = require('utils.hl_groups')
+local utils = require('utils.extra')
 _G.StatusColumn = {
   handler = {
     fold = function()
@@ -26,20 +28,32 @@ _G.StatusColumn = {
 
   display = {
     line = function()
-      local lnum = tostring(vim.v.lnum)
-      local relnum = tostring(vim.v.relnum)
+			local function pad_line_num(num, max_lines)
+				if #num ~= #max_lines then
+					return string.rep(" ", #max_lines - #num) .. num
+				else
+					return num
+				end
+			end
+
+			local lnum = tostring(vim.v.lnum)
+			local relnum = tostring(vim.v.relnum)
+			local max_lines = tostring(vim.fn.line("$"))
+			local current_mode = vim.fn.mode()
 
       if vim.v.wrap then
         return " " .. string.rep(" ", #lnum)
       end
 
-			if relnum == "0" then
-				return lnum
-			elseif #relnum == 1 then
-        return " " .. relnum
-      else
-        return relnum
-      end
+			if current_mode == "i" then
+				return pad_line_num(lnum, max_lines)	
+			else
+				if relnum == "0" then
+					return pad_line_num(lnum, max_lines)
+				else
+					return pad_line_num(relnum, max_lines)
+				end
+			end
     end,
 
     fold = function()
@@ -48,7 +62,7 @@ _G.StatusColumn = {
       end
 
       local lnum = vim.v.lnum
-      local icon = "  "
+      local icon = " "
 
       -- Line isn't in folding range
       if vim.fn.foldlevel(lnum) <= 0 then
@@ -67,7 +81,28 @@ _G.StatusColumn = {
       end
 
       return icon
-    end
+    end,
+
+		gitsign = function(bufnr, lnum)
+			local cur_sign_nm = utils.get_name_from_group(bufnr, lnum, "gitsigns_vimfn_signs_")
+
+			if cur_sign_nm ~= nil then
+				return utils.make_hl_statuscolum(hl_groups.gitsigns[cur_sign_nm], icons.gitsigns_bar)
+			else
+				return icons.gitsigns_bar
+			end
+		end,
+
+		diag = function(bufnum, lnum)
+			local cur_sign_nm = utils.get_name_from_group(bufnum, lnum, "*")
+
+			if cur_sign_nm ~= nil and vim.startswith(cur_sign_nm, "DiagnosticSign") then
+				-- return mk_hl(cur_sign_nm, diag_signs_icons[cur_sign_nm])
+				return utils.make_hl_statuscolum(cur_sign_nm, icons.diag_signs[cur_sign_nm])
+			else
+				return " "
+			end
+		end
   },
 
   sections = {
@@ -75,19 +110,23 @@ _G.StatusColumn = {
       [[%s]]
     },
     line_number = {
-      [[%=%{v:lua.StatusColumn.display.line()}]]
-    },
-    spacing     = {
-      [[ ]]
+      [[%{%v:lua.StatusColumn.display.line()%}]]
+      -- [[%=%{v:lua.StatusColumn.display.line()}]]
     },
     folds       = {
       [[%#FoldColumn#]], -- HL
       [[%@v:lua.StatusColumn.handler.fold@]],
       [[%{v:lua.StatusColumn.display.fold()}]]
     },
+		gitsign   = {
+			[[%{%v:lua.StatusColumn.display.gitsign(bufnr(), v:lnum)%}]]
+		},
+		diag   = {
+			[[%{%v:lua.StatusColumn.display.diag(bufnr(), v:lnum)%}]]
+		},
     border      = {
       [[%#StatusColumnBorder#]], -- HL
-      [[▐]],
+      [[│]],
     },
     padding     = {
       [[%#StatusColumnBuffer#]], -- HL
@@ -118,14 +157,15 @@ _G.StatusColumn = {
 
 
 local present, err = pcall(function ()
-	vim.opt.statuscolumn = _G.StatusColumn.build({
-		_G.StatusColumn.sections.folds,
-		_G.StatusColumn.sections.sign_column,
-		_G.StatusColumn.sections.line_number,
-		_G.StatusColumn.sections.border,
-		_G.StatusColumn.sections.padding
+	vim.opt.statuscolumn = StatusColumn.build({
+		StatusColumn.sections.folds,
+		StatusColumn.sections.diag,
+		StatusColumn.sections.padding,
+		StatusColumn.sections.line_number,
+		StatusColumn.sections.padding,
+		StatusColumn.sections.gitsign,
+		-- StatusColumn.sections.padding,
 	})
--- vim.opt.statuscolumn = '%@SignCb@%s%=%T%@NumCb@%r│%T'
 end)
 
 if not present then

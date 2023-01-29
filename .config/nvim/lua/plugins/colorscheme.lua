@@ -26,19 +26,16 @@ local config_load = function()
 	-- Use terminal background color instead of colorscheme
 	cmd "hi Normal ctermbg=none guibg=none"
 	cmd "hi NormalNC ctermbg=none guibg=#262626"
+	cmd "hi SignColumn ctermbg=none guibg=none"
+	cmd "hi FoldColumn ctermbg=none guibg=none"
+	cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
 
 	-- highlights --
 	cmd "hi EndOfBuffer guifg=#525252 guibg=NONE"
 	cmd "hi gitcommitOverflow guifg=#525252 guibg=NONE"
 	cmd "hi gitcommitTrailers guifg=#525252 guibg=NONE"
 	cmd "hi Visual guibg=#525252"
-	-- cmd "hi Comment guifg=#307050"
-	-- cmd "au ColorScheme * hi Comment guifg=#3d4149"
-	-- cmd "hi SignColumn guibg=NONE"
-	-- cmd "hi EndOfBuffer guifg=#1e222a"
-	-- cmd "hi PmenuSel guibg=#98c379"
-	-- cmd "hi Pmenu  guibg=#282c34"
-	--
+		--
 	-- -- git signs
 	local colors = require("utils.colors")
 	cmd("hi DiffAdd guifg=" .. colors.green .. " guibg = none")

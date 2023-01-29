@@ -155,4 +155,39 @@ function utils.check_workspace()
     return true
 end
 
+function utils.get_name_from_group(bufnum, lnum, group)
+	local cur_sign = vim.fn.sign_getplaced(bufnum, {
+		group = group,
+		lnum = lnum
+	})
+
+	if (cur_sign == nil) then
+		return nil
+	end
+
+	cur_sign = cur_sign[1]
+
+	if (cur_sign == nil) then
+		return nil
+	end
+
+	cur_sign = cur_sign.signs
+
+	if (cur_sign == nil) then
+		return nil
+	end
+
+	cur_sign = cur_sign[1]
+
+	if (cur_sign == nil) then
+		return nil
+	end
+
+	return cur_sign["name"]
+end
+
+function utils.make_hl_statuscolum(group, sym)
+	return table.concat({ "%#", group, "#", sym, "%*" })
+end
+
 return utils
