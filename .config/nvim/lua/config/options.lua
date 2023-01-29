@@ -26,7 +26,7 @@ u.opt("o", "splitright", true)
 u.opt("o", "completeopt", "menuone,noinsert,noselect")
 -- u.opt("o", "spell", true)
 u.opt("o", "spelllang", Opts.language)
--- u.opt("o", "signcolumn", "number")
+u.opt("o", "signcolumn", "no")
 
 -- Window
 u.opt("w", "relativenumber", true)

@@ -161,17 +161,11 @@ _G.StatusColumn = {
 
     return table.concat(statuscolumn)
   end,
-
-  -- set_window = function(value)
-  --   vim.defer_fn(function()
-  --     vim.api.nvim_win_set_option(vim.api.nvim_get_current_win(), "statuscolumn", value)
-  --   end, 1)
-  -- end
 }
 
 
 local present, err = pcall(function ()
-	vim.opt.statuscolumn = StatusColumn.build({
+	local stc = StatusColumn.build({
 		StatusColumn.sections.folds,
 		-- StatusColumn.sections.padding,
 		StatusColumn.sections.diag,
@@ -181,6 +175,8 @@ local present, err = pcall(function ()
 		StatusColumn.sections.gitsign,
 		-- StatusColumn.sections.padding,
 	})
+
+	vim.opt.statuscolumn = stc
 end)
 
 if not present then
