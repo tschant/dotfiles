@@ -5,19 +5,15 @@ local M = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-fzy-native.nvim",
 		"nvim-telescope/telescope-media-files.nvim",
-		-- "nvim-telescope/telescope-project.nvim",
 	},
 	cmd = "Telescope",
-	-- event = "VimEnter"
 }
 
 M.config = function()
 	local telescope = require("telescope")
 	vim.g.theme_switcher_loaded = true
 	local actions = require("telescope.actions")
-	-- Global remapping
-	------------------------------
-	-- '--color=never',
+
 	telescope.setup {
 		defaults = {
 			vimgrep_arguments = {
@@ -27,7 +23,12 @@ M.config = function()
 				"--with-filename",
 				"--line-number",
 				"--column",
-				"--smart-case"
+				"--smart-case",
+				"--hidden",
+				"--glob",
+				"!**/.git/*",
+				"--glob",
+				"!**/node_modules/*",
 			},
 			prompt_prefix = " ",
 			selection_caret = " ",
@@ -49,7 +50,8 @@ M.config = function()
 			},
 			file_sorter = require("telescope.sorters").get_fzy_sorter,
 			file_ignore_patterns = {
-				"^.git/"
+				"^.git/",
+				"^node_modules/",
 			},
 			generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
 			path_display = {"truncate"},
@@ -99,25 +101,24 @@ M.config = function()
 				filetypes = {"png", "webp", "jpg", "jpeg"},
 				find_cmd = "rg" -- find command (defaults to `fd`)
 			},
-			-- project = {
-			-- 	display_type = 'full',
-			-- 	base_dirs = {
-			-- 		'~/git/analyst-ng',
-			-- 		'~/git/team-ea/terraform_ea',
-			-- 		'~/git/team-ea/d12y-tools',
-			-- 		'~/git/team-ea/ea-configs',
-			-- 		'~/git/team-ea/ea-dotfiles',
-			-- 		'~/git/tschant/dotfiles',
-			-- 		'~/git/tschant/schant-server',
-			-- 		'~/git/team-ea/sfmc-InboxtrackerProd',
-			-- 	}
-			-- }
-		}
+		},
+		pickers = {
+			find_files = {
+				find_command = {
+					"rg",
+					"--files",
+					"--hidden",
+					"--glob",
+					"!**/.git/*",
+					"--glob",
+					"!**/node_modules/*"
+				},
+			},
+		},
 	}
 	telescope.load_extension("fzy_native")
 	telescope.load_extension("media_files")
 	-- telescope.load_extension("session-lens")
-	-- telescope.load_extension("projects")
 end
 
 return M

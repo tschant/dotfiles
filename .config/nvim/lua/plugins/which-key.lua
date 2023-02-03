@@ -1,3 +1,4 @@
+local util = require('utils.core')
 local M = {
 	"folke/which-key.nvim",
 	dependencies = {"mrjones2014/legendary.nvim"},
@@ -83,7 +84,21 @@ M.config = function()
 			j  = {":lua require('syntax-tree-surfer').targeted_jump({'function', 'if_statement', 'else_clause', 'else_statement', 'elseif_statement', 'for_statement', 'while_statement', 'switch_statement'})<CR>", "Jump ALL"},
 			n  = {":lua require('syntax-tree-surfer').filtered_jump('default', true)<CR>", "Filter Jump Next"},
 			N  = {":lua require('syntax-tree-surfer').filtered_jump('default', false)<CR>", "Filter Jump Prev"},
-			K  = {":lua require('ts-node-action').node_action()<CR>", "Trigger node action"}
+			K  = {":lua require('ts-node-action').node_action()<CR>", "Trigger node action"},
+			s  = {util.telescope('lsp_document_symbols', {
+				symbols = {
+					"Class",
+					"Function",
+					"Method",
+					"Constructor",
+					"Interface",
+					"Module",
+					"Struct",
+					"Trait",
+					"Field",
+					"Property",
+				}
+			}), 'Goto Symbol'},
 		},
 		v = {
 			d = {'<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', "Move Up (syntax)"},
@@ -160,21 +175,28 @@ M.config = function()
 	-- Telescope keybinds
 	wk.register({
 		f = {
-			f = {'<cmd>Telescope find_files<cr>', 'find files'},
-			g = {'<cmd>Telescope live_grep<cr>', 'grep files' },
-			o = {'<cmd>Telescope oldfiles<cr>','show recently opened files' },
-			h = {'<cmd>Telescope help_tags<cr>', 'show vim help' },
+			F = {util.telescope('find_files'), 'find files (root dir)'},
+			f = {util.telescope('find_files', {cwd = false}), 'find files (cwd)'},
+			G = {util.telescope('live_grep'), 'grep files (root dir)' },
+			g = {util.telescope('live_grep', {cwd = false}), 'grep files (cwd)' },
+			W = {util.telescope('grep_string'), 'search word (root dir)' },
+			w = {util.telescope('grep_string', {cwd = false}), 'search word (cwd)' },
 			b = {'<cmd>Telescope buffers<cr>', 'list buffers' },
+			o = {'<cmd>Telescope oldfiles<cr>','show recently opened files' },
+
+			h = {'<cmd>Telescope help_tags<cr>', 'show vim help' },
+			H = {'<cmd>Telescope highlights<cr>', 'show vim help' },
 			m = {'<cmd>Telescope marks<cr>', 'show marks' },
 			k = {'<cmd>Telescope keymaps<cr>', 'show keymaps' },
 			O = {'<cmd>Telescope vim_options<cr>', 'show vim opts' },
 			r = {'<cmd>Telescope registers<cr>', 'show copy registers' },
 			s = {'<cmd>Telescope session-lens search_session<cr>', 'show sessions' },
+			S = {'<cmd>Telescope spell_suggest<cr>', 'show spell suggest' },
 			['/'] = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'search in file' },
 			['?'] = {'<cmd>Telescope search_history<cr>',  'search history' },
-			[';'] = {'<cmd>Telescope command_history<cr>', 'show command-line history' },
-			c = {'<cmd>Telescope spell_suggest<cr>', 'show spell suggest' },
-			x = {'<cmd>Telescope colorscheme<cr>', 'show colorscheme picker' },
+			C = {'<cmd>Telescope command_history<cr>', 'show command-line history' },
+			c = {'<cmd>Telescope commands<cr>', 'show command-line history' },
+			x = {util.telescope('colorscheme', {enable_preview = true}), 'show colorscheme picker' },
 			u = {'<cmd>silent! %foldopen! | UndotreeToggle<cr>', 'show undotree' },
 		}
 	}, {prefix = '<leader>'})
@@ -250,13 +272,14 @@ M.config = function()
 		-- lazygit
 		g = {
 			g = {":FloatermNew lazygit<CR>", "Lazy git"},
-			-- f = {":Telescope git_files<CR>"},
-			-- c = {":Telescope git_commits<CR>"},
-			-- b = {":Telescope git_branches<CR>"},
+			f = {":Telescope git_files<CR>", "git files"},
+			c = {":Telescope git_commits<CR>", "git commits"},
+			s = {":Telescope git_status<CR>", "git status"},
+			b = {":Telescope git_branches<CR>", "git branches"},
 		},
 		-- Neotree
 		e = {":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal =true, position = 'left', toggle = true})<CR>", "File tree"},
-		gs = {":lua require('neo-tree.command').execute({action = 'focus', source = 'git_status', reveal =true, position = 'bottom', toggle = true})<CR>", "Git status"},
+		-- gs = {":lua require('neo-tree.command').execute({action = 'focus', source = 'git_status', reveal =true, position = 'bottom', toggle = true})<CR>", "Git status"},
 		xx = {":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal =true, position = 'bottom', toggle = true})<CR>", "LSP/Diag"},
 		-- Session + Dashboard
 		["<Home>"] = {":Dashboard<cr>", "Dashboard"},
