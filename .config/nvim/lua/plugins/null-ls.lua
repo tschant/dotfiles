@@ -16,8 +16,10 @@ local M = {
 					-- Code Actions
 					null_ls.builtins.code_actions.eslint_d,
 					null_ls.builtins.code_actions.shellcheck,
+					null_ls.builtins.code_actions.cspell,
 					-- Completion
 					null_ls.builtins.completion.luasnip,
+					null_ls.builtins.completion.spell,
 					-- Formatters
 					null_ls.builtins.formatting.codespell,
 					null_ls.builtins.formatting.eslint_d,
@@ -34,7 +36,7 @@ local M = {
 					}),
 					null_ls.builtins.formatting.terraform_fmt,
 					-- Linters
-					null_ls.builtins.diagnostics.codespell,
+					null_ls.builtins.diagnostics.cspell,
 					null_ls.builtins.diagnostics.eslint_d,
 					null_ls.builtins.diagnostics.pmd.with({
 						extra_args = { "-R", "rulesets/java/quickstart.xml"}

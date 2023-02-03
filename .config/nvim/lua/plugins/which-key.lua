@@ -74,6 +74,7 @@ M.config = function()
 			r  = {":Telescope lsp_references<CR>", "References"},
 			h  = {":lua vim.lsp.buf.hover()<CR>", "Hover details"},
 			I  = {":lua vim.lsp.buf.implementation()<CR>", "Implementation"},
+			f = {":lua vim.diagnostic.open_float()<CR>", "Diagnostic"},
 			rn = {":lua vim.lsp.buf.rename()<CR>", "Rename"},
 			p  = {":lua vim.diagnostic.goto_prev()<CR>", "Goto Next"},
 			P  = {":lua vim.diagnostic.goto_next()<CR>", "Goto Prev"},
@@ -286,7 +287,20 @@ M.config = function()
 		nn = {":DashboardNewFile<cr>", "New file dashboard"},
 		-- 
 		c = {
-			k = {":set spell!<cr>", "Toggle spell check"},
+			k = {
+				function()
+					local nullls = require('null-ls')
+					local spell = vim.o.spell
+					if (spell) then
+						nullls.disable({"cspell", "codespell"})
+						vim.o.spell = false
+					else
+						nullls.enable({"cspell", "codespell"})
+						vim.o.spell = true
+					end
+				end,
+				"Toggle spell check"
+			},
 			m = {":lua vim.lsp.buf.format()<cr>", "Format file"},
 		},
 		-- Git signs
