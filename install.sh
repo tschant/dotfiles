@@ -16,8 +16,6 @@ mkdir -p $HOME/.config
 [[ ! -e $HOME/.bash_profile ]] && ln -s $(pwd)/.bash_profile $HOME/.bash_profile
 [[ ! -e $HOME/.tmux.conf ]] && ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
 
-
-	# TODO: Add actual install of utils
 OS_NAME=$(uname -a)
 if [[ "$OS_NAME" =~ "Linux" ]]; then
 	echo "Linux OS Detected"
@@ -34,4 +32,16 @@ elif [[ "$OS_NAME" =~ "Darwin" ]]; then
 	[[ ! -d $HOME/.config/yabai ]] && ln -s $(pwd)/.config/yabai $HOME/.config/yabai
 else
 	echo "Unsupported OS"
+fi
+
+# git based installs
+if which git >/dev/null; then
+	[[ ! -d $HOME/.vim ]] && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+# Curl based installs
+if which curl >/dev/null; then
+	! [ -x "$(command -v starship)" ] && curl -sS https://starship.rs/install.sh | sh
+	! [ -x "$(command -v zoxide)" ] && curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
 fi
