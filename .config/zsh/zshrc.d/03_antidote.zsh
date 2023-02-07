@@ -16,7 +16,7 @@ fi
 
 # Uncomment this if you want antidote commands like `antidote update` available
 # in your interactive shell session:
-# autoload -Uz $antidote_dir/functions/antidote
+autoload -Uz $antidote_dir/functions/antidote
 
 # source the static plugins file
 source $static_file

@@ -5,5 +5,7 @@ zsh-users/zsh-autosuggestions
 ohmyzsh/ohmyzsh path:plugins/npm
 ohmyzsh/ohmyzsh path:plugins/brew
 ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/history-substring-search
+ohmyzsh/ohmyzsh path:plugins/zoxide
 
 romkatv/zsh-prompt-benchmark
