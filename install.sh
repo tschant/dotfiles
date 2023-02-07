@@ -35,12 +35,12 @@ else
 fi
 
 # git based installs
-if which git >/dev/null; then
+if [ -x "$(command -v git)" ]; then
 	[[ ! -d $HOME/.vim ]] && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
 # Curl based installs
-if which curl >/dev/null; then
+if [ -x "$(command -v curl)" ]; then
 	! [ -x "$(command -v starship)" ] && curl -sS https://starship.rs/install.sh | sh
 	! [ -x "$(command -v zoxide)" ] && curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
