@@ -4,10 +4,15 @@ local Theme = "horizon"
 local config_load = function() 
 	if Theme == "catppuccin" then
 		require("catppuccin").setup({
-			-- flavour = 'latte',
-			flavour = 'mocha',
+			flavour = 'macchiato',
+			-- flavour = 'mocha',
 			transparent_background = true,
-			term_colors = true,
+			term_colors = false,
+			dim_inactive = {
+				enabled = true,
+        shade = "dark",
+        percentage = 0.1,
+			},
 			integrations = {
 				nvimtree = {
 					enabled = false,
@@ -68,8 +73,9 @@ return {
 	--"norcalli/nvim-base16.lua",
 	{
 		"catppuccin/nvim",
-		branch = "main",
-		-- event = "VeryLazy",
+		-- branch = "main",
+		-- lazy = false,
+		-- priority = 1000,
 		config = config_load
 	},
 	{

@@ -132,6 +132,10 @@ return {
 			)
 		end
 	},
+	{
+		"mrjones2014/smart-splits.nvim",
+		config = true,
+	},
 	
 	-- Measure startuptime
 	{

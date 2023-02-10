@@ -136,6 +136,19 @@ M.config = function()
 		["<C-j>"] = {"<C-w>j", "Window down"},
 		["<C-k>"] = {"<C-w>k", "Window up"},
 		["<C-l>"] = {"<C-w>l", 'Window right'},
+		-- ['<A-h>'] = {require('smart-splits').resize_left, ''},
+		-- ['<A-j>'] = {require('smart-splits').resize_down, ''},
+		-- ['<A-k>'] = {require('smart-splits').resize_up, ''},
+		-- ['<A-l>'] = {require('smart-splits').resize_right, ''},
+	})
+	--[[ wk.register({
+		-- buffer navigation BarBar
+		["<C-q>"] = {":BufferClose<CR>", 'Close buffer'},
+		-- Better window navigation
+		["<C-h>"] = {"<C-w>h", "Window left"},
+		["<C-j>"] = {"<C-w>j", "Window down"},
+		["<C-k>"] = {"<C-w>k", "Window up"},
+		["<C-l>"] = {"<C-w>l", 'Window right'},
 		["<C-w>H"] = {"<C-w>3<", "Resize window left"},
 		["<C-w>L"] = {"<C-w>3>", "Resize window right"},
 		["<C-w>K"] = {"<C-w>2+", "Resize window up"},
@@ -144,21 +157,21 @@ M.config = function()
 		["<C-w><CR>"] = {":FocusMaxOrEqual<CR>"},
 		["<C-w>Q"] = {":q<cr>" },
 		["<C-w><C-q>"] = {":q<cr>" },
-	})
+	}) ]]
 
 	-- Buffer
 	wk.register({
-		d =  {'<cmd>BufferClose<CR>' },
-		ca = {'<cmd>BufferCloseAllButCurrentOrPinned<CR>' },
-		cl = {'<cmd>BufferCloseBuffersLeft<CR>' },
-		cr = {'<cmd>BufferCloseBuffersRight<CR>' },
-		b =  {'<cmd>Telescope buffers<CR>' },
-		pp = {'<cmd>BufferPin<CR>' },
-		n =  {'<cmd>tabnew<CR>' },
-		k =  {'<cmd>BufferFirst<CR>' },
-		j =  {'<cmd>BufferLast<CR>' },
-		h =  {'<cmd>BufferMovePrevious<CR>' },
-		l =  {'<cmd>BufferMoveNext<CR>' },
+		d =  {'<cmd>BufferClose<CR>' , 'Close buffer'},
+		ca = {'<cmd>BufferCloseAllButCurrentOrPinned<CR>', 'Close all but current' },
+		cl = {'<cmd>BufferCloseBuffersLeft<CR>', 'Close all left' },
+		cr = {'<cmd>BufferCloseBuffersRight<CR>', 'Close all right' },
+		b =  {'<cmd>Telescope buffers<CR>', 'List Buffer' },
+		pp = {'<cmd>BufferPin<CR>', 'Pin Buffer' },
+		n =  {'<cmd>tabnew<CR>', 'New buffer' },
+		k =  {'<cmd>BufferFirst<CR>', 'Goto First buffer' },
+		j =  {'<cmd>BufferLast<CR>', 'Goto last buffer' },
+		h =  {'<cmd>BufferMovePrevious<CR>', 'Move buffer prev' },
+		l =  {'<cmd>BufferMoveNext<CR>', 'Move buffer next' },
 		od = {'<cmd>BufferOrderByDirectory<CR>',    'by directory' },
 		on = {'<cmd>BufferOrderByBufferNumber<CR>', 'by buffer number' },
 		ow = {'<cmd>BufferOrderByWindowNumber<CR>', 'by window number' },
