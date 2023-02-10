@@ -22,7 +22,7 @@ autoload -Uz compinit && compinit
 [[ ! -d ~/.cache/zsh ]] && mkdir -p ~/.cache/zsh
 [[ ! -d ~/.local/share/zsh ]] && mkdir -p ~/.local/share/zsh
 
-if [ -x "$(command -v zoxide)" ]; then
+if ! [ -x "$(command -v z)" ]; then
 	eval "$(zoxide init zsh)"
 fi
 
