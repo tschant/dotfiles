@@ -92,4 +92,10 @@ return {
 		priority = 1000,
 		config = config_load
 	},
+	-- {
+	-- 	'KoBruhh/tranquil-vim',
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = config_load
+	-- },
 }

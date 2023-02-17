@@ -132,14 +132,18 @@ M.config = function()
 		-- buffer navigation BarBar
 		["<C-q>"] = {":BufferClose<CR>", 'Close buffer'},
 		-- Better window navigation
-		["<C-h>"] = {"<C-w>h", "Window left"},
-		["<C-j>"] = {"<C-w>j", "Window down"},
-		["<C-k>"] = {"<C-w>k", "Window up"},
-		["<C-l>"] = {"<C-w>l", 'Window right'},
-		-- ['<A-h>'] = {require('smart-splits').resize_left, ''},
-		-- ['<A-j>'] = {require('smart-splits').resize_down, ''},
-		-- ['<A-k>'] = {require('smart-splits').resize_up, ''},
-		-- ['<A-l>'] = {require('smart-splits').resize_right, ''},
+		["<C-h>"] = {require('smart-splits').move_cursor_left, "Window left"},
+		["<C-j>"] = {require('smart-splits').move_cursor_down, "Window down"},
+		["<C-k>"] = {require('smart-splits').move_cursor_up, "Window up"},
+		["<C-l>"] = {require('smart-splits').move_cursor_right, 'Window right'},
+		-- ['<leader>wH'] = {require('smart-splits').resize_left, 'resize left', noremap=false},
+		-- ['<leader>wJ'] = {require('smart-splits').resize_down, 'resize down', noremap=false},
+		-- ['<leader>wK'] = {require('smart-splits').resize_up, 'resize up', noremap=false},
+		-- ['<leader>wL'] = {require('smart-splits').resize_right, 'resize right', noremap=false},
+		-- ['<C-S-h>'] = {require('smart-splits').resize_left, 'resize left', noremap=false},
+		-- ['<C-S-j>'] = {require('smart-splits').resize_down, 'resize down', noremap=false},
+		-- ['<C-S-k>'] = {require('smart-splits').resize_up, 'resize up', noremap=false},
+		-- ['<C-S-l>'] = {require('smart-splits').resize_right, 'resize right', noremap=false},
 	})
 	--[[ wk.register({
 		-- buffer navigation BarBar
