@@ -124,7 +124,8 @@ M.config = function()
 	wk.register({
 		-- Comment
 		['_>'] = {':lua require("Comment.api").toggle_current_linewise()<CR>', "ctrl-/"},
-		['p>'] = {":lua require('legendary').find()<cr>", 'Search keybinds and commands'}
+		-- ['p>'] = {":lua require('legendary').find()<cr>", 'Search keybinds and commands'},
+		['p>'] = {util.telescope('find_files', {cwd = false}), 'find files (cwd)'},
 	}, {prefix = "<C-", mode = "n"})
 
 	-- Window keybinds
