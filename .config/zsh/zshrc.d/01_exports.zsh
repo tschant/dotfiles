@@ -31,4 +31,6 @@ fi
 if type ruby &>/dev/null && type gem >/dev/null; then
 	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
-
+if [[ -d $HOME/.tmux/plugins/ ]]; then 
+	[[ -d $HOME/.tmux/plugins/t-smart-tmux-session-manager ]] && export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH 
+fi

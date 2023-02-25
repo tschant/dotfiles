@@ -73,3 +73,9 @@ print_colours() {
 	done
 }
 
+if type fdfind &>/dev/null; then 
+	alias fd=fdfind
+fi
+if type tmux &>/dev/null; then 
+	alias tn=tmux new -s "$(pwd | sed 's/.*\///g')"
+fi
