@@ -64,14 +64,15 @@ else                                     # currently in tmux
 	if [ "$SESSION" = "" ]; then            # session does not exist
 		if [ "$HOST" = "" ]; then
 			cd "$ZOXIDE_RESULT" || exit 1          # jump to directory
+			tmux new-session -d -s "$SESSION_NAME" # create session
+		else
+			tmux new-session -d -s "$SESSION_NAME" "ssh $HOST"
 		fi
 
-		tmux new-session -d -s "$SESSION_NAME" # create session
 		tmux switch-client -t "$SESSION_NAME"  # attach to session
-
-		if [ "$HOST" != "" ]; then
-			tmux send-keys -t "$SESSION_NAME" "ssh $HOST" Enter
-		fi
+		# if [ "$HOST" != "" ]; then
+		# 	tmux send-keys -t "$SESSION_NAME" "ssh $HOST" Enter
+		# fi
 	else                                    # session exists
 		tmux switch-client -t "$SESSION"       # switch to session
 	fi
