@@ -17,6 +17,11 @@ return {
 		"cbochs/portal.nvim",
 	},
 	{
+		"NMAC427/guess-indent.nvim",
+		config = true,
+		event = "BufReadPre"
+	},
+	{
 		"numToStr/Comment.nvim",
 		event = "BufReadPre",
 		config = true
