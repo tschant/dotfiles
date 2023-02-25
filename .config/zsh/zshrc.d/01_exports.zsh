@@ -34,3 +34,10 @@ fi
 if [[ -d $HOME/.tmux/plugins/ ]]; then 
 	[[ -d $HOME/.tmux/plugins/t-smart-tmux-session-manager ]] && export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH 
 fi
+
+
+# bun completions
+if [ -s "/home/tarryn/.bun/_bun" ]; then
+	source "/home/tarryn/.bun/_bun"
+	PATH="$PATH:$HOME/.bun/bin"
+fi

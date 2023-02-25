@@ -17,8 +17,8 @@ M.config = function()
 			"stylelint-lsp",
 			-- LSP
 			"bash-language-server",
-			"typescript-language-server",
-			"tailwindcss-language-server",
+			-- "typescript-language-server",
+			-- "tailwindcss-language-server",
 			"css-lsp",
 			"pyright",
 			"json-lsp",
@@ -128,10 +128,14 @@ M.config = function()
 			},
 		},
 		svelte = {},
-		tailwindcss = {},
+		tailwindcss = {
+			cmd = { "tailwindcss-language-server", "--stdio" },
+		},
 		terraform_lsp = {},
 		tflint = {},
-		tsserver = {},
+		tsserver = {
+			cmd = { "typescript-language-server", "--stdio" },
+		},
 		yamlls = {},
 	}
 

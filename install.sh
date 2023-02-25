@@ -43,5 +43,10 @@ fi
 if [ -x "$(command -v curl)" ]; then
 	! [ -x "$(command -v starship)" ] && curl -sS https://starship.rs/install.sh | sh
 	! [ -x "$(command -v zoxide)" ] && curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+	! [ -x "$(command -v bun)" ] && curl -fsSL https://bun.sh/install | bash
+fi
 
+if [ -x "$(command -v bun)" ]; then
+	bun add --global typescript-language-server
+	bun add --global tailwindcss-language-server
 fi
