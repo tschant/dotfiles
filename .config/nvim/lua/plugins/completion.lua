@@ -10,7 +10,7 @@ local M = {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		-- "f3fora/cmp-spell",
+		"f3fora/cmp-spell",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-emoji",
 		"chrisgrieser/cmp-nerdfont",
@@ -59,9 +59,10 @@ M.config = function()
 			history = true,
 			updateevents = "TextChanged,TextChangedI",
 		}
-		luasnip.filetype_extend("javascript", {"javascriptreact", "react"})
-		luasnip.filetype_extend("typescript", {"typescriptreact", "react-ts"})
+		-- luasnip.filetype_extend("javascript", {"javascriptreact", "react"})
+		-- luasnip.filetype_extend("typescript", {"typescriptreact", "react-ts"})
 		-- luasnip.filetype_extend("docker", {"docker", "docker-compose"})
+		require("luasnip.loaders.from_vscode").lazy_load()
 	end
 
 	vim.opt.completeopt = "menuone,noselect"
@@ -127,16 +128,16 @@ M.config = function()
 			end, {'i', 's'}),
 		},
 		sources = {
-			{ name = "nvim_lsp_signature_help", priority = 1 },
-			{ name = "treesitter", priority = 2 },
-			{ name = "nvim_lsp", priority = 3 },
-			{ name = "luasnip", priority = 4 },
-			{ name = "buffer", priority = 5 },
-			{ name = "path", priority = 6 },
-			{ name = "nvim_lua", priority = 7 },
-			{ name = "nerdfont", priority = 8},
-			{ name = "emoji", priority = 9 },
-			{ name = "spell", priority = 10 },
+			{ name = "nvim_lsp_signature_help" },
+			{ name = "treesitter" },
+			{ name = "nvim_lsp" },
+			{ name = "luasnip" },
+			{ name = "buffer" },
+			{ name = "path" },
+			{ name = "nvim_lua" },
+			{ name = "nerdfont"},
+			{ name = "emoji" },
+			{ name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
 		},
 	}
 
