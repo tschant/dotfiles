@@ -78,8 +78,8 @@ key_bindings:
   - { key: Down,     mods: Alt,     chars: "\x1b[1;3B"                   }
   - { key: Down,                    chars: "\x1b[B",   mode: ~AppCursor  }
   - { key: Down,                    chars: "\x1bOB",   mode: AppCursor   }
-  - { key: S,        mods: Command,       chars: "\x02\x76" }
-  - { key: S,        mods: Command|Shift, chars: "\x02\x73" }
+  - { key: S,        mods: Control,       chars: "\x02\x76" }
+  - { key: S,        mods: Control|Shift, chars: "\x02\x73" }
   - { key: W,        mods: Command,       chars: "\x02\x78" }
   - { key: W,        mods: Control|Shift,       chars: "\x02\x78" }
   - { key: T,        mods: Command,       chars: "\x02\x63" }
