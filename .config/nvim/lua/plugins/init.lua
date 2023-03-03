@@ -141,6 +141,9 @@ return {
 		"mrjones2014/smart-splits.nvim",
 		config = true,
 	},
+	{
+		"numToStr/FTerm.nvim",
+	},
 	
 	-- Measure startuptime
 	{

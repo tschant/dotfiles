@@ -37,7 +37,7 @@ fi
 
 
 # bun completions
-if [ -s "/home/tarryn/.bun/_bun" ]; then
-	source "/home/tarryn/.bun/_bun"
+if [ -s "$HOME/.bun/_bun" ]; then
+	source "$HOME/.bun/_bun"
 	PATH="$PATH:$HOME/.bun/bin"
 fi
