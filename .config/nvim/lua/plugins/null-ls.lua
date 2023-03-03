@@ -36,6 +36,7 @@ local M = {
 					}),
 					null_ls.builtins.formatting.terraform_fmt,
 					-- Linters
+					null_ls.builtins.diagnostics.alex,
 					-- null_ls.builtins.diagnostics.cspell,
 					null_ls.builtins.diagnostics.eslint_d,
 					null_ls.builtins.diagnostics.pmd.with({

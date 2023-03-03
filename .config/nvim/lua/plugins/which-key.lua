@@ -128,6 +128,34 @@ M.config = function()
 		['p>'] = {util.telescope('find_files', {cwd = false}), 'find files (cwd)'},
 	}, {prefix = "<C-", mode = "n"})
 
+	-- Terminal toggle
+	wk.register({
+		['<F2>'] = {'<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', 'Toggle floating terminal'},
+	}, {mode = 't'})
+	wk.register({
+		['<F2>'] = {'<cmd>lua require("FTerm").toggle()<CR>', 'Toggle floating terminal'},
+		['<F3>'] = {
+			function() 
+				local fterm = require('FTerm')
+				local btop = fterm:new({
+					ft = 'fterm_htop',
+					cmd = '[ -x "$(command -v btop)" ] && btop || htop'
+				})
+
+				btop:toggle()
+			end, 'Open htop'},
+		--[[ ['<leader>tg'] = {
+			function() 
+				require('FTerm').scratch({ cmd = {'gradle', 'build', '-x', 'test'} })
+			end, 'Scratch npm run build'
+		},
+		['<leader>tb'] = {
+			function() 
+				require('FTerm').scratch({ cmd = {'npm', 'run', 'build'} })
+			end, 'Scratch npm run build'
+		} ]]
+	}, {mode = 'n'})
+
 	-- Window keybinds
 	wk.register({
 		-- buffer navigation BarBar
@@ -202,6 +230,7 @@ M.config = function()
 			w = {util.telescope('grep_string', {cwd = false}), 'search word (cwd)' },
 			b = {'<cmd>Telescope buffers<cr>', 'list buffers' },
 			o = {'<cmd>Telescope oldfiles<cr>','show recently opened files' },
+			t = {'<cmd>lua require("FTerm").toggle()<CR>', 'Toggle floating terminal', mode = 'n'},
 
 			h = {'<cmd>Telescope help_tags<cr>', 'show vim help' },
 			H = {'<cmd>Telescope highlights<cr>', 'show vim help' },
@@ -254,8 +283,17 @@ M.config = function()
 			"Blame line"
 		},
 		['/'] = {':Gitsigns show<cr>', "show the base of the file"},
-		['<Enter>'] = {':FloatermNew lazygit<CR>', "Show lazygit"},
-	}, {prefix = '<leader>ga'})
+		['<Enter>'] = {
+			function()
+				local fterm = require("FTerm")
+				local lazygit = fterm:new({
+					ft = 'fterm_lazygit',
+					cmd = 'lazygit',
+				})
+
+				lazygit:toggle()
+			end, "Show lazygit"},
+		}, {prefix = '<leader>ga'})
 
 	-- Leader key-maps
 	wk.register({
@@ -283,14 +321,21 @@ M.config = function()
 		o = {':lua require("portal").jump_backward()<CR>', "Portal Back"},
 		i = {':lua require("portal").jump_forward()<CR>', "Portal Forward"},
 		m = {':lua require("portal.tag").toggle()<CR>', "Portal toggle"},
-
-		-- wiki notes
-		wn = {":FloatermNew nvim +VimwikiIndex .<CR>", "Open wiki notes"},
 		-- Undo tree
 		u = {":UndotreeToggle<CR>", "undo tree"},
 		-- lazygit
 		g = {
-			g = {":FloatermNew lazygit<CR>", "Lazy git"},
+			-- g = {":FloatermNew lazygit<CR>", "Lazy git"},
+			g = {
+				function()
+					local fterm = require("FTerm")
+					local lazygit = fterm:new({
+						ft = 'fterm_lazygit',
+						cmd = 'lazygit',
+					})
+
+					lazygit:toggle()
+				end, "Lazy git"},
 			f = {":Telescope git_files<CR>", "git files"},
 			c = {":Telescope git_commits<CR>", "git commits"},
 			s = {":Telescope git_status<CR>", "git status"},

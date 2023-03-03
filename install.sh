@@ -47,6 +47,7 @@ if [ -x "$(command -v curl)" ]; then
 fi
 
 if [ -x "$(command -v bun)" ]; then
+	bun add --global typescript
 	bun add --global typescript-language-server
 	bun add --global tailwindcss-language-server
 fi
