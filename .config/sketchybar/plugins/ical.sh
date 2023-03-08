@@ -21,11 +21,11 @@ list_events() {
 					position=popup.ical                                                          \
 					drawing=on)
 	if [ "${DAY_COUNT}" == "0" ];then
-			args+=(--set ical.day.$DAY_COUNT icon="$(date '+%a %d. %b - %I:%M:%S %p')")
-			EVENTS="$(icalBuddy -eed -n -nc -nrd -npn -ea -df "" -tf "%H.%S" -iep datetime,title -b '' -ps "|$SEP|" eventsFrom:$DATE to:$DATE)"
+			args+=(--set ical.day.$DAY_COUNT icon="$(date '+%a %d. %b - %H:%M:%S')")
+			EVENTS="$(icalBuddy -eed -n -nc -nrd -npn -ea -df "" -tf "%H.%M" -iep datetime,title -b '' -ps "|$SEP|" eventsFrom:$DATE to:$DATE)"
 	else
 			args+=(--set ical.day.$DAY_COUNT drawing=on)
-			EVENTS="$(icalBuddy -eed -nc -nrd -npn -ea -df "" -tf "%H.%S" -iep datetime,title -b '' -ps "|$SEP|" eventsFrom:$DATE to:$DATE)"
+			EVENTS="$(icalBuddy -eed -nc -nrd -npn -ea -df "" -tf "%H.%M" -iep datetime,title -b '' -ps "|$SEP|" eventsFrom:$DATE to:$DATE)"
 	fi
 
 	# Displays the events of the day (time and title)
