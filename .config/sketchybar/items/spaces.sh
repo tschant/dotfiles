@@ -16,11 +16,11 @@ do
                               background.padding_left=0                     \
                               background.padding_right=0                    \
                               background.drawing=on                         \
-															label.y_offset=0                              \
+                              label.y_offset=0                              \
                               label.padding_right=24                        \
-															label.padding_left=-5                         \
+                              label.padding_left=-5                         \
                               label.font="$FONT:Semibold:13.0"              \
-															label.color=$WHITE                            \
+                              label.color=$WHITE                            \
                               label.background.height=26                    \
                               label.background.drawing=on                   \
                               label.background.color=$BACKGROUND_2          \
@@ -36,6 +36,6 @@ sketchybar   --add item       separator left                          \
                               background.padding_left=-5              \
                               background.padding_right=0              \
                               label.drawing=off                       \
-															label.font="$FONT:Regular:13.0"         \
+                              label.font="$FONT:Regular:13.0"         \
                               associated_display=active               \
                               icon.color=$WHITE
