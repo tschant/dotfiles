@@ -19,7 +19,7 @@ local M = {
 					-- null_ls.builtins.code_actions.cspell,
 					-- Completion
 					null_ls.builtins.completion.luasnip,
-					null_ls.builtins.completion.spell,
+					-- null_ls.builtins.completion.spell,
 					-- Formatters
 					-- null_ls.builtins.formatting.codespell,
 					null_ls.builtins.formatting.eslint_d,

@@ -112,7 +112,7 @@ return {
 	},
 	{
 		"ojroques/nvim-bufdel",
-		cmd = "BufDel",
+		cmd = {"BufDel"},
 		event = "BufAdd",
 		config = {
 			next = 'cycle',  -- or 'alternate'

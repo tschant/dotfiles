@@ -36,8 +36,9 @@ M.config = function()
 	local lspconfig = require("lspconfig")
 	local cmp_lsp = require("cmp_nvim_lsp")
 
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = cmp_lsp.default_capabilities(capabilities)
+	-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+	-- capabilities = cmp_lsp.default_capabilities(capabilities)
+	local capabilities = cmp_lsp.default_capabilities()
 	capabilities.textDocument.colorProvider = {
 		dynamicRegistration = true,
 	}
