@@ -10,7 +10,6 @@ export MYVIMRC="$HOME/.config/nvim/init.lua"
 export AWS_PROFILE=default
 
 export EDITOR=nvim
-export PATH="$PATH:$HOME/.local/bin"
 [[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 if [[ -d /home/tarryn/.spicetify ]]; then 

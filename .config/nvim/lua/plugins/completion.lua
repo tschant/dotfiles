@@ -3,11 +3,14 @@ local M = {
 	event = "InsertEnter",
 	dependencies = {
 		"windwp/nvim-autopairs",
-		-- Completion/Snippets
 		"onsails/lspkind-nvim",
+		-- Completion/Snippets
 		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"f3fora/cmp-spell",
@@ -15,6 +18,7 @@ local M = {
 		"hrsh7th/cmp-emoji",
 		"chrisgrieser/cmp-nerdfont",
 		"ray-x/cmp-treesitter",
+		"jcha0713/cmp-tw2css",
 	}
 }
 
@@ -82,7 +86,9 @@ M.config = function()
 		},
 		formatting = {
 			format = require("lspkind").cmp_format({
-				mode = 'symbol_text',
+				mode = 'symbol',
+				maxwidth = 50,
+				ellipsis_char = '...',
 				symbol_map = icons,
 				menu = {
 					nvim_lsp = "[LSP]",
@@ -94,6 +100,7 @@ M.config = function()
 					spell = "[SP]",
 					treesitter = "[TREE]",
 					nerdfont = "[NERD]",
+					nvim_lsp_signature_help = "[SIG]",
 				}
 			}),
 		},
@@ -128,16 +135,17 @@ M.config = function()
 			end, {'i', 's'}),
 		},
 		sources = {
-			{ name = "nvim_lsp_signature_help" },
-			{ name = "treesitter" },
 			{ name = "nvim_lsp" },
+			{ name = "treesitter" },
+			{ name = "nvim_lsp_signature_help" },
 			{ name = "luasnip" },
-			{ name = "buffer" },
+			{ name = "buffer", keyword_length = 3, max_item_count = 4 },
 			{ name = "path" },
+			{ name = 'cmp-tw2css' },
 			{ name = "nvim_lua" },
 			{ name = "nerdfont"},
 			{ name = "emoji" },
-			{ name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
+			{ name = "spell", keyword_length = 4, keyword_pattern = [[\w\+]], max_item_count = 4 },
 		},
 	}
 
