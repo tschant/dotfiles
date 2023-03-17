@@ -51,3 +51,16 @@ if [ -x "$(command -v bun)" ]; then
 	bun add --global typescript-language-server
 	bun add --global tailwindcss-language-server
 fi
+
+
+echo "Need to install manually:"
+! [ -x "$(command -v tmux)" ] && echo "tmux"
+! [ -x "$(command -v fzf)" ] && echo "fzf"
+! [ -x "$(command -v fdfind)" ] && echo "fdfind"
+! [ -x "$(command -v exa)" ] && echo "exa"
+! [ -x "$(command -v rg)" ] && echo "ripgrep"
+! [ -x "$(command -v npm)" ] && echo "node|npm"
+! [ -x "$(command -v nodenv)" ] && echo "nodenv"
+! [ -x "$(command -v cargo)" ] && echo "rust|cargo"
+! [ -x "$(command -v lazygit)" ] && echo "lazygit"
+

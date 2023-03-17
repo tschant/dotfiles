@@ -27,7 +27,7 @@ setopt inc_append_history      # write to the history file immediately, not when
 unsetopt hist_beep             # don't beep when attempting to access a missing history entry
 # unsetopt share_history         # don't share history between all sessions
 
-source "$HOME/.config/zsh/exports.zsh"
+source "${ZDOTDIR}/exports.zsh"
 
 # vi mode
 bindkey -v
