@@ -27,7 +27,7 @@ setopt inc_append_history      # write to the history file immediately, not when
 unsetopt hist_beep             # don't beep when attempting to access a missing history entry
 # unsetopt share_history         # don't share history between all sessions
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:/opt/hombrew/bin"
 
 # vi mode
 bindkey -v

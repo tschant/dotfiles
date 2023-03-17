@@ -1,6 +1,5 @@
 local M = {
 	"freddiehaddad/feline.nvim",
-	branch = "master",
 	event = "BufReadPre"
 }
 
