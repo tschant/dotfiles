@@ -1,3 +1,4 @@
+export PATH="$PATH:$HOME/.local/bin"
 
 # Exports
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'
