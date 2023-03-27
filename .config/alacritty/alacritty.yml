@@ -9,8 +9,8 @@ env:
 window:
   opacity: 0.95
   dimensions:
-    columns: 80
-    lines: 24
+    columns: 200
+    lines: 75
 
   padding:
     x: 5
