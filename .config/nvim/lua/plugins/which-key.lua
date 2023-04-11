@@ -100,6 +100,7 @@ M.config = function()
 					"Property",
 				}
 			}), 'Goto Symbol'},
+			ca = {':lua vim.lsp.buf.code_action()<CR>', 'Run code actions (fix thigs)'},
 		},
 		v = {
 			d = {'<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', "Move Up (syntax)"},
@@ -108,7 +109,7 @@ M.config = function()
 			x = {'<cmd>lua require("syntax-tree-surfer").select()<cr>', "Select block/line"},
 			-- .select_current_node() will select the current node at your cursor
 			n = {'<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', "Select current node"},
-		}
+		},
 	}, {mode = "n"})
 
 	wk.register({
