@@ -8,7 +8,7 @@ mkdir -p $HOME/.config
 [[ ! -d $HOME/.config/ranger ]] && ln -s $(pwd)/.config/ranger $HOME/.config/ranger
 [[ ! -d $HOME/.config/spotify-tui ]] && ln -s $(pwd)/.config/spotify-tui $HOME/.config/spotify-tui
 [[ ! -d $HOME/.config/zsh ]] && ln -s $(pwd)/.config/zsh $HOME/.config/zsh
-[[ ! -d $HOME/.config/tmux ]] && ln -s $(pwd)/tmux $HOME/.config/tmux
+[[ ! -d $HOME/.config/tmux ]] && ln -s $(pwd)/.config/tmux $HOME/.config/tmux
 
 [[ ! -e $HOME/.zshenv ]] && ln -s $(pwd)/.zshenv $HOME/.zshenv
 [[ ! -e $HOME/.vimrc ]] && ln -s $(pwd)/.vimrc $HOME/.vimrc
@@ -51,3 +51,16 @@ if [ -x "$(command -v bun)" ]; then
 	bun add --global typescript-language-server
 	bun add --global tailwindcss-language-server
 fi
+
+
+echo "Need to install manually:"
+! [ -x "$(command -v tmux)" ] && echo "tmux"
+! [ -x "$(command -v fzf)" ] && echo "fzf"
+! [ -x "$(command -v fdfind)" ] && echo "fdfind"
+! [ -x "$(command -v exa)" ] && echo "exa"
+! [ -x "$(command -v rg)" ] && echo "ripgrep"
+! [ -x "$(command -v npm)" ] && echo "node|npm"
+! [ -x "$(command -v nodenv)" ] && echo "nodenv"
+! [ -x "$(command -v cargo)" ] && echo "rust|cargo"
+! [ -x "$(command -v lazygit)" ] && echo "lazygit"
+

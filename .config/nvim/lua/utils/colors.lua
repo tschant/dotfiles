@@ -1,8 +1,13 @@
 --local d2d = require("Dusk-til-Dawn")
-local mocha = require("catppuccin.palettes").get_palette "mocha"
-local latte = require("catppuccin.palettes").get_palette "latte"
-
 M = {}
+local present, catppuccin = pcall(require, "catppuccin.palettes")
+if not present then
+	return M
+end
+
+local mocha = catppuccin.get_palette "mocha"
+local latte = catppuccin.get_palette "latte"
+
 M.dark = {
 	bg = mocha.mantle,
 	bg2 = mocha.surface0,
