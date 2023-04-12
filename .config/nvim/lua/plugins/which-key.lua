@@ -347,8 +347,8 @@ M.config = function()
 		-- gs = {":lua require('neo-tree.command').execute({action = 'focus', source = 'git_status', reveal =true, position = 'bottom', toggle = true})<CR>", "Git status"},
 		xx = {":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal =true, position = 'bottom', toggle = true})<CR>", "LSP/Diag"},
 		-- Session + Dashboard
-		["<Home>"] = {":Dashboard<cr>", "Dashboard"},
-		nn = {":DashboardNewFile<cr>", "New file dashboard"},
+		["<Home>"] = {":Alpha<cr>", "Dashboard"},
+		-- nn = {":DashboardNewFile<cr>", "New file dashboard"},
 		-- 
 		c = {
 			k = {

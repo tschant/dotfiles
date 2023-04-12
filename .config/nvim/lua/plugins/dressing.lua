@@ -1,7 +1,7 @@
 local M = {
 	"stevearc/dressing.nvim",
 	event = "VeryLazy",
-	config = {
+	opts = {
 		select = {
 			telescope = {
 				layout_config = {

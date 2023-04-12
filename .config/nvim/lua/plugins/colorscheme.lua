@@ -52,7 +52,7 @@ local config_load = function()
 	cmd("hi DiagnosticError guifg =" .. colors.error .. " guibg = none")
 	cmd("hi DiagnosticWarn guifg =" .. colors.warning .. " guibg = none")
 	cmd("hi DiagnosticInfo guifg =" .. colors.info .. " guibg = none")
-	-- cmd("hi DiagnosticHint guifg =" .. colors.hint .. " guibg = none")
+	cmd("hi DiagnosticHint guifg =" .. colors.hint .. " guibg = none")
 end
 
 return {
