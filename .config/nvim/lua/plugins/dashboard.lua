@@ -41,9 +41,8 @@ local M = {
 			dashboard.button(", f o", "Recents                   ", ":Telescope oldfiles<cr>"  ),
 			dashboard.button(", f p", "Projects                  ", ":Telescope projects<cr>"  ),
 			dashboard.button(", f g", "Find Word                 ", ":Telescope live_grep<cr>" ),
-			dashboard.button(", f n", "New File                  ", ":DashboardNewFile<cr>"    ),
 			dashboard.button(", b m", "Bookmarks                 ", ":Telescope marks<cr>"     ),
-			dashboard.button(", s r", "Load Last Session         ", ":RestoreSession<cr>"      ),
+			dashboard.button(", s r", "Load Last Session         ", ":lua require('auto-session').RestoreSession()<cr>"      ),
 		}
 
 		alpha.setup(dashboard.opts)

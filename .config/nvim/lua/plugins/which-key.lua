@@ -306,8 +306,8 @@ M.config = function()
 		s = {
 			i = {":setlocal foldmethod=indent<CR>", "Fold Indent/Whitespace"},
 			s = {":setlocal foldmethod=expr<CR>", "Fold Expression/Syntax"},
-			v = {":SaveSession<cr>", "Save Session"},
-			r = {":RestoreSession<cr>", "Restore Session"},
+			v = {":lua require('auto-session').SaveSession()<cr>", "Save Session"},
+			r = {":lua require('auto-session').RestoreSession()<cr>", "Restore Session"},
 			p = {":AddWorkspace<cr>", "Add Project Workspace"},
 			
 			h = { ":lua require'focus'.split_command('h')<CR>", "Focus Left"},
