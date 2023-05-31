@@ -15,6 +15,7 @@ mkdir -p $HOME/.config
 [[ ! -e $HOME/.bashrc ]] && ln -s $(pwd)/.bashrc $HOME/.bashrc
 [[ ! -e $HOME/.bash_profile ]] && ln -s $(pwd)/.bash_profile $HOME/.bash_profile
 [[ ! -e $HOME/.tmux.conf ]] && ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
+[[ ! -e $HOME/.config/starship.toml ]] && ln -s $(pwd)/.config/starship/starship.toml $HOME/.config/starship.toml
 
 OS_NAME=$(uname -a)
 if [[ "$OS_NAME" =~ "Linux" ]]; then
