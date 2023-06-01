@@ -53,6 +53,7 @@ source ~/.config/zsh/aliasrc
 # https://gitlab.com/phoneybadger/pokemon-colorscripts
 # ln -s <repo>/pokemon-colorscripts/ ~/.local/bin/
 [[ ! -f ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh ]] || sh ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.sh -r
+[[ ! -f ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.py ]] || python3 ~/.local/bin/pokemon-colorscripts/pokemon-colorscripts.py -r
 
 for i in ~/.config/zsh/zshrc.d/*.zsh; do
 	if [[ $__bashrc_bench ]]; then
