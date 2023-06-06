@@ -329,7 +329,9 @@ M.config = function()
 			s = {":setlocal foldmethod=expr<CR>", "Fold Expression/Syntax"},
 			v = {":lua require('auto-session').SaveSession()<cr>", "Save Session"},
 			r = {":lua require('auto-session').RestoreSession()<cr>", "Restore Session"},
-			p = {":AddWorkspace<cr>", "Add Project Workspace"},
+
+			p = {":lua require('spectre').open()<cr>", "Spectre open"},
+			w = {":lua require('spectre').open_visual()<cr>", "Spectre open visual"},
 			
 			h = { ":lua require'focus'.split_command('h')<CR>", "Focus Left"},
 			j = { ":lua require'focus'.split_command('j')<CR>", "Focus Down"},

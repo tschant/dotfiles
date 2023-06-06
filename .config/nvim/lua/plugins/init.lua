@@ -146,6 +146,7 @@ return {
 		version = "*",
 		config = true
 	},
+	{ 'nvim-pack/nvim-spectre' },
 	
 	-- Measure startuptime
 	{

@@ -3,6 +3,7 @@ local M = {
 	dependencies = {
 		"kyazdani42/nvim-web-devicons",
 	},
+	init = function() vim.g.barbar_auto_setup = false end,
 	event = "BufAdd",
 	-- cmd = {
 	-- 	"BufferPrev",
@@ -31,12 +32,14 @@ M.config = function()
 		tabpages = true,
 		closable = true,
 		clickable = true,
-		icons = true,
-		icon_separator_active = '▎',
-		icon_separator_inactive = '▎',
-		icon_close_tab = '',
-		icon_close_tab_modified = '●',
-		icon_pinned = '車',
+		icons = {
+			filetype = { enabled = true },
+			button = '',
+			modified = {button = '●'},
+			pinned = {button = '', filename = true},
+
+			separator = {left = '▎', right = ''},
+		},
 		insert_at_end = false,
 		insert_at_start = false,
 		maximum_padding = 1,
@@ -45,12 +48,12 @@ M.config = function()
 		no_name_title = nil,
 	})
 
-	local hl = require('bufferline.utils').hl
-	local fg_modified  = hl.fg_or_default({ 'DiagnosticWarn' }, 'none')
-	local fg_modified_subtle  = hl.fg_or_default({ 'DiagnosticError' }, 'none')
-	cmd("hi BufferCurrentMod  guifg=" .. fg_modified.gui)
-	cmd("hi BufferVisibleMod  guifg=" .. fg_modified.gui)
-	cmd("hi BufferInactiveMod guifg=" .. fg_modified_subtle.gui)
+	-- local hl = require('bufferline.utils').hl
+	-- local fg_modified  = hl.fg_or_default({ 'DiagnosticWarn' }, 'none')
+	-- local fg_modified_subtle  = hl.fg_or_default({ 'DiagnosticError' }, 'none')
+	-- cmd("hi BufferCurrentMod  guifg=" .. fg_modified.gui)
+	-- cmd("hi BufferVisibleMod  guifg=" .. fg_modified.gui)
+	-- cmd("hi BufferInactiveMod guifg=" .. fg_modified_subtle.gui)
 	-- # Meaning of terms:
 	-- #
 	-- # format: "Buffer" + status + part

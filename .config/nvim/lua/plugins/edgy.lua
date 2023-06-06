@@ -26,7 +26,6 @@ return {
         end,
         open = "Neotree position=bottom diagnostics",
       },
-      { ft = "toggleterm", size = { height = 0.4 } },
       { ft = "qf", title = "QuickFix" },
       {
         ft = "help",
