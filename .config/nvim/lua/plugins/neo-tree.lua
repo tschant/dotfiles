@@ -19,10 +19,10 @@ local M = {
 					"git_status",
 					"diagnostics",
 				},
-				source_selector = {
+				--[[ source_selector = {
             winbar = true,
             statusline = false
-        },
+        }, ]]
 				close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 				enable_git_status = true,
 				-- enable_diagnostics = true,
