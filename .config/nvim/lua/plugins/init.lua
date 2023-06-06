@@ -142,7 +142,9 @@ return {
 		config = true,
 	},
 	{
-		"numToStr/FTerm.nvim",
+		'akinsho/toggleterm.nvim',
+		version = "*",
+		config = true
 	},
 	
 	-- Measure startuptime

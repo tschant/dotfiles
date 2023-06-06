@@ -131,16 +131,37 @@ M.config = function()
 
 	-- Terminal toggle
 	wk.register({
-		['<F2>'] = {'<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', 'Toggle floating terminal'},
+		['<F2>'] = {'<C-\\><C-n><cmd>lua require("toggleterm").toggle()<CR>', 'Toggle floating terminal'},
 	}, {mode = 't'})
 	wk.register({
-		['<F2>'] = {'<cmd>lua require("FTerm").toggle()<CR>', 'Toggle floating terminal'},
+		['<F2>'] = {'<cmd>lua require("toggleterm").toggle()<CR>', 'Toggle floating terminal'},
 		['<F3>'] = {
+			function()
+				local term = require("toggleterm.terminal").Terminal
+				local lazygit = term:new({
+					ft = 'term_lazygit',
+					cmd = 'lazygit',
+					direction = 'float',
+					on_open = function(term)
+						vim.cmd("startinsert!")
+						vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+					end,
+					-- function to run on closing the terminal
+					on_close = function(term)
+						vim.cmd("startinsert!")
+					end,
+				})
+
+				lazygit:toggle()
+			end, "Lazy git"},
+		['<F4>'] = {
 			function() 
-				local fterm = require('FTerm')
-				local btop = fterm:new({
-					ft = 'fterm_htop',
-					cmd = '[ -x "$(command -v btop)" ] && btop || htop'
+				local Terminal = require('toggleterm.terminal').Terminal
+				local btop = Terminal:new({
+					ft = 'term_btop',
+					cmd = '[ -x "$(command -v btop)" ] && btop || htop',
+					close_on_exit = true,
+					direction = "float",
 				})
 
 				btop:toggle()
@@ -329,10 +350,19 @@ M.config = function()
 			-- g = {":FloatermNew lazygit<CR>", "Lazy git"},
 			g = {
 				function()
-					local fterm = require("FTerm")
-					local lazygit = fterm:new({
-						ft = 'fterm_lazygit',
+					local term = require("toggleterm.terminal").Terminal
+					local lazygit = term:new({
+						ft = 'term_lazygit',
 						cmd = 'lazygit',
+						direction = 'float',
+						on_open = function(term)
+							vim.cmd("startinsert!")
+							vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+						end,
+						-- function to run on closing the terminal
+						on_close = function(term)
+							vim.cmd("startinsert!")
+						end,
 					})
 
 					lazygit:toggle()
@@ -343,9 +373,13 @@ M.config = function()
 			b = {":Telescope git_branches<CR>", "git branches"},
 		},
 		-- Neotree
-		e = {":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal =true, position = 'left', toggle = true})<CR>", "File tree"},
+		e = {
+			e = {":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>", "File tree"},
+			g = {":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'left', toggle = true})<CR>", "Git Status"},
+			x = {":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>", "LSP/Diag"},
+			t = {":lua require('toggleterm').toggle()<CR>", "Terminal"},
+		},
 		-- gs = {":lua require('neo-tree.command').execute({action = 'focus', source = 'git_status', reveal =true, position = 'bottom', toggle = true})<CR>", "Git status"},
-		xx = {":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal =true, position = 'bottom', toggle = true})<CR>", "LSP/Diag"},
 		-- Session + Dashboard
 		["<Home>"] = {":Alpha<cr>", "Dashboard"},
 		-- nn = {":DashboardNewFile<cr>", "New file dashboard"},
