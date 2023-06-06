@@ -15,7 +15,7 @@ case "$1" in
   icon_result=
   ;;
 "Microsoft Word")
-  icon_result=
+  icon_result=
   ;;
 "Neovide" | "MacVim" | "Vim" | "VimR" | "NVim")
   icon_result=
@@ -30,7 +30,7 @@ case "$1" in
   icon_result=
   ;;
 "Default")
-  icon_result=ﬓ
+  icon_result=󰘔
   ;;
 "Firefox" | "Firefox Developer Edition" | "Firefox Nightly")
   icon_result=
@@ -48,7 +48,7 @@ case "$1" in
   icon_result=
   ;;
 "Discord" | "Discord Canary" | "Discord PTB")
-  icon_result=ﭮ
+  icon_result=󰙯
   ;;
 "Vivaldi")
   icon_result=
@@ -60,31 +60,25 @@ case "$1" in
   icon_result=
   ;;
 "Safari" | "Safari Technology Preview")
-  icon_result=
+  icon_result=
   ;;
 "Keynote")
-  icon_result=蠟
+  icon_result=
   ;;
 "Spotify")
   icon_result=
   ;;
 "Spotlight")
-  icon_result=劉
+  icon_result=
   ;;
 "Music")
   icon_result=
   ;;
-"Pages")
-  icon_result=
-  ;;
 "Eclipse")
   icon_result=
   ;;
-"Drafts")
-  icon_result=
-  ;;
 "Obsidian" | "Notion" | "Notes")
-  icon_result=
+  icon_result=
   ;;
 "Reminders")
   icon_result=
@@ -99,13 +93,13 @@ case "$1" in
   icon_result= # ":code:"
   ;;
 "Finder")
-  icon_result= # ":finder:"
+  icon_result=󰀶 # ":finder:"
   ;;
 "Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "WezTerm")
   icon_result= # ":terminal:"
   ;;
 *)
-  icon_result=ﬓ
+  icon_result=󰘔
   ;;
 esac
 echo $icon_result

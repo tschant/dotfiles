@@ -34,7 +34,7 @@ M.config = function()
 		clickable = true,
 		icons = {
 			filetype = { enabled = true },
-			button = '',
+			button = '󰅖',
 			modified = {button = '●'},
 			pinned = {button = '', filename = true},
 
