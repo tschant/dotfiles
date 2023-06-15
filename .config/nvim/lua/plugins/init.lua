@@ -15,6 +15,12 @@ return {
 	-- General plugins
 	{
 		"cbochs/portal.nvim",
+		dependencies = {
+			"ThePrimeagen/harpoon"
+		}
+	},
+	{
+		"ThePrimeagen/harpoon",
 	},
 	{
 		"NMAC427/guess-indent.nvim",

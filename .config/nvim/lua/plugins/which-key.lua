@@ -254,7 +254,8 @@ M.config = function()
 			o = {'<cmd>Telescope oldfiles<cr>','show recently opened files' },
 			t = {'<cmd>lua require("FTerm").toggle()<CR>', 'Toggle floating terminal', mode = 'n'},
 
-			h = {'<cmd>Telescope help_tags<cr>', 'show vim help' },
+			i = {'<cmd>Telescope jumplist<cr>', 'show jumplist'},
+			h = {'<cmd>Telescope harpoon marks<cr>', 'show harpoon' },
 			H = {'<cmd>Telescope highlights<cr>', 'show vim help' },
 			m = {'<cmd>Telescope marks<cr>', 'show marks' },
 			k = {'<cmd>Telescope keymaps<cr>', 'show keymaps' },
@@ -342,9 +343,22 @@ M.config = function()
 		H = {":sp<CR>", "Horizontal Split"},
 		w = {":update<CR>", "Save file"},
 		-- Portal
-		o = {':lua require("portal").jump_backward()<CR>', "Portal Back"},
-		i = {':lua require("portal").jump_forward()<CR>', "Portal Forward"},
-		m = {':lua require("portal.tag").toggle()<CR>', "Portal toggle"},
+		o = {':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', "Portal Back"},
+		i = {':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', "Portal Forward"},
+		p = {
+			name = "Portal",
+			h = {':lua require("portal.builtin").harpoon.tunnel()<CR>', 'Portal Harpoon'},
+			c = {':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>', 'Portal Changelist'},
+			q = {':lua require("portal.builtin").quickfix.tunnel({})<CR>', 'Portal Quickfix'},
+		},
+		-- Harpoon
+		["'"] = {
+			name = "Harpoon",
+			h = {':lua require("harpoon.ui").toggle_quick_menu()<CR>', "Quick menu"},
+			m = {':lua require("harpoon.mark").add_file()<CR>', "Add file"},
+			j = {':lua require("harpoon.ui").nav_next()<CR>', "Nav next mark"},
+			k = {':lua require("harpoon.ui").nav_prev()<CR>', "Nav prev mark"},
+		},
 		-- Undo tree
 		u = {":UndotreeToggle<CR>", "undo tree"},
 		-- lazygit

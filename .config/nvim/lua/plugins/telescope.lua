@@ -24,6 +24,7 @@ M.config = function()
 				"--line-number",
 				"--column",
 				"--smart-case",
+				"--no-ignore",
 				"--hidden",
 				"--glob",
 				"!**/.git/*",
@@ -118,6 +119,7 @@ M.config = function()
 	}
 	telescope.load_extension("fzy_native")
 	telescope.load_extension("media_files")
+	telescope.load_extension("harpoon")
 	-- telescope.load_extension("session-lens")
 end
 
