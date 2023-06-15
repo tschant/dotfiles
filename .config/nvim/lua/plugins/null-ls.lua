@@ -24,6 +24,7 @@ local M = {
 					-- null_ls.builtins.formatting.codespell,
 					null_ls.builtins.formatting.eslint_d,
 					null_ls.builtins.formatting.google_java_format,
+					null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.formatting.jq,
 					null_ls.builtins.formatting.prettierd.with({
 						filetypes = {"markdown", "css", "scss", "less", "html"}
@@ -39,6 +40,7 @@ local M = {
 					null_ls.builtins.diagnostics.alex,
 					-- null_ls.builtins.diagnostics.cspell,
 					null_ls.builtins.diagnostics.eslint_d,
+					null_ls.builtins.diagnostics.golangci_lint,
 					null_ls.builtins.diagnostics.pmd.with({
 						extra_args = { "-R", "rulesets/java/quickstart.xml"}
 						--"~/.local/bin/pmd-bin-6.53.0/rulesets/eclipse-formatter-settings.xml"}
@@ -56,7 +58,7 @@ local M = {
 			require("mason-null-ls").setup({
 				ensure_installed = nil,
 				automatic_installation = true,
-				automatic_setup = false,
+				automatic_setup = true,
 			})
 		end
 	},

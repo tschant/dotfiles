@@ -6,9 +6,13 @@ source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
 list_events() { 
 	source "$HOME/.config/sketchybar/colors.sh"
 	SEP="%"
-	local -n args=$2
+	local args=$2
 	EVENT_COUNT=0
-	DAY_COUNT=$1
+	if [ "$1" == "" ] || [ "$1" == "args" ]; then
+		DAY_COUNT=0
+	else
+		DAY_COUNT=$1
+	fi
 	args+=(--remove '/ical.day\.*/')
 	args+=(--remove '/ical.event\.*/')
 

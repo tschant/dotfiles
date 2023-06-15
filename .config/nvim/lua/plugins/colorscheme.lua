@@ -1,31 +1,7 @@
 local cmd = vim.cmd
 
-local Theme = "horizon"
+local Theme = "midnight"
 local config_load = function() 
-	if Theme == "catppuccin" then
-		require("catppuccin").setup({
-			flavour = 'macchiato',
-			-- flavour = 'mocha',
-			transparent_background = true,
-			term_colors = false,
-			dim_inactive = {
-				enabled = true,
-        shade = "dark",
-        percentage = 0.1,
-			},
-			integrations = {
-				nvimtree = {
-					enabled = false,
-					show_root = true,
-				},
-				barbar = true,
-				dashboard = false,
-				telescope = true,
-				gitsigns = true
-			}
-		})
-	end
-
 	cmd("colorscheme " .. Theme)
 
 	-- Use terminal background color instead of colorscheme
@@ -72,10 +48,10 @@ return {
 	-- Themes
 	--"norcalli/nvim-base16.lua",
 	{
-		"catppuccin/nvim",
+		"dasupradyumna/midnight.nvim",
 		-- branch = "main",
-		-- lazy = false,
-		-- priority = 1000,
+		lazy = false,
+		priority = 1000,
 		config = config_load
 	},
 	{
@@ -88,8 +64,8 @@ return {
 	},
 	{
 		'LunarVim/horizon.nvim',
-		lazy = false,
-		priority = 1000,
+		-- lazy = false,
+		-- priority = 1000,
 		config = config_load
 	},
 	-- {
