@@ -10,6 +10,7 @@ local config_load = function()
 	cmd "hi SignColumn ctermbg=none guibg=none"
 	cmd "hi FoldColumn ctermbg=none guibg=none"
 	cmd "hi FocusedLine ctermbg=none guibg=none guifg=#525252"
+
 	-- cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
 	-- cmd "hi StatusColumnGitSigns guifg=SignColumn guibg=SignColumn"
 
@@ -34,28 +35,25 @@ end
 return {
 	{
 		'kartikp10/noctis.nvim',
+		keys = '<leader>fx',
 		dependencies = { 'rktjmp/lush.nvim' },
 		-- lazy = false,
 		-- priority = 1000,
 		config = config_load
-	}, 
-	--[[ {
-		'talha-akram/noctis.nvim',
-		lazy = false,
-		priority = 1000,
-		config = config_load
-	}, ]]
+	},
 	-- Themes
 	--"norcalli/nvim-base16.lua",
 	{
 		"dasupradyumna/midnight.nvim",
 		-- branch = "main",
+		keys = '<leader>fx',
 		lazy = false,
 		priority = 1000,
 		config = config_load
 	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",
+		keys = '<leader>fx',
 		-- branch = "fennel",
 		-- event = "VeryLazy",
 		-- lazy = false,
@@ -64,14 +62,9 @@ return {
 	},
 	{
 		'LunarVim/horizon.nvim',
+		keys = '<leader>fx',
 		-- lazy = false,
 		-- priority = 1000,
 		config = config_load
 	},
-	-- {
-	-- 	'KoBruhh/tranquil-vim',
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = config_load
-	-- },
 }

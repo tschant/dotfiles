@@ -4,6 +4,27 @@ local M = {
 		"kyazdani42/nvim-web-devicons",
 	},
 	init = function() vim.g.barbar_auto_setup = false end,
+	opts = {
+		animation = false,
+		auto_hide = false,
+		tabpages = true,
+		closable = true,
+		clickable = true,
+		icons = {
+			filetype = { enabled = true },
+			button = '󰅖',
+			modified = {button = '●'},
+			pinned = {button = '', filename = true},
+
+			separator = {left = '▎', right = ''},
+		},
+		insert_at_end = false,
+		insert_at_start = false,
+		maximum_padding = 1,
+		maximum_length = 30,
+		semantic_letters = true,
+		no_name_title = nil,
+	},
 	event = "BufAdd",
 	-- cmd = {
 	-- 	"BufferPrev",
@@ -24,29 +45,7 @@ local M = {
 	-- },
 }
 
-M.config = function() 
-	local cmd = vim.cmd
-	require("bufferline").setup({
-		animation = false,
-		auto_hide = false,
-		tabpages = true,
-		closable = true,
-		clickable = true,
-		icons = {
-			filetype = { enabled = true },
-			button = '󰅖',
-			modified = {button = '●'},
-			pinned = {button = '', filename = true},
-
-			separator = {left = '▎', right = ''},
-		},
-		insert_at_end = false,
-		insert_at_start = false,
-		maximum_padding = 1,
-		maximum_length = 30,
-		semantic_letters = true,
-		no_name_title = nil,
-	})
+--[[ M.config = function() 
 
 	-- local hl = require('bufferline.utils').hl
 	-- local fg_modified  = hl.fg_or_default({ 'DiagnosticWarn' }, 'none')
@@ -91,6 +90,6 @@ M.config = function()
 	-- cmd('hi BufferVisibleIcon guifg=' ..   'BufferVisible')
 	-- cmd('hi BufferInactiveIcon guifg=' ..  'BufferInactive')
 	-- cmd('hi BufferOffset guifg=' ..        'BufferTabpageFill')
-end
+end ]]
 
 return M
