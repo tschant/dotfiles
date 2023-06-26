@@ -14,6 +14,13 @@ return {
 
 	-- General plugins
 	{
+		'stevearc/oil.nvim',
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = true,
+	},
+	{
 		"cbochs/portal.nvim",
 		dependencies = {
 			"ThePrimeagen/harpoon"
