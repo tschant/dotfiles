@@ -5,5 +5,5 @@ sketchybar --add item weather right                     \
 											label.align=right                 \
 											label.font="$FONT:Regular:14.0"   \
 											label.y_offset=2                  \
-											update_freq=30                    \
+											update_freq=60                    \
 											script="$PLUGIN_DIR/weather.sh"

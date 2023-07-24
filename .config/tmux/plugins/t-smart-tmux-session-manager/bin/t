@@ -48,7 +48,11 @@ if [[ "$ZOXIDE_RESULT" =~ "Host " ]]; then
 	HOST=$(echo "$ZOXIDE_RESULT" | sed 's/Host //')
 	SESSION_NAME=$(echo "$HOST" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
 else
-	FOLDER=$(basename "$ZOXIDE_RESULT")
+	if [[ "$REPOS_HOME" = "" ]]; then
+		FOLDER=$(basename "$ZOXIDE_RESULT")
+	else
+		FOLDER=$(echo "$ZOXIDE_RESULT" | sed 's|'"$REPOS_HOME"'||')
+	fi
 	SESSION_NAME=$(echo "$FOLDER" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
 fi
 
