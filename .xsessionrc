@@ -1,0 +1,2 @@
+xinput set-prop "pointer:PloopyCo Trackball" 'libinput Button Scrolling Button' 8
+xinput set-prop "pointer:PloopyCo Trackball" 'libinput Scroll Method Enabled' 0 0 1

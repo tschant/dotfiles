@@ -1,8 +1,8 @@
-xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Button Scrolling Button' 12
-xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Scroll Method Enabled' 0 0 1
-
-xinput set-prop "pointer:Ploopy Corporation Trackball Mouse" 'libinput Button Scrolling Button' 2
-xinput set-prop "pointer:Ploopy Corporation Trackball Mouse" 'libinput Scroll Method Enabled' 0 0 1
+#xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Button Scrolling Button' 12
+#xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Scroll Method Enabled' 0 0 1
+#
+#xinput set-prop "pointer:Ploopy Corporation Trackball Mouse" 'libinput Button Scrolling Button' 2
+#xinput set-prop "pointer:Ploopy Corporation Trackball Mouse" 'libinput Scroll Method Enabled' 0 0 1
 
 
 ######
@@ -17,3 +17,19 @@ xinput set-prop "pointer:Ploopy Corporation Trackball Mouse" 'libinput Scroll Me
 # Button 7 mac forward
 # "xvkbd -text '\M\[Right]'" # Sends Meta-Right
 # b:7
+
+# Increase volume
+"pactl set-sink-volume @DEFAULT_SINK@ +5%"
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"pactl set-sink-volume @DEFAULT_SINK@ -5%"
+   XF86AudioLowerVolume
+
+# Mute volume
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+   XF86AudioMute
+
+# Mute microphone
+"pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+   XF86AudioMicMute
