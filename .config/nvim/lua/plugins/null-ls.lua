@@ -32,9 +32,9 @@ local M = {
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.stylua,
 					-- null_ls.builtins.formatting.tflint,
-					null_ls.builtins.formatting.sqlfluff.with({
-						extra_args = {"--dialect", "mysql", "-e", "L003,L059,L063,L013,L016,L006,L048"}
-					}),
+					-- null_ls.builtins.formatting.sqlfluff.with({
+					-- 	extra_args = {"--dialect", "mysql", "-e", "L003,L059,L063,L013,L016,L006,L048"}
+					-- }),
 					null_ls.builtins.formatting.terraform_fmt,
 					-- Linters
 					null_ls.builtins.diagnostics.alex,
@@ -48,9 +48,9 @@ local M = {
 					null_ls.builtins.diagnostics.luacheck,
 					null_ls.builtins.diagnostics.shellcheck,
 					-- null_ls.builtins.diagnostics.stylelint,
-					null_ls.builtins.diagnostics.sqlfluff.with({
-						extra_args = {"--dialect", "mysql", "-e", "L003,L059,L063,L013,L006,L048"}
-					}),
+					-- null_ls.builtins.diagnostics.sqlfluff.with({
+					-- 	extra_args = {"--dialect", "mysql", "-e", "L003,L059,L063,L013,L006,L048"}
+					-- }),
 					null_ls.builtins.diagnostics.yamllint,
 				}
 			})

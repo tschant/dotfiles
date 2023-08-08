@@ -6,6 +6,7 @@ local M = {
 		"williamboman/mason.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/cmp-nvim-lsp",
+		"nanotee/sqls.nvim",
 	},
 }
 
@@ -25,7 +26,7 @@ M.config = function()
 			"terraform-ls",
 			"yaml-language-server",
 			"jdtls",
-			"sqlls",
+			"sqls",
 			"emmet-ls",
 			"dockerfile-language-server",
 		},
@@ -49,6 +50,7 @@ M.config = function()
 		clangd = {},
 		dockerls = {},
 		eslint = {},
+		sqls = {},
 		gopls = {
 			flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 			settings = {
