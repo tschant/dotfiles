@@ -390,11 +390,13 @@ M.config = function()
 		},
 		-- Neotree
 		e = {
+			c = {":lua require('neo-tree.command').execute({action = 'close'})", "Close all neo-tree"},
 			e = {":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>", "File tree"},
 			b = {":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'left', toggle = true})<CR>", "File tree"},
 			g = {":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'left', toggle = true})<CR>", "Git Status"},
 			x = {":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>", "LSP/Diag"},
 			t = {":lua require('toggleterm').toggle()<CR>", "Terminal"},
+			d = {":DBUIToggle<CR>", "Open DBUI"}
 		},
 		-- gs = {":lua require('neo-tree.command').execute({action = 'focus', source = 'git_status', reveal =true, position = 'bottom', toggle = true})<CR>", "Git status"},
 		-- Session + Dashboard

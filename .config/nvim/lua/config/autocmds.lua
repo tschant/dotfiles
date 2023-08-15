@@ -6,7 +6,8 @@ local autocmds = {
 		{"FileType", "markdown", "setlocal wrap"},
 		{"FileType", "markdown", "setlocal spell"},
 		{"FileType", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"},
-		{"FileType", "toggleterm", "setlocal nonumber norelativenumber"}
+		{"FileType", "toggleterm", "setlocal nonumber norelativenumber"},
+		{"FileType", "sql,mysql,plsql", "lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })"},
 	},
 	-- cursor = {
 	-- 	{"CursorHold", "*", "lua vim.diagnostic.open_float(0, {scope=line, focusable = false})"},

@@ -19,6 +19,7 @@ local M = {
 		"chrisgrieser/cmp-nerdfont",
 		"ray-x/cmp-treesitter",
 		"jcha0713/cmp-tw2css",
+		"kristijanhusak/vim-dadbod-completion",
 	}
 }
 
