@@ -1,7 +1,8 @@
 local M = {
 	{
 		"jay-babu/mason-null-ls.nvim",
-		dependencies = {"williamboman/mason.nvim"},
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {"williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim"},
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -26,6 +27,10 @@ local M = {
 					null_ls.builtins.formatting.google_java_format,
 					null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.formatting.jq,
+					null_ls.builtins.formatting.yq.with({
+						filetypes = {"yaml", "yml", "xml", "csv", "tsv"}
+					}),
+					-- null_ls.builtins.formatting.tidy,
 					null_ls.builtins.formatting.prettierd.with({
 						filetypes = {"markdown", "css", "scss", "less", "html"}
 					}),
@@ -41,6 +46,7 @@ local M = {
 					-- null_ls.builtins.diagnostics.cspell,
 					null_ls.builtins.diagnostics.eslint_d,
 					null_ls.builtins.diagnostics.golangci_lint,
+					null_ls.builtins.diagnostics.tidy,
 					null_ls.builtins.diagnostics.pmd.with({
 						extra_args = { "-R", "rulesets/java/quickstart.xml"}
 						--"~/.local/bin/pmd-bin-6.53.0/rulesets/eclipse-formatter-settings.xml"}
