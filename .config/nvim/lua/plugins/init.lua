@@ -12,7 +12,7 @@ return {
 	{'hashivim/vim-terraform', event = "BufReadPre *.tf"},
 	{'juliosueiras/vim-terraform-completion', event = "BufRead *.tf"},
 
-	-- General plugins
+	-- General pluginscomment
 	{
 		'stevearc/oil.nvim',
 		opts = {},
@@ -51,7 +51,11 @@ return {
 			require("nvim-surround").setup()
 		end
 	},
-	{"ggandor/lightspeed.nvim", event = "BufReadPre"},
+	-- {"ggandor/lightspeed.nvim", event = "BufReadPre"},
+	{
+		"phaazon/hop.nvim",
+		config = true,
+	},
 
 	-- Multi-line plugins
 	{

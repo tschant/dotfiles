@@ -129,6 +129,45 @@ M.config = function()
 		['p>'] = {util.telescope('find_files', {cwd = false}), 'find files (cwd)'},
 	}, {prefix = "<C-", mode = "n"})
 
+	-- Hop motions
+	wk.register({
+		['<C-a>'] = {
+			function()
+				require("hop").hint_words({ current_line_only = true })
+			end, 'Jump line only'
+		},
+		s = {
+			function()
+				require('hop').hint_char2({ direction = require('hop.hint').HintDirection.AFTER_CURSOR })
+			end, 'Hop 2 chars forward'
+		},
+		S = {
+			function()
+				require('hop').hint_char2({ direction = require('hop.hint').HintDirection.BEFORE_CURSOr })
+			end, 'Hop 2 chars backward'
+		},
+		f = {
+			function()
+				require('hop').hint_char1({ direction = require('hop.hint').HintDirection.AFTER_CURSOR, current_line_only = true })
+			end, 'Hop to char forward'
+		},
+		F = {
+			function()
+				require('hop').hint_char1({ direction = require('hop.hint').HintDirection.BEFORE_CURSOR, current_line_only = true })
+			end, 'Hop to char backward'
+		},
+		t = {
+			function()
+				require('hop').hint_char1({ direction = require('hop.hint').HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+			end, 'Hop to char forward (before char)'
+		},
+		T = {
+			function()
+				require('hop').hint_char1({ direction = require('hop.hint').HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+			end, 'Hop to char backward (after char)'
+		}
+	}, {mode = '', noremap = false})
+
 	-- Terminal toggle
 	wk.register({
 		['<F2>'] = {'<C-\\><C-n><cmd>lua require("toggleterm").toggle()<CR>', 'Toggle floating terminal'},

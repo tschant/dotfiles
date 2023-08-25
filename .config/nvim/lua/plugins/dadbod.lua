@@ -1,7 +1,11 @@
 return {
 	{
-		'tpope/vim-dotenv',
-		cmd = 'Dotenv',
+		'pbogut/vim-dadbod-ssh',
+		event = "BufRead *.sql",
+		cmd = {
+			'DB',
+			'DBUIToggle'
+		},
 	},
 	{
 		'tpope/vim-dadbod',
@@ -14,6 +18,7 @@ return {
 	cmd = {
 		'DB',
 		'DBUIAddConnection',
+		'DBUIToggle',
 	},
 	dependencies = {
 		'tpope/vim-dadbod'

@@ -54,10 +54,9 @@ local M = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-			{ "windwp/nvim-ts-autotag", opts = {} },
-			-- "p00f/nvim-ts-rainbow",
-			-- {"ziontee113/syntax-tree-surfer"},
-			-- "windwp/nvim-ts-autotag",
+			"p00f/nvim-ts-rainbow",
+			"ziontee113/syntax-tree-surfer",
+			"windwp/nvim-ts-autotag",
 			-- {"ckolkey/ts-node-action"},
 		},
 	},

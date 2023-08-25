@@ -35,6 +35,7 @@ M.config = function()
 	})
 
 	local lspconfig = require("lspconfig")
+	local util = require("lspconfig/util")
 	local cmp_lsp = require("cmp_nvim_lsp")
 
 	-- local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -52,6 +53,7 @@ M.config = function()
 		eslint = {},
 		sqls = {},
 		gopls = {
+			root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 			flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 			settings = {
 				gopls = {
@@ -73,7 +75,6 @@ M.config = function()
 					staticcheck = true,
 					matcher = "Fuzzy",
 					diagnosticsDelay = "500ms",
-					experimentalWatchedFileDelay = "100ms",
 					experimentalPostfixCompletions = true,
 					symbolMatcher = "fuzzy",
 					gofumpt = true,
