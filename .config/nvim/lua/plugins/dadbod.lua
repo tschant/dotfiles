@@ -1,25 +1,29 @@
 return {
 	{
+		'tpope/vim-dotenv',
+		cmd = 'Dotenv',
+	},
+	{
 		'pbogut/vim-dadbod-ssh',
 		event = "BufRead *.sql",
-		cmd = {
-			'DB',
-			'DBUIToggle'
-		},
+		-- cmd = {
+		-- 	'DB',
+		-- 	'DBUIToggle'
+		-- },
 	},
 	{
 		'tpope/vim-dadbod',
 		event = "BufRead *.sql",
-		cmd = 'DB',
+		-- cmd = 'DB',
 	},
 	{
 	'kristijanhusak/vim-dadbod-ui',
 	event = "BufRead *.sql",
-	cmd = {
-		'DB',
-		'DBUIAddConnection',
-		'DBUIToggle',
-	},
+	-- cmd = {
+	-- 	'DB',
+	-- 	'DBUIAddConnection',
+	-- 	'DBUIToggle',
+	-- },
 	dependencies = {
 		'tpope/vim-dadbod'
 	},
