@@ -131,7 +131,7 @@ M.config = function()
 
 	-- Hop motions
 	wk.register({
-		['<C-a>'] = {
+		['<C-s>'] = {
 			function()
 				require("hop").hint_words({ current_line_only = true })
 			end, 'Jump line only'
