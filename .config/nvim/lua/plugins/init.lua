@@ -31,8 +31,12 @@ return {
 	},
 	{
 		"NMAC427/guess-indent.nvim",
-		config = true,
-		event = "BufReadPre"
+		event = "BufRead",
+		config = function()
+			require('guess-indent').setup {
+				auto_cmd = true,
+			}
+		end,
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -48,7 +52,21 @@ return {
 		"kylechui/nvim-surround",
 		event = "BufReadPre",
 		config = function()
-			require("nvim-surround").setup()
+			require("nvim-surround").setup({
+				keymaps = {
+					insert          = "<C-g>s",
+					insert_line     = "<C-g>S",
+					normal          = "<leader>ys",
+					normal_cur      = "<leader>yss",
+					normal_line     = "<leader>yS",
+					normal_cur_line = "<leader>ySS",
+					visual          = "<leader>S",
+					visual_line     = "<leader>gS",
+					delete          = "<leader>ds",
+					change          = "<leader>cs",
+					change_line     = "<leader>cS",
+				},
+			})
 		end
 	},
 	-- {"ggandor/lightspeed.nvim", event = "BufReadPre"},
