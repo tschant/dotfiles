@@ -80,6 +80,7 @@
   "vim-dadbod-ssh": { "branch": "master", "commit": "b6a995055a0cab61a87fe198515a169391ae0460" },
   "vim-dadbod-ui": { "branch": "master", "commit": "200aebf70e6fc4b0eb1d3ecf0d57028e198d8dc6" },
   "vim-dotenv": { "branch": "master", "commit": "0dc2d715d9b85bf1da5bc56a5976eeb63e4f4f49" },
+  "vim-jsx-typescript": { "branch": "master", "commit": "22df470d92651426f2377e3166488672f7b4b4ef" },
   "vim-riot": { "branch": "master", "commit": "a5ac4896b183695e85facc08a9c2c207dd1afc99" },
   "vim-startuptime": { "branch": "master", "commit": "daacd02e773944b8de312ddac83f436fae92cbb9" },
   "vim-terraform": { "branch": "master", "commit": "2bbc5f65a80c79a5110494a2ba1b869075fcf7a0" },

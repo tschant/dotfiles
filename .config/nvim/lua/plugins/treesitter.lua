@@ -57,6 +57,7 @@ local M = {
 			"p00f/nvim-ts-rainbow",
 			"ziontee113/syntax-tree-surfer",
 			"windwp/nvim-ts-autotag",
+			"peitalin/vim-jsx-typescript",
 			-- {"ckolkey/ts-node-action"},
 		},
 	},
