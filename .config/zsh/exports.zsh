@@ -41,3 +41,7 @@ if [ -s "$HOME/.bun/_bun" ]; then
 	source "$HOME/.bun/_bun"
 	PATH="$PATH:$HOME/.bun/bin"
 fi
+
+if [ -d "$HOME/Library/Python/3.11/lib/python/site-packages" ]; then
+	PATH="$PATH:$HOME/Library/Python/3.11/lib/python/site-packages"
+fi
