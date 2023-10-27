@@ -33,22 +33,22 @@ local M = {
 				"typescript",
 				"vim",
 				"yaml",
-			},-- "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+			}, -- "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 			ignore_install = {},
 			sync_install = true,
 			highlight = {
 				enable = true,
 				use_languagetree = true,
 			},
-			indent = {enable = true},
+			indent = { enable = true },
 			playground = {
 				enable = true,
 				disable = {},
 				updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-				persist_queries = false -- Whether the query persists across vim sessions
+				persist_queries = false, -- Whether the query persists across vim sessions
 			},
-			rainbow = {enable = true, max_file_lines = 2000},
-			autotag = {enable = true}
+			rainbow = { enable = true, max_file_lines = 2000 },
+			autotag = { enable = true },
 		},
 	},
 	{
@@ -58,7 +58,6 @@ local M = {
 			"ziontee113/syntax-tree-surfer",
 			"windwp/nvim-ts-autotag",
 			"peitalin/vim-jsx-typescript",
-			-- {"ckolkey/ts-node-action"},
 		},
 	},
 }

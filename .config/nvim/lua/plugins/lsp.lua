@@ -11,12 +11,13 @@ local M = {
 }
 
 M.config = function()
-	require('mason').setup()
-	require('mason-tool-installer').setup({
+	require("mason").setup()
+	require("mason-tool-installer").setup({
 		ensure_installed = {
 			"tflint",
 			"stylelint-lsp",
 			-- LSP
+			"stylua",
 			"bash-language-server",
 			-- "typescript-language-server",
 			-- "tailwindcss-language-server",
@@ -29,6 +30,13 @@ M.config = function()
 			"sqls",
 			"emmet-ls",
 			"dockerfile-language-server",
+			"prettierd",
+			"eslint_d",
+			"gofumpt",
+			"shfmt",
+			"yq",
+			"jq",
+			"xmlformatter",
 		},
 		run_on_start = true,
 		start_delay = 3000,
@@ -97,7 +105,7 @@ M.config = function()
 		},
 		pyright = {},
 		rust_analyzer = {},
-		stylelint_lsp = { autostart = false, },
+		stylelint_lsp = { autostart = false },
 		sumneko_lua = {
 			cmd = { "lua-language-server" },
 			settings = {
@@ -164,40 +172,28 @@ M.config = function()
 		underline = true,
 		signs = true,
 	})
-	
-	local icons = require('utils.icons')
-	vim.fn.sign_define(
-		"DiagnosticSignError",
-		{
-			texthl = "DiagnosticSignError",
-			text = icons.error,
-			numhl = "DiagnosticSignError"
-		}
-	)
-	vim.fn.sign_define(
-		"DiagnosticSignWarn",
-		{
-			texthl = "DiagnosticSignWarn",
-			text = icons.warn,
-			numhl = "DiagnosticSignWarn"
-		}
-	)
-	vim.fn.sign_define(
-		"DiagnosticSignInfo",
-		{
-			texthl = "DiagnosticSignInfo",
-			text = icons.info,
-			numhl = "DiagnosticSignInfo"
-		}
-	)
-	vim.fn.sign_define(
-		"DiagnosticSignHint",
-		{
-			texthl = "DiagnosticSignHint",
-			text = icons.hint,
-			numhl = "DiagnosticSignHint"
-		}
-	)
+
+	local icons = require("utils.icons")
+	vim.fn.sign_define("DiagnosticSignError", {
+		texthl = "DiagnosticSignError",
+		text = icons.error,
+		numhl = "DiagnosticSignError",
+	})
+	vim.fn.sign_define("DiagnosticSignWarn", {
+		texthl = "DiagnosticSignWarn",
+		text = icons.warn,
+		numhl = "DiagnosticSignWarn",
+	})
+	vim.fn.sign_define("DiagnosticSignInfo", {
+		texthl = "DiagnosticSignInfo",
+		text = icons.info,
+		numhl = "DiagnosticSignInfo",
+	})
+	vim.fn.sign_define("DiagnosticSignHint", {
+		texthl = "DiagnosticSignHint",
+		text = icons.hint,
+		numhl = "DiagnosticSignHint",
+	})
 
 	-- suppress error messages from lang servers
 	-- vim.notify = function(msg, log_level, _)
