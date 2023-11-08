@@ -1,3 +1,4 @@
+local utils = require('utils.core')
 local M = {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPre",
@@ -147,6 +148,30 @@ M.config = function()
 		tflint = {},
 		tsserver = {
 			cmd = { "typescript-language-server", "--stdio" },
+			settings = {
+				javascript = {
+					inlayHints = {
+						includeInlayEnumMemberValueHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayParameterNameHints = 'all',
+						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayVariableTypeHints = true,
+					},
+				},
+				typescript = {
+					inlayHints = {
+						includeInlayEnumMemberValueHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayParameterNameHints = 'all',
+						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayVariableTypeHints = true,
+					},
+				},
+			},
 		},
 		yamlls = {},
 	}
@@ -172,6 +197,11 @@ M.config = function()
 		underline = true,
 		signs = true,
 	})
+
+	--[[ vim.diagnostic.disable(function (bufnr)
+		print(bufnr)
+		return utils.disable_filesize_limit(bufnr)
+	end) ]]
 
 	local icons = require("utils.icons")
 	vim.fn.sign_define("DiagnosticSignError", {

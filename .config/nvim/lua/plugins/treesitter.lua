@@ -1,10 +1,4 @@
-local function ts_disable(buf)
-	local max_filesize = 100 * 1024 -- 100 KB
-	local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-	if ok and stats and stats.size > max_filesize then
-		return true
-	end
-end
+local utils = require("utils.core")
 
 return {
 	{
@@ -50,13 +44,13 @@ return {
 				enable = true,
 				use_languagetree = true,
 				disable = function(_, buf)
-					return ts_disable(buf)
+					return utils.disable_filesize_limit(buf)
 				end,
 			},
 			indent = {
 				enable = true,
 				--[[ disable = function(_, buf)
-					return ts_disable(buf)
+					return utils.disable_filesize_limit(buf)
 				end, ]]
 			},
 			playground = {
@@ -68,13 +62,13 @@ return {
 			rainbow = {
 				enable = true,
 				--[[ disable = function(_, buf)
-					return ts_disable(buf)
+					return utils.disable_filesize_limit(buf)
 				end, ]]
 			},
 			autotag = {
 				enable = true,
 				--[[ disable = function(_, buf)
-					return ts_disable(buf)
+					return utils.disable_filesize_limit(buf)
 				end, ]]
 			},
 		},

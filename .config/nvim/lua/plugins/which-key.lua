@@ -77,6 +77,13 @@ M.config = function()
 			r = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
 			R = { ":Telescope lsp_references<CR>", "References" },
 			h = { ":lua vim.lsp.buf.hover()<CR>", "Hover details" },
+			-- H = { 
+				-- function ()
+					-- if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+						-- vim.lsp.inlay_hint(0, nil)
+					-- end 
+					-- ":lua vim.lsp.buf.hover()<CR>"
+				-- end, "Inline hover details" },
 			I = { ":lua vim.lsp.buf.implementation()<CR>", "Implementation" },
 			-- f = {":lua vim.lsp.buf.format()<cr>", "Format file"},
 			f = { ":lua require('conform').format()<CR>", "LSP Format file" },

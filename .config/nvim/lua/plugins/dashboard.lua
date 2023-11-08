@@ -1,3 +1,4 @@
+local utils = require('utils.extra')
 local M = {
 	"goolord/alpha-nvim",
   dependencies = {'kyazdani42/nvim-web-devicons'},
@@ -5,13 +6,23 @@ local M = {
 	config = function()
 		local alpha = require('alpha')
 		local dashboard = require("alpha.themes.dashboard")
-		-- {
-		-- 	theme = 'doom',
-		-- 	hide = {
-		-- 		statusline = 1,
-		-- 		tabline = 1,
-		-- 	},
-		-- 	config = {
+		-- Add tips to footer of the dashboard
+		local job = require 'plenary.job'
+		job:new({
+				command = 'curl',
+				args = { 'https://vtip.43z.one' },
+				on_exit = function(j, exit_code)
+					local res = table.concat(j:result())
+					if exit_code ~= 0 then
+						res = 'Error fetching tip: ' .. res
+					end
+					dashboard.section.footer.val = res
+					vim.schedule(function()
+						alpha.redraw()
+					end)
+				end,
+		})
+		:start()
 		dashboard.section.header.val = {
 			"                                                                                                      ",
 			"                                                                                                      ",

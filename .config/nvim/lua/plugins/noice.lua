@@ -5,6 +5,8 @@ return {
 	},
 	config = function()
 		require('noice').setup({
+			renader = "minimal",
+			stages = "static",
 			views = {
 				mini = {
 					align = "line-left",

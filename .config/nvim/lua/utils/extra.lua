@@ -190,4 +190,17 @@ function utils.make_hl_statuscolum(group, sym)
 	return table.concat({ "%#", group, "#", sym, "%*" })
 end
 
+function utils.dump_table(table)
+    if type(table) == 'table' then
+        local s = '{ '
+        for k,v in pairs(table) do
+            if type(k) ~= 'number' then k = '"'..k..'"' end
+            s = s .. '['..k..'] = ' .. utils.dump_table(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(table)
+    end
+end
+
 return utils
