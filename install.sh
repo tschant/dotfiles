@@ -9,6 +9,7 @@ mkdir -p $HOME/.config
 [[ ! -d $HOME/.config/spotify-tui ]] && ln -s $(pwd)/.config/spotify-tui $HOME/.config/spotify-tui
 [[ ! -d $HOME/.config/zsh ]] && ln -s $(pwd)/.config/zsh $HOME/.config/zsh
 [[ ! -d $HOME/.config/tmux ]] && ln -s $(pwd)/.config/tmux $HOME/.config/tmux
+[[ ! -d $HOME/.config/navi ]] && ln -s $(pwd)/.config/navi $HOME/.config/navi
 
 [[ ! -e $HOME/.zshenv ]] && ln -s $(pwd)/.zshenv $HOME/.zshenv
 [[ ! -e $HOME/.vimrc ]] && ln -s $(pwd)/.vimrc $HOME/.vimrc
@@ -51,6 +52,7 @@ if [ -x "$(command -v bun)" ]; then
 	bun add --global typescript
 	bun add --global typescript-language-server
 	bun add --global tailwindcss-language-server
+	bun add --global tldr
 fi
 
 

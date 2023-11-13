@@ -26,6 +26,7 @@ if type nodenv &>/dev/null; then
 	eval "$(nodenv init -)"
 fi
 if type cargo &>/dev/null; then
+	# gping, alacritty, delta, exa, 
 	export PATH="$PATH:$HOME/.cargo/bin"
 fi
 if type ruby &>/dev/null && type gem >/dev/null; then
@@ -44,4 +45,8 @@ fi
 
 if [ -d "$HOME/Library/Python/3.11/lib/python/site-packages" ]; then
 	PATH="$PATH:$HOME/Library/Python/3.11/lib/python/site-packages"
+fi
+
+if type navi &>/dev/null; then
+	eval "$(navi widget zsh)"
 fi

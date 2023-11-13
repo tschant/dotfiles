@@ -14,6 +14,7 @@ return {
 				markdown = { { "prettierd", "prettier" } },
 				javascript = { { "eslint_d", "eslint" } }, --[[  { "prettierd", "prettier" },  }, ]]
 				typescript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
+				typescriptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
 				go = { "gofumpt" },
 				json = { "jq" },
 				yaml = { "yq" },

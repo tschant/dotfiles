@@ -272,7 +272,7 @@ hl = { fg = colors.red },
 	-- Middle Section
 	components.active[2][1] = {
 		provider = function()
-			local Lsp = vim.lsp.util.get_progress_messages()[1]
+			local Lsp = vim.lsp.status()[1]
 
 			if Lsp then
 				local msg = Lsp.message or ""

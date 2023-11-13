@@ -1,0 +1,18 @@
+;Lines starting with:
+;
+;    %: determine the start of a new cheatsheet and should contain tags
+;    #: should be descriptions of commands
+;    ;: are ignored. You can use them for metacomments
+;    $: should contain commands that generate a list of possible values for a given argument ℹ️
+;    @: should contain tags whose associated cheatsheet you want to base on ℹ️
+
+;% first cheat
+;# print something
+;echo "My name is <name>!"
+;$ name: whoami
+
+
+% ssh, defined host
+# Connect to server defined in .ssh/config
+ssh <hostname>
+$ hostname: sed -rn "s/^\s*Host\s+(.*)\s*/\1/ip" ~/.ssh/config
