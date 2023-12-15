@@ -1,4 +1,3 @@
-local utils = require('utils.extra')
 local M = {
 	"goolord/alpha-nvim",
   dependencies = {'kyazdani42/nvim-web-devicons'},

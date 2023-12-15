@@ -23,6 +23,7 @@ return {
 				tsv = { "yq" },
 				bash = { "shfmt" },
 				zsh = { "shfmt" },
+				sql = { "sql_formatter" },
 			},
 			--[[ format_on_save = {
 				timeout_ms = 500,

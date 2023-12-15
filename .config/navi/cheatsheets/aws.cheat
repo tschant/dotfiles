@@ -1,0 +1,6 @@
+% aws, security, password
+
+# Change AWS password
+aws iam change-password --old-password "<old_password>" --new-password "<new_password>" --profile <profile>
+
+$ profile: aws configure list-profiles

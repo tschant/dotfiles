@@ -28,7 +28,8 @@ M.config = function()
 			"terraform-ls",
 			"yaml-language-server",
 			"jdtls",
-			"sqls",
+			"sqlls",
+			"sql-formatter",
 			"emmet-ls",
 			"dockerfile-language-server",
 			"prettierd",
@@ -107,7 +108,7 @@ M.config = function()
 		pyright = {},
 		rust_analyzer = {},
 		stylelint_lsp = { autostart = false },
-		sumneko_lua = {
+		lua_ls = {
 			cmd = { "lua-language-server" },
 			settings = {
 				Lua = {
