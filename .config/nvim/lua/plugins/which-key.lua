@@ -283,10 +283,12 @@ M.config = function()
 		["<C-j>"] = { require("smart-splits").move_cursor_down, "Window down" },
 		["<C-k>"] = { require("smart-splits").move_cursor_up, "Window up" },
 		["<C-l>"] = { require("smart-splits").move_cursor_right, "Window right" },
-		-- ['<leader>wH'] = {require('smart-splits').resize_left, 'resize left', noremap=false},
-		-- ['<leader>wJ'] = {require('smart-splits').resize_down, 'resize down', noremap=false},
-		-- ['<leader>wK'] = {require('smart-splits').resize_up, 'resize up', noremap=false},
-		-- ['<leader>wL'] = {require('smart-splits').resize_right, 'resize right', noremap=false},
+		['<leader>w'] = {
+			H = {require('smart-splits').start_resize_mode, 'resize left'},
+			J = {require('smart-splits').start_resize_mode, 'resize down'},
+			K = {require('smart-splits').start_resize_mode, 'resize up'},
+			L = {require('smart-splits').start_resize_mode, 'resize right'},
+		}, 
 		-- ['<C-S-h>'] = {require('smart-splits').resize_left, 'resize left', noremap=false},
 		-- ['<C-S-j>'] = {require('smart-splits').resize_down, 'resize down', noremap=false},
 		-- ['<C-S-k>'] = {require('smart-splits').resize_up, 'resize up', noremap=false},
@@ -448,7 +450,7 @@ M.config = function()
 		},
 		V = { ":vs<CR>", "Vertical Split" },
 		H = { ":sp<CR>", "Horizontal Split" },
-		w = { ":update<CR>", "Save file" },
+		-- w = { ":update<CR>", "Save file" },
 		-- Portal
 		o = { ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', "Portal Back" },
 		i = { ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', "Portal Forward" },
@@ -508,7 +510,7 @@ M.config = function()
 		},
 		-- Neotree
 		e = {
-			c = { ":lua require('neo-tree.command').execute({action = 'close'})", "Close all neo-tree" },
+			c = { ":lua require('neo-tree.command').execute({action = 'close'})<CR>", "Close all neo-tree" },
 			e = {
 				":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>",
 				"File tree",
@@ -518,7 +520,7 @@ M.config = function()
 				"File tree",
 			},
 			g = {
-				":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'left', toggle = true})<CR>",
+				":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'bottom', toggle = true})<CR>",
 				"Git Status",
 			},
 			x = {
