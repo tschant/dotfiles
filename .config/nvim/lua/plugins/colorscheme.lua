@@ -80,6 +80,11 @@ return {
 		keys = {"<leader>fx"},
 		config = config_load,
 	},
+	{
+		"pineapplegiant/spaceduck",
+		keys = {"<leader>fx"},
+		config = config_load,
+	},
 	--[[ {
 		"nanotech/jellybeans.vim",
 		keys = {"<leader>fx"},
