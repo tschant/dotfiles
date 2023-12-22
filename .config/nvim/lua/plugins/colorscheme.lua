@@ -9,17 +9,17 @@ local config_load = function()
 	cmd("hi NormalNC ctermbg=none guibg=#262626")
 	cmd("hi SignColumn ctermbg=none guibg=none")
 	cmd("hi FoldColumn ctermbg=none guibg=none")
-	cmd("hi FocusedLine ctermbg=none guibg=none guifg=#525252")
+	-- cmd("hi FocusedLine ctermbg=none guibg=none guifg=#525252")
 
 	-- cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
 	-- cmd "hi StatusColumnGitSigns guifg=SignColumn guibg=SignColumn"
 
 	-- highlights --
 	cmd("hi EndOfBuffer guifg=#525252 guibg=NONE")
-	cmd("hi gitcommitOverflow guifg=#525252 guibg=NONE")
-	cmd("hi gitcommitTrailers guifg=#525252 guibg=NONE")
-	cmd("hi Visual guibg=#525252")
-	--
+	-- cmd("hi gitcommitOverflow guifg=#525252 guibg=NONE")
+	-- cmd("hi gitcommitTrailers guifg=#525252 guibg=NONE")
+	-- cmd("hi Visual guibg=#525252")
+
 	-- -- git signs
 	local colors = require("utils.colors")
 	cmd("hi DiffAdd guifg=" .. colors.green .. " guibg = none")
