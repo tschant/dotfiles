@@ -70,19 +70,19 @@ return {
 		keys = {"<leader>fx"},
 		config = config_load,
 	},
-	{
-		"LunarVim/horizon.nvim",
+	--[[ {
+		"shaunsingh/solarized.nvim",
 		keys = {"<leader>fx"},
 		config = config_load,
-	},
+	}, ]]
 	{
 		"dasupradyumna/midnight.nvim",
 		keys = {"<leader>fx"},
 		config = config_load,
 	},
-	{
+	--[[ {
 		"nanotech/jellybeans.vim",
 		keys = {"<leader>fx"},
 		config = config_load,
-	}
+	} ]]
 }
