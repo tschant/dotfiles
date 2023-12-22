@@ -15,7 +15,7 @@ return {
 						row = -1,
 						col = 0,
 					},
-					timeout = 5000,
+					timeout = 10000,
 				}
 			},
 			cmdline = {

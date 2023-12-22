@@ -502,7 +502,11 @@ M.config = function()
 		-- gs = {":lua require('neo-tree.command').execute({action = 'focus', source = 'git_status', reveal =true, position = 'bottom', toggle = true})<CR>", "Git status"},
 		-- Session + Dashboard
 		["<Home>"] = { ":Alpha<cr>", "Dashboard" },
-		-- nn = {":DashboardNewFile<cr>", "New file dashboard"},
+		n = {
+			d = {":lua require('noice').cmd('dismiss')<cr>", "Dismiss notifications"},
+			l = {":lua require('noice').cmd('last')<cr>", "Last notifications"},
+			h = {":lua require('noice').cmd('telescope')<cr>", "History notifications"},
+		},
 		--
 		c = {
 			k = {

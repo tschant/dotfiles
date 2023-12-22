@@ -1,6 +1,5 @@
-local M = {
+return {
 	"stevearc/dressing.nvim",
-	event = "VeryLazy",
 	opts = {
 		select = {
 			telescope = {
@@ -12,5 +11,3 @@ local M = {
 		},
 	}
 }
-
-return M
