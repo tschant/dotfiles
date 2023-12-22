@@ -1,11 +1,11 @@
 local cmd = vim.cmd
 
-local Theme = "midnight"
+local Theme = "PaperColor"
 local config_load = function()
 	cmd("colorscheme " .. Theme)
 
 	-- Use terminal background color instead of colorscheme
-	cmd("hi Normal ctermbg=none guibg=none")
+	-- cmd("hi Normal ctermbg=none guibg=none")
 	cmd("hi NormalNC ctermbg=none guibg=#262626")
 	cmd("hi SignColumn ctermbg=none guibg=none")
 	cmd("hi FoldColumn ctermbg=none guibg=none")
@@ -34,37 +34,55 @@ end
 
 return {
 	{
-		"kartikp10/noctis.nvim",
-		keys = "<leader>fx",
-		dependencies = { "rktjmp/lush.nvim" },
-		-- lazy = false,
-		-- priority = 1000,
-		config = config_load,
-	},
-	-- Themes
-	--"norcalli/nvim-base16.lua",
-	{
-		"dasupradyumna/midnight.nvim",
-		-- branch = "main",
-		keys = "<leader>fx",
 		lazy = false,
 		priority = 1000,
+		"NLKNguyen/papercolor-theme",
+		keys = {"<leader>fx"},
+		config = function ()
+			cmd("set termguicolors")
+			cmd("set background=dark")
+			vim.g.PaperColor_Theme_Options = {
+				theme = {
+					default = {
+						allow_bold = 1,
+					},
+					['default.dark'] = {
+						transparent_background= 1,
+					},
+				}
+			}
+			config_load()
+		end,
+	},
+	{
+		"kartikp10/noctis.nvim",
+		keys = {"<leader>fx"},
+		dependencies = { "rktjmp/lush.nvim" },
 		config = config_load,
 	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",
-		keys = "<leader>fx",
-		-- branch = "fennel",
-		-- event = "VeryLazy",
-		-- lazy = false,
-		-- priority = 1000,
+		keys = {"<leader>fx"},
 		config = config_load,
 	},
 	{
 		"LunarVim/horizon.nvim",
-		keys = "<leader>fx",
-		-- lazy = false,
-		-- priority = 1000,
+		keys = {"<leader>fx"},
 		config = config_load,
 	},
+	{
+		"LunarVim/horizon.nvim",
+		keys = {"<leader>fx"},
+		config = config_load,
+	},
+	{
+		"dasupradyumna/midnight.nvim",
+		keys = {"<leader>fx"},
+		config = config_load,
+	},
+	{
+		"nanotech/jellybeans.vim",
+		keys = {"<leader>fx"},
+		config = config_load,
+	}
 }
