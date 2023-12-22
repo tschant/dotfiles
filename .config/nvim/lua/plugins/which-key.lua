@@ -1,8 +1,6 @@
 local util = require("utils.core")
 local M = {
 	"folke/which-key.nvim",
-	dependencies = { "mrjones2014/legendary.nvim" },
-	-- event = "VimEnter",
 	event = "VeryLazy",
 }
 
@@ -41,12 +39,7 @@ M.config = function()
 			"^ ",
 		},
 	})
-	require("legendary").setup({
-		which_key = {
-			auto_register = true,
-		},
-	})
-	--
+
 	-- Random key-maps
 	wk.register({
 		Q = { "<Nop>", "no-op" },
@@ -77,11 +70,11 @@ M.config = function()
 			r = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
 			R = { ":Telescope lsp_references<CR>", "References" },
 			h = { ":lua vim.lsp.buf.hover()<CR>", "Hover details" },
-			-- H = { 
+			-- H = {
 				-- function ()
 					-- if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 						-- vim.lsp.inlay_hint(0, nil)
-					-- end 
+					-- end
 					-- ":lua vim.lsp.buf.hover()<CR>"
 				-- end, "Inline hover details" },
 			I = { ":lua vim.lsp.buf.implementation()<CR>", "Implementation" },
@@ -151,7 +144,6 @@ M.config = function()
 	wk.register({
 		-- Comment
 		["_>"] = { ':lua require("Comment.api").toggle_current_linewise()<CR>', "ctrl-/" },
-		-- ['p>'] = {":lua require('legendary').find()<cr>", 'Search keybinds and commands'},
 		["p>"] = { util.telescope("find_files", { cwd = false }), "find files (cwd)" },
 	}, { prefix = "<C-", mode = "n" })
 
@@ -262,16 +254,6 @@ M.config = function()
 			end,
 			"Open htop",
 		},
-		--[[ ['<leader>tg'] = {
-			function() 
-				require('FTerm').scratch({ cmd = {'gradle', 'build', '-x', 'test'} })
-			end, 'Scratch npm run build'
-		},
-		['<leader>tb'] = {
-			function() 
-				require('FTerm').scratch({ cmd = {'npm', 'run', 'build'} })
-			end, 'Scratch npm run build'
-		} ]]
 	}, { mode = "n" })
 
 	-- Window keybinds
@@ -279,38 +261,17 @@ M.config = function()
 		-- buffer navigation BarBar
 		["<C-q>"] = { ":BufferClose<CR>", "Close buffer" },
 		-- Better window navigation
-		["<C-h>"] = { require("smart-splits").move_cursor_left, "Window left" },
-		["<C-j>"] = { require("smart-splits").move_cursor_down, "Window down" },
-		["<C-k>"] = { require("smart-splits").move_cursor_up, "Window up" },
-		["<C-l>"] = { require("smart-splits").move_cursor_right, "Window right" },
+		["<C-h>"] = {"lua require('smart-splits').move_cursor_left()<CR>", "Window left" },
+		["<C-j>"] = {"lua require('smart-splits').move_cursor_down()<CR>", "Window down" },
+		["<C-k>"] = {"lua require('smart-splits').move_cursor_up()<CR>", "Window up" },
+		["<C-l>"] = {"lua require('smart-splits').move_cursor_right()<CR>", "Window right" },
 		['<leader>w'] = {
-			H = {require('smart-splits').start_resize_mode, 'resize left'},
-			J = {require('smart-splits').start_resize_mode, 'resize down'},
-			K = {require('smart-splits').start_resize_mode, 'resize up'},
-			L = {require('smart-splits').start_resize_mode, 'resize right'},
-		}, 
-		-- ['<C-S-h>'] = {require('smart-splits').resize_left, 'resize left', noremap=false},
-		-- ['<C-S-j>'] = {require('smart-splits').resize_down, 'resize down', noremap=false},
-		-- ['<C-S-k>'] = {require('smart-splits').resize_up, 'resize up', noremap=false},
-		-- ['<C-S-l>'] = {require('smart-splits').resize_right, 'resize right', noremap=false},
+			H = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			J = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			K = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			L = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+		},
 	})
-	--[[ wk.register({
-		-- buffer navigation BarBar
-		["<C-q>"] = {":BufferClose<CR>", 'Close buffer'},
-		-- Better window navigation
-		["<C-h>"] = {"<C-w>h", "Window left"},
-		["<C-j>"] = {"<C-w>j", "Window down"},
-		["<C-k>"] = {"<C-w>k", "Window up"},
-		["<C-l>"] = {"<C-w>l", 'Window right'},
-		["<C-w>H"] = {"<C-w>3<", "Resize window left"},
-		["<C-w>L"] = {"<C-w>3>", "Resize window right"},
-		["<C-w>K"] = {"<C-w>2+", "Resize window up"},
-		["<C-w>J"] = {"<C-w>2-", "Resize window down"},
-		["<C-w>e"] = {"<C-w>=", "Equal window sizes"},
-		["<C-w><CR>"] = {":FocusMaxOrEqual<CR>"},
-		["<C-w>Q"] = {":q<cr>" },
-		["<C-w><C-q>"] = {":q<cr>" },
-	}) ]]
 
 	-- Buffer
 	wk.register({
@@ -450,7 +411,6 @@ M.config = function()
 		},
 		V = { ":vs<CR>", "Vertical Split" },
 		H = { ":sp<CR>", "Horizontal Split" },
-		-- w = { ":update<CR>", "Save file" },
 		-- Portal
 		o = { ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', "Portal Back" },
 		i = { ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', "Portal Forward" },
@@ -568,21 +528,6 @@ M.config = function()
 		["-"] = { ":lua require('oil').open()<CR>", "Open Parent Dir" },
 	}, { prefix = "<leader>" })
 
-	--[[ -- Package info
-u.map("n", "<leader>ns", ":lua require('package-info').show()<CR>", { silent = true, noremap = true })
--- Hide package versions
-u.map("n", "<leader>nc", ":lua require('package-info').hide()<CR>", { silent = true, noremap = true })
--- Update package on line
-u.map("n", "<leader>nu", ":lua require('package-info').update()<CR>", { silent = true, noremap = true })
--- Delete package on line
-u.map("n", "<leader>nd", ":lua require('package-info').delete()<CR>", { silent = true, noremap = true })
--- Install a new package
-u.map("n", "<leader>ni", ":lua require('package-info').install()<CR>", { silent = true, noremap = true })
--- Reinstall dependencies
-u.map("n", "<leader>nr", ":lua require('package-info').reinstall()<CR>", { silent = true, noremap = true })
--- Install a different package version
-u.map("n", "<leader>np", ":lua require('package-info').change_version()<CR>", { silent = true, noremap = true })
- ]]
 end
 
 return M
