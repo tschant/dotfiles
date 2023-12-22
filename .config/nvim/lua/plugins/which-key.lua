@@ -1,7 +1,16 @@
 local util = require("utils.core")
 local M = {
 	"folke/which-key.nvim",
-	event = "VeryLazy",
+	-- event = "VeryLazy",
+	keys = {
+		"<tab>",
+		"<S-tab>",
+		"<leader>",
+		"<F2>", -- toggle term
+		"<F3>", -- lazygit
+		"<F4>", -- btop
+		"<C-q>", -- close
+	},
 }
 
 M.config = function()

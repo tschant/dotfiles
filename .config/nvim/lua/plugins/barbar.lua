@@ -25,6 +25,9 @@ local M = {
 		semantic_letters = true,
 		no_name_title = nil,
 	},
+	keys = {
+		'<C-q>'
+	},
 	event = "BufAdd",
 	-- cmd = {
 	-- 	"BufferPrev",
