@@ -18,27 +18,31 @@ window:
 
 font:
   normal:
-    # family: Liga SFMono Nerd Font
-    family: Hasklug Nerd Font
-    # family: FuraCode Nerd Font
+    family: CaskaydiaCove Nerd Font
+    # family: Hurmit Nerd Font
+    # family: Hasklug Nerd Font
+    # family: FiraCode Nerd Font
     style: Light
   bold:
-    # family: Liga SFMono Nerd Font
-    family: Hasklug Nerd Font
-    # family: FuraCode Nerd Font
+    family: CaskaydiaCove Nerd Font
+    # family: Hurmit Nerd Font
+    # family: Hasklug Nerd Font
+    # family: FiraCode Nerd Font
     style: Bold
   italic:
-    # family: Liga SFMono Nerd Font
-    family: Hasklug Nerd Font
-    # family: FuraCode Nerd Font
+    family: CaskaydiaCove Nerd Font
+    # family: Hurmit Nerd Font
+    # family: Hasklug Nerd Font
+    # family: FiraCode Nerd Font
     style: Italic
   bold_italic:
-    # family: Liga SFMono Nerd Font
-    family: Hasklug Nerd Font
-    # family: FuraCode Nerd Font
+    family: CaskaydiaCove Nerd Font
+    # family: Hurmit Nerd Font
+    # family: Hasklug Nerd Font
+    # family: FiraCode Nerd Font
     style: Bold Italic
 
-  size: 12
+  size: 10
 
   offset:
     x: 0
