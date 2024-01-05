@@ -270,15 +270,15 @@ M.config = function()
 		-- buffer navigation BarBar
 		["<C-q>"] = { ":BufferClose<CR>", "Close buffer" },
 		-- Better window navigation
-		["<C-h>"] = {"lua require('smart-splits').move_cursor_left()<CR>", "Window left" },
-		["<C-j>"] = {"lua require('smart-splits').move_cursor_down()<CR>", "Window down" },
-		["<C-k>"] = {"lua require('smart-splits').move_cursor_up()<CR>", "Window up" },
-		["<C-l>"] = {"lua require('smart-splits').move_cursor_right()<CR>", "Window right" },
+		["<C-h>"] = {":lua require('smart-splits').move_cursor_left()<CR>", "Window left" },
+		["<C-j>"] = {":lua require('smart-splits').move_cursor_down()<CR>", "Window down" },
+		["<C-k>"] = {":lua require('smart-splits').move_cursor_up()<CR>", "Window up" },
+		["<C-l>"] = {":lua require('smart-splits').move_cursor_right()<CR>", "Window right" },
 		['<leader>w'] = {
-			H = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
-			J = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
-			K = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
-			L = {"lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			H = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			J = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			K = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			L = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
 		},
 	})
 
