@@ -121,6 +121,14 @@ M.config = function()
 	telescope.load_extension("media_files")
 	telescope.load_extension("harpoon")
 	-- telescope.load_extension("session-lens")
+
+	vim.api.nvim_create_autocmd("WinLeave", {
+		callback = function()
+			if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "i", false)
+			end
+		end,
+	})
 end
 
 return M
