@@ -9,7 +9,7 @@ local M = {
 		local job = require 'plenary.job'
 		job:new({
 				command = 'curl',
-				args = { 'https://vtip.43z.one' },
+				args = { '-L', 'https://vimiscool.tech/neotip' },
 				on_exit = function(j, exit_code)
 					local res = table.concat(j:result())
 					if exit_code ~= 0 then
