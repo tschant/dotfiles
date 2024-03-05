@@ -7,7 +7,6 @@ local M = {
 		"williamboman/mason.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/cmp-nvim-lsp",
-		"nanotee/sqls.nvim",
 	},
 }
 
@@ -62,7 +61,6 @@ M.config = function()
 		clangd = {},
 		dockerls = {},
 		eslint = {},
-		sqls = {},
 		gopls = {
 			root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 			flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
