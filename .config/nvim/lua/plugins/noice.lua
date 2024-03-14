@@ -5,6 +5,9 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	config = function()
+		require('notify').setup({
+			background_color = "#000000",
+		})
 		require('noice').setup({
 			renader = "minimal",
 			stages = "static",
@@ -43,6 +46,7 @@ return {
 			},
 			notify = {
 				enabled = true,
+				view = "notify",
 			},
 			messages = {
 				view = "mini"

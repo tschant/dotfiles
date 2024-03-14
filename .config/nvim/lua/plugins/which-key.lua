@@ -88,7 +88,7 @@ M.config = function()
 				-- end, "Inline hover details" },
 			I = { ":lua vim.lsp.buf.implementation()<CR>", "Implementation" },
 			-- f = {":lua vim.lsp.buf.format()<cr>", "Format file"},
-			f = { ":lua require('conform').format()<CR>", "LSP Format file" },
+			f = { ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>", "LSP Format file" },
 			F = { ":lua vim.diagnostic.open_float()<CR>", "Diagnostic" },
 			p = { ":lua vim.diagnostic.goto_prev()<CR>", "Goto Next" },
 			P = { ":lua vim.diagnostic.goto_next()<CR>", "Goto Prev" },
