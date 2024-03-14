@@ -9,7 +9,7 @@ local config_load = function()
 	cmd("hi NormalNC ctermbg=none guibg=#262626")
 	cmd("hi SignColumn ctermbg=none guibg=none")
 	cmd("hi FoldColumn ctermbg=none guibg=none")
-	-- cmd("hi FocusedLine ctermbg=none guibg=none guifg=#525252")
+	cmd("hi FocusedLine ctermbg=none guibg=none guifg=#0088aa")
 
 	-- cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
 	-- cmd "hi StatusColumnGitSigns guifg=SignColumn guibg=SignColumn"
@@ -30,6 +30,8 @@ local config_load = function()
 	cmd("hi DiagnosticWarn guifg =" .. colors.warning .. " guibg = none")
 	cmd("hi DiagnosticInfo guifg =" .. colors.info .. " guibg = none")
 	cmd("hi DiagnosticHint guifg =" .. colors.hint .. " guibg = none")
+
+	cmd("hi NotifyBackground guifg = none guibg=#000000")
 end
 
 return {

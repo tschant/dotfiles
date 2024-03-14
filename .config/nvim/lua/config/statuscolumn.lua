@@ -40,7 +40,7 @@ _G.StatusColumn = {
   },
 
   display = {
-    line = function()
+    line = function(bufnr)
 			local function pad_line_num(num, max_lines)
 				if #num ~= #max_lines then
 					return string.rep(" ", #max_lines - #num) .. num
@@ -53,16 +53,19 @@ _G.StatusColumn = {
 			local relnum = tostring(vim.v.relnum)
 			local max_lines = tostring(vim.fn.line("$"))
 			local current_mode = vim.fn.mode()
+      local cur_sign_nm = utils.get_name_from_group(bufnr, lnum, "gitsigns_vimfn_signs_")
+      local text = pad_line_num(lnum, max_lines)
 
+      cur_sign_nm = cur_sign_nm and cur_sign_nm or 'NonText'
 			if current_mode == "i" then
-				return pad_line_num(lnum, max_lines)	
+				text = pad_line_num(lnum, max_lines)
 			else
-				if relnum == "0" then
-					return pad_line_num(lnum, max_lines)
-				else
-					return pad_line_num(relnum, max_lines)
+				if relnum ~= "0" then
+					text = pad_line_num(relnum, max_lines)
 				end
 			end
+
+      return utils.make_hl_statuscolum(cur_sign_nm, text)
     end,
 
     fold = function()
@@ -121,7 +124,7 @@ _G.StatusColumn = {
       [[%s]]
     },
     line_number = {
-      [[%{%v:lua.StatusColumn.display.line()%}]]
+      [[%{%v:lua.StatusColumn.display.line(bufnr())%}]]
       -- [[%=%{v:lua.StatusColumn.display.line()}]]
     },
     folds       = {

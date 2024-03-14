@@ -15,6 +15,10 @@ M.config = function()
 			topdelete = {hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
 			changedelete = {hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"}
 		},
+		_extmark_signs = false, -- Version 0.7 broke statuscolumn showing git status by defaulting to `extmark_signs`
+		-- debug_mode = true,
+		attach_to_untracked = true,
+		trouble = true,
 		numhl = false,
 		linehl = false,
 		watch_gitdir = {
@@ -27,6 +31,7 @@ M.config = function()
 		on_attach = function(bufnr)
 			local gs = package.loaded.gitsigns
 
+			vim.api.nvim_buf_set_var(bufnr, "nifoc_gitsigns_enabled", 1)
 			-- Navigation
 			u.map('n', ']c', function()
 				if vim.wo.diff then return ']c' end

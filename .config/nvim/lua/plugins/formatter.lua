@@ -47,8 +47,8 @@ return {
 			null_ls.setup({
 				sources = {
 					-- Code Actions
-					null_ls.builtins.code_actions.eslint_d,
-					null_ls.builtins.code_actions.shellcheck,
+					-- null_ls.builtins.code_actions.eslint_d,
+					-- null_ls.builtins.code_actions.shellcheck,
 					-- null_ls.builtins.code_actions.cspell,
 
 					-- Completion
@@ -79,15 +79,15 @@ return {
 					-- Linters
 					null_ls.builtins.diagnostics.alex,
 					-- null_ls.builtins.diagnostics.cspell,
-					null_ls.builtins.diagnostics.eslint_d,
+					-- null_ls.builtins.diagnostics.eslint_d,
 					null_ls.builtins.diagnostics.golangci_lint,
 					null_ls.builtins.diagnostics.tidy,
 					null_ls.builtins.diagnostics.pmd.with({
 						extra_args = { "-R", "rulesets/java/quickstart.xml" },
 						--"~/.local/bin/pmd-bin-6.53.0/rulesets/eclipse-formatter-settings.xml"}
 					}),
-					null_ls.builtins.diagnostics.luacheck,
-					null_ls.builtins.diagnostics.shellcheck,
+					-- null_ls.builtins.diagnostics.luacheck,
+					-- null_ls.builtins.diagnostics.shellcheck,
 					-- null_ls.builtins.diagnostics.stylelint,
 					-- null_ls.builtins.diagnostics.sqlfluff.with({
 					-- 	extra_args = {"--dialect", "mysql", "-e", "L003,L059,L063,L013,L006,L048"}

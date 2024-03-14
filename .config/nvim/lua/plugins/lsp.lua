@@ -18,7 +18,7 @@ M.config = function()
 			"stylelint-lsp",
 			-- LSP
 			"stylua",
-			"luasnip",
+			-- "luasnip",
 			"bash-language-server",
 			-- "typescript-language-server",
 			-- "tailwindcss-language-server",
