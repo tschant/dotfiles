@@ -400,6 +400,7 @@ M.config = function()
 	wk.register({
 		-- u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
 		q = { ":BufferClose<CR>", "Close buffer" },
+		p = { [["0p]], "Paste from yank register", mode = { "n", "x" }},
 		cc = {
 			":let @+=expand('%')<CR>",
 			"Copy file path from PWD",
@@ -423,22 +424,24 @@ M.config = function()
 		-- Portal
 		o = { ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', "Portal Back" },
 		i = { ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', "Portal Forward" },
-		p = {
-			name = "Portal",
+		-- Harpoon
+		["'"] = {
+			name = "Harpoon+Portal",
+			D = { ':lua require("harpoon.ui").clear_all()<CR>', "Clear list" },
+			l = { ':lua require("harpoon.ui").toggle_quick_menu()<CR>', "Quick menu" },
+			m = { ':lua require("harpoon.mark").add_file()<CR>', "Add file" },
+			n = { ':lua require("harpoon.mark").rm_file()<CR>', "Remove file" },
+			j = { ':lua require("harpoon.ui").nav_next()<CR>', "Nav next mark" },
+			k = { ':lua require("harpoon.ui").nav_prev()<CR>', "Nav prev mark" },
+			-- portal
+			o = { ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', "Portal Back" },
+			i = { ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', "Portal Forward" },
 			h = { ':lua require("portal.builtin").harpoon.tunnel()<CR>', "Portal Harpoon" },
 			c = {
 				':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>',
 				"Portal Changelist",
 			},
 			q = { ':lua require("portal.builtin").quickfix.tunnel({})<CR>', "Portal Quickfix" },
-		},
-		-- Harpoon
-		["'"] = {
-			name = "Harpoon",
-			h = { ':lua require("harpoon.ui").toggle_quick_menu()<CR>', "Quick menu" },
-			m = { ':lua require("harpoon.mark").add_file()<CR>', "Add file" },
-			j = { ':lua require("harpoon.ui").nav_next()<CR>', "Nav next mark" },
-			k = { ':lua require("harpoon.ui").nav_prev()<CR>', "Nav prev mark" },
 		},
 		-- Undo tree
 		u = { ":UndotreeToggle<CR>", "undo tree" },

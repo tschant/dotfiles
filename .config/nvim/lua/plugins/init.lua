@@ -27,9 +27,6 @@ return {
 		}
 	},
 	{
-		"ThePrimeagen/harpoon",
-	},
-	{
 		"NMAC427/guess-indent.nvim",
 		event = "BufRead",
 		config = function()
