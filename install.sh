@@ -18,6 +18,11 @@ mkdir -p $HOME/.config
 [[ ! -e $HOME/.tmux.conf ]] && ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
 [[ ! -e $HOME/.config/starship.toml ]] && ln -s $(pwd)/.config/starship/starship.toml $HOME/.config/starship.toml
 
+if [[ ! -d $HOME/.config/wezterm ]]; then
+	ln -s $(pwd)/.config/wezterm $HOME/.config/wezterm
+	git clone https://github.com/danielcopper/wezterm-session-manager.git ~/.config/wezterm/wezterm-session-manager
+fi
+
 OS_NAME=$(uname -a)
 if [[ "$OS_NAME" =~ "Linux" ]]; then
 	echo "Linux OS Detected"
