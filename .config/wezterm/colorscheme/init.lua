@@ -1,118 +1,129 @@
-local ayu_dark= {
-	background= '#0A0E14',
-	foreground= '#CBCCC6',
-	normal={
-		black=   '#1D202F',
-		red=     '#FF3333',
-		green=   '#C2D94C',
-		yellow=  '#E6B450',
-		blue=    '#39BAE6',
-		magenta= '#A37ACC',
-		cyan=    '#59C2FF',
-		white=   '#B3B1AD',
-	},
-	bright= {
-		black=   '#414868',
-		red=     '#FF3333',
-		green=   '#C2D94C',
-		yellow=  '#E6B450',
-		blue=    '#39BAE6',
-		magenta= '#A37ACC',
-		cyan=    '#59C2FF',
-		white=   '#CBCCC6',
-	}
-}
-
-local mocha = {
-   rosewater = '#f5e0dc',
-   flamingo = '#f2cdcd',
-   pink = '#f5c2e7',
-   mauve = '#cba6f7',
-   red = '#f38ba8',
-   maroon = '#eba0ac',
-   peach = '#fab387',
-   yellow = '#f9e2af',
-   green = '#a6e3a1',
-   teal = '#94e2d5',
-   sky = '#89dceb',
-   sapphire = '#74c7ec',
-   blue = '#89b4fa',
-   lavender = '#b4befe',
-   text = '#cdd6f4',
-   subtext1 = '#bac2de',
-   subtext0 = '#a6adc8',
-   overlay2 = '#9399b2',
-   overlay1 = '#7f849c',
-   overlay0 = '#6c7086',
-   surface2 = '#585b70',
-   surface1 = '#45475a',
-   surface0 = '#313244',
-   base = '#1f1f28',
-   mantle = '#181825',
-   crust = '#11111b',
-}
+local base = require('colorscheme.gruv')
+local colors = base.normal
 
 local colorscheme = {
-   foreground = ayu_dark.foreground,
-   background = ayu_dark.background,
-   cursor_bg = mocha.rosewater,
-   cursor_border = mocha.rosewater,
-   cursor_fg = mocha.crust,
-   selection_bg = mocha.surface2,
-   selection_fg = mocha.text,
-   ansi = {
-      '#0C0C0C', -- black
-      '#C50F1F', -- red
-      '#13A10E', -- green
-      '#C19C00', -- yellow
-      '#0037DA', -- blue
-      '#881798', -- magenta/purple
-      '#3A96DD', -- cyan
-      '#CCCCCC', -- white
-   },
-   brights = {
-      '#767676', -- black
-      '#E74856', -- red
-      '#16C60C', -- green
-      '#F9F1A5', -- yellow
-      '#3B78FF', -- blue
-      '#B4009E', -- magenta/purple
-      '#61D6D6', -- cyan
-      '#F2F2F2', -- white
-   },
+   foreground = base.foreground,
+   background = base.background,
+   cursor_bg = base.text,
+   cursor_border = base.text,
+   cursor_fg = base.text,
+   selection_bg = base.surface1,
+   selection_fg = base.text,
+   ansi = base.ansi,
+   brights = base.brights,
    tab_bar = {
       background = 'rgba(0, 0, 0, 0.4)',
       active_tab = {
-         bg_color = mocha.base,
-         fg_color = mocha.text,
-				 text = " "
+         bg_color = colors.cyan,
+         fg_color = colors.black,
       },
       inactive_tab = {
-         bg_color = mocha.surface0,
-         fg_color = mocha.subtext1,
+         bg_color = base.mantle,
+         fg_color = base.subtext,
       },
       inactive_tab_hover = {
-         bg_color = mocha.surface0,
-         fg_color = mocha.text,
+         bg_color = base.base,
+         fg_color = base.text,
+         italic = true,
       },
       new_tab = {
-         bg_color = mocha.base,
-         fg_color = mocha.text,
+         bg_color = base.mantle,
+         fg_color = base.text,
       },
       new_tab_hover = {
-         bg_color = mocha.mantle,
-         fg_color = mocha.text,
+         bg_color = base.base,
+         fg_color = base.text,
          italic = true,
       },
    },
-   visual_bell = mocha.surface0,
+   visual_bell = base.surface0,
    indexed = {
-      [16] = mocha.peach,
-      [17] = mocha.rosewater,
+      [16] = colors.blue,
+      [17] = colors.cyan,
    },
-   scrollbar_thumb = mocha.base,
-   split = mocha.overlay0,
-   compose_cursor = mocha.flamingo, -- nightbuild only
+   scrollbar_thumb = base.base,
+   split = base.overlay,
+   compose_cursor = colors.red, -- nightbuild only
 }
 
-return colorscheme
+return {
+  colors = colorscheme,
+  base = base,
+}
+
+--[[
+  -- TODO: Convert to lua
+  schemes:
+    horizon_dark: &horizon_dark
+      primary:
+        background: '#0A0E14'
+        foreground: '#CBCCC6'
+        # background: '0x1c1e26'
+        # foreground: '0xe0e0e0'
+      normal:
+        black: '0x16161c'
+        red: '0xe95678'
+        green: '0x29d398'
+        yellow: '0xfab795'
+        blue: '0x26bbd9'
+        magenta: '0xee64ac'
+        cyan: '0x59e1e3'
+        white: '0xd5d8da'
+      bright:
+        black: '0x5b5858'
+        red: '0xec6a88'
+        green: '0x3fdaa4'
+        yellow: '0xfbc3a7'
+        blue: '0x3fc4de'
+        magenta: '0xf075b5'
+        cyan: '0x6be4e6'
+        white: '0xd5d8da'
+
+    kaolin: &kaolin
+      primary:
+        background: '#18181B'
+        foreground: '#E4E4E8'
+      normal:
+        black:    '#4B5254'
+        red:      '#CD5C60'
+        green:    '#6FB593'
+        yellow:   '#DBAC66'
+        blue:     '#91B9C7'
+        magenta:  '#845A84'
+        cyan:     '#4D9391'
+        white:    '#E4E4E8'
+      bright:
+        black:    '#879193'
+        red:      '#C93237'
+        green:    '#35BF88'
+        yellow:   '#EED891'
+        blue:     '#3B84CC'
+        magenta:  '#D24B83'
+        cyan:     '#68F3CA'
+        white:    '#EFEFF1'
+
+    amarena: &amarena
+      primary:
+        background: '#0A0E14'
+        foreground: '#CBCCC6'
+        # background:	'#1A2026'
+        # foreground:	'#FFFFFF'
+      normal: 
+        black:	  '#242D35'
+        red:	    '#FB6396'
+        green:	  '#94CF95'
+        yellow:	  '#F692B2'
+        blue:	    '#6EC1D6'
+        magenta:	'#CD84C8'
+        cyan:	    '#7FE4D2'
+        white:	  '#FFFFFF'
+      bright:
+        black:	  '#526170'
+        red:	    '#F92D72'
+        green:	  '#6CCB6E'
+        yellow:   '#F26190'
+        blue:	    '#4CB9D6'
+        magenta:	'#C269BC'
+        cyan:	    '#58D6BF'
+        white:	  '#F4F5F2'
+]]

@@ -1,18 +1,18 @@
 local wezterm = require('wezterm')
-local colors = require('colorscheme')
+local cs = require('colorscheme')
 
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 return {
-   colors = colors,
+   colors = cs.colors,
    animation_fps = 60,
    max_fps = 60,
    front_end = 'WebGpu',
    webgpu_power_preference = 'HighPerformance',
 	 font = wezterm.font_with_fallback({
-		 { family = "CaskaydiaCove Nerd Font",       scale = 1, weight = "Medium", },
+		 { family = "CaskaydiaCove Nerd Font",       scale = 0.9, weight = "Light", },
 		 { family = "Hasklug Nerd Font", scale = 1, },
 	 }),
 
@@ -24,7 +24,7 @@ return {
 				source = { File = wezterm.GLOBAL.background },
       }, ]]
       {
-         source = { Color = colors.background },
+         source = { Color = cs.colors.background },
          height = '100%',
          width = '100%',
          opacity = 0.96,
@@ -42,13 +42,6 @@ return {
    tab_max_width = 25,
    show_tab_index_in_tab_bar = false,
    switch_to_last_active_tab_when_closing_tab = true,
-	 tab_bar_style = {
-		 active_tab_left = wezterm.format {
-			 { Background = { Color = '#0b0022' } },
-			 { Foreground = { Color = '#2b2042' } },
-			 { Text = " " },
-		 },
-	 },
 
    -- window
    window_padding = {

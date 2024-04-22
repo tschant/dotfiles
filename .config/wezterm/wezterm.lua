@@ -9,6 +9,7 @@ local Config = require('config')
 
 require('events.status').setup()
 require('events.sessions').setup()
+require('events.tab_title').setup()
 
 return Config:init()
    :append(require('config.appearance'))
