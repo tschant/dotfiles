@@ -82,8 +82,8 @@ local keys = {
   { key = 'DownArrow', mods = 'CTRL', action = act.ActivatePaneDirection 'Down', },
   { key = 'DownArrow', mods = 'CTRL|SHIFT', action = act.AdjustPaneSize { "Down", 1 }, },
   {
-    key = '|',
-    mods = 'LEADER|SHIFT',
+    key = '\\',
+    mods = 'LEADER',
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
   }, -- TMUX port
   {
@@ -183,18 +183,6 @@ local keys = {
     key = 'Enter',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.TogglePaneZoomState,
-  },
-  {
-    key = 'e',
-    mods = 'LEADER',
-    action = act.PromptInputLine {
-      description = 'Enter new name for tab',
-      action = wezterm.action_callback(function(window, pane, line)
-        if line then
-          window:active_tab():set_title(line)
-        end
-      end),
-    },
   },
 
   { key = 'S', mods = 'LEADER', action = wezterm.action { EmitEvent = 'save_session' } },
