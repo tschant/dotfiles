@@ -19,18 +19,17 @@ local keys = {
   { key = "phys:Space", mods = "LEADER",      action = act.ActivateCommandPalette },
 
    -- misc/useful --
-   { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
+   -- { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
    { key = 'H', mods = 'CTRL|SHIFT', action = 'ActivateCopyMode' }, -- TMUX port
-   { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
+   --[[ { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
    { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
    { key = 'F4', mods = 'NONE', action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
    {
       key = 'F5',
       mods = 'NONE',
       action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
-   },
+   }, ]]
 
-   
    { key = 'c', mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
    { key = 'v', mods = 'CTRL|SHIFT',  action = act.PasteFrom('Clipboard') },
    -- toggle fullscreen
@@ -45,6 +44,7 @@ local keys = {
   -- We can make separate keybindings for resizing panes
   -- But Wezterm offers custom "mode" in the name of "KeyTable"
   { key = "r",          mods = "LEADER",      action = act.ActivateKeyTable { name = "resize_pane", one_shot = false } },
+  { key = "r",          mods = mod.SUPER_REV,      action = act.ReloadConfiguration },
 
   -- window --
   -- spawn windows
@@ -102,7 +102,11 @@ local keys = {
       local home = wezterm.home_dir
       local workspaces = {}
       local n = os.tmpname()
-      os.execute("zoxide query -l > " .. n)
+      local zoxide_path = "/usr/bin/zoxide"
+      if platform.is_mac then
+        zoxide_path = "/usr/local/bin/zoxide"
+      end
+      os.execute(zoxide_path .. " query -l > " .. n)
       for line in io.lines(n) do
         table.insert(workspaces, {id = line, label = line:gsub(home, "~")})
       end

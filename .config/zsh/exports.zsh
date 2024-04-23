@@ -1,4 +1,4 @@
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:/usr/local/bin"
 
 # Exports
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'
@@ -34,6 +34,11 @@ if type ruby &>/dev/null && type gem >/dev/null; then
 fi
 if [[ -d $HOME/.tmux/plugins/ ]]; then 
 	[[ -d $HOME/.tmux/plugins/t-smart-tmux-session-manager ]] && export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH 
+fi
+
+if [[ -d /Applications/WezTerm.app/Contents/MacOS ]]; then
+	PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+	export PATH
 fi
 
 
