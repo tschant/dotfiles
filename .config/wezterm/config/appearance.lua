@@ -1,6 +1,12 @@
 local wezterm = require('wezterm')
+local platform = require('utils.platform')()
 local cs = require('colorscheme')
 
+local font_weight = "Light"
+if platform.is_mac then
+   font_weight = "Medium"
+end
+ 
 return {
    colors = cs.colors,
    animation_fps = 60,
@@ -8,7 +14,7 @@ return {
    front_end = 'WebGpu',
    webgpu_power_preference = 'HighPerformance',
    font = wezterm.font_with_fallback({
-      { family = "CaskaydiaCove Nerd Font",       scale = 0.9, weight = "Light", },
+      { family = "CaskaydiaCove Nerd Font",       scale = 0.95, weight = font_weight, },
       { family = "Hasklug Nerd Font", scale = 1, },
    }),
 
@@ -18,7 +24,7 @@ return {
          source = { Color = cs.colors.background },
          height = '100%',
          width = '100%',
-         opacity = 0.96,
+         opacity = 0.93,
       },
    },
 

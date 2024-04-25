@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local Theme = "PaperColor"
+local Theme = "gruvbox"
 local config_load = function()
 	cmd("colorscheme " .. Theme)
 
@@ -36,8 +36,8 @@ end
 
 return {
 	{
-		lazy = false,
-		priority = 1000,
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"NLKNguyen/papercolor-theme",
 		keys = {"<leader>fx"},
 		config = function ()
@@ -57,17 +57,23 @@ return {
 		end,
 	},
 	{
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"kartikp10/noctis.nvim",
 		keys = {"<leader>fx"},
 		dependencies = { "rktjmp/lush.nvim" },
 		config = config_load,
 	},
 	{
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"nyoom-engineering/oxocarbon.nvim",
 		keys = {"<leader>fx"},
 		config = config_load,
 	},
 	{
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"LunarVim/horizon.nvim",
 		keys = {"<leader>fx"},
 		config = config_load,
@@ -78,18 +84,32 @@ return {
 		config = config_load,
 	}, ]]
 	{
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"dasupradyumna/midnight.nvim",
 		keys = {"<leader>fx"},
 		config = config_load,
 	},
 	{
-		"pineapplegiant/spaceduck",
+		lazy = false,
+		priority = 1000,
+		"ellisonleao/gruvbox.nvim",
 		keys = {"<leader>fx"},
-		config = config_load,
-	},
-	--[[ {
-		"nanotech/jellybeans.vim",
-		keys = {"<leader>fx"},
-		config = config_load,
-	} ]]
+		config = function ()
+			require("gruvbox").setup({
+				terminal_colors = true,
+				invert_selection = false,
+				invert_signs = false,
+				invert_tabline = false,
+				invert_intend_guides = false,
+				inverse = true,
+				contrast = "hard", -- can be "hard", "soft" or empty string
+				palette_overrides = {},
+				overrides = {},
+				dim_inactive = false,
+				transparent_mode = true,
+			})
+			config_load()
+		end,
+	}
 }

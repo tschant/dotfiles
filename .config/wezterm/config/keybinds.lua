@@ -30,8 +30,8 @@ local keys = {
       action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
    }, ]]
 
-   { key = 'c', mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
-   { key = 'v', mods = 'CTRL|SHIFT',  action = act.PasteFrom('Clipboard') },
+   { key = 'c', mods = mod.SUPER,  action = act.CopyTo('Clipboard') },
+   { key = 'v', mods = mod.SUPER,  action = act.PasteFrom('Clipboard') },
    -- toggle fullscreen
    { key = 'F11', mods = 'NONE',    action = act.ToggleFullScreen },
    { key = 'F12', mods = 'NONE',    action = act.ShowDebugOverlay },
