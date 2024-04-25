@@ -79,3 +79,9 @@ fi
 if type tmux &>/dev/null; then 
 	alias tn=tmux new -s "$(pwd | sed 's/.*\///g')"
 fi
+
+if type jq &>/dev/null; then
+	,jq() {
+		echo '' | fzf --print-query --preview "cat $1 | jq {q}"
+	}
+fi
