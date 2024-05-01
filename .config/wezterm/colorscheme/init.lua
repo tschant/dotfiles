@@ -1,4 +1,4 @@
-local base = require('colorscheme.gruv')
+local base = require('colorscheme.ayu_dark')
 local colors = base.normal
 
 local colorscheme = {
@@ -7,7 +7,7 @@ local colorscheme = {
    cursor_bg = base.text,
    cursor_border = base.text,
    cursor_fg = base.text,
-   selection_bg = base.surface1,
+   selection_bg = base.selection_bg,
    selection_fg = base.text,
    ansi = base.ansi,
    brights = base.brights,
@@ -15,33 +15,33 @@ local colorscheme = {
       background = 'rgba(0, 0, 0, 0.4)',
       active_tab = {
          bg_color = colors.cyan,
-         fg_color = colors.black,
+         fg_color = base.active_bg,
       },
       inactive_tab = {
-         bg_color = base.mantle,
-         fg_color = base.subtext,
+         bg_color = base.inactive_bg,
+         fg_color = base.inactive_text,
       },
       inactive_tab_hover = {
-         bg_color = base.base,
+         bg_color = base.active_bg,
          fg_color = base.text,
          italic = true,
       },
       new_tab = {
-         bg_color = base.mantle,
+         bg_color = base.inactive_bg,
          fg_color = base.text,
       },
       new_tab_hover = {
-         bg_color = base.base,
+         bg_color = base.active_bg,
          fg_color = base.text,
          italic = true,
       },
    },
-   visual_bell = base.surface0,
+   visual_bell = base.inactive_text,
    indexed = {
       [16] = colors.blue,
       [17] = colors.cyan,
    },
-   scrollbar_thumb = base.base,
+   scrollbar_thumb = base.active_bg,
    split = base.overlay,
    compose_cursor = colors.red, -- nightbuild only
 }

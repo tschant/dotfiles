@@ -46,12 +46,11 @@ ayu_dark.brights = {
 }
 
 -- Custom colors
-ayu_dark.mantle = color.parse('#181825')
-ayu_dark.base = ayu_dark.mantle:lighten(0.1)
-ayu_dark.surface0 = ayu_dark.mantle:lighten(0.2)
-ayu_dark.surface1 = ayu_dark.mantle:lighten(0.3)
-ayu_dark.overlay = ayu_dark.mantle:lighten(0.4)
-ayu_dark.subtext = ayu_dark.mantle:lighten(0.8)
-ayu_dark.text = ayu_dark.mantle:lighten(0.9)
+ayu_dark.inactive_bg = color.parse('#181825')
+ayu_dark.active_bg = ayu_dark.inactive_bg:lighten(0.1)
+ayu_dark.selection_bg = ayu_dark.inactive_bg:lighten(0.3)
+ayu_dark.overlay = ayu_dark.inactive_bg:lighten(0.4)
+ayu_dark.inactive_text = ayu_dark.inactive_bg:lighten(0.8)
+ayu_dark.text = ayu_dark.inactive_bg:lighten(0.9)
 
 return ayu_dark

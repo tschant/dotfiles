@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local Theme = "gruvbox"
+local Theme = "papercolor"
 local config_load = function()
 	cmd("colorscheme " .. Theme)
 
@@ -36,8 +36,8 @@ end
 
 return {
 	{
-		--[[ lazy = false,
-		priority = 1000, ]]
+		lazy = false,
+		priority = 1000,
 		"NLKNguyen/papercolor-theme",
 		keys = {"<leader>fx"},
 		config = function ()
@@ -91,8 +91,8 @@ return {
 		config = config_load,
 	},
 	{
-		lazy = false,
-		priority = 1000,
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"ellisonleao/gruvbox.nvim",
 		keys = {"<leader>fx"},
 		config = function ()

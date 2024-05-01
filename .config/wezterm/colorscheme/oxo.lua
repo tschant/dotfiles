@@ -46,12 +46,11 @@ oxo.brights = {
 }
 
 -- Custom colors
-oxo.mantle = color.parse('#161616')
-oxo.base = oxo.mantle:lighten(0.2)
-oxo.surface0 = oxo.mantle:lighten(0.3)
-oxo.surface1 = oxo.mantle:lighten(0.4)
-oxo.overlay = oxo.mantle:lighten(0.5)
-oxo.subtext = oxo.mantle:lighten(0.8)
-oxo.text = oxo.mantle:lighten(0.9)
+oxo.inactive_bg = color.parse('#161616')
+oxo.active_bg = oxo.inactive_bg:lighten(0.2)
+oxo.selection_bg = oxo.inactive_bg:lighten(0.4)
+oxo.overlay = oxo.inactive_bg:lighten(0.5)
+oxo.inactive_text = oxo.inactive_bg:lighten(0.8)
+oxo.text = oxo.inactive_bg:lighten(0.9)
 
 return oxo

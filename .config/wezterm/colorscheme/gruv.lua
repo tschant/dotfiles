@@ -46,12 +46,11 @@ gruv.brights = {
 }
 
 -- Custom colors
-gruv.mantle = color.parse('#181825')
-gruv.base = gruv.mantle:lighten(0.1)
-gruv.surface0 = gruv.mantle:lighten(0.2)
-gruv.surface1 = gruv.mantle:lighten(0.3)
-gruv.overlay = gruv.mantle:lighten(0.4)
-gruv.subtext = gruv.mantle:lighten(0.8)
-gruv.text = gruv.mantle:lighten(0.9)
+gruv.inactive_bg = color.parse('#181825')
+gruv.active_bg = gruv.inactive_bg:lighten(0.1)
+gruv.selection_bg = gruv.inactive_bg:lighten(0.3)
+gruv.overlay = gruv.inactive_bg:lighten(0.4)
+gruv.inactive_text = gruv.inactive_bg:lighten(0.8)
+gruv.text = gruv.inactive_bg:lighten(0.9)
 
 return gruv

@@ -59,12 +59,11 @@ nord.brights = {
 }
 
 -- Custom colors
-nord.mantle = color.parse('#181825')
-nord.base = nord.mantle:lighten(0.1)
-nord.surface0 = nord.mantle:lighten(0.2)
-nord.surface1 = nord.selection_background
-nord.overlay = nord.mantle:lighten(0.4)
-nord.subtext = nord.mantle:lighten(0.8)
+nord.inactive_bg = color.parse('#181825')
+nord.active_bg = nord.inactive_bg:lighten(0.1)
+nord.selection_bg = nord.selection_background
+nord.overlay = nord.inactive_bg:lighten(0.4)
+nord.inactive_text = nord.inactive_bg:lighten(0.8)
 nord.text = nord.text
 
 return nord
