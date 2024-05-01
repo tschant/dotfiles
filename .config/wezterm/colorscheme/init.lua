@@ -1,48 +1,49 @@
+local color = require('wezterm').color
 local base = require('colorscheme.ayu_dark')
-local colors = base.normal
+local colors = base.dark
 
 local colorscheme = {
-   foreground = base.foreground,
-   background = base.background,
-   cursor_bg = base.text,
-   cursor_border = base.text,
-   cursor_fg = base.text,
-   selection_bg = base.selection_bg,
-   selection_fg = base.text,
+   foreground = colors.foreground,
+   background = colors.background,
+   cursor_bg = colors.text,
+   cursor_border = colors.text,
+   cursor_fg = colors.text,
+   selection_bg = colors.selection_bg,
+   selection_fg = colors.text,
    ansi = base.ansi,
    brights = base.brights,
    tab_bar = {
-      background = 'rgba(0, 0, 0, 0.4)',
+      background = color.parse(colors.background):lighten(0.03),
       active_tab = {
-         bg_color = colors.cyan,
-         fg_color = base.active_bg,
+         bg_color = colors.text,
+         fg_color = colors.active_bg,
       },
       inactive_tab = {
-         bg_color = base.inactive_bg,
-         fg_color = base.inactive_text,
+         bg_color = colors.inactive_bg,
+         fg_color = colors.inactive_text,
       },
       inactive_tab_hover = {
-         bg_color = base.active_bg,
-         fg_color = base.text,
+         bg_color = colors.active_bg,
+         fg_color = colors.text,
          italic = true,
       },
       new_tab = {
-         bg_color = base.inactive_bg,
-         fg_color = base.text,
+         bg_color = colors.inactive_bg,
+         fg_color = colors.text,
       },
       new_tab_hover = {
-         bg_color = base.active_bg,
-         fg_color = base.text,
+         bg_color = colors.active_bg,
+         fg_color = colors.text,
          italic = true,
       },
    },
-   visual_bell = base.inactive_text,
+   visual_bell = colors.inactive_text,
    indexed = {
       [16] = colors.blue,
       [17] = colors.cyan,
    },
-   scrollbar_thumb = base.active_bg,
-   split = base.overlay,
+   scrollbar_thumb = colors.active_bg,
+   split = colors.overlay,
    compose_cursor = colors.red, -- nightbuild only
 }
 
