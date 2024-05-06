@@ -8,7 +8,7 @@
 local config = {
 	default_workspace = "main",
 	default_prog = {"/bin/zsh"},
-	term = "wezterm",
+	term = "xterm-256color",
 	scrollback_lines = 3000,
 	status_update_interval = 1000,
 	hyperlink_rules = {
