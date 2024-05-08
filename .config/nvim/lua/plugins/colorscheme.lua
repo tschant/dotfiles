@@ -1,37 +1,17 @@
 local cmd = vim.cmd
+local u = require("utils.colorscheme")
+local autocmd = vim.api.nvim_create_autocmd
 
 local Theme = "papercolor"
-local config_load = function()
-	cmd("colorscheme " .. Theme)
+function config_load()
+	u.setColorScheme(Theme)
 
-	-- Use terminal background color instead of colorscheme
-	-- cmd("hi Normal ctermbg=none guibg=none")
-	cmd("hi NormalNC ctermbg=none guibg=#262626")
-	cmd("hi SignColumn ctermbg=none guibg=none")
-	cmd("hi FoldColumn ctermbg=none guibg=none")
-	cmd("hi FocusedLine ctermbg=none guibg=none guifg=#0088aa")
-
-	-- cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
-	-- cmd "hi StatusColumnGitSigns guifg=SignColumn guibg=SignColumn"
-
-	-- highlights --
-	cmd("hi EndOfBuffer guifg=#525252 guibg=NONE")
-	-- cmd("hi gitcommitOverflow guifg=#525252 guibg=NONE")
-	-- cmd("hi gitcommitTrailers guifg=#525252 guibg=NONE")
-	-- cmd("hi Visual guibg=#525252")
-
-	-- -- git signs
-	local colors = require("utils.colors")
-	cmd("hi DiffAdd guifg=" .. colors.green .. " guibg = none")
-	cmd("hi DiffChange guifg =" .. colors.blue .. " guibg = none")
-	cmd("hi DiffModified guifg =" .. colors.orange .. " guibg = none")
-	cmd("hi DiffDeleted guifg =" .. colors.red .. " guibg = none")
-	cmd("hi DiagnosticError guifg =" .. colors.error .. " guibg = none")
-	cmd("hi DiagnosticWarn guifg =" .. colors.warning .. " guibg = none")
-	cmd("hi DiagnosticInfo guifg =" .. colors.info .. " guibg = none")
-	cmd("hi DiagnosticHint guifg =" .. colors.hint .. " guibg = none")
-
-	cmd("hi NotifyBackground guifg = none guibg=#000000")
+	autocmd("BufEnter", {
+		pattern = { '*' },
+		callback = function()
+			u.setColorScheme(Theme)
+		end,
+	})
 end
 
 return {
@@ -39,7 +19,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		"NLKNguyen/papercolor-theme",
-		keys = {"<leader>fx"},
+		keys = {{"<leader>fx" }},
 		config = function ()
 			cmd("set termguicolors")
 			cmd("set background=dark")
@@ -60,7 +40,7 @@ return {
 		--[[ lazy = false,
 		priority = 1000, ]]
 		"kartikp10/noctis.nvim",
-		keys = {"<leader>fx"},
+		keys = {{"<leader>fx" }},
 		dependencies = { "rktjmp/lush.nvim" },
 		config = config_load,
 	},
@@ -68,14 +48,15 @@ return {
 		--[[ lazy = false,
 		priority = 1000, ]]
 		"nyoom-engineering/oxocarbon.nvim",
-		keys = {"<leader>fx"},
+		keys = {{"<leader>fx"}},
 		config = config_load,
 	},
 	{
 		--[[ lazy = false,
 		priority = 1000, ]]
 		"LunarVim/horizon.nvim",
-		keys = {"<leader>fx"},
+		keys = {{"<leader>fx"}},
+		-- ft = {"sql"},
 		config = config_load,
 	},
 	--[[ {
@@ -87,14 +68,19 @@ return {
 		--[[ lazy = false,
 		priority = 1000, ]]
 		"dasupradyumna/midnight.nvim",
-		keys = {"<leader>fx"},
+		keys = {{"<leader>fx" }},
+		config = config_load,
+	},
+	{
+		"marko-cerovac/material.nvim",
+		keys = {{"<leader>fx" }},
 		config = config_load,
 	},
 	{
 		--[[ lazy = false,
 		priority = 1000, ]]
 		"ellisonleao/gruvbox.nvim",
-		keys = {"<leader>fx"},
+		keys = {{"<leader>fx" }},
 		config = function ()
 			require("gruvbox").setup({
 				terminal_colors = true,
