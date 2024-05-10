@@ -5,7 +5,7 @@ function utils.setColorScheme(Theme)
 	cmd("colorscheme " .. Theme)
 
 	-- Use terminal background color instead of colorscheme
-	cmd("hi Normal ctermbg=none guibg=none")
+	-- cmd("hi Normal ctermbg=none guibg=none")
 	cmd("hi NormalNC ctermbg=none guibg=#262626")
 	cmd("hi SignColumn ctermbg=none guibg=none")
 	cmd("hi FoldColumn ctermbg=none guibg=none")
@@ -30,6 +30,15 @@ function utils.setColorScheme(Theme)
 	cmd("hi DiagnosticWarn guifg =" .. colors.warning .. " guibg = none")
 	cmd("hi DiagnosticInfo guifg =" .. colors.info .. " guibg = none")
 	cmd("hi DiagnosticHint guifg =" .. colors.hint .. " guibg = none")
+
+	-- cmd("hi BufferCurrentADDED guifg=" .. colors.green)
+	-- cmd("hi BufferCurrentCHANGED guifg =" .. colors.blue)
+	-- cmd("hi BufferCurrentMod guifg =" .. colors.orange)
+	-- cmd("hi BufferCurrentDELETED guifg =" .. colors.red)
+	-- cmd("hi BufferCurrentERROR guifg =" .. colors.error)
+	-- cmd("hi BufferCurrentWARN guifg =" .. colors.warning)
+	-- cmd("hi BufferCurrentINFO guifg =" .. colors.info)
+	-- cmd("hi BufferCurrentHINT guifg =" .. colors.hint)
 
 	cmd("hi NotifyBackground guifg = none guibg=#000000")
 end

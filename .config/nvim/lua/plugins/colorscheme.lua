@@ -5,14 +5,31 @@ local autocmd = vim.api.nvim_create_autocmd
 local Theme = "papercolor"
 function config_load()
 	u.setColorScheme(Theme)
-
-	autocmd("BufEnter", {
-		pattern = { '*' },
-		callback = function()
-			u.setColorScheme(Theme)
-		end,
-	})
 end
+
+function set_papercolor_theme()
+	cmd("set termguicolors")
+	cmd("set background=dark")
+	vim.g.PaperColor_Theme_Options = {
+		theme = {
+			default = {
+				allow_bold = 1,
+			},
+			['default.dark'] = {
+				transparent_background= 1,
+			},
+		}
+	}
+	config_load()
+end
+
+--[[ autocmd("BufEnter", {
+	pattern = { '*' },
+	callback = function()
+		-- u.setColorScheme(Theme)
+		set_papercolor_theme()
+	end,
+}) ]]
 
 return {
 	{
@@ -20,21 +37,7 @@ return {
 		priority = 1000,
 		"NLKNguyen/papercolor-theme",
 		keys = {{"<leader>fx" }},
-		config = function ()
-			cmd("set termguicolors")
-			cmd("set background=dark")
-			vim.g.PaperColor_Theme_Options = {
-				theme = {
-					default = {
-						allow_bold = 1,
-					},
-					['default.dark'] = {
-						transparent_background= 1,
-					},
-				}
-			}
-			config_load()
-		end,
+		config = set_papercolor_theme,
 	},
 	{
 		--[[ lazy = false,
