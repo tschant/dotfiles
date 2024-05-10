@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local u = require("utils.colorscheme")
 local autocmd = vim.api.nvim_create_autocmd
 
-local Theme = "papercolor"
+local Theme = "PaperColor"
 function config_load()
 	u.setColorScheme(Theme)
 end
