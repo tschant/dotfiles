@@ -23,7 +23,7 @@ function utils.define_augroups(definitions) -- {{{1
         vim.cmd("autocmd!")
 
         for _, def in pairs(definition) do
-            local command = table.concat(vim.tbl_flatten {"autocmd", def}, " ")
+            local command = table.concat(vim.iter({"autocmd", def}):flatten():totable(), " ")
             vim.cmd(command)
         end
 
@@ -56,7 +56,7 @@ function utils.get_root()
   ---@type string[]
   local roots = {}
   if path then
-    for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+    for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
       local workspace = client.config.workspace_folders
       local paths = workspace and vim.tbl_map(function(ws)
         return vim.uri_to_fname(ws.uri)

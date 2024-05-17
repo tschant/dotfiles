@@ -117,13 +117,6 @@ return {
 		config = true
 	},
 	{
-		"mg979/vim-visual-multi",
-		event = "BufRead",
-		config = function()
-			vim.g.VM_silent_exit = 1
-		end
-	},
-	{
 		"kevinhwang91/nvim-hlslens",
 		event = "BufReadPre",
 		config = function()
