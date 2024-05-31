@@ -30,6 +30,9 @@ local keys = {
       action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
    }, ]]
 
+   { key = '=', mods = mod.SUPER,  action = act.IncreaseFontSize },
+   { key = '-', mods = mod.SUPER,  action = act.DecreaseFontSize },
+   { key = '0', mods = mod.SUPER,  action = act.ResetFontSize },
    { key = 'c', mods = mod.SUPER,  action = act.CopyTo('Clipboard') },
    { key = 'v', mods = mod.SUPER,  action = act.PasteFrom('Clipboard') },
    -- toggle fullscreen

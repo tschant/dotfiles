@@ -78,6 +78,7 @@ M.config = function()
 			t = { ":lua vim.lsp.buf.type_definition()<CR>", "Type Defs" },
 			r = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
 			R = { ":Telescope lsp_references<CR>", "References" },
+			H = { ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Inlay hints" },
 			h = { ":lua vim.lsp.buf.hover()<CR>", "Hover details" },
 			-- H = {
 				-- function ()
