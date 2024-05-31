@@ -2,9 +2,11 @@ local wezterm = require('wezterm')
 local platform = require('utils.platform')()
 local cs = require('colorscheme')
 
-local font_weight = "Light"
+local font_weight = "ExtraLight"
+local font_size = 0.9
 if platform.is_mac then
-   font_weight = "Medium"
+   font_weight = "Light"
+   font_size = 0.95
 end
  
 return {
@@ -14,6 +16,7 @@ return {
    front_end = 'WebGpu',
    webgpu_power_preference = 'HighPerformance',
    font = wezterm.font_with_fallback({
+      { family = "Maple Mono",       scale = font_size, weight = font_weight, },
       { family = "CaskaydiaCove Nerd Font",       scale = 0.95, weight = font_weight, },
       { family = "Hasklug Nerd Font", scale = 1, },
    }),
