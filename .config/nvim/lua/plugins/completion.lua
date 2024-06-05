@@ -1,5 +1,6 @@
 local M = {
 	"hrsh7th/nvim-cmp",
+	branch = "main",
 	event = "InsertEnter",
 	dependencies = {
 		"windwp/nvim-autopairs",

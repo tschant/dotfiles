@@ -12,7 +12,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
+			{"MunifTanjim/nui.nvim", branch = "main"},
 		},
 		opts = {
 			sources = {

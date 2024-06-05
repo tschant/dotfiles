@@ -314,7 +314,7 @@ hl = { fg = colors.red },
 	-- Right section
 	components.active[3][1] = {
 		provider = function()
-			if next(vim.lsp.buf_get_clients()) ~= nil then
+			if next(vim.lsp.get_clients()) ~= nil then
 				return "   LSP"
 			else
 				return ""

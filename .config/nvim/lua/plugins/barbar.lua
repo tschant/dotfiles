@@ -1,5 +1,6 @@
 local M = {
 	"romgrk/barbar.nvim",
+	branch = "master",
 	dependencies = {
 		"kyazdani42/nvim-web-devicons",
 	},
