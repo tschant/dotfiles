@@ -24,9 +24,9 @@ local M = {
 		maximum_length = 30,
 		semantic_letters = true,
 		no_name_title = nil,
-		sidebar_filetypes = {
-			['neo-tree'] = {event = 'BufWipeout'},
-		},
+		-- sidebar_filetypes = {
+		-- 	['neo-tree'] = {event = 'BufWipeout'},
+		-- },
 	},
 	keys = {
 		'<C-q>'

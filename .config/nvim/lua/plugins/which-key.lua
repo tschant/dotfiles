@@ -542,7 +542,6 @@ M.config = function()
 			D = { "Diff this -" },
 		},
 		td = { "Toggle deleted (git signs)" },
-		["-"] = { ":lua require('oil').open()<CR>", "Open Parent Dir" },
 	}, { prefix = "<leader>" })
 
 end
