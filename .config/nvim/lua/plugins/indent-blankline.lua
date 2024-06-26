@@ -33,7 +33,7 @@ local M = {
 
 		require('ibl').setup {
 			scope = {show_start = true, enabled = true, highlight = highlight},
-			indent = { highlight = highlight--[[ , char = "⋅", tab_char = "»", ]]},
+			indent = { highlight = highlight, --[[ char = "⋅", tab_char = "»", ]] },
 			exclude = {
 				filetypes = {"help", "dashboard", "startify", "NvimTree", "vista", "sagahover"},
 			},
@@ -41,5 +41,39 @@ local M = {
 	end
 }
 
+local N = {
+	"shellRaining/hlchunk.nvim",
+	event = { "BufReadPre", "BufNewFile" },
 
-return M
+	config = function ()
+		require("hlchunk").setup({
+			exclude_filetypes = {
+				help = true,
+			},
+
+			chunk = {
+				enable = true,
+				style = {
+					{ fg = "#89B5FA" },
+					{ fg = "#F38BA8" }
+				},
+				chars = {
+					horizontal_line = "─",
+					vertical_line = "│",
+					left_top = "╭",
+					left_bottom = "╰",
+					right_arrow = "┤",
+				},
+
+				duration = 200,
+				delay = 0,
+			},
+
+			blank = { enabled = false, },
+			indent = { enable = false, },
+			line_num = { enable = false }
+		});
+	end
+}
+
+return {M, N}
