@@ -1,0 +1,3 @@
+[submodule ".config/nvim/lua/custom/markview.nvim"]
+	path = .config/nvim/lua/custom/markview.nvim
+	url = git@github.com:OXY2DEV/markview.nvim.git

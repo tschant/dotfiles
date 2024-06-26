@@ -28,6 +28,7 @@ return {
 				"json5",
 				"lua",
 				"markdown",
+				"markdown_inline",
 				"python",
 				"regex",
 				"ruby",
