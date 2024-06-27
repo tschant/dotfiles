@@ -70,7 +70,16 @@ local N = {
 			},
 
 			blank = { enabled = false, },
-			indent = { enable = false, },
+			indent = {
+				enable = false,
+				style = {
+					{ fg = "#585a6f" },
+					{ fg = "#4e5064" },
+					{ fg = "#444659" },
+					{ fg = "#3a3c4e" },
+					{ fg = "#313244" },
+				},
+			},
 			line_num = { enable = false }
 		});
 	end
