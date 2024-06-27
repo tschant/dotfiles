@@ -1,13 +1,12 @@
 local colorizer = {
-  name = "colorizer",
-  opts = {
-    defer = false,
-  },
-  disable = function() -- called to disable the feature
-    require("colorizer").detach_from_buffer()
-  end,
+	name = "colorizer",
+	opts = {
+		defer = false,
+	},
+	disable = function() -- called to disable the feature
+		require("colorizer").detach_from_buffer()
+	end,
 }
-
 
 return {
 	"LunarVim/bigfile.nvim",
@@ -24,5 +23,5 @@ return {
 			"filetype",
 			colorizer,
 		},
-	}
+	},
 }

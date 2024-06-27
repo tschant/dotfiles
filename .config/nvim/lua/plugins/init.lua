@@ -68,6 +68,7 @@ return {
 	-- Multi-line plugins
 	{
 		"anuvyklack/pretty-fold.nvim",
+		branch = "master",
 		event = "BufRead",
 		dependencies = 'anuvyklack/nvim-keymap-amend',
 		config = function()
@@ -88,21 +89,49 @@ return {
 	},
 	{
 		"anuvyklack/fold-preview.nvim",
+		branch = "main",
 		event = "BufReadPre",
 		dependencies = 'anuvyklack/nvim-keymap-amend',
 		config = true
 	},
 	{
 		"kevinhwang91/nvim-hlslens",
-		event = "BufReadPre",
+		branch = "main",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("hlslens").setup({
 				build_position_cb = function(plist, bufnr, changedtick, pattern)
-					-- require('scrollbar.handlers.search').handler.show(plist.start_pos)
 					require('scrollbar').search_handler.show(plist.start_pos)
-				end
+				end,
+				override_lens = function(render, plist, nearest, idx, r_idx)
+					local sfw = vim.v.searchforward == 1
+					local indicator, text, chunks
+					local abs_r_idx = math.abs(r_idx)
+					if abs_r_idx > 1 then
+						indicator = string.format("%d%s", abs_r_idx, sfw ~= (r_idx > 1) and "N" or "n")
+					elseif abs_r_idx == 1 then
+						indicator = sfw ~= (r_idx == 1) and "N" or "n"
+					else
+						indicator = ""
+					end
+
+					local lnum, col = unpack(plist[idx])
+					local cnt = #plist
+					if nearest then
+						if indicator ~= "" then
+							text = string.format("[%s %d/%d]", indicator, idx, cnt)
+						else
+							text = string.format("[%d/%d]", idx, cnt)
+						end
+						chunks = { { " ", "Ignore" }, { text, "HlSearchLensNear" } }
+					else
+						text = string.format("[%s %d/%d]", indicator, idx, cnt)
+						chunks = { { " ", "Ignore" }, { text, "HlSearchLens" } }
+					end
+					render.set_virt(0, lnum - 1, col - 1, chunks, nearest)
+				end,
 			})
-		end
+		end,
 	},
 	{
 		"petertriho/nvim-scrollbar",
