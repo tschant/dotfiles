@@ -1,8 +1,8 @@
 local util = require("utils.core")
 local M = {
 	"folke/which-key.nvim",
-	-- event = "VeryLazy",
-	keys = {
+	event = "VeryLazy",
+	--[[ keys = {
 		"<tab>",
 		"<S-tab>",
 		"<leader>",
@@ -10,7 +10,7 @@ local M = {
 		"<F3>", -- lazygit
 		"<F4>", -- btop
 		"<C-q>", -- close
-	},
+	}, ]]
 }
 
 M.config = function()
@@ -35,7 +35,7 @@ M.config = function()
 			separator = "—", -- symbol used between a key and it's label
 			group = "+", -- symbol prepended to a group
 		},
-		hidden = {
+		--[[ hidden = {
 			"<silent>",
 			"<cmd>",
 			"<Cmd>",
@@ -46,156 +46,152 @@ M.config = function()
 			"lua",
 			"^:",
 			"^ ",
-		},
+		}, ]]
 	})
 
 	-- Random key-maps
-	wk.register({
-		Q = { "<Nop>", "no-op" },
-		n = { "nzz", "Next + center" },
-		N = { "Nzz", "Prev + center" },
-		["<CR>"] = { "<CR>", "<CR>" },
-		["<TAB>"] = { ":BufferNext<CR>", "Next buffer" },
-		["<S-TAB>"] = { ":BufferPrev<CR>", "Prev buffer" },
-		["<f10>"] = {
+	wk.add({
+		{ 'Q', "<Nop>", desc = "no-op" },
+		{ 'n', "nzz", desc = "Next + center" },
+		{ 'N', "Nzz", desc = "Prev + center" },
+		{ "<CR>", "<CR>", desc = "<CR>", hidden = true },
+		{ "<TAB>", ":BufferNext<CR>", desc = "Next buffer" },
+		{ "<S-TAB>", ":BufferPrev<CR>", desc = "Prev buffer" },
+		{ "<f10>",
 			[[<Cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>]],
-			"Output the current syntax/highlight group",
+			desc = "Output the current syntax/highlight group",
 		},
-		["<M-Up>"] = { ":call vm#commands#add_cursor_up(0, v:count1)<cr>", "Select next line up (vm)" },
-		["<M-Down>"] = { ":call vm#commands#add_cursor_down(0, v:count1)<cr>", "Select next line down (vm)" },
+		{ "<M-Up>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>", desc = "Select next line up (vm)" },
+		{ "<M-Down>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>", desc = "Select next line down (vm)" },
 	}, { mode = "n" })
 
-	wk.register({
-		jk = { "<esc>", "Escape insert mode" },
-	}, { mode = "i" })
+	wk.add({
+		{ "jk", "<esc>", desc = "Escape insert mode", mode = "i" },
+  })
 
 	-- LSP Based key-maps
-	wk.register({
-		g = {
-			-- LSP
-			D = { ":lua vim.lsp.buf.declaration()<CR>", "Declarations" },
-			d = { ":Telescope lsp_definitions<CR>", "Definitions" },
-			t = { ":lua vim.lsp.buf.type_definition()<CR>", "Type Defs" },
-			r = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
-			R = { ":Telescope lsp_references<CR>", "References" },
-			H = { ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Inlay hints" },
-			h = { ":lua vim.lsp.buf.hover()<CR>", "Hover details" },
-			-- H = {
-				-- function ()
-					-- if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-						-- vim.lsp.inlay_hint(0, nil)
-					-- end
-					-- ":lua vim.lsp.buf.hover()<CR>"
-				-- end, "Inline hover details" },
-			I = { ":lua vim.lsp.buf.implementation()<CR>", "Implementation" },
-			-- f = {":lua vim.lsp.buf.format()<cr>", "Format file"},
-			f = { ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>", "LSP Format file" },
-			F = { ":lua vim.diagnostic.open_float()<CR>", "Diagnostic" },
-			p = { ":lua vim.diagnostic.goto_prev()<CR>", "Goto Next" },
-			P = { ":lua vim.diagnostic.goto_next()<CR>", "Goto Prev" },
+	wk.add({
+    { "gD", ":lua vim.lsp.buf.declaration()<CR>", desc = "Declarations" },
+    { "gF", ":lua vim.diagnostic.open_float()<CR>", desc = "Diagnostic" },
+    { "gH", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", desc = "Inlay hints" },
+    { "gI", ":lua vim.lsp.buf.implementation()<CR>", desc = "Implementation" },
+    { "gN", ":lua require('syntax-tree-surfer').filtered_jump('default', false)<CR>", desc = "Filter Jump Prev" },
+    { "gP", ":lua vim.diagnostic.goto_next()<CR>", desc = "Goto Prev" },
+    { "gR", ":Telescope lsp_references<CR>", desc = "References" },
+    { "gca", ":lua vim.lsp.buf.code_action()<CR>", desc = "Run code actions (fix thigs)" },
+    { "gd", ":Telescope lsp_definitions<CR>", desc = "Definitions" },
+    { "gf", ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>", desc = "LSP Format file" },
+    { "gh", ":lua vim.lsp.buf.hover()<CR>", desc = "Hover details" },
 			-- Syntax Tree Surfer - treesitter smart selection
-			j = {
-				function()
-					require("syntax-tree-surfer").targeted_jump({
-						"variable_declaration",
-						"function",
-						"if_statement",
-						"else_clause",
-						"else_statement",
-						"elseif_statement",
-						"for_statement",
-						"while_statement",
-						"switch_statement",
-					})
-				end,
-				"Jump ALL",
-			},
-			n = { ":lua require('syntax-tree-surfer').filtered_jump('default', true)<CR>", "Filter Jump Next" },
-			N = { ":lua require('syntax-tree-surfer').filtered_jump('default', false)<CR>", "Filter Jump Prev" },
-			s = {
-				util.telescope("lsp_document_symbols", {
-					symbols = {
-						"Class",
-						"Function",
-						"Method",
-						"Constructor",
-						"Interface",
-						"Module",
-						"Struct",
-						"Trait",
-						"Field",
-						"Property",
-					},
-				}),
-				"Goto Symbol",
-			},
-			ca = { ":lua vim.lsp.buf.code_action()<CR>", "Run code actions (fix thigs)" },
+		{
+			"gj",
+			function()
+				require("syntax-tree-surfer").targeted_jump({
+					"variable_declaration",
+					"function",
+					"if_statement",
+					"else_clause",
+					"else_statement",
+					"elseif_statement",
+					"for_statement",
+					"while_statement",
+					"switch_statement",
+				})
+			end,
+			desc = "Jump ALL",
 		},
-		v = {
-			d = { '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', "Move Up (syntax)" },
-			u = { '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', "Move Down (syntax)" },
-			-- .select() will show you what you will be swapping with .move(), you'll get used to .select() and .move() behavior quite soon!
-			x = { '<cmd>lua require("syntax-tree-surfer").select()<cr>', "Select block/line" },
-			-- .select_current_node() will select the current node at your cursor
-			n = { '<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', "Select current node" },
+		{ "gn", ":lua require('syntax-tree-surfer').filtered_jump('default', true)<CR>", desc = "Filter Jump Next" },
+    { "gp", ":lua vim.diagnostic.goto_prev()<CR>", desc = "Goto Next" },
+    { "gr", ":lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
+    {
+			"gs",
+			util.telescope("lsp_document_symbols", {
+				symbols = {
+					"Class",
+					"Function",
+					"Method",
+					"Constructor",
+					"Interface",
+					"Module",
+					"Struct",
+					"Trait",
+					"Field",
+					"Property",
+				},
+			}),
+			desc = "Goto Symbol",
 		},
-	}, { mode = "n" })
+		{ "gt", ":lua vim.lsp.buf.type_definition()<CR>", desc = "Type Defs" },
+    { "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', desc = "Move Up (syntax)" },
+    { "vn", '<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', desc = "Select current node" },
+    { "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', desc = "Move Down (syntax)" },
+    { "vx", '<cmd>lua require("syntax-tree-surfer").select()<cr>', desc = "Select block/line" },
+  })
 
-	wk.register({
-		K = { ":move '<-2<CR>gv-gv", "Move line up" },
-		J = { ":move '>+1<CR>gv-gv", "Move line down" },
-		y = { '"+y', "Copy to OS buffer" },
-		H = { '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', "Syntax Surfer prev" },
-		L = { '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', "Syntax surfer next" },
-		["<c-_>"] = { ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment line" },
-	}, { mode = "x" })
+	wk.add({
+    {
+      mode = { "x" },
+      { "<c-_>", ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', desc = "Comment line" },
+      { "H", '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', desc = "Syntax Surfer prev" },
+      { "J", ":move '>+1<CR>gv-gv", desc = "Move line down" },
+      { "K", ":move '<-2<CR>gv-gv", desc = "Move line up" },
+      { "L", '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', desc = "Syntax surfer next" },
+      { "y", '"+y', desc = "Copy to OS buffer" },
+    },
+  })
 
 	-- Ctrl key-maps
-	wk.register({
-		-- Comment
-		["_>"] = { ':lua require("Comment.api").toggle_current_linewise()<CR>', "ctrl-/" },
-		["p>"] = { util.telescope("find_files", { cwd = false }), "find files (cwd)" },
-	}, { prefix = "<C-", mode = "n" })
+	wk.add({
+		-- comments
+    { "<C-_>", ':lua require("Comment.api").toggle_current_linewise()<CR>', desc = "ctrl-/" },
+    { "<C-p>", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
+	})
 
 	-- Hop motions
-	wk.register({
-		["<C-s>"] = {
+	wk.add({
+		{
+			"<C-s>",
 			function()
 				require("hop").hint_words({ current_line_only = true })
 			end,
-			"Jump line only",
+			desc = "Jump line only",
 		},
-		s = {
+		{
+			"s",
 			function()
 				require("hop").hint_char2({ direction = require("hop.hint").HintDirection.AFTER_CURSOR })
 			end,
-			"Hop 2 chars forward",
+			desc = "Hop 2 chars forward",
 		},
-		S = {
+		{
+			"S",
 			function()
 				require("hop").hint_char2({ direction = require("hop.hint").HintDirection.BEFORE_CURSOr })
 			end,
-			"Hop 2 chars backward",
+			desc = "Hop 2 chars backward",
 		},
-		f = {
+		{
+			"f",
 			function()
 				require("hop").hint_char1({
 					direction = require("hop.hint").HintDirection.AFTER_CURSOR,
 					current_line_only = true,
 				})
 			end,
-			"Hop to char forward",
+			desc = "Hop to char forward",
 		},
-		F = {
+		{
+			"F",
 			function()
 				require("hop").hint_char1({
 					direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
 					current_line_only = true,
 				})
 			end,
-			"Hop to char backward",
+			desc = "Hop to char backward",
 		},
-		t = {
+		{
+			"t",
 			function()
 				require("hop").hint_char1({
 					direction = require("hop.hint").HintDirection.AFTER_CURSOR,
@@ -203,9 +199,10 @@ M.config = function()
 					hint_offset = -1,
 				})
 			end,
-			"Hop to char forward (before char)",
+			desc = "Hop to char forward (before char)",
 		},
-		T = {
+		{
+			"T",
 			function()
 				require("hop").hint_char1({
 					direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
@@ -213,17 +210,18 @@ M.config = function()
 					hint_offset = 1,
 				})
 			end,
-			"Hop to char backward (after char)",
+			desc = "Hop to char backward (after char)",
 		},
-	}, { mode = "", noremap = false })
+	})
 
 	-- Terminal toggle
-	wk.register({
-		["<F2>"] = { '<C-\\><C-n><cmd>lua require("toggleterm").toggle()<CR>', "Toggle floating terminal" },
-	}, { mode = "t" })
-	wk.register({
-		["<F2>"] = { '<cmd>lua require("toggleterm").toggle()<CR>', "Toggle floating terminal" },
-		["<F3>"] = {
+	wk.add({
+    { "<F2>", '<C-\\><C-n><cmd>lua require("toggleterm").toggle()<CR>', desc = "Toggle floating terminal", mode = "t" },
+  })
+	wk.add({
+		{ "<F2>", '<cmd>lua require("toggleterm").toggle()<CR>', desc = "Toggle floating terminal" },
+		{ 
+			"<F3>",
 			function()
 				local term = require("toggleterm.terminal").Terminal
 				local lazygit = term:new({
@@ -248,9 +246,10 @@ M.config = function()
 
 				lazygit:toggle()
 			end,
-			"Lazy git",
+			desc = "Lazy git",
 		},
-		["<F4>"] = {
+		{
+			"<F4>",
 			function()
 				local Terminal = require("toggleterm.terminal").Terminal
 				local btop = Terminal:new({
@@ -262,88 +261,85 @@ M.config = function()
 
 				btop:toggle()
 			end,
-			"Open htop",
-		},
-	}, { mode = "n" })
-
-	-- Window keybinds
-	wk.register({
-		-- buffer navigation BarBar
-		["<C-q>"] = { ":BufferClose<CR>", "Close buffer" },
-		-- Better window navigation
-		["<C-h>"] = {":lua require('smart-splits').move_cursor_left()<CR>", "Window left" },
-		["<C-j>"] = {":lua require('smart-splits').move_cursor_down()<CR>", "Window down" },
-		["<C-k>"] = {":lua require('smart-splits').move_cursor_up()<CR>", "Window up" },
-		["<C-l>"] = {":lua require('smart-splits').move_cursor_right()<CR>", "Window right" },
-		['<leader>w'] = {
-			H = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
-			J = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
-			K = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
-			L = {":lua require('smart-splits').start_resize_mode()<CR>", 'start resize mode'},
+			desc = "Open htop",
 		},
 	})
 
+	-- Window keybinds
+	wk.add({
+    { "<C-h>", ":lua require('smart-splits').move_cursor_left()<CR>", desc = "Window left" },
+    { "<C-j>", ":lua require('smart-splits').move_cursor_down()<CR>", desc = "Window down" },
+    { "<C-k>", ":lua require('smart-splits').move_cursor_up()<CR>", desc = "Window up" },
+    { "<C-l>", ":lua require('smart-splits').move_cursor_right()<CR>", desc = "Window right" },
+    { "<C-q>", ":BufferClose<CR>", desc = "Close buffer" },
+    { "<leader>wH", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+    { "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+    { "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+    { "<leader>wL", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+  })
+
 	-- Buffer
-	wk.register({
-		d = { "<cmd>BufferClose<CR>", "Close buffer" },
-		ca = { "<cmd>BufferCloseAllButCurrentOrPinned<CR>", "Close all but current" },
-		cl = { "<cmd>BufferCloseBuffersLeft<CR>", "Close all left" },
-		cr = { "<cmd>BufferCloseBuffersRight<CR>", "Close all right" },
-		b = { "<cmd>Telescope buffers<CR>", "List Buffer" },
-		pp = { "<cmd>BufferPin<CR>", "Pin Buffer" },
-		n = { "<cmd>tabnew<CR>", "New buffer" },
-		k = { "<cmd>BufferFirst<CR>", "Goto First buffer" },
-		j = { "<cmd>BufferLast<CR>", "Goto last buffer" },
-		h = { "<cmd>BufferMovePrevious<CR>", "Move buffer prev" },
-		l = { "<cmd>BufferMoveNext<CR>", "Move buffer next" },
-		od = { "<cmd>BufferOrderByDirectory<CR>", "by directory" },
-		on = { "<cmd>BufferOrderByBufferNumber<CR>", "by buffer number" },
-		ow = { "<cmd>BufferOrderByWindowNumber<CR>", "by window number" },
-		["1"] = { "<cmd>BufferGoto 1<CR>", "goto buffer 1" },
-		["2"] = { "<cmd>BufferGoto 2<CR>", "goto buffer 2" },
-		["3"] = { "<cmd>BufferGoto 3<CR>", "goto buffer 3" },
-		["4"] = { "<cmd>BufferGoto 4<CR>", "goto buffer 4" },
-		["5"] = { "<cmd>BufferGoto 5<CR>", "goto buffer 5" },
-		["6"] = { "<cmd>BufferGoto 6<CR>", "goto buffer 6" },
-		["7"] = { "<cmd>BufferGoto 7<CR>", "goto buffer 7" },
-		["8"] = { "<cmd>BufferGoto 8<CR>", "goto buffer 8" },
-		["9"] = { "<cmd>BufferGoto 9<CR>", "goto buffer 9" },
-	}, { prefix = "<leader>b" })
+	wk.add({
+		{ "<leader>b", group = "Buffers" },
+    { "<leader>b1", "<cmd>BufferGoto 1<CR>", desc = "goto buffer 1" },
+    { "<leader>b2", "<cmd>BufferGoto 2<CR>", desc = "goto buffer 2" },
+    { "<leader>b3", "<cmd>BufferGoto 3<CR>", desc = "goto buffer 3" },
+    { "<leader>b4", "<cmd>BufferGoto 4<CR>", desc = "goto buffer 4" },
+    { "<leader>b5", "<cmd>BufferGoto 5<CR>", desc = "goto buffer 5" },
+    { "<leader>b6", "<cmd>BufferGoto 6<CR>", desc = "goto buffer 6" },
+    { "<leader>b7", "<cmd>BufferGoto 7<CR>", desc = "goto buffer 7" },
+    { "<leader>b8", "<cmd>BufferGoto 8<CR>", desc = "goto buffer 8" },
+    { "<leader>b9", "<cmd>BufferGoto 9<CR>", desc = "goto buffer 9" },
+    { "<leader>bb", "<cmd>Telescope buffers<CR>", desc = "List Buffer" },
+    { "<leader>bca", "<cmd>BufferCloseAllButCurrentOrPinned<CR>", desc = "Close all but current" },
+    { "<leader>bcl", "<cmd>BufferCloseBuffersLeft<CR>", desc = "Close all left" },
+    { "<leader>bcr", "<cmd>BufferCloseBuffersRight<CR>", desc = "Close all right" },
+    { "<leader>bd", "<cmd>BufferClose<CR>", desc = "Close buffer" },
+    { "<leader>bh", "<cmd>BufferMovePrevious<CR>", desc = "Move buffer prev" },
+    { "<leader>bj", "<cmd>BufferLast<CR>", desc = "Goto last buffer" },
+    { "<leader>bk", "<cmd>BufferFirst<CR>", desc = "Goto First buffer" },
+    { "<leader>bl", "<cmd>BufferMoveNext<CR>", desc = "Move buffer next" },
+    { "<leader>bn", "<cmd>tabnew<CR>", desc = "New buffer" },
+    { "<leader>bod", "<cmd>BufferOrderByDirectory<CR>", desc = "by directory" },
+    { "<leader>bon", "<cmd>BufferOrderByBufferNumber<CR>", desc = "by buffer number" },
+    { "<leader>bow", "<cmd>BufferOrderByWindowNumber<CR>", desc = "by window number" },
+    { "<leader>bpp", "<cmd>BufferPin<CR>", desc = "Pin Buffer" },
+  })
 
 	-- Telescope keybinds
-	wk.register({
-		f = {
-			F = { util.telescope("find_files"), "find files (root dir)" },
-			f = { util.telescope("find_files", { cwd = false }), "find files (cwd)" },
-			G = { util.telescope("live_grep"), "grep files (root dir)" },
-			g = { util.telescope("live_grep", { cwd = false }), "grep files (cwd)" },
-			W = { util.telescope("grep_string"), "search word (root dir)" },
-			w = { util.telescope("grep_string", { cwd = false }), "search word (cwd)" },
-			b = { "<cmd>Telescope buffers<cr>", "list buffers" },
-			o = { "<cmd>Telescope oldfiles<cr>", "show recently opened files" },
-			t = { '<cmd>lua require("FTerm").toggle()<CR>', "Toggle floating terminal", mode = "n" },
-
-			i = { "<cmd>Telescope jumplist<cr>", "show jumplist" },
-			h = { "<cmd>Telescope harpoon marks<cr>", "show harpoon" },
-			H = { "<cmd>Telescope highlights<cr>", "show vim help" },
-			m = { "<cmd>Telescope marks<cr>", "show marks" },
-			k = { "<cmd>Telescope keymaps<cr>", "show keymaps" },
-			O = { "<cmd>Telescope vim_options<cr>", "show vim opts" },
-			r = { "<cmd>Telescope registers<cr>", "show copy registers" },
-			s = { "<cmd>Telescope session-lens search_session<cr>", "show sessions" },
-			S = { "<cmd>Telescope spell_suggest<cr>", "show spell suggest" },
-			["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "search in file" },
-			["?"] = { "<cmd>Telescope search_history<cr>", "search history" },
-			C = { "<cmd>Telescope command_history<cr>", "show command-line history" },
-			c = { "<cmd>Telescope commands<cr>", "show command-line history" },
-			x = { util.telescope("colorscheme", { enable_preview = true }), "show colorscheme picker" },
-			u = { "<cmd>silent! %foldopen! | UndotreeToggle<cr>", "show undotree" },
-		},
-	}, { prefix = "<leader>" })
+	wk.add({
+		{ "<leader>f", group = "Telescope" },
+		{ "<leader>fF", util.telescope("find_files"), desc = "find files (root dir)" },
+		{ "<leader>ff", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
+		{ "<leader>fG", util.telescope("live_grep"), desc = "grep files (root dir)" },
+		{ "<leader>fg", util.telescope("live_grep", { cwd = false }), desc = "grep files (cwd)" },
+		{ "<leader>fW", util.telescope("grep_string"), desc = "search word (root dir)" },
+		{ "<leader>fw", util.telescope("grep_string", { cwd = false }), desc = "search word (cwd)" },
+		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "list buffers" },
+		{ "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "show recently opened files" },
+		{ "<leader>ft", '<cmd>lua require("FTerm").toggle()<CR>', desc = "Toggle floating terminal", mode = "n" },
+		{ "<leader>fi", "<cmd>Telescope jumplist<cr>", desc = "show jumplist" },
+		{ "<leader>fh", "<cmd>Telescope harpoon marks<cr>", desc = "show harpoon" },
+		{ "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "show vim help" },
+		{ "<leader>fm", "<cmd>Telescope marks<cr>", desc = "show marks" },
+		{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "show keymaps" },
+		{ "<leader>fO", "<cmd>Telescope vim_options<cr>", desc = "show vim opts" },
+		{ "<leader>fr", "<cmd>Telescope registers<cr>", desc = "show copy registers" },
+		{ "<leader>fs", "<cmd>Telescope session-lens search_session<cr>", desc = "show sessions" },
+		{ "<leader>fS", "<cmd>Telescope spell_suggest<cr>", desc = "show spell suggest" },
+		{ "<leader>f/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "search in file" },
+		{ "<leader>f?", "<cmd>Telescope search_history<cr>", desc = "search history" },
+		{ "<leader>fC", "<cmd>Telescope command_history<cr>", desc = "show command-line history" },
+		{ "<leader>fc", "<cmd>Telescope commands<cr>", desc = "show command-line history" },
+		{ "<leader>fx", util.telescope("colorscheme", { enable_preview = true }), desc = "show colorscheme picker" },
+		{ "<leader>fu", "<cmd>silent! %foldopen! | UndotreeToggle<cr>", desc = "show undotree" },
+	})
 
 	-- GitSigns
-	wk.register({
-		J = {
+	wk.add({
+		{ "<leader>ga", group = "GitSigns" },
+		{
+			"<leader>gaJ",
 			function()
 				local gitsigns = require("gitsigns")
 				if vim.wo.diff then
@@ -354,9 +350,10 @@ M.config = function()
 				end)
 				return "<Ignore>"
 			end,
-			"next hunk",
+			desc = "next hunk",
 		},
-		K = {
+		{
+			"<leader>gaK",
 			function()
 				local gitsigns = require("gitsigns")
 				if vim.wo.diff then
@@ -367,23 +364,24 @@ M.config = function()
 				end)
 				return "<Ignore>"
 			end,
-			"prev hunk",
+			desc = "prev hunk",
 		},
-		s = { ":Gitsigns stage_hunk<CR>", "Stage hunk" },
-		u = { ":Gitsigns undo_stage_hunk<CR>", "Undo stage" },
-		S = { ":Gitsigns stage_buffer<CR>", "Stage all file" },
-		p = { ":Gitsigns preview_hunk<CR>", "Preview changes" },
-		d = { ":Gitsigns toggle_deleted<CR>", "Show deleted" },
-		b = { ":Gitsigns blame_line<CR>", "Blame line" },
-		B = {
+		{ "<leader>gas", ":Gitsigns stage_hunk<CR>", desc = "Stage hunk" },
+		{ "<leader>gau", ":Gitsigns undo_stage_hunk<CR>", desc = "Undo stage" },
+		{ "<leader>gaS", ":Gitsigns stage_buffer<CR>", desc = "Stage all file" },
+		{ "<leader>gap", ":Gitsigns preview_hunk<CR>", desc = "Preview changes" },
+		{ "<leader>gad", ":Gitsigns toggle_deleted<CR>", desc = "Show deleted" },
+		{ "<leader>gab", ":Gitsigns blame_line<CR>", desc = "Blame line" },
+		{ "<leader>gaB",
 			function()
 				local gitsigns = require("gitsigns")
 				gitsigns.blame_line({ full = true })
 			end,
-			"Blame line",
+			desc = "Blame line",
 		},
-		["/"] = { ":Gitsigns show<cr>", "show the base of the file" },
-		["<Enter>"] = {
+		{ "<leader>ga/", ":Gitsigns show<cr>", desc = "show the base of the file" },
+		{
+			"<leader>ga<Enter>",
 			function()
 				local fterm = require("FTerm")
 				local lazygit = fterm:new({
@@ -393,156 +391,121 @@ M.config = function()
 
 				lazygit:toggle()
 			end,
-			"Show lazygit",
-		},
-	}, { prefix = "<leader>ga" })
+			desc = "Show lazygit",
+		}
+	})
+
+
 
 	-- Leader key-maps
-	wk.register({
-		-- u.map("n", "<leader>sv", ":source $MYVIMRC<CR>")
-		q = { ":BufferClose<CR>", "Close buffer" },
-		p = { [["0p]], "Paste from yank register", mode = { "n", "x" }},
-		cc = {
-			":let @+=expand('%')<CR>",
-			"Copy file path from PWD",
+	wk.add({
+    { "<leader>'", group = "Harpoon+Portal" },
+    { "<leader>'D", ':lua require("harpoon.ui").clear_all()<CR>', desc = "Clear list" },
+    { "<leader>'c", ':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>', desc = "Portal Changelist" },
+    { "<leader>'h", ':lua require("portal.builtin").harpoon.tunnel()<CR>', desc = "Portal Harpoon" },
+    { "<leader>'i", ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', desc = "Portal Forward" },
+    { "<leader>'j", ':lua require("harpoon.ui").nav_next()<CR>', desc = "Nav next mark" },
+    { "<leader>'k", ':lua require("harpoon.ui").nav_prev()<CR>', desc = "Nav prev mark" },
+    { "<leader>'l", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = "Quick menu" },
+    { "<leader>'m", ':lua require("harpoon.mark").add_file()<CR>', desc = "Add file" },
+    { "<leader>'n", ':lua require("harpoon.mark").rm_file()<CR>', desc = "Remove file" },
+    { "<leader>'o", ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', desc = "Portal Back" },
+    { "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
+    { "<leader><Home>", ":Alpha<cr>", desc = "Dashboard" },
+    { "<leader>H", ":sp<CR>", desc = "Horizontal Split" },
+    { "<leader>V", ":vs<CR>", desc = "Vertical Split" },
+    { "<leader>cc", ":let @+=expand('%')<CR>", desc = "Copy file path from PWD" },
+		{
+			"<leader>ck",
+			function()
+				local nullls = require("null-ls")
+				local spell = vim.o.spell
+				if spell then
+					nullls.disable({ "cspell", "codespell" })
+					vim.o.spell = false
+				else
+					nullls.enable({ "cspell", "codespell" })
+					vim.o.spell = true
+				end
+			end,
+			desc = "Toggle spell check"
 		},
-		s = {
-			i = { ":setlocal foldmethod=indent<CR>", "Fold Indent/Whitespace" },
-			s = { ":setlocal foldmethod=expr<CR>", "Fold Expression/Syntax" },
-			v = { ":lua require('auto-session').SaveSession()<cr>", "Save Session" },
-			r = { ":lua require('auto-session').RestoreSession()<cr>", "Restore Session" },
 
-			p = { ":lua require('spectre').open()<cr>", "Spectre open" },
-			w = { ":lua require('spectre').open_visual()<cr>", "Spectre open visual" },
+		{ "<leader>e", group = "NeoTree" },
+    { "<leader>eb", ":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'left', toggle = true})<CR>", desc = "Buffers tree" },
+    { "<leader>ec", ":lua require('neo-tree.command').execute({action = 'close'})<CR>", desc = "Close all neo-tree" },
+    { "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
+    { "<leader>ee", ":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>", desc = "File tree" },
+    { "<leader>eg", ":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'bottom', toggle = true})<CR>", desc = "Git Status" },
+    { "<leader>et", ":lua require('toggleterm').toggle()<CR>", desc = "Terminal" },
+    { "<leader>ex", ":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>", desc = "LSP/Diag" },
 
-			h = { ":lua require'focus'.split_command('h')<CR>", "Focus Left" },
-			j = { ":lua require'focus'.split_command('j')<CR>", "Focus Down" },
-			k = { ":lua require'focus'.split_command('k')<CR>", "Focus Up" },
-			l = { ":lua require'focus'.split_command('l')<CR>", "Focus Right" },
-		},
-		V = { ":vs<CR>", "Vertical Split" },
-		H = { ":sp<CR>", "Horizontal Split" },
-		-- Portal
-		o = { ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', "Portal Back" },
-		i = { ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', "Portal Forward" },
-		-- Harpoon
-		["'"] = {
-			name = "Harpoon+Portal",
-			D = { ':lua require("harpoon.ui").clear_all()<CR>', "Clear list" },
-			l = { ':lua require("harpoon.ui").toggle_quick_menu()<CR>', "Quick menu" },
-			m = { ':lua require("harpoon.mark").add_file()<CR>', "Add file" },
-			n = { ':lua require("harpoon.mark").rm_file()<CR>', "Remove file" },
-			j = { ':lua require("harpoon.ui").nav_next()<CR>', "Nav next mark" },
-			k = { ':lua require("harpoon.ui").nav_prev()<CR>', "Nav prev mark" },
-			-- portal
-			o = { ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', "Portal Back" },
-			i = { ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', "Portal Forward" },
-			h = { ':lua require("portal.builtin").harpoon.tunnel()<CR>', "Portal Harpoon" },
-			c = {
-				':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>',
-				"Portal Changelist",
-			},
-			q = { ':lua require("portal.builtin").quickfix.tunnel({})<CR>', "Portal Quickfix" },
-		},
-		-- Undo tree
-		u = { ":UndotreeToggle<CR>", "undo tree" },
-		-- lazygit
-		g = {
-			-- g = {":FloatermNew lazygit<CR>", "Lazy git"},
-			g = {
-				function()
-					local term = require("toggleterm.terminal").Terminal
-					local lazygit = term:new({
-						ft = "term_lazygit",
-						cmd = "lazygit",
-						direction = "float",
-						on_open = function(term)
-							vim.cmd("startinsert!")
-							vim.api.nvim_buf_set_keymap(
-								term.bufnr,
-								"n",
-								"q",
-								"<cmd>close<CR>",
-								{ noremap = true, silent = true }
-							)
-						end,
-						-- function to run on closing the terminal
-						on_close = function(term)
-							vim.cmd("startinsert!")
-						end,
-					})
+		{ "<leader>g", group = "Git" },
+    { "<leader>gb", ":Telescope git_branches<CR>", desc = "git branches" },
+    { "<leader>gc", ":Telescope git_commits<CR>", desc = "git commits" },
+    { "<leader>gf", ":Telescope git_files<CR>", desc = "git files" },
+    {
+			"<leader>gg",
+			function()
+				local term = require("toggleterm.terminal").Terminal
+				local lazygit = term:new({
+					ft = "term_lazygit",
+					cmd = "lazygit",
+					direction = "float",
+					on_open = function(term)
+						vim.cmd("startinsert!")
+						vim.api.nvim_buf_set_keymap(
+						term.bufnr,
+						"n",
+						"q",
+						"<cmd>close<CR>",
+						{ noremap = true, silent = true }
+						)
+					end,
+					-- function to run on closing the terminal
+					on_close = function(term)
+						vim.cmd("startinsert!")
+					end,
+				})
 
-					lazygit:toggle()
-				end,
-				"Lazy git",
-			},
-			f = { ":Telescope git_files<CR>", "git files" },
-			c = { ":Telescope git_commits<CR>", "git commits" },
-			s = { ":Telescope git_status<CR>", "git status" },
-			b = { ":Telescope git_branches<CR>", "git branches" },
+				lazygit:toggle()
+			end,
+			desc = "Lazy git"
 		},
-		-- Neotree
-		e = {
-			c = { ":lua require('neo-tree.command').execute({action = 'close'})<CR>", "Close all neo-tree" },
-			e = {
-				":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>",
-				"File tree",
-			},
-			b = {
-				":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'left', toggle = true})<CR>",
-				"File tree",
-			},
-			g = {
-				":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'bottom', toggle = true})<CR>",
-				"Git Status",
-			},
-			x = {
-				":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>",
-				"LSP/Diag",
-			},
-			t = { ":lua require('toggleterm').toggle()<CR>", "Terminal" },
-			d = { ":DBUIToggle<CR>", "Open DBUI" },
-		},
-		-- gs = {":lua require('neo-tree.command').execute({action = 'focus', source = 'git_status', reveal =true, position = 'bottom', toggle = true})<CR>", "Git status"},
-		-- Session + Dashboard
-		["<Home>"] = { ":Alpha<cr>", "Dashboard" },
-		n = {
-			d = {":lua require('noice').cmd('dismiss')<cr>", "Dismiss notifications"},
-			l = {":lua require('noice').cmd('last')<cr>", "Last notifications"},
-			h = {":lua require('noice').cmd('telescope')<cr>", "History notifications"},
-		},
-		--
-		c = {
-			k = {
-				function()
-					local nullls = require("null-ls")
-					local spell = vim.o.spell
-					if spell then
-						nullls.disable({ "cspell", "codespell" })
-						vim.o.spell = false
-					else
-						nullls.enable({ "cspell", "codespell" })
-						vim.o.spell = true
-					end
-				end,
-				"Toggle spell check",
-			},
-			-- m = {":lua vim.lsp.buf.format()<cr>", "Format file"},
-		},
-		-- Git signs
-		h = {
-			name = "Git signs",
-			s = { "Stage hunk" },
-			r = { "Reset hunk" },
-			S = { "Stage buffer" },
-			u = { "Undo stage hunk" },
-			R = { "Reset buffer" },
-			p = { "Preview hunk" },
-			d = { "Diff this" },
-			D = { "Diff this -" },
-		},
-		td = { "Toggle deleted (git signs)" },
-	}, { prefix = "<leader>" })
+    { "<leader>gs", ":Telescope git_status<CR>", desc = "git status" },
+
+    { "<leader>h", group = "Git signs" },
+    { "<leader>hD", desc = "Diff this -" },
+    { "<leader>hR", desc = "Reset buffer" },
+    { "<leader>hS", desc = "Stage buffer" },
+    { "<leader>hd", desc = "Diff this" },
+    { "<leader>hp", desc = "Preview hunk" },
+    { "<leader>hr", desc = "Reset hunk" },
+    { "<leader>hs", desc = "Stage hunk" },
+    { "<leader>hu", desc = "Undo stage hunk" },
+
+    { "<leader>i", ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', desc = "Portal Forward" },
+    { "<leader>nd", ":lua require('noice').cmd('dismiss')<cr>", desc = "Dismiss notifications" },
+    { "<leader>nh", ":lua require('noice').cmd('telescope')<cr>", desc = "History notifications" },
+    { "<leader>nl", ":lua require('noice').cmd('last')<cr>", desc = "Last notifications" },
+    { "<leader>o", ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', desc = "Portal Back" },
+    { "<leader>q", ":BufferClose<CR>", desc = "Close buffer" },
+
+    { "<leader>sh", ":lua require'focus'.split_command('h')<CR>", desc = "Focus Left" },
+    { "<leader>si", ":setlocal foldmethod=indent<CR>", desc = "Fold Indent/Whitespace" },
+    { "<leader>sj", ":lua require'focus'.split_command('j')<CR>", desc = "Focus Down" },
+    { "<leader>sk", ":lua require'focus'.split_command('k')<CR>", desc = "Focus Up" },
+    { "<leader>sl", ":lua require'focus'.split_command('l')<CR>", desc = "Focus Right" },
+    { "<leader>sp", ":lua require('spectre').open()<cr>", desc = "Spectre open" },
+    { "<leader>sr", ":lua require('auto-session').RestoreSession()<cr>", desc = "Restore Session" },
+    { "<leader>ss", ":setlocal foldmethod=expr<CR>", desc = "Fold Expression/Syntax" },
+    { "<leader>sv", ":lua require('auto-session').SaveSession()<cr>", desc = "Save Session" },
+    { "<leader>sw", ":lua require('spectre').open_visual()<cr>", desc = "Spectre open visual" },
+
+    { "<leader>td", desc = "Toggle deleted (git signs)" },
+    { "<leader>u", ":UndotreeToggle<CR>", desc = "undo tree" },
+    { "<leader>p", '"0p', desc = "Paste from yank register", mode = { "n", "x" } },
+  })
 
 end
 
