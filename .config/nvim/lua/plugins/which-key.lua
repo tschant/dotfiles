@@ -33,8 +33,9 @@ M.config = function()
 		icons = {
 			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 			separator = "—", -- symbol used between a key and it's label
-			group = "+", -- symbol prepended to a group
+			group = " ", -- symbol prepended to a group 
 		},
+		expand = 3,
 		--[[ hidden = {
 			"<silent>",
 			"<cmd>",
@@ -145,6 +146,7 @@ M.config = function()
 		-- comments
     { "<C-_>", ':lua require("Comment.api").toggle_current_linewise()<CR>', desc = "ctrl-/" },
     { "<C-p>", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
+		{ "<C-S-p>", "<cmd>Telescope commands<cr>", desc = "show command prompt" },
 	})
 
 	-- Hop motions
@@ -330,7 +332,7 @@ M.config = function()
 		{ "<leader>f/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "search in file" },
 		{ "<leader>f?", "<cmd>Telescope search_history<cr>", desc = "search history" },
 		{ "<leader>fC", "<cmd>Telescope command_history<cr>", desc = "show command-line history" },
-		{ "<leader>fc", "<cmd>Telescope commands<cr>", desc = "show command-line history" },
+		{ "<leader>fc", "<cmd>Telescope commands<cr>", desc = "show command prompt" },
 		{ "<leader>fx", util.telescope("colorscheme", { enable_preview = true }), desc = "show colorscheme picker" },
 		{ "<leader>fu", "<cmd>silent! %foldopen! | UndotreeToggle<cr>", desc = "show undotree" },
 	})
