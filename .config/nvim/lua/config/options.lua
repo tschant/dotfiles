@@ -27,6 +27,7 @@ u.opt("o", "completeopt", "menuone,noinsert,noselect")
 -- u.opt("o", "spell", true)
 u.opt("o", "spelllang", Opts.language)
 u.opt("o", "signcolumn", "no")
+u.opt("o", "sessionoptions", "blank,buffers,curdir,folds,help,tabpages,winsize,terminal,localoptions")
 
 -- Window
 u.opt("w", "relativenumber", true)
