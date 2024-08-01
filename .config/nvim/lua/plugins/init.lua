@@ -66,7 +66,7 @@ return {
 	},
 
 	-- Multi-line plugins
-	{
+	--[[ {
 		"anuvyklack/pretty-fold.nvim",
 		branch = "master",
 		event = "BufRead",
@@ -86,7 +86,7 @@ return {
 				}
 			})
 		end
-	},
+	}, ]]
 	{
 		"anuvyklack/fold-preview.nvim",
 		branch = "main",
