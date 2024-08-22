@@ -60,7 +60,7 @@ M.config = function()
 		end
 	}
 
-	require("scrollbar.handlers.gitsigns").setup()
+	-- require("scrollbar.handlers.gitsigns").setup()
 end
 
 return M

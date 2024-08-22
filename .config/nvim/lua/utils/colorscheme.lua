@@ -11,6 +11,9 @@ function utils.setColorScheme(Theme)
 	cmd("hi FoldColumn ctermbg=none guibg=none")
 	cmd("hi FocusedLine ctermbg=none guibg=none guifg=#0088aa")
 
+	cmd("hi link NeominimapSearchLine IncSearch")
+	cmd("hi link NeominimapSearchSign IncSearch")
+
 	-- cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
 	-- cmd "hi StatusColumnGitSigns guifg=SignColumn guibg=SignColumn"
 

@@ -149,6 +149,13 @@ M.config = function()
 		{ "<C-S-p>", "<cmd>Telescope commands<cr>", desc = "show command prompt" },
 	})
 
+
+	-- codewindow
+	-- wk.add({
+	-- 	{ "<leader>nm", "<cmd>lua require('codewindow').toggle_minimap()<cr>", desc = "Toggle scrollbar"},
+	-- 	{ "<leader>nf", "<cmd>lua require('codewindow').toggle_focus()<cr>", desc = "Toggle scrollbar focus"},
+	-- })
+
 	-- Hop motions
 	wk.add({
 		{
