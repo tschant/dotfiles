@@ -516,6 +516,12 @@ M.config = function()
     { "<leader>p", '"0p', desc = "Paste from yank register", mode = { "n", "x" } },
   })
 
+	wk.add({
+		{"<leader>m", group = "Code Companion"},
+		{"<leader>mc", "<cmd>CodeCompanionToggle<cr>", desc = "Toggle Code Companion"},
+		{"<leader>ma", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion Actions prompt"},
+	})
+
 end
 
 return M
