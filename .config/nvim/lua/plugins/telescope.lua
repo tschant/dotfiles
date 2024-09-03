@@ -1,3 +1,30 @@
+local telescope_custom_actions = {}
+
+function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
+	local action_state = require('telescope.actions.state')
+	local actions = require('telescope.actions')
+	local picker = action_state.get_current_picker(prompt_bufnr)
+	local selected_entry = action_state.get_selected_entry()
+	local num_selections = #picker:get_multi_selection()
+	if not num_selections or num_selections <= 1 then
+		actions.add_selection(prompt_bufnr)
+	end
+	actions.send_selected_to_qflist(prompt_bufnr)
+	vim.cmd("cfdo " .. open_cmd)
+end
+function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
+	telescope_custom_actions._multiopen(prompt_bufnr, "vsplit")
+end
+function telescope_custom_actions.multi_selection_open_split(prompt_bufnr)
+	telescope_custom_actions._multiopen(prompt_bufnr, "split")
+end
+function telescope_custom_actions.multi_selection_open_tab(prompt_bufnr)
+	telescope_custom_actions._multiopen(prompt_bufnr, "tabe")
+end
+function telescope_custom_actions.multi_selection_open(prompt_bufnr)
+	telescope_custom_actions._multiopen(prompt_bufnr, "edit")
+end
+
 local M = {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
@@ -70,6 +97,10 @@ M.config = function()
 			buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker,
 			mappings = {
 				i = {
+					["<CR>"] = telescope_custom_actions.multi_selection_open,
+					["<TAB>"] = actions.toggle_selection,
+					["<C-TAB>"] = actions.toggle_selection + actions.move_selection_next,
+					["<S-TAB>"] = actions.toggle_selection + actions.move_selection_previous,
 					["<C-j>"] = actions.move_selection_next,
 					["<C-k>"] = actions.move_selection_previous,
 					-- To disable a keymap, put [map] = false
@@ -86,6 +117,10 @@ M.config = function()
 					-- ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
 				},
 				n = {
+					["<CR>"] = telescope_custom_actions.multi_selection_open,
+					["<TAB>"] = actions.toggle_selection,
+					["<C-TAB>"] = actions.toggle_selection + actions.move_selection_next,
+					["<S-TAB>"] = actions.toggle_selection + actions.move_selection_previous,
 					["<C-j>"] = actions.move_selection_next,
 					["<C-k>"] = actions.move_selection_previous
 					-- ["<C-i>"] = my_cool_custom_action,
