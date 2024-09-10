@@ -84,4 +84,8 @@ if type jq &>/dev/null; then
 	,jq() {
 		echo '' | fzf --print-query --preview "cat $1 | jq {q}"
 	}
+
+	to_csv() {
+		jq -r '(.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ]])[] | @csv'
+	}
 fi
