@@ -12,6 +12,7 @@ local M = {
 		closable = true,
 		clickable = true,
 		icons = {
+			inactive = {buffer_index = true},
 			filetype = { enabled = true },
 			button = '󰅖',
 			modified = {button = '●'},
