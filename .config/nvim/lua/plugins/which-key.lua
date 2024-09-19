@@ -321,7 +321,7 @@ M.config = function()
 		{ "<leader>fF", util.telescope("find_files"), desc = "find files (root dir)" },
 		{ "<leader>ff", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
 		{ "<leader>fG", util.telescope("live_grep", { grep_open_files = true }), desc = "grep open files" },
-		{ "<leader>fg", util.telescope("live_grep", { cwd = false, path_display = false }), desc = "grep files (cwd)" },
+		{ "<leader>fg", util.telescope("live_grep", { cwd = false, path_display = { 'shorten' } }), desc = "grep files (cwd)" },
 		{ "<leader>fW", util.telescope("grep_string"), desc = "search word (root dir)" },
 		{ "<leader>fw", util.telescope("grep_string", { cwd = false }), desc = "search word (cwd)" },
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "list buffers" },
