@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local u = require("utils.colorscheme")
 local autocmd = vim.api.nvim_create_autocmd
 
-local Theme = "tokyonight"
+local Theme = "eldritch"
 function config_load()
 	u.setColorScheme(Theme)
 end
@@ -33,8 +33,8 @@ end
 
 return {
 	{
-		lazy = false,
-		priority = 1000,
+		-- lazy = false,
+		-- priority = 1000,
 		"folke/tokyonight.nvim",
 		keys = {"<leader>fx"},
 		config = function ()
@@ -47,7 +47,20 @@ return {
 			})
 			config_load()
 		end,
-
+	},
+	{
+		"eldritch-theme/eldritch.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function ()
+			require("eldritch").setup({
+				transparent = true,
+				styles = {
+					functions = { bold = true }
+				}
+			})
+			config_load()
+		end,
 	},
 	{
 		--[[ lazy = false,
