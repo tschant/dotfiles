@@ -87,7 +87,7 @@ M.setup = function()
 
       -- Unseen output alert
       if has_unseen_output then
-         _push(bg, cs.base.normal.yellow, { Intensity = 'Bold' }, ' ' .. GLYPH_CIRCLE)
+         _push(bg, cs.colors.tab_bar.new_tab_hover.bg_color, { Intensity = 'Bold' }, ' ' .. GLYPH_CIRCLE)
       end
 
       -- Right padding

@@ -161,9 +161,9 @@ M.config = function()
 		{
 			"<C-s>",
 			function()
-				require("hop").hint_words({ current_line_only = true })
+				require("hop").hint_words({})
 			end,
-			desc = "Jump line only",
+			desc = "Jump words",
 		},
 		{
 			"s",
@@ -513,7 +513,7 @@ M.config = function()
 
     { "<leader>td", desc = "Toggle deleted (git signs)" },
     { "<leader>u", ":UndotreeToggle<CR>", desc = "undo tree" },
-    { "<leader>p", '"0p', desc = "Paste from yank register", mode = { "n", "x" } },
+    { "<leader>pp", '"0p', desc = "Paste from yank register", mode = { "n", "x" } },
   })
 
 	wk.add({
@@ -522,6 +522,18 @@ M.config = function()
 		{"<leader>ma", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion Actions prompt"},
 	})
 
+	wk.add({
+		{"<leader>p", group = "Precognition Virtual Text"},
+		{"<leader>pt",
+		function ()
+			if require('precognition').toggle() then
+				vim.notify("Precognition helper on")
+			else
+				vim.notify("Precognition helper off")
+			end
+		end,
+		desc = "Precognition Toggle"},
+	})
 end
 
 return M
