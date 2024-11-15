@@ -14,24 +14,35 @@ return {
 	{
 		'tpope/vim-dadbod',
 		event = "BufRead *.sql",
-		-- cmd = 'DB',
+		cmd = {
+			'DB',
+			'DBUIAddConnection',
+			'DBUIToggle',
+		},
 	},
 	{
 		'kristijanhusak/vim-dadbod-ui',
 		event = "BufRead *.sql",
-		-- cmd = {
-		-- 	'DB',
-		-- 	'DBUIAddConnection',
-		-- 	'DBUIToggle',
-		-- },
+		cmd = {
+			'DB',
+			'DBUIAddConnection',
+			'DBUIToggle',
+		},
 		dependencies = {
 			'tpope/vim-dadbod'
 		},
 		config = function ()
 			local g = vim.g
 			g.db_ui_default_query = 'select * from "{table}" limit 50'
+			g.db_ui_table_helpers = {
+				mysql = {
+					Count = 'select count(*) from `{dbname}`.`{table}`;',
+					List = 'select * from `{dbname}`.`{table}` limit 50\\G',
+				},
+			}
 			g.db_ui_save_location = '~/Documents/queries/db_ui_queries'
 			g.db_ui_debug = 1
+			g.db_async = 1
 			vim.cmd('set previewheight=25')
 		end
 	},

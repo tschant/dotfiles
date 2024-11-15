@@ -3,6 +3,7 @@ local platform = require('utils.platform')()
 local act = wezterm.action
 
 local mod = {}
+local M = {}
 
 if platform.is_mac then
    mod.SUPER = 'SUPER'
@@ -54,6 +55,7 @@ local keys = {
   { key = 'n', mods = mod.SUPER,     action = act.SpawnWindow },
 
   -- Tab keybindings
+  { key = "z",          mods = "LEADER|CTRL",      action = act.ActivateLastTab },
   { key = "t",          mods = "LEADER",      action = act.SpawnTab("CurrentPaneDomain") },
   { key = "{",          mods = "CTRL|SHIFT",      action = act.ActivateTabRelative(-1) },
   { key = "}",          mods = "CTRL|SHIFT",      action = act.ActivateTabRelative(1) },

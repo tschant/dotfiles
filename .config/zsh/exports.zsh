@@ -55,3 +55,7 @@ fi
 if type navi &>/dev/null; then
 	eval "$(navi widget zsh)"
 fi
+
+if [ -d "$HOME/perl5/perlbrew" ]; then
+	source "$HOME/perl5/perlbrew/etc/bashrc"
+fi
