@@ -165,7 +165,71 @@ local keys = {
       )
     end),
   },
+  {
+    key = 'V',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action_callback(function(window, pane)
+      local home = wezterm.home_dir
+      local workspaces = {}
+      local n = os.tmpname()
+      local ovpn_path = "/usr/sbin/openvpn"
+      if platform.is_mac then
+        ovpn_path = "/usr/local/sbin/openvpn"
+      end
+      local ovpn_configs_path = home .. "/.local/share/openvpn/configs/"
+      local ovpn_creds_path = home .. "/.local/share/openvpn/credentials/"
+      os.execute("/bin/ls -1 " .. ovpn_configs_path .. " > " .. n)
+      for line in io.lines(n) do
+        table.insert(workspaces, {
+          id = line,
+          label = line:gsub(".ovpn", ""),
+        })
+      end
 
+      window:perform_action(
+      act.InputSelector {
+        action = wezterm.action_callback(
+        function(inner_window, inner_pane, id, label)
+          if not id and not label then
+            wezterm.log_info 'cancelled'
+          else
+            wezterm.log_debug('id = ' .. id)
+            wezterm.log_debug('label = ' .. label)
+            wezterm.log_debug('path = ' .. os.getenv('PATH'))
+            inner_window:perform_action(
+            act.SwitchToWorkspace {
+              name = 'VPN ' .. label,
+              spawn = {
+                label = 'Workspace: ' .. label,
+                args = {
+                  'sudo',
+                  ovpn_path,
+                  '--auth-retry',
+                  'interact',
+                  '--config',
+                  ovpn_configs_path .. id,
+                  '--auth-user-pass',
+                  ovpn_creds_path .. label .. '.txt'
+                },
+                set_environment_variables = {
+                  PATH = '/usr/local/sbin:/usr/local/bin:' .. os.getenv('PATH'),
+                },
+              },
+            },
+            inner_pane
+            )
+          end
+        end
+        ),
+        title = 'Choose VPN',
+        choices = workspaces,
+        fuzzy = true,
+        fuzzy_description = 'Fuzzy find and/or make a vpn connection: ',
+      },
+      pane
+      )
+    end),
+  },
   {
     key = 'w',
     mods = 'LEADER',

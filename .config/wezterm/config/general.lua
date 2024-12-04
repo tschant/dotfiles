@@ -11,6 +11,9 @@ local config = {
 	term = "xterm-256color",
 	scrollback_lines = 3000,
 	status_update_interval = 1000,
+	set_environment_variables = {
+		EDITOR = 'nvim',
+	},
 	hyperlink_rules = {
 		-- Matches: a URL in parens: (URL)
 		{
