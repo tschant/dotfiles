@@ -20,7 +20,7 @@ if [ "$1" = "-h" ] || [ "$1" == "--help" ]; then
 	printf "\033[34m      t --help\n"
 	printf "\n"
 elif [ $# -eq 0 ]; then
-	HEADER="ctrl-a all / ctrl-t sessions / ctrl-x zoxide / ctrl-f ssh"
+	HEADER="ctrl-a all / ctrl-t sessions / ctrl-x zoxide / ctrl-f ssh / ctrl-v vpn"
 	PROMPT="All> "
 	ALL_BINDING="ctrl-a:change-prompt(All> )+reload(tmux list-sessions -F '#S' && zoxide query -l)"
 	SESSION_BINDING="ctrl-t:change-prompt(Sessions> )+reload(tmux list-sessions -F '#S')"
@@ -56,12 +56,7 @@ elif [[ "$ZOXIDE_RESULT" =~ "VPN " ]]; then
 	VPN_CONFIG="$ovpn_configs_path/${VPN}.ovpn"
 	VPN_CREDS="$ovpn_creds_path/${VPN}.txt"
 else
-	if [[ "$REPOS_HOME" = "" ]]; then
-		FOLDER=$(basename "$ZOXIDE_RESULT")
-	else
-		FOLDER=$(echo "$ZOXIDE_RESULT" | sed 's|'"$REPOS_HOME"'||')
-	fi
-	SESSION_NAME=$(echo "$FOLDER" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
+	SESSION_NAME=$(echo "$ZOXIDE_RESULT" | sed 's|'"$HOME"'|~|' | tr ' ' '_' | tr '.' '_' | tr ':' '_')
 fi
 
 SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$") # find existing session
