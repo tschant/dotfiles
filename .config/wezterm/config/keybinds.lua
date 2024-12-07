@@ -193,9 +193,9 @@ local keys = {
           if not id and not label then
             wezterm.log_info 'cancelled'
           else
-            wezterm.log_debug('id = ' .. id)
-            wezterm.log_debug('label = ' .. label)
-            wezterm.log_debug('path = ' .. os.getenv('PATH'))
+            wezterm.log_info('id = ' .. id)
+            wezterm.log_info('label = ' .. label)
+            wezterm.log_info('path = ' .. os.getenv('PATH'))
             inner_window:perform_action(
             act.SwitchToWorkspace {
               name = 'VPN ' .. label,
