@@ -53,11 +53,11 @@ if [[ "$ZOXIDE_RESULT" =~ "Host " ]]; then
 	SESSION_NAME=$(echo "HOST $HOST" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
 elif [[ "$ZOXIDE_RESULT" =~ "VPN " ]]; then
 	VPN=$(echo "$ZOXIDE_RESULT" | sed 's/VPN //')
-	SESSION_NAME="$VPN"
+	SESSION_NAME="VPN $VPN"
 	VPN_CONFIG="$ovpn_configs_path/${VPN}.ovpn"
 	VPN_CREDS="$ovpn_creds_path/${VPN}.txt"
 else
-	SESSION_NAME=$(echo "VPN $ZOXIDE_RESULT" | sed 's|'"$HOME"'|~|' | tr ' ' '_' | tr '.' '_' | tr ':' '_')
+	SESSION_NAME=$(echo "$ZOXIDE_RESULT" | sed 's|'"$HOME"'|~|' | tr ' ' '_' | tr '.' '_' | tr ':' '_')
 fi
 
 SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$") # find existing session
