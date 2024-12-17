@@ -12,6 +12,7 @@ export AWS_PROFILE=default
 
 export EDITOR=nvim
 [[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+[[ -d /opt/homebrew/bin/ ]] && export PATH="$PATH:/opt/homebrew/bin/"
 
 if [[ -d /home/tarryn/.spicetify ]]; then 
 	export PATH="$PATH:$HOME/.spicetify"
@@ -25,6 +26,18 @@ if type nodenv &>/dev/null; then
 	export PATH="$PATH:$HOME/.nodenv/shims"
 	eval "$(nodenv init -)"
 fi
+
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+	export PATH="$PATH:$HOME/.nvm"
+	[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+	[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+fi
+if [[ -d $HOME/.pyenv ]]; then
+	export PYENV_ROOT="$HOME/.pyenv"
+	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
+
 if type cargo &>/dev/null; then
 	# gping, alacritty, delta, exa, 
 	export PATH="$PATH:$HOME/.cargo/bin"
@@ -59,3 +72,8 @@ fi
 if [ -d "$HOME/perl5/perlbrew" ]; then
 	source "$HOME/perl5/perlbrew/etc/bashrc"
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi

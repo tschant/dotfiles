@@ -146,7 +146,7 @@ M.config = function()
 		},
 		terraform_lsp = {},
 		tflint = {},
-		tsserver = {
+		ts_ls = {
 			cmd = { "typescript-language-server", "--stdio" },
 			settings = {
 				javascript = {

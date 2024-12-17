@@ -109,7 +109,7 @@ local keys = {
       local n = os.tmpname()
       local zoxide_path = "/usr/bin/zoxide"
       if platform.is_mac then
-        zoxide_path = "/usr/local/bin/zoxide"
+        zoxide_path = home .. "/.local/bin/zoxide"
       end
       os.execute(zoxide_path .. " query -l > " .. n)
       for line in io.lines(n) do

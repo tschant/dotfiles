@@ -1,4 +1,6 @@
 # You can change the names/locations of these if you prefer.
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/ohmyzsh"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 antidote_dir=${ZDOTDIR:-~}/.antidote
 plugins_txt=${ZDOTDIR:-~}/.zsh_plugins.txt
 static_file=${ZDOTDIR:-~}/.zsh_plugins.zsh

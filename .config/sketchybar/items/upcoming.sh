@@ -2,7 +2,7 @@
 
 POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
 
-sketchybar -m --add item     upcoming center                                  \
+sketchybar -m --add item     upcoming left                                  \
   	          --set upcoming update_freq=20                                   \
   	                         updates=on                                       \
 												     label="No Upcoming Events" \
