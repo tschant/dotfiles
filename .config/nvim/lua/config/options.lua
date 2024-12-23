@@ -14,7 +14,6 @@ u.opt("o", "writebackup", false)
 u.opt("o", "clipboard", "unnamedplus")
 u.opt("o", "showmode", false)
 u.opt("o", "pumheight", 15)
-u.opt("o", "showtabline", 2)
 u.opt("o", "updatetime", 100)
 u.opt("o", "scrolloff", 10)
 u.opt("o", "cmdheight", 2)
@@ -28,6 +27,10 @@ u.opt("o", "completeopt", "menuone,noinsert,noselect")
 u.opt("o", "spelllang", Opts.language)
 u.opt("o", "signcolumn", "no")
 u.opt("o", "sessionoptions", "blank,buffers,curdir,folds,help,tabpages,winsize,terminal,localoptions")
+
+-- u.opt("o", "showtabline", 2)
+u.opt("o", "showtabline", 0)
+u.opt("o", "winbar", Opts.winbar)
 
 -- Window
 u.opt("w", "relativenumber", true)

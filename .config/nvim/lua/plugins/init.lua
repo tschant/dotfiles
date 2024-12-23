@@ -5,9 +5,6 @@ return {
 	-- Markdown
 	{"iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md"},
 
-	-- JS/html
-	{"ryym/vim-riot", ft = {"javascript", "tag"}},
-
 	-- Terraform
 	{'hashivim/vim-terraform', event = "BufReadPre *.tf"},
 	{'juliosueiras/vim-terraform-completion', event = "BufRead *.tf"},

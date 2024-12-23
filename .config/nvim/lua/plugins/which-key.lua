@@ -1,4 +1,5 @@
 local util = require("utils.core")
+local extra = require("utils.extra")
 local M = {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
@@ -33,7 +34,7 @@ M.config = function()
 		icons = {
 			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 			separator = "—", -- symbol used between a key and it's label
-			group = " ", -- symbol prepended to a group 
+			group = " ", -- symbol prepended to a group
 		},
 		expand = 3,
 		--[[ hidden = {
@@ -52,13 +53,14 @@ M.config = function()
 
 	-- Random key-maps
 	wk.add({
-		{ 'Q', "<Nop>", desc = "no-op" },
-		{ 'n', "nzz", desc = "Next + center" },
-		{ 'N', "Nzz", desc = "Prev + center" },
+		{ "Q", "<Nop>", desc = "no-op" },
+		{ "n", "nzz", desc = "Next + center" },
+		{ "N", "Nzz", desc = "Prev + center" },
 		{ "<CR>", "<CR>", desc = "<CR>", hidden = true },
-		{ "<TAB>", ":BufferNext<CR>", desc = "Next buffer" },
-		{ "<S-TAB>", ":BufferPrev<CR>", desc = "Prev buffer" },
-		{ "<f10>",
+		{ "<TAB>", ":bn<CR>", desc = "Next buffer" },
+		{ "<S-TAB>", ":bp<CR>", desc = "Prev buffer" },
+		{
+			"<f10>",
 			[[<Cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>]],
 			desc = "Output the current syntax/highlight group",
 		},
@@ -68,22 +70,26 @@ M.config = function()
 
 	wk.add({
 		{ "jk", "<esc>", desc = "Escape insert mode", mode = "i" },
-  })
+	})
 
 	-- LSP Based key-maps
 	wk.add({
-    { "gD", ":lua vim.lsp.buf.declaration()<CR>", desc = "Declarations" },
-    { "gF", ":lua vim.diagnostic.open_float()<CR>", desc = "Diagnostic" },
-    { "gH", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", desc = "Inlay hints" },
-    { "gI", ":lua vim.lsp.buf.implementation()<CR>", desc = "Implementation" },
-    { "gN", ":lua require('syntax-tree-surfer').filtered_jump('default', false)<CR>", desc = "Filter Jump Prev" },
-    { "gP", ":lua vim.diagnostic.goto_next()<CR>", desc = "Goto Prev" },
-    { "gR", "<cmd>lua require('telescope.builtin').lsp_references({ show_line = false })<CR>", desc = "References" },
-    { "gca", ":lua vim.lsp.buf.code_action()<CR>", desc = "Run code actions (fix thigs)" },
-    { "gd", ":Telescope lsp_definitions<CR>", desc = "Definitions" },
-    { "gf", ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>", desc = "LSP Format file" },
-    { "gh", ":lua vim.lsp.buf.hover()<CR>", desc = "Hover details" },
-			-- Syntax Tree Surfer - treesitter smart selection
+		{ "gD", ":lua vim.lsp.buf.declaration()<CR>", desc = "Declarations" },
+		{ "gF", ":lua vim.diagnostic.open_float()<CR>", desc = "Diagnostic" },
+		{ "gH", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", desc = "Inlay hints" },
+		{ "gI", ":lua vim.lsp.buf.implementation()<CR>", desc = "Implementation" },
+		{ "gN", ":lua require('syntax-tree-surfer').filtered_jump('default', false)<CR>", desc = "Filter Jump Prev" },
+		{ "gP", ":lua vim.diagnostic.goto_next()<CR>", desc = "Goto Prev" },
+		{
+			"gR",
+			"<cmd>lua require('telescope.builtin').lsp_references({ show_line = false })<CR>",
+			desc = "References",
+		},
+		{ "gca", ":lua vim.lsp.buf.code_action()<CR>", desc = "Run code actions (fix thigs)" },
+		{ "gd", ":Telescope lsp_definitions<CR>", desc = "Definitions" },
+		{ "gf", ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>", desc = "LSP Format file" },
+		{ "gh", ":lua vim.lsp.buf.hover()<CR>", desc = "Hover details" },
+		-- Syntax Tree Surfer - treesitter smart selection
 		{
 			"gj",
 			function()
@@ -102,9 +108,9 @@ M.config = function()
 			desc = "Jump ALL",
 		},
 		{ "gn", ":lua require('syntax-tree-surfer').filtered_jump('default', true)<CR>", desc = "Filter Jump Next" },
-    { "gp", ":lua vim.diagnostic.goto_prev()<CR>", desc = "Goto Next" },
-    { "gr", ":lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
-    {
+		{ "gp", ":lua vim.diagnostic.goto_prev()<CR>", desc = "Goto Next" },
+		{ "gr", ":lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
+		{
 			"gs",
 			util.telescope("lsp_document_symbols", {
 				symbols = {
@@ -123,32 +129,35 @@ M.config = function()
 			desc = "Goto Symbol",
 		},
 		{ "gt", ":lua vim.lsp.buf.type_definition()<CR>", desc = "Type Defs" },
-    { "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', desc = "Move Up (syntax)" },
-    { "vn", '<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', desc = "Select current node" },
-    { "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', desc = "Move Down (syntax)" },
-    { "vx", '<cmd>lua require("syntax-tree-surfer").select()<cr>', desc = "Select block/line" },
-  })
+		{ "vd", '<cmd>lua require("syntax-tree-surfer").move("n", false)<cr>', desc = "Move Up (syntax)" },
+		{ "vn", '<cmd>lua require("syntax-tree-surfer").select_current_node()<cr>', desc = "Select current node" },
+		{ "vu", '<cmd>lua require("syntax-tree-surfer").move("n", true)<cr>', desc = "Move Down (syntax)" },
+		{ "vx", '<cmd>lua require("syntax-tree-surfer").select()<cr>', desc = "Select block/line" },
+	})
 
 	wk.add({
-    {
-      mode = { "x" },
-      { "<c-_>", ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', desc = "Comment line" },
-      { "H", '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', desc = "Syntax Surfer prev" },
-      { "J", ":move '>+1<CR>gv-gv", desc = "Move line down" },
-      { "K", ":move '<-2<CR>gv-gv", desc = "Move line up" },
-      { "L", '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', desc = "Syntax surfer next" },
-      { "y", '"+y', desc = "Copy to OS buffer" },
-    },
-  })
+		{
+			mode = { "x" },
+			{
+				"<c-_>",
+				':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',
+				desc = "Comment line",
+			},
+			{ "H", '<cmd>lua require("syntax-tree-surfer").surf("parent", "visual")<cr>', desc = "Syntax Surfer prev" },
+			{ "J", ":move '>+1<CR>gv-gv", desc = "Move line down" },
+			{ "K", ":move '<-2<CR>gv-gv", desc = "Move line up" },
+			{ "L", '<cmd>lua require("syntax-tree-surfer").surf("child", "visual")<cr>', desc = "Syntax surfer next" },
+			{ "y", '"+y', desc = "Copy to OS buffer" },
+		},
+	})
 
 	-- Ctrl key-maps
 	wk.add({
 		-- comments
-    { "<C-_>", ':lua require("Comment.api").toggle_current_linewise()<CR>', desc = "ctrl-/" },
-    { "<C-p>", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
+		{ "<C-_>", ':lua require("Comment.api").toggle_current_linewise()<CR>', desc = "ctrl-/" },
+		{ "<C-p>", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
 		{ "<C-S-p>", "<cmd>Telescope commands<cr>", desc = "show command prompt" },
 	})
-
 
 	-- codewindow
 	-- wk.add({
@@ -225,11 +234,16 @@ M.config = function()
 
 	-- Terminal toggle
 	wk.add({
-    { "<F2>", '<C-\\><C-n><cmd>lua require("toggleterm").toggle()<CR>', desc = "Toggle floating terminal", mode = "t" },
-  })
+		{
+			"<F2>",
+			'<C-\\><C-n><cmd>lua require("toggleterm").toggle()<CR>',
+			desc = "Toggle floating terminal",
+			mode = "t",
+		},
+	})
 	wk.add({
 		{ "<F2>", '<cmd>lua require("toggleterm").toggle()<CR>', desc = "Toggle floating terminal" },
-		{ 
+		{
 			"<F3>",
 			function()
 				local term = require("toggleterm.terminal").Terminal
@@ -276,44 +290,25 @@ M.config = function()
 
 	-- Window keybinds
 	wk.add({
-    { "<C-h>", ":lua require('smart-splits').move_cursor_left()<CR>", desc = "Window left" },
-    { "<C-j>", ":lua require('smart-splits').move_cursor_down()<CR>", desc = "Window down" },
-    { "<C-k>", ":lua require('smart-splits').move_cursor_up()<CR>", desc = "Window up" },
-    { "<C-l>", ":lua require('smart-splits').move_cursor_right()<CR>", desc = "Window right" },
-    { "<C-q>", ":BufferClose<CR>", desc = "Close buffer" },
-    { "<leader>wH", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-    { "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-    { "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-    { "<leader>wL", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-  })
+		{ "<C-h>", ":lua require('smart-splits').move_cursor_left()<CR>", desc = "Window left" },
+		{ "<C-j>", ":lua require('smart-splits').move_cursor_down()<CR>", desc = "Window down" },
+		{ "<C-k>", ":lua require('smart-splits').move_cursor_up()<CR>", desc = "Window up" },
+		{ "<C-l>", ":lua require('smart-splits').move_cursor_right()<CR>", desc = "Window right" },
+		{ "<C-q>", ":BufDel<CR>", desc = "Close buffer" },
+		{ "<leader>wH", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+		{ "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+		{ "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+		{ "<leader>wL", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+	})
 
 	-- Buffer
 	wk.add({
 		{ "<leader>b", group = "Buffers" },
-    { "<leader>b1", "<cmd>BufferGoto 1<CR>", desc = "goto buffer 1" },
-    { "<leader>b2", "<cmd>BufferGoto 2<CR>", desc = "goto buffer 2" },
-    { "<leader>b3", "<cmd>BufferGoto 3<CR>", desc = "goto buffer 3" },
-    { "<leader>b4", "<cmd>BufferGoto 4<CR>", desc = "goto buffer 4" },
-    { "<leader>b5", "<cmd>BufferGoto 5<CR>", desc = "goto buffer 5" },
-    { "<leader>b6", "<cmd>BufferGoto 6<CR>", desc = "goto buffer 6" },
-    { "<leader>b7", "<cmd>BufferGoto 7<CR>", desc = "goto buffer 7" },
-    { "<leader>b8", "<cmd>BufferGoto 8<CR>", desc = "goto buffer 8" },
-    { "<leader>b9", "<cmd>BufferGoto 9<CR>", desc = "goto buffer 9" },
-    { "<leader>bb", "<cmd>Telescope buffers<CR>", desc = "List Buffer" },
-    { "<leader>bca", "<cmd>BufferCloseAllButCurrentOrPinned<CR>", desc = "Close all but current" },
-    { "<leader>bcl", "<cmd>BufferCloseBuffersLeft<CR>", desc = "Close all left" },
-    { "<leader>bcr", "<cmd>BufferCloseBuffersRight<CR>", desc = "Close all right" },
-    { "<leader>bd", "<cmd>BufferClose<CR>", desc = "Close buffer" },
-    { "<leader>bh", "<cmd>BufferMovePrevious<CR>", desc = "Move buffer prev" },
-    { "<leader>bj", "<cmd>BufferLast<CR>", desc = "Goto last buffer" },
-    { "<leader>bk", "<cmd>BufferFirst<CR>", desc = "Goto First buffer" },
-    { "<leader>bl", "<cmd>BufferMoveNext<CR>", desc = "Move buffer next" },
-    { "<leader>bn", "<cmd>tabnew<CR>", desc = "New buffer" },
-    { "<leader>bod", "<cmd>BufferOrderByDirectory<CR>", desc = "by directory" },
-    { "<leader>bon", "<cmd>BufferOrderByBufferNumber<CR>", desc = "by buffer number" },
-    { "<leader>bow", "<cmd>BufferOrderByWindowNumber<CR>", desc = "by window number" },
-    { "<leader>bpp", "<cmd>BufferPin<CR>", desc = "Pin Buffer" },
-  })
+		{ "<leader>bb", "<cmd>Telescope buffers<CR>", desc = "List Buffer" },
+		{ "<leader>bq", "<cmd>BufDel<CR>", desc = "Close Buffer" },
+		{ "<leader>bn", "<cmd>tabnew<CR>", desc = "New buffer" },
+		{ "<leader>bp", "<cmd>e #<CR>", desc = "Buffer Previous" },
+	})
 
 	-- Telescope keybinds
 	wk.add({
@@ -321,7 +316,11 @@ M.config = function()
 		{ "<leader>fF", util.telescope("find_files"), desc = "find files (root dir)" },
 		{ "<leader>ff", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
 		{ "<leader>fG", util.telescope("live_grep", { grep_open_files = true }), desc = "grep open files" },
-		{ "<leader>fg", util.telescope("live_grep", { cwd = false, path_display = { 'shorten' } }), desc = "grep files (cwd)" },
+		{
+			"<leader>fg",
+			util.telescope("live_grep", { cwd = false, path_display = { "shorten" } }),
+			desc = "grep files (cwd)",
+		},
 		{ "<leader>fW", util.telescope("grep_string"), desc = "search word (root dir)" },
 		{ "<leader>fw", util.telescope("grep_string", { cwd = false }), desc = "search word (cwd)" },
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "list buffers" },
@@ -381,7 +380,8 @@ M.config = function()
 		{ "<leader>gap", ":Gitsigns preview_hunk<CR>", desc = "Preview changes" },
 		{ "<leader>gad", ":Gitsigns toggle_deleted<CR>", desc = "Show deleted" },
 		{ "<leader>gab", ":Gitsigns blame_line<CR>", desc = "Blame line" },
-		{ "<leader>gaB",
+		{
+			"<leader>gaB",
 			function()
 				local gitsigns = require("gitsigns")
 				gitsigns.blame_line({ full = true })
@@ -401,29 +401,39 @@ M.config = function()
 				lazygit:toggle()
 			end,
 			desc = "Show lazygit",
-		}
+		},
 	})
-
-
 
 	-- Leader key-maps
 	wk.add({
-    { "<leader>'", group = "Harpoon+Portal" },
-    { "<leader>'D", ':lua require("harpoon.ui").clear_all()<CR>', desc = "Clear list" },
-    { "<leader>'c", ':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>', desc = "Portal Changelist" },
-    { "<leader>'h", ':lua require("portal.builtin").harpoon.tunnel()<CR>', desc = "Portal Harpoon" },
-    { "<leader>'i", ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', desc = "Portal Forward" },
-    { "<leader>'j", ':lua require("harpoon.ui").nav_next()<CR>', desc = "Nav next mark" },
-    { "<leader>'k", ':lua require("harpoon.ui").nav_prev()<CR>', desc = "Nav prev mark" },
-    { "<leader>'l", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = "Quick menu" },
-    { "<leader>'m", ':lua require("harpoon.mark").add_file()<CR>', desc = "Add file" },
-    { "<leader>'n", ':lua require("harpoon.mark").rm_file()<CR>', desc = "Remove file" },
-    { "<leader>'o", ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', desc = "Portal Back" },
-    { "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
-    { "<leader><Home>", ":Alpha<cr>", desc = "Dashboard" },
-    { "<leader>H", ":sp<CR>", desc = "Horizontal Split" },
-    { "<leader>V", ":vs<CR>", desc = "Vertical Split" },
-    { "<leader>cc", ":let @+=expand('%')<CR>", desc = "Copy file path from PWD" },
+		{ "<leader>'", group = "Harpoon+Portal" },
+		{ "<leader>'D", ':lua require("harpoon.ui").clear_all()<CR>', desc = "Clear list" },
+		{
+			"<leader>'c",
+			':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>',
+			desc = "Portal Changelist",
+		},
+		{ "<leader>'h", ':lua require("portal.builtin").harpoon.tunnel()<CR>', desc = "Portal Harpoon" },
+		{
+			"<leader>'i",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>',
+			desc = "Portal Forward",
+		},
+		{ "<leader>'j", ':lua require("harpoon.ui").nav_next()<CR>', desc = "Nav next mark" },
+		{ "<leader>'k", ':lua require("harpoon.ui").nav_prev()<CR>', desc = "Nav prev mark" },
+		{ "<leader>'l", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = "Quick menu" },
+		{ "<leader>'m", ':lua require("harpoon.mark").add_file()<CR>', desc = "Add file" },
+		{ "<leader>'n", ':lua require("harpoon.mark").rm_file()<CR>', desc = "Remove file" },
+		{
+			"<leader>'o",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
+			desc = "Portal Back",
+		},
+		{ "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
+		{ "<leader><Home>", ":Alpha<cr>", desc = "Dashboard" },
+		{ "<leader>H", ":sp<CR>", desc = "Horizontal Split" },
+		{ "<leader>V", ":vs<CR>", desc = "Vertical Split" },
+		{ "<leader>cc", ":let @+=expand('%')<CR>", desc = "Copy file path from PWD" },
 		{
 			"<leader>ck",
 			function()
@@ -437,23 +447,43 @@ M.config = function()
 					vim.o.spell = true
 				end
 			end,
-			desc = "Toggle spell check"
+			desc = "Toggle spell check",
 		},
 
 		{ "<leader>e", group = "NeoTree" },
-    { "<leader>eb", ":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'left', toggle = true})<CR>", desc = "Buffers tree" },
-    { "<leader>ec", ":lua require('neo-tree.command').execute({action = 'close'})<CR>", desc = "Close all neo-tree" },
-    { "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
-    { "<leader>ee", ":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>", desc = "File tree" },
-    { "<leader>eg", ":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'bottom', toggle = true})<CR>", desc = "Git Status" },
-    { "<leader>et", ":lua require('toggleterm').toggle()<CR>", desc = "Terminal" },
-    { "<leader>ex", ":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>", desc = "LSP/Diag" },
+		{
+			"<leader>eb",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'left', toggle = true})<CR>",
+			desc = "Buffers tree",
+		},
+		{
+			"<leader>ec",
+			":lua require('neo-tree.command').execute({action = 'close'})<CR>",
+			desc = "Close all neo-tree",
+		},
+		{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
+		{
+			"<leader>ee",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>",
+			desc = "File tree",
+		},
+		{
+			"<leader>eg",
+			":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'bottom', toggle = true})<CR>",
+			desc = "Git Status",
+		},
+		{ "<leader>et", ":lua require('toggleterm').toggle()<CR>", desc = "Terminal" },
+		{
+			"<leader>ex",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>",
+			desc = "LSP/Diag",
+		},
 
 		{ "<leader>g", group = "Git" },
-    { "<leader>gb", ":Telescope git_branches<CR>", desc = "git branches" },
-    { "<leader>gc", ":Telescope git_commits<CR>", desc = "git commits" },
-    { "<leader>gf", ":Telescope git_files<CR>", desc = "git files" },
-    {
+		{ "<leader>gb", ":Telescope git_branches<CR>", desc = "git branches" },
+		{ "<leader>gc", ":Telescope git_commits<CR>", desc = "git commits" },
+		{ "<leader>gf", ":Telescope git_files<CR>", desc = "git files" },
+		{
 			"<leader>gg",
 			function()
 				local term = require("toggleterm.terminal").Terminal
@@ -464,11 +494,11 @@ M.config = function()
 					on_open = function(term)
 						vim.cmd("startinsert!")
 						vim.api.nvim_buf_set_keymap(
-						term.bufnr,
-						"n",
-						"q",
-						"<cmd>close<CR>",
-						{ noremap = true, silent = true }
+							term.bufnr,
+							"n",
+							"q",
+							"<cmd>close<CR>",
+							{ noremap = true, silent = true }
 						)
 					end,
 					-- function to run on closing the terminal
@@ -479,60 +509,83 @@ M.config = function()
 
 				lazygit:toggle()
 			end,
-			desc = "Lazy git"
+			desc = "Lazy git",
 		},
-    { "<leader>gs", ":Telescope git_status<CR>", desc = "git status" },
+		{ "<leader>gs", ":Telescope git_status<CR>", desc = "git status" },
 
-    { "<leader>h", group = "Git signs" },
-    { "<leader>hD", desc = "Diff this -" },
-    { "<leader>hR", desc = "Reset buffer" },
-    { "<leader>hS", desc = "Stage buffer" },
-    { "<leader>hd", desc = "Diff this" },
-    { "<leader>hp", desc = "Preview hunk" },
-    { "<leader>hr", desc = "Reset hunk" },
-    { "<leader>hs", desc = "Stage hunk" },
-    { "<leader>hu", desc = "Undo stage hunk" },
+		{ "<leader>h", group = "Git signs" },
+		{ "<leader>hD", desc = "Diff this -" },
+		{ "<leader>hR", desc = "Reset buffer" },
+		{ "<leader>hS", desc = "Stage buffer" },
+		{ "<leader>hd", desc = "Diff this" },
+		{ "<leader>hp", desc = "Preview hunk" },
+		{ "<leader>hr", desc = "Reset hunk" },
+		{ "<leader>hs", desc = "Stage hunk" },
+		{ "<leader>hu", desc = "Undo stage hunk" },
 
-    { "<leader>i", ':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>', desc = "Portal Forward" },
-    { "<leader>nd", ":lua require('noice').cmd('dismiss')<cr>", desc = "Dismiss notifications" },
-    { "<leader>nh", ":lua require('noice').cmd('telescope')<cr>", desc = "History notifications" },
-    { "<leader>nl", ":lua require('noice').cmd('last')<cr>", desc = "Last notifications" },
-    { "<leader>o", ':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>', desc = "Portal Back" },
-    { "<leader>q", ":BufferClose<CR>", desc = "Close buffer" },
+		{
+			"<leader>i",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>',
+			desc = "Portal Forward",
+		},
+		{ "<leader>nd", ":lua require('noice').cmd('dismiss')<cr>", desc = "Dismiss notifications" },
+		{ "<leader>nh", ":lua require('noice').cmd('telescope')<cr>", desc = "History notifications" },
+		{ "<leader>nl", ":lua require('noice').cmd('last')<cr>", desc = "Last notifications" },
+		{
+			"<leader>o",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
+			desc = "Portal Back",
+		},
+		{
+			"<leader>q",
+			function()
+				extra.close_win_or_buffer()
+			end,
+			desc = "Close buffer",
+		},
+		{
+			"<leader>Q",
+			function()
+				extra.close_win_or_buffer(true)
+			end,
+			desc = "Force close buffer",
+		},
 
-    { "<leader>sh", ":lua require'focus'.split_command('h')<CR>", desc = "Focus Left" },
-    { "<leader>si", ":setlocal foldmethod=indent<CR>", desc = "Fold Indent/Whitespace" },
-    { "<leader>sj", ":lua require'focus'.split_command('j')<CR>", desc = "Focus Down" },
-    { "<leader>sk", ":lua require'focus'.split_command('k')<CR>", desc = "Focus Up" },
-    { "<leader>sl", ":lua require'focus'.split_command('l')<CR>", desc = "Focus Right" },
-    { "<leader>sp", ":lua require('spectre').open()<cr>", desc = "Spectre open" },
-    { "<leader>sr", ":lua require('auto-session').RestoreSession()<cr>", desc = "Restore Session" },
-    { "<leader>ss", ":setlocal foldmethod=expr<CR>", desc = "Fold Expression/Syntax" },
-    { "<leader>sv", ":lua require('auto-session').SaveSession()<cr>", desc = "Save Session" },
-    { "<leader>sw", ":lua require('spectre').open_visual()<cr>", desc = "Spectre open visual" },
+		{ "<leader>sh", ":lua require'focus'.split_command('h')<CR>", desc = "Focus Left" },
+		{ "<leader>si", ":setlocal foldmethod=indent<CR>", desc = "Fold Indent/Whitespace" },
+		{ "<leader>sj", ":lua require'focus'.split_command('j')<CR>", desc = "Focus Down" },
+		{ "<leader>sk", ":lua require'focus'.split_command('k')<CR>", desc = "Focus Up" },
+		{ "<leader>sl", ":lua require'focus'.split_command('l')<CR>", desc = "Focus Right" },
+		{ "<leader>sp", ":lua require('spectre').open()<cr>", desc = "Spectre open" },
+		{ "<leader>sr", ":lua require('auto-session').RestoreSession()<cr>", desc = "Restore Session" },
+		{ "<leader>ss", ":setlocal foldmethod=expr<CR>", desc = "Fold Expression/Syntax" },
+		{ "<leader>sv", ":lua require('auto-session').SaveSession()<cr>", desc = "Save Session" },
+		{ "<leader>sw", ":lua require('spectre').open_visual()<cr>", desc = "Spectre open visual" },
 
-    { "<leader>td", desc = "Toggle deleted (git signs)" },
-    { "<leader>u", ":UndotreeToggle<CR>", desc = "undo tree" },
-    { "<leader>pp", '"0p', desc = "Paste from yank register", mode = { "n", "x" } },
-  })
-
-	wk.add({
-		{"<leader>m", group = "Code Companion"},
-		{"<leader>mc", "<cmd>CodeCompanionToggle<cr>", desc = "Toggle Code Companion"},
-		{"<leader>ma", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion Actions prompt"},
+		{ "<leader>td", desc = "Toggle deleted (git signs)" },
+		{ "<leader>u", ":UndotreeToggle<CR>", desc = "undo tree" },
+		{ "<leader>pp", '"0p', desc = "Paste from yank register", mode = { "n", "x" } },
 	})
 
 	wk.add({
-		{"<leader>p", group = "Precognition Virtual Text"},
-		{"<leader>pt",
-		function ()
-			if require('precognition').toggle() then
-				vim.notify("Precognition helper on")
-			else
-				vim.notify("Precognition helper off")
-			end
-		end,
-		desc = "Precognition Toggle"},
+		{ "<leader>m", group = "Code Companion" },
+		{ "<leader>mc", "<cmd>CodeCompanionToggle<cr>", desc = "Toggle Code Companion" },
+		{ "<leader>ma", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion Actions prompt" },
+	})
+
+	wk.add({
+		{ "<leader>p", group = "Precognition Virtual Text" },
+		{
+			"<leader>pt",
+			function()
+				if require("precognition").toggle() then
+					vim.notify("Precognition helper on")
+				else
+					vim.notify("Precognition helper off")
+				end
+			end,
+			desc = "Precognition Toggle",
+		},
 	})
 end
 

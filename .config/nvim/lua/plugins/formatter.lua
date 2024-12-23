@@ -12,7 +12,7 @@ return {
 				less = { { "prettierd", "prettier" } },
 				html = { { "prettierd", "prettier" } },
 				markdown = { { "prettierd", "prettier" } },
-				javascript = { { "eslint_d", "eslint" } }, --[[  { "prettierd", "prettier" },  }, ]]
+				javascript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
 				typescript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
 				typescriptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
 				go = { "gofumpt" },
@@ -25,10 +25,10 @@ return {
 				zsh = { "shfmt" },
 				sql = { "sql_formatter" },
 			},
-			--[[ format_on_save = {
+			format_on_save = {
 				timeout_ms = 500,
 				lsp_fallback = true,
-			}, ]]
+			},
 		},
 	},
 	{
@@ -41,6 +41,7 @@ return {
 		event = "BufReadPre",
 		dependencies = {
 			"jay-babu/mason-null-ls.nvim",
+			"nvimtools/none-ls-extras.nvim",
 		},
 		config = function()
 			local null_ls = require("null-ls")
@@ -79,7 +80,7 @@ return {
 					-- Linters
 					null_ls.builtins.diagnostics.alex,
 					-- null_ls.builtins.diagnostics.cspell,
-					-- null_ls.builtins.diagnostics.eslint_d,
+					require("none-ls.diagnostics.eslint_d"),
 					null_ls.builtins.diagnostics.golangci_lint,
 					null_ls.builtins.diagnostics.tidy,
 					null_ls.builtins.diagnostics.pmd.with({
