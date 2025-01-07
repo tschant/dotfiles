@@ -217,7 +217,6 @@ end
 function utils.close_win_or_buffer(force)
 	local win_amount = utils.get_win_count()
 	local bd = require("bufdel")
-	print(win_amount)
 	if win_amount == 1 then
 		bd.delete_buffer_expr(nil, force)
 	else

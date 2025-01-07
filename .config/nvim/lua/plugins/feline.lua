@@ -1,12 +1,13 @@
 local M = {
 	"freddiehaddad/feline.nvim",
-	event = "BufReadPre"
+	event = "BufReadPre",
 }
 
 M.config = function()
 	local colors = require("utils.colors")
+	local extra = require("utils.extra")
 	local icons = require("utils.icons")
-	local lsp = require "feline.providers.lsp"
+	local lsp = require("feline.providers.lsp")
 	local lsp_severity = vim.diagnostic.severity
 	local config = {
 		-- hide, show on specific filetypes
@@ -135,7 +136,7 @@ M.config = function()
 		enabled = shortline or function(winid)
 			return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
 		end,
-		hl = function ()
+		hl = function()
 			return {
 				bg = mode_colors[vim.fn.mode()][2],
 				fg = mode_colors[vim.fn.mode()][2],
@@ -143,12 +144,12 @@ M.config = function()
 		end,
 		right_sep = {
 			str = statusline_style.right,
-			hl = function ()
+			hl = function()
 				return {
 					bg = colors.bg3,
-					fg = mode_colors[vim.fn.mode()][2]
+					fg = mode_colors[vim.fn.mode()][2],
 				}
-			end
+			end,
 		},
 	}
 
@@ -171,20 +172,25 @@ M.config = function()
 			str = statusline_style.right,
 			hl = {
 				fg = colors.bg3,
-				bg = colors.bg2
-			}
+				bg = colors.bg2,
+			},
 		},
 	}
 
 	components.active[1][5] = {
 		provider = function()
 			-- local filename = vim.fn.expand "%:~:."
-			local filename = vim.fn.expand "%:t"
-			local extension = vim.fn.expand "%:e"
+			local filename = vim.fn.expand("%:t")
+			local extension = vim.fn.expand("%:e")
+			local is_changed = vim.fn.getbufinfo("%")[1].changed
 			local icon = require("nvim-web-devicons").get_icon(filename, extension)
 			if icon == nil then
 				icon = " "
 				return icon
+			end
+			if is_changed == 1 then
+				print(is_changed)
+				return " " .. icon .. " " .. filename .. "  "
 			end
 			return " " .. icon .. " " .. filename .. " "
 		end,
@@ -199,8 +205,8 @@ M.config = function()
 			str = statusline_style.right,
 			hl = {
 				fg = colors.bg2,
-				bg = colors.bg
-			}
+				bg = colors.bg,
+			},
 		},
 	}
 
@@ -235,10 +241,10 @@ M.config = function()
 	components.active[1][9] = {
 		provider = "diagnostic_errors",
 		enabled = function()
-	return lsp.diagnostics_exist(lsp_severity.ERROR)
-end,
+			return lsp.diagnostics_exist(lsp_severity.ERROR)
+		end,
 
-hl = { fg = colors.red },
+		hl = { fg = colors.red },
 		icon = " " .. icons.error .. " ",
 	}
 
@@ -307,7 +313,7 @@ hl = { fg = colors.red },
 		end,
 		hl = {
 			fg = colors.green,
-			bg = colors.bg
+			bg = colors.bg,
 		},
 	}
 
@@ -325,14 +331,14 @@ hl = { fg = colors.red },
 		end,
 		hl = {
 			fg = colors.white,
-			bg = colors.bg2
+			bg = colors.bg2,
 		},
 		left_sep = {
 			str = statusline_style.left,
 			hl = {
 				fg = colors.bg2,
-				bg = colors.bg
-			}
+				bg = colors.bg,
+			},
 		},
 	}
 
@@ -350,8 +356,8 @@ hl = { fg = colors.red },
 			str = statusline_style.left,
 			hl = {
 				fg = colors.bg3,
-				bg = colors.bg2
-			}
+				bg = colors.bg2,
+			},
 		},
 	}
 
@@ -368,8 +374,8 @@ hl = { fg = colors.red },
 			str = statusline_style.left,
 			hl = {
 				fg = colors.lightblue,
-				bg = colors.bg3
-			}
+				bg = colors.bg3,
+			},
 		},
 	}
 
@@ -400,13 +406,13 @@ hl = { fg = colors.red },
 		},
 	}
 
-	require("feline").setup {
+	require("feline").setup({
 		colors = {
 			bg = colors.bg,
 			fg = colors.fg,
 		},
 		components = components,
-	}
+	})
 end
 
 return M

@@ -1,8 +1,8 @@
 return {
 	"Isrothy/neominimap.nvim",
 	version = "v3.*.*",
-	lazy = true,
-	event = 'BufReadPre',
+	-- lazy = true,
+	-- event = 'BufReadPre',
 	keys = {
 		-- Global Minimap Controls
 		{ "<leader>nm", "<cmd>lua require('neominimap').toggle()<cr>", desc = "Toggle global minimap" },
@@ -13,7 +13,7 @@ return {
 	},
 	init = function()
 		vim.g.neominimap = {
-			auto_enable = true,
+			auto_enable = false,
 			buf_filter = function(bufnr)
 				local line_cnt = vim.api.nvim_buf_line_count(bufnr)
 				return line_cnt < 4096 and not vim.b[bufnr].large_buf
@@ -36,7 +36,7 @@ return {
 				"help",
 				"alpha",
 			},
-			winopt = function() 
+			winopt = function()
 				return {
 					winhighlight = "Normal:NeominimapBackground,FloatBorder:NeominimapBorder,CursorLine:NeominimapCursorLine",
 					wrap = false,
@@ -55,7 +55,7 @@ return {
 				}
 			end,
 		}
-	end
+	end,
 }
 
 --[[ return {
@@ -119,4 +119,3 @@ return {
 		},
 	},
 } ]]
-
