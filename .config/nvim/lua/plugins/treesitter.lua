@@ -12,7 +12,8 @@ return {
 		build = ":TSUpdate",
 		opts = {
 			auto_install = true,
-			ensure_installed = {
+			ensure_installed = "maintained",
+			--[[ {
 				"bash",
 				"html",
 				"css",
@@ -38,7 +39,8 @@ return {
 				"vim",
 				"yaml",
 				"xml",
-			}, -- "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+			}, ]]
+			-- , -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 			ignore_install = {},
 			sync_install = true,
 			highlight = {

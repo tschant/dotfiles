@@ -204,9 +204,9 @@ function utils.get_win_count()
 			and filetype ~= "neominimap"
 			and filetype ~= "noice"
 			and filetype ~= "notify"
+			and filetype ~= "neo-tree"
 			-- Any others to ignore?
 		then
-			print(utils.dump_table(cfg), filetype)
 			wc = wc + 1
 		end
 	end

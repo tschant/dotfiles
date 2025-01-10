@@ -189,7 +189,6 @@ M.config = function()
 				return icon
 			end
 			if is_changed == 1 then
-				print(is_changed)
 				return " " .. icon .. " " .. filename .. "  "
 			end
 			return " " .. icon .. " " .. filename .. " "

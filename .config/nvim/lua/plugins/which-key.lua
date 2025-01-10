@@ -318,7 +318,7 @@ M.config = function()
 		{ "<leader>fG", util.telescope("live_grep", { grep_open_files = true }), desc = "grep open files" },
 		{
 			"<leader>fg",
-			util.telescope("live_grep", { cwd = false, path_display = { "shorten" } }),
+			util.telescope("live_grep", { cwd = false, path_display = { "smart" } }),
 			desc = "grep files (cwd)",
 		},
 		{ "<leader>fW", util.telescope("grep_string"), desc = "search word (root dir)" },
