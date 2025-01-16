@@ -3,6 +3,7 @@ Opts = {
 	jump_last_pos = true,
 	highlight_yank = true,
 	relativenumber = true,
+	cursor_hold = true,
 	scrolloff = 10,
 	wrap = false,
 	cursorline = true,

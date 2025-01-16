@@ -1,3 +1,4 @@
+-- Opts is defined in `lua/config/defaults.lua`
 local u = require("utils.core")
 local extra = require("utils.extra")
 
@@ -14,14 +15,9 @@ local autocmds = {
 			"lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })",
 		},
 	},
-	-- cursor = {
-	-- 	{"CursorHold", "*", "lua vim.diagnostic.open_float(0, {scope=line, focusable = false})"},
-	-- 	{"CursorHoldI", "*", "silent! lua vim.lsp.buf.signature_help({focusable = false})"}
-	-- },
-	["packer_user_config"] = {
-		{ "BufWritePost", "plugins.lua", "source <afile> | PackerSync" },
-	},
 }
+
+local cursor_hold = { { "CursorHold", "*", "lua vim.diagnostic.open_float(0, {scope=line, focusable = false})" } }
 
 local hl_yank = { { "TextYankPost", "*", 'lua require"vim.highlight".on_yank()' } }
 
@@ -44,7 +40,10 @@ local trim_whitespaces = {
 	{ "BufWritePre", "*", [[%s/\n\+\%$//e]] },
 }
 
--- insert tables if true or nil
+if Opts.cursor_hold == true then
+	autocmds["cursor_hold"] = cursor_hold
+end
+
 if Opts.jump_last_pos == true or Opts.jump_last_pos == nil then
 	autocmds["jump_last"] = jump_last
 end
@@ -60,15 +59,16 @@ if
 then
 	if extra.is_array(Formatting.format_on_save) then
 		-- Format on save only for certain files defined in `lua/config/defaults.lua`
-		autocmds["format"] = {}
+		local newFormat = extra.table_shallow_copy(format[1])
+		newFormat[2] = {}
 		for _, v in ipairs(Formatting.format_on_save) do
-			local newFormat = extra.table_shallow_copy(format[1])
-			newFormat[2] = newFormat[2] .. "." .. v
-			table.insert(autocmds["format"], newFormat)
+			table.insert(newFormat[2], "*." .. v)
 		end
-	else
-		autocmds["format"] = format
+
+		format = { newFormat }
 	end
+
+	autocmds["format"] = format
 end
 
 if Formatting.trim_trailing_space == true or Formatting.trim_trailing_space == nil then
