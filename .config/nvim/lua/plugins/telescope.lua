@@ -7,7 +7,6 @@ function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
 	local picker = action_state.get_current_picker(prompt_bufnr)
 	local selected_entry = action_state.get_selected_entry()
 	local num_selections = #picker:get_multi_selection()
-	print(prompt_bufnr, num_selections, type(selected_entry.value))
 	if not num_selections or num_selections <= 1 then
 		actions.add_selection(prompt_bufnr)
 		if type(selected_entry.value) == "table" then -- Code actions the value is a table instead of a string

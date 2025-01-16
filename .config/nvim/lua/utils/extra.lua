@@ -226,6 +226,33 @@ function utils.close_win_or_buffer(force)
 	end
 end
 
+function utils.is_array(table)
+	if type(table) ~= "table" then
+		return false
+	end
+
+	-- objects always return empty size
+	if #table > 0 then
+		return true
+	end
+
+	-- only object can have empty length with elements inside
+	for k, v in pairs(table) do
+		return false
+	end
+
+	-- if no elements it can be array and not at same time
+	return true
+end
+
+function utils.table_shallow_copy(t)
+	local t2 = {}
+	for k, v in pairs(t) do
+		t2[k] = v
+	end
+	return t2
+end
+
 function utils.dump_table(table)
 	if type(table) == "table" then
 		local s = "{ "

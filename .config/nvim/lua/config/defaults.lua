@@ -1,5 +1,5 @@
 Opts = {
-	color_mode = 'dark',
+	color_mode = "dark",
 	jump_last_pos = true,
 	highlight_yank = true,
 	relativenumber = true,
@@ -15,7 +15,8 @@ Opts = {
 
 Formatting = {
 	-- if format_on_save is enable it will always trim trailing white spaces
-	format_on_save = false,
+	format_on_save = { "js", "ts", "tsx", "jsx", "py", "lua" }, -- array of file suffixes
+	-- format_on_save = true, -- ALL files
 	trim_trailing_space = false,
-	indent_size = 2
+	indent_size = 2,
 }

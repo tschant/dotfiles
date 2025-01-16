@@ -1,4 +1,4 @@
-local utils = require('utils.core')
+local utils = require("utils.core")
 return {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPre",
@@ -61,7 +61,7 @@ return {
 			clangd = {},
 			dockerls = {},
 			eslint = {
-				cmd = {"eslint_d"},
+				cmd = { "eslint_d" },
 			},
 			gopls = {
 				root_dir = util.root_pattern("go.work", "go.mod", ".git"),
@@ -156,7 +156,7 @@ return {
 							includeInlayEnumMemberValueHints = true,
 							includeInlayFunctionLikeReturnTypeHints = true,
 							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = 'all',
+							includeInlayParameterNameHints = "all",
 							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
 							includeInlayPropertyDeclarationTypeHints = true,
 							includeInlayVariableTypeHints = true,
@@ -167,7 +167,7 @@ return {
 							includeInlayEnumMemberValueHints = true,
 							includeInlayFunctionLikeReturnTypeHints = true,
 							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = 'all',
+							includeInlayParameterNameHints = "all",
 							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
 							includeInlayPropertyDeclarationTypeHints = true,
 							includeInlayVariableTypeHints = true,
@@ -200,11 +200,6 @@ return {
 			signs = true,
 		})
 
-		--[[ vim.diagnostic.disable(function (bufnr)
-			print(bufnr)
-			return utils.disable_filesize_limit(bufnr)
-		end) ]]
-
 		local icons = require("utils.icons")
 		vim.fn.sign_define("DiagnosticSignError", {
 			texthl = "DiagnosticSignError",
@@ -229,14 +224,14 @@ return {
 
 		-- suppress error messages from lang servers
 		-- vim.notify = function(msg, log_level, _)
-			-- 	if msg:match("exit code") then
-			-- 		return
-			-- 	end
-			-- 	if log_level == vim.log.levels.ERROR then
-			-- 		vim.api.nvim_err_writeln(msg)
-			-- 	else
-			-- 		vim.api.nvim_echo({ { msg } }, true, {})
-			-- 	end
-			-- end
-		end
+		-- 	if msg:match("exit code") then
+		-- 		return
+		-- 	end
+		-- 	if log_level == vim.log.levels.ERROR then
+		-- 		vim.api.nvim_err_writeln(msg)
+		-- 	else
+		-- 		vim.api.nvim_echo({ { msg } }, true, {})
+		-- 	end
+		-- end
+	end,
 }

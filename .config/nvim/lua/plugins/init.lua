@@ -3,37 +3,42 @@ return {
 	"beauwilliams/focus.nvim",
 
 	-- Markdown
-	{"iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md"},
+	{ "iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md" },
 
 	-- Terraform
-	{'hashivim/vim-terraform', event = "BufReadPre *.tf"},
-	{'juliosueiras/vim-terraform-completion', event = "BufRead *.tf"},
+	{ "hashivim/vim-terraform", event = "BufReadPre *.tf" },
+	{ "juliosueiras/vim-terraform-completion", event = "BufRead *.tf" },
 
 	-- General pluginscomment
 	{
 		"cbochs/portal.nvim",
 		dependencies = {
-			"ThePrimeagen/harpoon"
-		}
+			"ThePrimeagen/harpoon",
+		},
+	},
+	{
+		"wurli/visimatch.nvim",
+		event = "BufRead",
+		opts = {},
 	},
 	{
 		"NMAC427/guess-indent.nvim",
 		event = "BufRead",
 		config = function()
-			require('guess-indent').setup {
+			require("guess-indent").setup({
 				auto_cmd = true,
-			}
+			})
 		end,
 	},
 	{
 		"numToStr/Comment.nvim",
 		event = "BufReadPre",
-		config = true
+		config = true,
 	},
 	{
 		"karb94/neoscroll.nvim",
 		event = "BufReadPre",
-		config = true
+		config = true,
 	},
 	{
 		"kylechui/nvim-surround",
@@ -41,20 +46,20 @@ return {
 		config = function()
 			require("nvim-surround").setup({
 				keymaps = {
-					insert          = "<C-g>s",
-					insert_line     = "<C-g>S",
-					normal          = "<leader>ys",
-					normal_cur      = "<leader>yss",
-					normal_line     = "<leader>yS",
+					insert = "<C-g>s",
+					insert_line = "<C-g>S",
+					normal = "<leader>ys",
+					normal_cur = "<leader>yss",
+					normal_line = "<leader>yS",
 					normal_cur_line = "<leader>ySS",
-					visual          = "<leader>S",
-					visual_line     = "<leader>gS",
-					delete          = "<leader>ds",
-					change          = "<leader>cs",
-					change_line     = "<leader>cS",
+					visual = "<leader>S",
+					visual_line = "<leader>gS",
+					delete = "<leader>ds",
+					change = "<leader>cs",
+					change_line = "<leader>cS",
 				},
 			})
-		end
+		end,
 	},
 	-- {"ggandor/lightspeed.nvim", event = "BufReadPre"},
 	{
@@ -88,8 +93,8 @@ return {
 		"anuvyklack/fold-preview.nvim",
 		branch = "main",
 		event = "BufReadPre",
-		dependencies = 'anuvyklack/nvim-keymap-amend',
-		config = true
+		dependencies = "anuvyklack/nvim-keymap-amend",
+		config = true,
 	},
 	{
 		"kevinhwang91/nvim-hlslens",
@@ -98,7 +103,7 @@ return {
 		config = function()
 			require("hlslens").setup({
 				build_position_cb = function(plist, bufnr, changedtick, pattern)
-					require('scrollbar').search_handler.show(plist.start_pos)
+					require("scrollbar").search_handler.show(plist.start_pos)
 				end,
 				override_lens = function(render, plist, nearest, idx, r_idx)
 					local sfw = vim.v.searchforward == 1
@@ -132,42 +137,39 @@ return {
 	},
 	{
 		"ojroques/nvim-bufdel",
-		cmd = {"BufDel"},
+		cmd = { "BufDel" },
 		event = "BufAdd",
 		opts = {
-			next = 'cycle',  -- or 'alternate'
+			next = "cycle", -- or 'alternate'
 			quit = true,
-		}
+		},
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
 		event = "BufReadPre",
 		config = function()
-			require "colorizer".setup(
-				{"*"},
-				{
-					RGB = true, -- #RGB hex codes
-					RRGGBB = true, -- #RRGGBB hex codes
-					RRGGBBAA = true, -- #RRGGBBAA hex codes
-					rgb_fn = true, -- CSS rgb() and rgba() functions
-					hsl_fn = true, -- CSS hsl() and hsla() functions
-					css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-					css_fn = true -- Enable all CSS *functions*: rgb_fn, hsl_fn
-				}
-			)
-		end
+			require("colorizer").setup({ "*" }, {
+				RGB = true, -- #RGB hex codes
+				RRGGBB = true, -- #RRGGBB hex codes
+				RRGGBBAA = true, -- #RRGGBBAA hex codes
+				rgb_fn = true, -- CSS rgb() and rgba() functions
+				hsl_fn = true, -- CSS hsl() and hsla() functions
+				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+			})
+		end,
 	},
 	{
 		"mrjones2014/smart-splits.nvim",
 		config = true,
 	},
 	{
-		'akinsho/toggleterm.nvim',
+		"akinsho/toggleterm.nvim",
 		version = "*",
-		config = true
+		config = true,
 	},
-	{ 'nvim-pack/nvim-spectre' },
-	
+	{ "nvim-pack/nvim-spectre" },
+
 	-- Measure startuptime
 	{
 		"dstein64/vim-startuptime",
