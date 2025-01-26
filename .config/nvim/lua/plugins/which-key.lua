@@ -453,7 +453,7 @@ M.config = function()
 		{ "<leader>e", group = "NeoTree" },
 		{
 			"<leader>eb",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'left', toggle = true})<CR>",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
 			desc = "Buffers tree",
 		},
 		{
@@ -464,7 +464,7 @@ M.config = function()
 		{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
 		{
 			"<leader>ee",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'float', toggle = true})<CR>",
 			desc = "File tree",
 		},
 		{
