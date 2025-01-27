@@ -114,18 +114,15 @@ M.config = function()
 					["<C-k>"] = actions.move_selection_previous,
 					["<C-v>"] = telescope_custom_actions.multi_selection_open_vsplit,
 					["<C-h>"] = telescope_custom_actions.multi_selection_open_split,
+					["<C-e>"] = actions.preview_scrolling_down,
+					["<C-u>"] = actions.preview_scrolling_up,
+					["<C-d>"] = actions.delete_buffer,
+					["<C-n>"] = { "<esc>", type = "command" }, --actions.close,
+					["<esc>"] = actions.close,
+					["<C-?>"] = actions.which_key,
 					-- To disable a keymap, put [map] = false
 					-- So, to not map "<C-n>", just put
 					-- ["<c-x>"] = false,
-					["<esc>"] = actions.close,
-					-- Otherwise, just set the mapping to the function that you want it to be.
-					-- ["<C-i>"] = actions.select_horizontal,
-
-					-- Add up multiple actions
-					-- ["<CR>"] = actions.select_default + actions.center
-
-					-- You can perform as many actions in a row as you like
-					-- ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
 				},
 				n = {
 					["<CR>"] = telescope_custom_actions.multi_selection_open,
@@ -134,7 +131,15 @@ M.config = function()
 					["<S-TAB>"] = actions.toggle_selection + actions.move_selection_previous,
 					["<C-j>"] = actions.move_selection_next,
 					["<C-k>"] = actions.move_selection_previous,
-					-- ["<C-i>"] = my_cool_custom_action,
+					["<esc>"] = actions.close,
+					["<C-e>"] = actions.preview_scrolling_down,
+					["<C-u>"] = actions.preview_scrolling_up,
+					["<C-d>"] = actions.delete_buffer,
+					["d"] = actions.delete_buffer,
+					["j"] = actions.preview_scrolling_down,
+					["k"] = actions.preview_scrolling_up,
+					-- ["h"] = actions.preview_scrolling_left,
+					-- ["l"] = actions.preview_scrolling_right,
 				},
 			},
 		},

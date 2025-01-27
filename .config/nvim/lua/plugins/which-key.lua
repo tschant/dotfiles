@@ -304,7 +304,12 @@ M.config = function()
 	-- Buffer
 	wk.add({
 		{ "<leader>b", group = "Buffers" },
-		{ "<leader>bb", "<cmd>Telescope buffers<CR>", desc = "List Buffer" },
+		{
+			"<leader>bb",
+			-- "<cmd>Telescope buffers<CR>",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
+			desc = "List Buffer",
+		},
 		{ "<leader>bq", "<cmd>BufDel<CR>", desc = "Close Buffer" },
 		{ "<leader>bn", "<cmd>tabnew<CR>", desc = "New buffer" },
 		{ "<leader>bp", "<cmd>e #<CR>", desc = "Buffer Previous" },
@@ -453,7 +458,7 @@ M.config = function()
 		{ "<leader>e", group = "NeoTree" },
 		{
 			"<leader>eb",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'left', toggle = true})<CR>",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
 			desc = "Buffers tree",
 		},
 		{
@@ -464,7 +469,7 @@ M.config = function()
 		{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
 		{
 			"<leader>ee",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'left', toggle = true})<CR>",
+			":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'float', toggle = true})<CR>",
 			desc = "File tree",
 		},
 		{
