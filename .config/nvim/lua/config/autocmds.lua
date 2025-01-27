@@ -11,7 +11,7 @@ local autocmds = {
 		{ "FileType", "toggleterm", "setlocal nonumber norelativenumber" },
 		{
 			"FileType",
-			"sql,mysql,plsql",
+			{ "sql", "mysql", "plsql" },
 			"lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })",
 		},
 	},
