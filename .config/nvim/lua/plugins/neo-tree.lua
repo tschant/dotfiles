@@ -1,18 +1,18 @@
-vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint", {text = "󰌵", texthl = "DiagnosticSignHint"})
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 return {
 	{
 		"mrbjarksen/neo-tree-diagnostics.nvim",
-		dependencies = {"nvim-neo-tree/neo-tree.nvim"},
+		dependencies = { "nvim-neo-tree/neo-tree.nvim" },
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-			{"MunifTanjim/nui.nvim", branch = "main"},
+			{ "MunifTanjim/nui.nvim", branch = "main" },
 		},
 		opts = {
 			sources = {
@@ -27,7 +27,7 @@ return {
 			sort_case_insensitive = false, -- used when sorting files and directories in the tree
 			default_component_configs = {
 				container = {
-					enable_character_fade = true
+					enable_character_fade = true,
 				},
 				indent = {
 					indent_size = 2,
@@ -46,7 +46,7 @@ return {
 					folder_open = " ",
 					folder_empty = "ﰊ",
 					default = "*",
-					highlight = "NeoTreeFileIcon"
+					highlight = "NeoTreeFileIcon",
 				},
 				modified = {
 					symbol = "[+]",
@@ -60,17 +60,17 @@ return {
 				git_status = {
 					symbols = {
 						-- Change type
-						added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-						modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-						deleted   = "✖",-- this can only be used in the git_status source
-						renamed   = "",-- this can only be used in the git_status source
+						added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+						modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+						deleted = "✖", -- this can only be used in the git_status source
+						renamed = "", -- this can only be used in the git_status source
 						-- Status type
 						untracked = "",
-						ignored   = "",
-						unstaged  = "",
-						staged    = "",
-						conflict  = "",
-					}
+						ignored = "",
+						unstaged = "",
+						staged = "",
+						conflict = "",
+					},
 				},
 			},
 			window = {
@@ -94,14 +94,14 @@ return {
 					["C"] = "close_node",
 					["z"] = "close_all_nodes",
 					--["Z"] = "expand_all_nodes",
-					["a"] = { 
+					["a"] = {
 						"add",
 						-- "none", "relative", "absolute"
-						config = { show_path = "relative" }
+						config = { show_path = "relative" },
 					},
 					["A"] = {
 						"add_directory",
-						config = { show_path = "relative" }
+						config = { show_path = "relative" },
 					},
 					["d"] = "delete",
 					["r"] = "rename",
@@ -110,18 +110,24 @@ return {
 					["p"] = "paste_from_clipboard",
 					["c"] = {
 						"copy",
-						config = { show_path = "relative" }
+						config = { show_path = "relative" },
 					},
 					["m"] = {
 						"move",
-						config = { show_path = "relative" }
+						config = { show_path = "relative" },
 					},
 					["q"] = "close_window",
 					["R"] = "refresh",
 					["?"] = "show_help",
 					["<"] = "prev_source",
 					[">"] = "next_source",
-				}
+					["/"] = {
+						"fuzzy_finder",
+						config = {
+							title = "Filter", -- An empty string hides the title
+						},
+					},
+				},
 			},
 			nesting_rules = {},
 			filesystem = {
@@ -130,12 +136,9 @@ return {
 					hide_dotfiles = false,
 					hide_gitignored = false,
 					hide_hidden = false,
-					hide_by_name = {
-					},
-					hide_by_pattern = {
-					},
-					never_show = {
-					},
+					hide_by_name = {},
+					hide_by_pattern = {},
+					never_show = {},
 				},
 				follow_current_file = {
 					enabled = false,
@@ -153,8 +156,8 @@ return {
 						["<c-x>"] = "clear_filter",
 						["[g"] = "prev_git_modified",
 						["]g"] = "next_git_modified",
-					}
-				}
+					},
+				},
 			},
 			buffers = {
 				follow_current_file = {
@@ -167,22 +170,22 @@ return {
 						["bd"] = "buffer_delete",
 						["<bs>"] = "navigate_up",
 						["."] = "set_root",
-					}
+					},
 				},
 			},
 			git_status = {
 				window = {
 					position = "bottom",
 					mappings = {
-						["A"]  = "git_add_all",
+						["A"] = "git_add_all",
 						["gu"] = "git_unstage_file",
 						["ga"] = "git_add_file",
 						["gr"] = "git_revert_file",
 						["gc"] = "git_commit",
 						-- ["gp"] = "git_push",
 						-- ["gg"] = "git_commit_and_push",
-					}
-				}
+					},
+				},
 			},
 			diagnostics = {
 				bind_to_cwd = true,
