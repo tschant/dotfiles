@@ -19,15 +19,7 @@ alias \
 
 # Git things, use `,` as vimprefix so....
 alias ,=git	\
-	,gg=lazygit \
-	,s="git status"	\
-	,l="git log" \
-	,f="git fetch --all" \
-	,c="git checkout" \
-	,stash="git stash" \
-	,glog="git glog" \
-	,show="git sshow" \
-	,dft="git dft"
+	,gg=lazygit
 
 weather-short() {
 	curl -m 1 'wttr.in?format=3' 2>/dev/null

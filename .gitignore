@@ -12,3 +12,4 @@ zshrc.d/
 
 # Ignore for now
 spicetify
+.config/nvim/.prettierrc.json
