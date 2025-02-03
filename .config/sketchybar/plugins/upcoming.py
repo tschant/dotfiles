@@ -74,7 +74,7 @@ def plugin_undraw():
     args = [
         '--set upcoming label="No Upcoming Events"',
     ]
-    os.system('sketchybar ' + ' '.join(args))
+    os.system('sketchybar_bottom ' + ' '.join(args))
 
 def plugin_draw(main_text, popup_items):
     args = [
@@ -88,18 +88,18 @@ def plugin_draw(main_text, popup_items):
             f'--set upcoming.{i} background.padding_left=10',
             f'--set upcoming.{i} background.padding_right=10',
             f'--set upcoming.{i} label="{item["text"]}"',
-            f'--set upcoming.{i} click_script="open {item["url"]} ; sketchybar --set upcoming popup.drawing=off"'
+            f'--set upcoming.{i} click_script="open {item["url"]} ; sketchybar_bottom --set upcoming popup.drawing=off"'
         ]
 
-    os.system('sketchybar ' + ' '.join(args))
+    os.system('sketchybar_bottom ' + ' '.join(args))
 
 def remove_existing_entries():
-    output, err = subprocess.Popen("sketchybar --query upcoming | jq '.popup.items[]'", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+    output, err = subprocess.Popen("sketchybar_bottom --query upcoming | jq '.popup.items[]'", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     if (err):
         return
     lines=output.decode('utf-8').strip().split('\n')
     for line in lines:
-        os.system(f'sketchybar --remove {line}')
+        os.system(f'sketchybar_bottom --remove {line}')
 
 if __name__ == '__main__':
     remove_existing_entries()

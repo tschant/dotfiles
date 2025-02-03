@@ -8,6 +8,7 @@ sketchybar --add item           apple.logo left                             \
            --set apple.logo     icon=$APPLE                                 \
                                 icon.font="$FONT:Semibold:16.0"             \
                                 icon.color=$RED                             \
+                                background.height=20                  \
                                 background.padding_left=10                  \
                                 background.padding_right=10                 \
                                 label.drawing=off                           \

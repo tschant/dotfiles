@@ -319,7 +319,7 @@ M.config = function()
 	wk.add({
 		{ "<leader>f", group = "Telescope" },
 		{ "<leader>fF", util.telescope("files"), desc = "find files (root dir)" },
-		{ "<leader>ff", ':Telescope frecency workspace=CWD path_display={"shorten"}<CR>', desc = "find files (cwd)" },
+		{ "<leader>ff", ':Telescope frecency workspace=CWD<CR>', desc = "find files (cwd)" },
 		{ "<leader>fG", util.telescope("live_grep", { grep_open_files = true }), desc = "grep open files" },
 		{
 			"<leader>fg",

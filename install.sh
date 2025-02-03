@@ -71,4 +71,5 @@ echo "Need to install manually:"
 ! [ -x "$(command -v nodenv)" ] && echo "nodenv"
 ! [ -x "$(command -v cargo)" ] && echo "rust|cargo"
 ! [ -x "$(command -v lazygit)" ] && echo "lazygit"
+! [ -x "$(command -v sketchybar)" ] && echo "sketchybar"
 
