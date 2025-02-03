@@ -121,12 +121,7 @@ return {
 					["?"] = "show_help",
 					["<"] = "prev_source",
 					[">"] = "next_source",
-					["/"] = {
-						"fuzzy_finder",
-						config = {
-							title = "Filter", -- An empty string hides the title
-						},
-					},
+					["/"] = "fuzzy_finder",
 				},
 			},
 			nesting_rules = {},

@@ -38,6 +38,7 @@ local M = {
 		"nvim-telescope/telescope-fzy-native.nvim",
 		"nvim-telescope/telescope-media-files.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
+		"nvim-telescope/telescope-frecency.nvim",
 	},
 	cmd = "Telescope",
 }
@@ -173,6 +174,7 @@ M.config = function()
 	telescope.load_extension("media_files")
 	telescope.load_extension("harpoon")
 	telescope.load_extension("ui-select")
+	telescope.load_extension("frecency")
 	-- telescope.load_extension("session-lens")
 
 	vim.api.nvim_create_autocmd("WinLeave", {

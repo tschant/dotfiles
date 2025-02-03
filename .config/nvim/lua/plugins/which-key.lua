@@ -318,8 +318,8 @@ M.config = function()
 	-- Telescope keybinds
 	wk.add({
 		{ "<leader>f", group = "Telescope" },
-		{ "<leader>fF", util.telescope("find_files"), desc = "find files (root dir)" },
-		{ "<leader>ff", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
+		{ "<leader>fF", util.telescope("files"), desc = "find files (root dir)" },
+		{ "<leader>ff", ':Telescope frecency workspace=CWD path_display={"shorten"}<CR>', desc = "find files (cwd)" },
 		{ "<leader>fG", util.telescope("live_grep", { grep_open_files = true }), desc = "grep open files" },
 		{
 			"<leader>fg",
@@ -331,7 +331,7 @@ M.config = function()
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "list buffers" },
 		{ "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "show recently opened files" },
 		{ "<leader>ft", '<cmd>lua require("FTerm").toggle()<CR>', desc = "Toggle floating terminal", mode = "n" },
-		{ "<leader>fi", "<cmd>Telescope jumplist<cr>", desc = "show jumplist" },
+		{ "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "show jumplist" },
 		{ "<leader>fh", "<cmd>Telescope harpoon marks<cr>", desc = "show harpoon" },
 		{ "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "show vim help" },
 		{ "<leader>fm", "<cmd>Telescope marks<cr>", desc = "show marks" },
