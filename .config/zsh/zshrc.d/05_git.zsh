@@ -1,26 +1,32 @@
-alias ,s="git status"	\
+alias ,s="git status" \
 	,l="git log" \
 	,f="git fetch --all" \
 	,c="git checkout" \
 	,stash="git stash" \
 	,glog="git glog" \
 	,show="git show" \
-	,dft="git dft"
+	,dft="git dft" \
+	,p="git push origin"
 
 ,rb() {
-	if [[ -n "$1" ]]; then
-		git rebase "${1:-origin/main}"
-	fi
+	BRANCH="${1:-origin/main}"
+	echo "Rebasing $BRANCH"
+	git fetch --all
+	git rebase "$BRANCH"
 }
 
 ,cb() {
 	if [[ -n "$1" ]]; then
-		git checkout -b "$1" "${2:-origin/main}"
+		BASE_BRANCH="${2:-origin/main}"
+		echo "Checkout new branch tarryn/$1, base $BASE_BRANCH"
+		git fetch --all
+		git checkout -b "tarryn/$1" "$BASE_BRANCH"
 	fi
 }
 
-,p() {
-	if [[ -n "$1" ]]; then
-		git push origin "$1"
-	fi
-}
+# ,p() {
+# 	if [[ -n "$1" ]]; then
+# 		echo "Push to branch $1"
+# 		git push origin "$1"
+# 	fi
+# }
