@@ -18,9 +18,10 @@ alias ,s="git status" \
 ,cb() {
 	if [[ -n "$1" ]]; then
 		BASE_BRANCH="${2:-origin/main}"
-		echo "Checkout new branch tarryn/$1, base $BASE_BRANCH"
+		NAME="$(whoami)"
+		echo "Checkout new branch $NAME/$1, base $BASE_BRANCH"
 		git fetch --all
-		git checkout -b "tarryn/$1" "$BASE_BRANCH"
+		git checkout -b "$NAME/$1" "$BASE_BRANCH"
 	fi
 }
 
