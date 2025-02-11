@@ -319,7 +319,7 @@ M.config = function()
 	wk.add({
 		{ "<leader>f", group = "Telescope" },
 		{ "<leader>fF", util.telescope("files"), desc = "find files (root dir)" },
-		{ "<leader>ff", ':Telescope frecency workspace=CWD<CR>', desc = "find files (cwd)" },
+		{ "<leader>ff", ":Telescope frecency workspace=CWD<CR>", desc = "find files (cwd)" },
 		{ "<leader>fG", util.telescope("live_grep", { grep_open_files = true }), desc = "grep open files" },
 		{
 			"<leader>fg",
@@ -590,6 +590,62 @@ M.config = function()
 				end
 			end,
 			desc = "Precognition Toggle",
+		},
+	})
+
+	wk.add({
+		{ "<leader>c", group = "MultiCursor" },
+		{
+			"<leader>ca",
+			function()
+				require("multicursor-nvim").alignCursors()
+			end,
+			desc = "Align cursors",
+			mode = "n",
+		},
+		{
+			"<leader>cA",
+			function()
+				require("multicursor-nvim").matchAllAddCursors()
+			end,
+			desc = "Match all",
+		},
+		{
+			"<c-leftmouse>",
+			function()
+				require("multicursor-nvim").handleMouse()
+			end,
+			desc = "MultiCursor left-click",
+		},
+		{
+			"<C-n>",
+			function()
+				require("multicursor-nvim").matchAddCursor(1)
+			end,
+			desc = "Match next cursor",
+			mode = { "n", "v" },
+		},
+		{
+			"<C-S-N>",
+			function()
+				require("multicursor-nvim").matchAddCursor(-1)
+			end,
+			desc = "Match prev cursor",
+			mode = { "n", "v" },
+		},
+		{
+			"<esc>",
+			function()
+				local mc = require("multicursor-nvim")
+				if not mc.cursorsEnabled() then
+					mc.enableCursors()
+				elseif mc.hasCursors() then
+					mc.clearCursors()
+				else
+					-- Default <esc> handler.
+				end
+			end,
+			desc = "Esc",
 		},
 	})
 end

@@ -21,6 +21,12 @@ return {
 				"git_status",
 				"diagnostics",
 			},
+			event_handlers = {{
+				event = "neo_tree_buffer_enter",
+				handler = function()
+					vim.opt_local.relativenumber = true
+				end,
+			}},
 			close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 			enable_git_status = false,
 			-- enable_diagnostics = true,
@@ -121,7 +127,6 @@ return {
 					["?"] = "show_help",
 					["<"] = "prev_source",
 					[">"] = "next_source",
-					["/"] = "fuzzy_finder",
 				},
 			},
 			nesting_rules = {},

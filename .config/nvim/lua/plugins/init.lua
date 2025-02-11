@@ -10,6 +10,7 @@ return {
 	{ "juliosueiras/vim-terraform-completion", event = "BufRead *.tf" },
 
 	-- General pluginscomment
+	{ "jake-stewart/multicursor.nvim", config = true },
 	{
 		"cbochs/portal.nvim",
 		dependencies = {

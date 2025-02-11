@@ -6,7 +6,8 @@ alias ,s="git status" \
 	,glog="git glog" \
 	,show="git show" \
 	,dft="git dft" \
-	,p="git push origin"
+	,p="git push origin" \
+	,Pff="git pull --ff-only origin"
 
 ,rb() {
 	BRANCH="${1:-origin/main}"
