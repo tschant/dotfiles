@@ -216,9 +216,8 @@ end
 
 function utils.close_win_or_buffer(force)
 	local win_amount = utils.get_win_count()
-	local bd = require("bufdel")
 	if win_amount == 1 then
-		bd.delete_buffer_expr(nil, force)
+		Snacks.bufdelete.delete({force = force})
 	else
 		-- bd.delete_buffer_expr()
 		-- this does not close the buffer directly, uncomment above to close file as well

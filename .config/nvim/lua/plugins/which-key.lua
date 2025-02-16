@@ -294,7 +294,13 @@ M.config = function()
 		{ "<C-j>", ":lua require('smart-splits').move_cursor_down()<CR>", desc = "Window down" },
 		{ "<C-k>", ":lua require('smart-splits').move_cursor_up()<CR>", desc = "Window up" },
 		{ "<C-l>", ":lua require('smart-splits').move_cursor_right()<CR>", desc = "Window right" },
-		{ "<C-q>", ":BufDel<CR>", desc = "Close buffer" },
+		{
+			"<C-q>",
+			function()
+				Snacks.bufdelete.delete()
+			end,
+			desc = "Close buffer",
+		},
 		{ "<leader>wH", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
 		{ "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
 		{ "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },

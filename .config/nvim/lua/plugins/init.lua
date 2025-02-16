@@ -37,11 +37,6 @@ return {
 		config = true,
 	},
 	{
-		"karb94/neoscroll.nvim",
-		event = "BufReadPre",
-		config = true,
-	},
-	{
 		"kylechui/nvim-surround",
 		event = "BufReadPre",
 		config = function()
@@ -135,15 +130,6 @@ return {
 				end,
 			})
 		end,
-	},
-	{
-		"ojroques/nvim-bufdel",
-		cmd = { "BufDel" },
-		event = "BufAdd",
-		opts = {
-			next = "cycle", -- or 'alternate'
-			quit = true,
-		},
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
