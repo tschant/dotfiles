@@ -19,7 +19,7 @@ local autocmds = {
 
 local cursor_hold = { { "CursorHold", "*", "lua vim.diagnostic.open_float(0, {scope=line, focusable = false})" } }
 
-local hl_yank = { { "TextYankPost", "*", 'lua require"vim.highlight".on_yank()' } }
+local hl_yank = { { "TextYankPost", "*", 'lua vim.highlight.on_yank()' } }
 
 local jump_last = {
 	{ "BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]] },

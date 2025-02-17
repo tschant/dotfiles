@@ -441,7 +441,7 @@ M.config = function()
 			desc = "Portal Back",
 		},
 		{ "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
-		{ "<leader><Home>", ":Alpha<cr>", desc = "Dashboard" },
+		{ "<leader><Home>", ":lua Snacks.dashboard()<CR>", desc = "Dashboard" },
 		{ "<leader>H", ":sp<CR>", desc = "Horizontal Split" },
 		{ "<leader>V", ":vs<CR>", desc = "Vertical Split" },
 		{ "<leader>cc", ":let @+=expand('%')<CR>", desc = "Copy file path from PWD" },
