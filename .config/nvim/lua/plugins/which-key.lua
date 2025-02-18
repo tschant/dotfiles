@@ -336,7 +336,6 @@ M.config = function()
 		{ "<leader>fw", util.telescope("grep_string", { cwd = false }), desc = "search word (cwd)" },
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "list buffers" },
 		{ "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "show recently opened files" },
-		{ "<leader>ft", '<cmd>lua require("FTerm").toggle()<CR>', desc = "Toggle floating terminal", mode = "n" },
 		{ "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "show jumplist" },
 		{ "<leader>fh", "<cmd>Telescope harpoon marks<cr>", desc = "show harpoon" },
 		{ "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "show vim help" },
@@ -352,6 +351,9 @@ M.config = function()
 		{ "<leader>fc", "<cmd>Telescope commands<cr>", desc = "show command prompt" },
 		{ "<leader>fx", util.telescope("colorscheme", { enable_preview = true }), desc = "show colorscheme picker" },
 		{ "<leader>fu", "<cmd>silent! %foldopen! | UndotreeToggle<cr>", desc = "show undotree" },
+		{ "<leader>fds", "<cmd>Telescope lsp_document_symbols<cr>", desc = "show doc symbols" },
+		{ "<leader>fdS", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "show workspace symbols" },
+		{ "<leader>ft", "<cmd>Telescope treesitter<cr>", desc = "show treesitter" },
 	})
 
 	-- GitSigns

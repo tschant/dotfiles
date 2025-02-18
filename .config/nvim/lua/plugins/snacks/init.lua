@@ -11,14 +11,7 @@ return {
 		indent = require("plugins.snacks.indent"),
 		quickfile = { enabled = true },
 		scope = { enabled = true },
-		scroll = { enabled = false },
-		win = {
-			enabled = true,
-			backdrop = {
-				bg = "#e5e9f0", -- backdrop background color
-				blend = 70, -- backdrop transparency (0-100)
-			},
-		},
+		scroll = { enabled = true },
 		words = { enabled = true },
 		-- disabled
 		explorer = { enabled = false }, -- neo-tree
