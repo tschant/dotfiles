@@ -570,7 +570,7 @@ M.config = function()
 		{ "<leader>sp", ":lua require('spectre').open()<cr>", desc = "Spectre open" },
 		{ "<leader>ss", ":setlocal foldmethod=expr<CR>", desc = "Fold Expression/Syntax" },
 		{ "<leader>sr", ":PossessionLoad<CR>", desc = "Restore Session" },
-		{ "<leader>sv", ":PossessionSaveCwd<cr>", desc = "Save Session" },
+		{ "<leader>sv", ":PossessionSaveGit<cr>", desc = "Save Session (per branch)" },
 		{ "<leader>sw", ":lua require('spectre').open_visual()<cr>", desc = "Spectre open visual" },
 
 		{ "<leader>td", desc = "Toggle deleted (git signs)" },
