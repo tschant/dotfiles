@@ -175,7 +175,7 @@ M.config = function()
 	telescope.load_extension("harpoon")
 	telescope.load_extension("ui-select")
 	telescope.load_extension("frecency")
-	-- telescope.load_extension("session-lens")
+	telescope.load_extension("possession")
 
 	vim.api.nvim_create_autocmd("WinLeave", {
 		callback = function()

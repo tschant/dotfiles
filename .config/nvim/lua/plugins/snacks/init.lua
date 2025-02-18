@@ -11,7 +11,7 @@ return {
 		indent = require("plugins.snacks.indent"),
 		quickfile = { enabled = true },
 		scope = { enabled = true },
-		scroll = { enabled = true },
+		scroll = { enabled = false },
 		win = {
 			enabled = true,
 			backdrop = {

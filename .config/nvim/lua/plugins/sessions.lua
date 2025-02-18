@@ -1,33 +1,35 @@
-local M = {
+return {
 	{
-		"rmagatti/session-lens",
+		"jedrzejboczar/possession.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		lazy = false,
+		-- cmd = { "PossessionLoadCwd", "PossessionLoad" },
 		-- event = "VeryLazy",
-		config = true,
-		opts = {
-			theme_conf = {
-				prompt_title = 'Sessions',
-				previewer = false,
-				borderchars = {
-					prompt = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-					results = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-				}
-			},
-		}
-	},
-	{
-		"rmagatti/auto-session",
-		-- event = "VeryLazy",
-		-- cmd = {"RestoreSession", "SaveSession"},
-		config = function() 
-			require('auto-session').setup({
-				log_level = 'info',
-				auto_restore_enabled = false,
-				auto_save_enabled = true,
-				auto_session_use_git_branch = true,
-				auto_session_suppress_dirs = {'~/', '~/git', '~/Downloads'}
+		config = function()
+			vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+			require("possession").setup({
+				commands = {
+					save = "PossessionSave",
+					load = "PossessionLoad",
+					save_cwd = "PossessionSaveCwd",
+					load_cwd = "PossessionLoadCwd",
+					rename = "PossessionRename",
+					close = "PossessionClose",
+					delete = "PossessionDelete",
+					show = "PossessionShow",
+					list = "PossessionList",
+					list_cwd = "PossessionListCwd",
+					migrate = "PossessionMigrate",
+				},
+				plugins = {
+					delete_hidden_buffers = {
+						hooks = {
+							"before_load",
+						},
+						force = true, -- or fun(buf): boolean
+					},
+				},
 			})
-		end
-	}
+		end,
+	},
 }
-
-return M

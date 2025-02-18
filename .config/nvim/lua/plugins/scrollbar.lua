@@ -35,6 +35,7 @@ return {
 			exclude_filetypes = {
 				"help",
 				"alpha",
+				"snacks_dashboard",
 			},
 			winopt = function()
 				return {

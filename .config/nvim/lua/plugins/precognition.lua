@@ -26,6 +26,7 @@ return {
 			disabled_fts = {
 				"startify",
 				"alpha",
+				"snacks_dashboard",
 			},
 		},
 	}
