@@ -3,7 +3,7 @@
 # TODO: Need to update `sketchybar_bottom` to be dynamic
 POPUP_CLICK_SCRIPT="sketchybar_bottom --set \$NAME popup.drawing=toggle"
 
-sketchybar_bottom -m --add item     upcoming right                                  \
+sketchybar_bottom -m --add item     upcoming left                                  \
               --set upcoming update_freq=20                                   \
                              updates=on                                       \
                              label="No Upcoming Events" \

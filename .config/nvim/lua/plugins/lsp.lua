@@ -17,6 +17,7 @@ return {
 				"dockerfile-language-server",
 				"emmet-ls",
 				-- "eslint_d",
+				"biome",
 				"eslint-lsp",
 				"gofumpt",
 				"jdtls",
@@ -148,6 +149,7 @@ return {
 			},
 			terraform_lsp = {},
 			tflint = {},
+			biome = {},
 			ts_ls = {
 				cmd = { "typescript-language-server", "--stdio" },
 				settings = {
