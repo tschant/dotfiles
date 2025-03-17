@@ -2,7 +2,6 @@ return {
 	{
 		"cbochs/portal.nvim",
 		dependencies = {
-			"cbochs/grapple.nvim",
 			"ThePrimeagen/harpoon",
 		},
 		config = true,
@@ -18,6 +17,15 @@ return {
 				"d",
 				"f",
 			},
+			window_options = {
+        relative = "cursor",
+        width = 80,
+        height = 5,
+        col = 2,
+        focusable = false,
+        border = "single",
+        noautocmd = true,
+    },
 		},
 	},
 	{
