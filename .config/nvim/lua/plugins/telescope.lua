@@ -94,6 +94,7 @@ M.config = function()
 			},
 			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 			path_display = { "truncate" },
+			dynamic_preview_title = true,
 			winblend = 0,
 			border = {},
 			borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },

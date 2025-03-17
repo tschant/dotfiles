@@ -1,7 +1,29 @@
 return {
-	"ThePrimeagen/harpoon",
-	-- branch = "harpoon2",
-	dependencies = { "nvim-lua/plenary.nvim" }--[[ ,
+	{
+		"cbochs/portal.nvim",
+		dependencies = {
+			"cbochs/grapple.nvim",
+			"ThePrimeagen/harpoon",
+		},
+		config = true,
+		opts = {
+			max_results = 8,
+			labels = {
+				"h",
+				"j",
+				"k",
+				"l",
+				"a",
+				"s",
+				"d",
+				"f",
+			},
+		},
+	},
+	{
+		"ThePrimeagen/harpoon",
+		-- branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" } --[[ ,
 	config = function()
 		local harpoon = require('harpoon')
 		harpoon:setup({})
@@ -27,5 +49,6 @@ return {
 		vim.keymap.set("n", "<leader>'m", function() harpoon:list():append() end, {desc = "Harpoon add file"})
 		vim.keymap.set("n", "<leader>'n", function() harpoon:list():remove() end, {desc = "Harpoon remove file"})
 		-- vim.keymap.set("n", "<leader>'h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-	end ]]
+	end ]],
+	},
 }
