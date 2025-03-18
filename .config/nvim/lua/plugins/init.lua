@@ -11,12 +11,7 @@ return {
 
 	-- General pluginscomment
 	{ "jake-stewart/multicursor.nvim", config = true },
-	{
-		"cbochs/portal.nvim",
-		dependencies = {
-			"ThePrimeagen/harpoon",
-		},
-	},
+	
 	{
 		"wurli/visimatch.nvim",
 		event = "BufRead",

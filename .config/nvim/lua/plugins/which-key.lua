@@ -66,6 +66,11 @@ M.config = function()
 		},
 		{ "<M-Up>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>", desc = "Select next line up (vm)" },
 		{ "<M-Down>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>", desc = "Select next line down (vm)" },
+
+		{ "<leader><Home>", ":lua Snacks.dashboard()<CR>", desc = "Dashboard" },
+		{ "<leader>H", ":sp<CR>", desc = "Horizontal Split" },
+		{ "<leader>V", ":vs<CR>", desc = "Vertical Split" },
+		{ "<leader>cc", ":let @+=expand('%')<CR>", desc = "Copy file path from PWD" },
 	}, { mode = "n" })
 
 	wk.add({
@@ -419,50 +424,6 @@ M.config = function()
 
 	-- Leader key-maps
 	wk.add({
-		{ "<leader>'", group = "Harpoon+Portal" },
-		{ "<leader>'D", ':lua require("harpoon.ui").clear_all()<CR>', desc = "Clear list" },
-		{ "<leader>'m", ':lua require("harpoon.mark").add_file()<CR>', desc = "Add file" },
-		{ "<leader>'n", ':lua require("harpoon.mark").rm_file()<CR>', desc = "Remove file" },
-		{ "<leader>''", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = "Quick menu" },
-		{ "<leader>'l", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = "Quick menu" },
-		{
-			"<leader>'c",
-			':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>',
-			desc = "Portal Changelist",
-		},
-		{
-			"<leader>'C",
-			':lua require("portal.builtin").changelist.tunnel({direction = "forward"})<CR>',
-			desc = "Portal Changelist",
-		},
-		{ "<leader>'h", ':lua require("portal.builtin").harpoon.tunnel()<CR>', desc = "Portal Harpoon" },
-		{ "<leader>'j", ':lua require("harpoon.ui").nav_next()<CR>', desc = "Nav next mark" },
-		{ "<leader>'k", ':lua require("harpoon.ui").nav_prev()<CR>', desc = "Nav prev mark" },
-		{
-			"<C-i>",
-			':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>',
-			desc = "Portal Forward",
-		},
-		{
-			"<C-o>",
-			':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
-			desc = "Portal Back",
-		},
-		--[[ {
-			"<leader>'i",
-			':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>',
-			desc = "Portal Forward",
-		},
-		{
-			"<leader>'o",
-			':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
-			desc = "Portal Back",
-		}, ]]
-		{ "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
-		{ "<leader><Home>", ":lua Snacks.dashboard()<CR>", desc = "Dashboard" },
-		{ "<leader>H", ":sp<CR>", desc = "Horizontal Split" },
-		{ "<leader>V", ":vs<CR>", desc = "Vertical Split" },
-		{ "<leader>cc", ":let @+=expand('%')<CR>", desc = "Copy file path from PWD" },
 		{
 			"<leader>ck",
 			function()
@@ -672,9 +633,94 @@ M.config = function()
 			desc = "Esc",
 		},
 	})
+
+	-- Harpoon + Portal
+	wk.add({
+		{ "<leader>'", group = "Harpoon+Portal" },
+		{
+			"<leader>'D",
+			function()
+				require("harpoon"):list():clear()
+			end,
+			desc = "Clear list",
+		},
+		{
+			"<leader>'m",
+			function()
+				require("harpoon"):list():add()
+			end,
+			desc = "Add file",
+		},
+		{
+			"<leader>'n",
+			function()
+				require("harpoon"):list():remove()
+			end,
+			desc = "Remove file",
+		},
+		{
+			"<leader>''",
+			function()
+				local harpoon = require("harpoon")
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end,
+			desc = "Quick menu",
+		},
+		{
+			"<leader>'l",
+			function()
+				local harpoon = require("harpoon")
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end,
+			desc = "Quick menu",
+		},
+		{
+			"<leader>'c",
+			':lua require("portal.builtin").changelist.tunnel({direction = "backward"})<CR>',
+			desc = "Portal Changelist",
+		},
+		{
+			"<leader>'C",
+			':lua require("portal.builtin").changelist.tunnel({direction = "forward"})<CR>',
+			desc = "Portal Changelist",
+		},
+		{
+			"<C-i>",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>',
+			desc = "Portal Forward",
+		},
+		{
+			"<C-o>",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
+			desc = "Portal Back",
+		},
+		--[[ {
+			"<leader>'i",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>',
+			desc = "Portal Forward",
+		},
+		{
+			"<leader>'o",
+			':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
+			desc = "Portal Back",
+		}, ]]
+		{ "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
+	})
+	for c = 0, 9 do
+		print(c)
+		wk.add({
+			{
+				"<C-" .. c .. ">",
+				function()
+					require("harpoon"):list():select(c)
+				end,
+				desc = "Harpoon " .. c,
+			},
+		})
+	end
 end
 
--- Prevent delete/cut/change to overwrite paste if empty/blank
+--[[ -- Prevent delete/cut/change to overwrite paste if empty/blank
 local function smart_delete(key)
 	local l = vim.api.nvim_win_get_cursor(0)[1] -- Get the current cursor line number
 	local line = vim.api.nvim_buf_get_lines(0, l - 1, l, true)[1] -- Get the content of the current line
@@ -687,6 +733,6 @@ for _, key in pairs(keys) do
 	vim.keymap.set({ "n", "v" }, key, function()
 		return smart_delete(key)
 	end, { noremap = true, expr = true, desc = "Smart delete" })
-end
+end ]]
 
 return M

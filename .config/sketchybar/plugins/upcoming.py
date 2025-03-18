@@ -14,7 +14,7 @@ class Event:
         if self.ongoing:
             self.human_str = f"{self.title_cut} {self.human_diff} left"
         else:
-            self.human_str = f"{self.title_cut} in {self.human_diff}"
+            self.human_str = f"{self.title_cut} in {self.human_diff} ({self.time})"
 
     def __repr__(self):
         return f"Event(title: {self.title}, diff: {self.diff}, ongoing: {self.ongoing}, time: {self.time}, url: {self.url})"
@@ -57,7 +57,7 @@ def get_events():
 
         ongoing = starttime <= now <= endtime
         if ongoing:
-            diff = endtime-now
+            diff = now-endtime
         else:
             diff = starttime-now
 
