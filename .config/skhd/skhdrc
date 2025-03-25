@@ -16,11 +16,14 @@
 :: app_mode @ : ~/.local/bin/set_yabai_mode.sh app_mode red
 ctrl + alt - a ; app_mode
 app_mode < ctrl + alt - a ; default
+app_mode < escape ; default
 
-app_mode < ctrl - t : open -a "wezterm"
-app_mode < ctrl - s : open -a "Slack"
-app_mode < ctrl - f : open -a "Firefox Developer Edition"
-app_mode < ctrl - z : open -a "zoom.us"
+app_mode < ctrl - t : open -a "wezterm"; skhd -k "escape";
+app_mode < ctrl - s : open -a "Slack" ; skhd -k "escape";
+app_mode < ctrl - f : open -a "Firefox Developer Edition" ; skhd -k "escape";
+app_mode < ctrl - z : open -a "zoom.us" ; skhd -k "escape";
+app_mode < ctrl - d : open -a "Docker Desktop" ; skhd -k "escape";
+app_mode < ctrl - g : open -a "Finder" ; skhd -k "escape";
 
 # Navigation
 alt - h : yabai -m window --focus west
