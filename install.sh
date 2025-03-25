@@ -32,9 +32,13 @@ if [[ "$OS_NAME" =~ "Linux" ]]; then
 	[[ ! -d $HOME/.config/rofi ]] && ln -s $(pwd)/.config/rofi $HOME/.config/rofi
 elif [[ "$OS_NAME" =~ "Darwin" ]]; then
 	echo "Mac OS Detected"
+	mkdir -p $HOME/.local/bin/
 	[[ ! -e $HOME/.config/alacritty/key-bindings.yml ]] && ln -s $(pwd)/.config/alacritty/key-bindings.mac.yml $HOME/.config/alacritty/key-bindings.yml
 	[[ ! -e $HOME/.config/alacritty/os-overrides.yml ]] && ln -s $(pwd)/.config/alacritty/os-overrides.mac.yml $HOME/.config/alacritty/os-overrides.yml
-	[[ ! -d $HOME/.config/sketchybar ]] && ln -s $(pwd)/.config/sketchybar $HOME/.config/sketchybar
+	if [[ ! -d $HOME/.config/sketchybar ]]; then
+		ln -s $(pwd)/.config/sketchybar $HOME/.config/sketchybar
+		ln -s $(pwd)/.config/sketchybar/set_yabai_mode.sh $HOME/.local/bin/set_yabai_mode.sh
+	fi
 	[[ ! -d $HOME/.config/skhd ]] && ln -s $(pwd)/.config/skhd $HOME/.config/skhd
 	[[ ! -d $HOME/.config/yabai ]] && ln -s $(pwd)/.config/yabai $HOME/.config/yabai
 else

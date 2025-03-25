@@ -45,6 +45,7 @@ sketchybar_bottom --bar     height=20                                         \
 
 # Center
 source "$ITEM_DIR/upcoming.sh"
+source "$ITEM_DIR/yabai_mode.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar_bottom --update

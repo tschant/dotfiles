@@ -12,6 +12,16 @@
 # fn + ctrl - b : "${HOME}"/.config/scripts/open_iterm2.sh build
 # fn + ctrl - f1 : "${HOME}"/.config/scripts/open_iterm2.sh mysql
 
+:: default : ~/.local/bin/set_yabai_mode.sh default
+:: app_mode @ : ~/.local/bin/set_yabai_mode.sh app_mode red
+ctrl + alt - a ; app_mode
+app_mode < ctrl + alt - a ; default
+
+app_mode < ctrl - t : open -a "wezterm"
+app_mode < ctrl - s : open -a "Slack"
+app_mode < ctrl - f : open -a "Firefox Developer Edition"
+app_mode < ctrl - z : open -a "zoom.us"
+
 # Navigation
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south

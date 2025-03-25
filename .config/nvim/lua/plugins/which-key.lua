@@ -705,8 +705,15 @@ M.config = function()
 			desc = "Portal Back",
 		}, ]]
 		{ "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
+		{
+			"<C-Space>",
+			function()
+				require("snipe").open_buffer_menu()
+			end,
+			desc = "Open Snipe buffer menu",
+		},
 	})
-	for c = 0, 9 do
+	for c = 1, 5 do
 		print(c)
 		wk.add({
 			{

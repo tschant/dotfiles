@@ -4,7 +4,7 @@
 POPUP_CLICK_SCRIPT="sketchybar_bottom --set \$NAME popup.drawing=toggle"
 
 sketchybar_bottom -m --add item     upcoming left                                  \
-              --set upcoming update_freq=20                                   \
+              --set upcoming update_freq=1                                   \
                              updates=on                                       \
                              label="No Upcoming Events" \
                              label.font="$FONT:Regular:14.0"\

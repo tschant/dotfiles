@@ -18,45 +18,39 @@ return {
 				"f",
 			},
 			window_options = {
-        relative = "cursor",
-        width = 80,
-        height = 5,
-        col = 2,
-        focusable = false,
-        border = "single",
-        noautocmd = true,
-    },
+				relative = "cursor",
+				width = 80,
+				height = 5,
+				col = 2,
+				focusable = false,
+				border = "single",
+				noautocmd = true,
+			},
 		},
 	},
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" } --[[ ,
-	config = function()
-		local harpoon = require('harpoon')
-		harpoon:setup({})
-
-		-- basic telescope configuration
-		local conf = require("telescope.config").values
-		local function toggle_telescope(harpoon_files)
-			local file_paths = {}
-			for _, item in ipairs(harpoon_files.items) do
-				table.insert(file_paths, item.value)
-			end
-
-			require("telescope.pickers").new({}, {
-				prompt_title = "Harpoon",
-				finder = require("telescope.finders").new_table({
-					results = file_paths,
-				}),
-				previewer = conf.file_previewer({}),
-				sorter = conf.generic_sorter({}),
-			}):find()
-		end
-
-		vim.keymap.set("n", "<leader>'m", function() harpoon:list():append() end, {desc = "Harpoon add file"})
-		vim.keymap.set("n", "<leader>'n", function() harpoon:list():remove() end, {desc = "Harpoon remove file"})
-		-- vim.keymap.set("n", "<leader>'h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-	end ]],
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
+		"leath-dub/snipe.nvim",
+		opts = {
+			hints = {
+				-- Charaters to use for hints
+				-- make sure they don't collide with the navigation keymaps
+				-- If you remove `j` and `k` from below, you can navigate in the plugin
+				-- dictionary = "sadflewcmpghio",
+				-- dictionary = "asfghl;wertyuiop",
+				dictionary = "12345",
+			},
+			navigate = {
+				cancel_snipe = "<esc>",
+				close_buffer = "D",
+			},
+			-- If you want the letters not to change, leave the sorting at default
+			sort = "last",
+		},
+		config = true,
 	},
 }
