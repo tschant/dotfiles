@@ -310,6 +310,8 @@ M.config = function()
 		{ "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
 		{ "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
 		{ "<leader>wL", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+		{ "<C-w>z", ":lua require('windows.commands').maximize()<CR>", desc = "maximize windows"},
+		{ "<C-w>=", ":lua require('windows.commands').equalize()<CR>", desc = "equalize windows"},
 	})
 
 	-- Buffer
