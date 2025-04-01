@@ -29,7 +29,8 @@ return {
 			'DBUIToggle',
 		},
 		dependencies = {
-			'tpope/vim-dadbod'
+			'tpope/vim-dadbod',
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" } }
 		},
 		config = function ()
 			local g = vim.g

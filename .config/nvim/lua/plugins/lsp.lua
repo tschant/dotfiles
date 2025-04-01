@@ -7,6 +7,7 @@ return {
 		"williamboman/mason.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/cmp-nvim-lsp",
+		-- 'saghen/blink.cmp',
 	},
 	config = function()
 		require("mason").setup()
@@ -181,6 +182,7 @@ return {
 		}
 
 		local setup_server = function(server, config)
+			-- local capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 			config = vim.tbl_deep_extend("force", {
 				on_attach = on_attach,
 				capabilities = capabilities,

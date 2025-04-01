@@ -6,9 +6,7 @@ local M = {
 		"windwp/nvim-autopairs",
 		"onsails/lspkind-nvim",
 		-- Completion/Snippets
-		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
-		"rafamadriz/friendly-snippets",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
@@ -20,7 +18,6 @@ local M = {
 		"chrisgrieser/cmp-nerdfont",
 		"ray-x/cmp-treesitter",
 		"jcha0713/cmp-tw2css",
-		"kristijanhusak/vim-dadbod-completion",
 	}
 }
 
@@ -52,24 +49,6 @@ M.config = function()
 		Field = " ﰠ ",
 		Reference = "  ",
 	}
-
-	-- symbols for autocomplete
-	-- require("lspkind").init( {
-	-- 	mode = 'symbol_text',
-	-- 	symbol_map = icons
-	-- })
-
-	local present, luasnip = pcall(require, "luasnip")
-	if present then
-		luasnip.config.set_config {
-			history = true,
-			updateevents = "TextChanged,TextChangedI",
-		}
-		-- luasnip.filetype_extend("javascript", {"javascriptreact", "react"})
-		-- luasnip.filetype_extend("typescript", {"typescriptreact", "react-ts"})
-		-- luasnip.filetype_extend("docker", {"docker", "docker-compose"})
-		require("luasnip.loaders.from_vscode").lazy_load()
-	end
 
 	vim.opt.completeopt = "menuone,noselect"
 
@@ -140,7 +119,7 @@ M.config = function()
 			{ name = "nvim_lsp" },
 			{ name = "treesitter" },
 			{ name = "nvim_lsp_signature_help" },
-			{ name = "luasnip" },
+			{ name = "luasnip"--[[ , keyword_length = 3 ]] },
 			{ name = "buffer", keyword_length = 3, max_item_count = 4 },
 			{ name = "path" },
 			{ name = 'cmp-tw2css' },
