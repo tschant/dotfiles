@@ -55,9 +55,10 @@ def get_events():
         endtime = datetime.datetime.strptime(not_parsed_endtime, datetime_format_v2)
         starttime = datetime.datetime.strptime(starttime, datetime_format)
 
+        endtime = endtime.replace(year=starttime.year)
         ongoing = starttime <= now <= endtime
         if ongoing:
-            diff = now-endtime
+            diff = endtime-now
         else:
             diff = starttime-now
 
