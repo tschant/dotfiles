@@ -198,7 +198,8 @@ return {
 
 		-- Stop lsp diagnostics from showing virtual text
 		vim.diagnostic.config({
-			virtual_text = false, -- {spacing = 6, severity = "error"},
+			virtual_text = { current_line = true, severity = { min = "WARN", max = "ERROR" } }, -- {spacing = 6, severity = "error"},
+			-- virtual_lines = { current_line = true, severity = { min = "ERROR" } },
 			update_in_insert = false,
 			underline = true,
 			signs = true,

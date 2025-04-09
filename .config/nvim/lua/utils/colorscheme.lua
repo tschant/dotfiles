@@ -5,7 +5,7 @@ function utils.setColorScheme(Theme)
 	cmd("colorscheme " .. Theme)
 
 	-- Use terminal background color instead of colorscheme
-	-- cmd("hi Normal ctermbg=none guibg=none")
+	cmd("hi Normal ctermbg=none guibg=none")
 	cmd("hi NormalNC ctermbg=none guibg=#262626")
 	cmd("hi SignColumn ctermbg=none guibg=none")
 	cmd("hi FoldColumn ctermbg=none guibg=none")
