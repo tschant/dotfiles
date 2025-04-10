@@ -12,7 +12,6 @@ return {
 		build = ":TSUpdate",
 		event = "BufReadPre",
 		dependencies = {
-			"p00f/nvim-ts-rainbow",
 			"ziontee113/syntax-tree-surfer",
 			"windwp/nvim-ts-autotag",
 			"peitalin/vim-jsx-typescript",

@@ -1,184 +1,158 @@
-local utils = require("utils.core")
+local utils = require("utils.extra")
+local servers = {
+	bashls = {},
+	cssls = {},
+	clangd = {},
+	dockerls = {},
+	eslint = {
+		cmd = { "eslint_d" },
+	},
+	gopls = {
+		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+		settings = {
+			gopls = {
+				analyses = {
+					nilness = true,
+					shadow = true,
+					unusewrites = true,
+					unusedparams = true,
+					unreachable = true,
+				},
+				codelenses = {
+					generate = true,
+					gc_details = true,
+					test = true,
+					tidy = true,
+				},
+				usePlaceholders = true,
+				completeUnimported = true,
+				staticcheck = true,
+				matcher = "Fuzzy",
+				diagnosticsDelay = "500ms",
+				experimentalPostfixCompletions = true,
+				symbolMatcher = "fuzzy",
+				gofumpt = true,
+			},
+		},
+		init_options = {
+			usePlaceholders = true,
+		},
+		filetypes = { "go", "gomod" },
+	},
+	html = { init_options = { provideFormatter = false } },
+	jdtls = {},
+	jsonls = {
+		init_options = { provideFormatter = false },
+		settings = {
+			json = {
+				validate = { enable = true },
+			},
+		},
+	},
+	pyright = {},
+	rust_analyzer = {},
+	stylelint_lsp = { autostart = false },
+	lua_ls = {
+		cmd = { "lua-language-server" },
+		settings = {
+			Lua = {
+				runtime = {
+					version = "LuaJIT",
+					path = { "lua/?.lua", "lua/?/init.lua" },
+				},
+				completion = { keywordSnippet = "Replace", callSnippet = "Replace" },
+				diagnostics = {
+					enable = true,
+					globals = {
+						"vim",
+						"describe",
+						"it",
+						"before_each",
+						"after_each",
+						"teardown",
+						"pending",
+						"use",
+					},
+					workspace = {
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+						},
+						maxPreload = 100000,
+						preloadFileSize = 10000,
+					},
+				},
+			},
+		},
+	},
+	svelte = {},
+	tailwindcss = {
+		cmd = { "tailwindcss-language-server", "--stdio" },
+	},
+	terraformls = {},
+	tflint = {},
+	biome = {},
+	ts_ls = {
+		-- cmd = { "typescript-language-server", "--stdio" },
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
+		settings = {
+			javascript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+			typescript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+		},
+	},
+	yamlls = {},
+}
+
 return {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPre",
 	dependencies = {
 		-- LSP Installer
 		"williamboman/mason.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/cmp-nvim-lsp",
-		-- 'saghen/blink.cmp',
+		"williamboman/mason-lspconfig.nvim",
 	},
 	config = function()
 		require("mason").setup()
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				"bash-language-server",
-				"css-lsp",
-				"dockerfile-language-server",
-				"emmet-ls",
-				-- "eslint_d",
-				"biome",
-				"eslint-lsp",
-				"gofumpt",
-				"jdtls",
-				"jq",
-				"json-lsp",
-				"lua-language-server",
-				-- "luasnip",
-				"prettierd",
-				"pyright",
-				"shfmt",
-				"sql-formatter",
-				"sqlls",
-				"stylelint-lsp",
-				"stylua",
-				-- "tailwindcss-language-server",
-				"terraform-ls",
-				"tflint",
-				"typescript-language-server",
-				"xmlformatter",
-				"yaml-language-server",
-				"yq",
-				-- LSP
-			},
-			run_on_start = true,
-			start_delay = 3000,
+		require("mason-lspconfig").setup({
+			ensure_installed = utils.get_table_keys(servers),
 		})
 
 		local lspconfig = require("lspconfig")
 		local util = require("lspconfig/util")
 		local cmp_lsp = require("cmp_nvim_lsp")
+		servers.gopls.root_dir = util.root_pattern("go.work", "go.mod", ".git")
 
-		-- local capabilities = vim.lsp.protocol.make_client_capabilities()
-		-- capabilities = cmp_lsp.default_capabilities(capabilities)
 		local capabilities = cmp_lsp.default_capabilities()
 		capabilities.textDocument.colorProvider = {
 			dynamicRegistration = true,
-		}
-
-		local servers = {
-			bashls = {},
-			cssls = {},
-			clangd = {},
-			dockerls = {},
-			eslint = {
-				cmd = { "eslint_d" },
-			},
-			gopls = {
-				root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-				flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
-				settings = {
-					gopls = {
-						analyses = {
-							nilness = true,
-							shadow = true,
-							unusewrites = true,
-							unusedparams = true,
-							unreachable = true,
-						},
-						codelenses = {
-							generate = true,
-							gc_details = true,
-							test = true,
-							tidy = true,
-						},
-						usePlaceholders = true,
-						completeUnimported = true,
-						staticcheck = true,
-						matcher = "Fuzzy",
-						diagnosticsDelay = "500ms",
-						experimentalPostfixCompletions = true,
-						symbolMatcher = "fuzzy",
-						gofumpt = true,
-					},
-				},
-				init_options = {
-					usePlaceholders = true,
-				},
-				filetypes = { "go", "gomod" },
-			},
-			html = { init_options = { provideFormatter = false } },
-			jdtls = {},
-			jsonls = {
-				init_options = { provideFormatter = false },
-				settings = {
-					json = {
-						validate = { enable = true },
-					},
-				},
-			},
-			pyright = {},
-			rust_analyzer = {},
-			stylelint_lsp = { autostart = false },
-			lua_ls = {
-				cmd = { "lua-language-server" },
-				settings = {
-					Lua = {
-						runtime = {
-							version = "LuaJIT",
-							path = { "lua/?.lua", "lua/?/init.lua" },
-						},
-						completion = { keywordSnippet = "Replace", callSnippet = "Replace" },
-						diagnostics = {
-							enable = true,
-							globals = {
-								"vim",
-								"describe",
-								"it",
-								"before_each",
-								"after_each",
-								"teardown",
-								"pending",
-								"use",
-							},
-							workspace = {
-								library = {
-									[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-									[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-								},
-								maxPreload = 100000,
-								preloadFileSize = 10000,
-							},
-						},
-					},
-				},
-			},
-			svelte = {},
-			tailwindcss = {
-				cmd = { "tailwindcss-language-server", "--stdio" },
-			},
-			terraform_lsp = {},
-			tflint = {},
-			biome = {},
-			ts_ls = {
-				cmd = { "typescript-language-server", "--stdio" },
-				settings = {
-					javascript = {
-						inlayHints = {
-							includeInlayEnumMemberValueHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = "all",
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayVariableTypeHints = true,
-						},
-					},
-					typescript = {
-						inlayHints = {
-							includeInlayEnumMemberValueHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = "all",
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayVariableTypeHints = true,
-						},
-					},
-				},
-			},
-			yamlls = {},
 		}
 
 		local setup_server = function(server, config)

@@ -320,7 +320,7 @@ M.config = function()
 	components.active[3][1] = {
 		provider = function()
 			if next(vim.lsp.get_clients()) ~= nil then
-				return "   LSP"
+				return "   LSP - " .. vim.bo.filetype
 			else
 				return ""
 			end

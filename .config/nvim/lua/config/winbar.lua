@@ -1,3 +1,4 @@
+local colors = require("utils.colors")
 local winbar = {}
 
 local function get_winbar_path()
@@ -25,6 +26,13 @@ winbar.eval = function()
 	local home_replaced = get_winbar_path()
 	local buffer_count = get_buffer_count()
 	local buff_name = home_replaced == "" and default_name or home_replaced
+	local is_changed = vim.fn.getbufinfo("%")[1].changed
+	if is_changed == 1 then
+		buff_name =  buff_name .. "  "
+		vim.cmd("hi TabLineSel guifg=" .. colors.error .. " guibg=" .. colors.bg2)
+	else
+		vim.cmd("hi TabLineSel guifg=" .. colors.white .. " guibg=" .. colors.bg2)
+	end
 
 	return "%#WinBarSeparator#"
 		.. "%#WinBar2#("

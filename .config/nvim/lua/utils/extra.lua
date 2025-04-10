@@ -217,7 +217,7 @@ end
 function utils.close_win_or_buffer(force)
 	local win_amount = utils.get_win_count()
 	if win_amount == 1 then
-		Snacks.bufdelete.delete({force = force})
+		Snacks.bufdelete.delete({ force = force })
 	else
 		-- bd.delete_buffer_expr()
 		-- this does not close the buffer directly, uncomment above to close file as well
@@ -250,6 +250,16 @@ function utils.table_shallow_copy(t)
 		t2[k] = v
 	end
 	return t2
+end
+
+function utils.get_table_keys(t)
+	local keys = {}
+	local n = 0
+	for k, v in pairs(t) do
+		n = n + 1
+		keys[n] = k
+	end
+	return keys
 end
 
 function utils.dump_table(table)
