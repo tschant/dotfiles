@@ -95,13 +95,21 @@ M.config = function()
 					},
 				},
 			},
-			lualine_x = {
+			--[[ lualine_x = {
 				{
 					"lsp_status",
 					icon = "",
 					ignore_lsp = { "null-ls" },
 					color = { fg = colors.green },
 				},
+			}, ]]
+			lualine_x = {
+				function()
+					if next(vim.lsp.get_clients()) ~= nil then
+						return "  LSP - " .. vim.bo.filetype
+					end
+					return ""
+				end,
 			},
 			lualine_y = {
 				{

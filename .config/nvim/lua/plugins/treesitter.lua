@@ -10,7 +10,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = "BufReadPre",
+		event = "BufReadPost",
 		dependencies = {
 			"ziontee113/syntax-tree-surfer",
 			"windwp/nvim-ts-autotag",
@@ -89,5 +89,25 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		opts = {
+			opts = {
+				enable_close = true,
+				enable_rename = true,
+				enable_close_on_slash = true,
+			},
+			aliases = {
+				["htmlangular"] = "html",
+			},
+		},
+
+		ft = { "html", "htmlangular", "typescript", "typescriptreact", "vue" },
+		main = "nvim-ts-autotag",
+		event = "BufRead",
+		dependencies = {
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 	},
 }

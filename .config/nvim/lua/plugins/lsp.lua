@@ -136,7 +136,7 @@ return {
 	dependencies = {
 		-- LSP Installer
 		"williamboman/mason.nvim",
-		"hrsh7th/cmp-nvim-lsp",
+		-- "hrsh7th/cmp-nvim-lsp",
 		"williamboman/mason-lspconfig.nvim",
 	},
 	config = function()
@@ -147,18 +147,18 @@ return {
 
 		local lspconfig = require("lspconfig")
 		local util = require("lspconfig/util")
-		local cmp_lsp = require("cmp_nvim_lsp")
+		-- local cmp_lsp = require("cmp_nvim_lsp")
 		servers.gopls.root_dir = util.root_pattern("go.work", "go.mod", ".git")
 
-		local capabilities = cmp_lsp.default_capabilities()
-		capabilities.textDocument.colorProvider = {
+		-- local capabilities = cmp_lsp.default_capabilities()
+		--[[ capabilities.textDocument.colorProvider = {
 			dynamicRegistration = true,
-		}
+		} ]]
 
 		local setup_server = function(server, config)
-			-- local capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+			local capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 			config = vim.tbl_deep_extend("force", {
-				on_attach = on_attach,
+				-- on_attach = on_attach,
 				capabilities = capabilities,
 				flags = { debounce_text_changes = 150 },
 			}, config)
