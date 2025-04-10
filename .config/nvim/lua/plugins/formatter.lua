@@ -4,17 +4,34 @@ return {
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
 		opts = {
+			formatters = {
+				biome = {
+					require_cwd = true,
+				},
+			},
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				css = { "biome", "prettierd", "prettier", stop_after_first = true },
-				scss = {  "prettierd", "prettier", stop_after_first = true },
-				less = {  "prettierd", "prettier", stop_after_first = true },
-				html = {  "prettierd", "prettier", stop_after_first = true },
-				markdown = {  "prettierd", "prettier", stop_after_first = true },
-				javascript = { "biome", "prettierd", "eslint_d", "prettier", "eslint", stop_after_first = true  },
-				typescript = { "biome", "prettierd", "eslint_d", "prettier", "eslint", stop_after_first = true  },
-				typescriptreact = { "biome", "prettierd", "eslint_d", "prettier", "eslint", stop_after_first = true  },
+				scss = { "prettierd", "prettier", stop_after_first = true },
+				less = { "prettierd", "prettier", stop_after_first = true },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				markdown = { "prettierd", "prettier", stop_after_first = true },
+				javascript = {
+					"biome",
+					"eslint_d",
+					"prettierd" --[[ , "prettier", "eslint" ]] --[[ , stop_after_first = true ]],
+				},
+				typescript = {
+					"biome",
+					"eslint_d",
+					"prettierd" --[[ , "prettier", "eslint" ]] --[[ , stop_after_first = true ]],
+				},
+				typescriptreact = {
+					"biome",
+					"eslint_d",
+					"prettierd" --[[ , "prettier", "eslint" ]] --[[ , stop_after_first = true ]],
+				},
 				go = { "gofumpt" },
 				json = { "biome", "jq" },
 				yaml = { "yq" },
