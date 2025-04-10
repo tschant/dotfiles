@@ -25,6 +25,7 @@ M.dark = {
 	warning = "#F3EA98",
 	info = "#8DE6F7",
 	hint = "#6c7086",
+	lualine_b1 = "#494463",
 	-- bg = "#161616",
 	-- bg2 = "#181825",
 	-- bg3 = "#181825",
@@ -68,7 +69,8 @@ M.light = {
 	error = "#FC5C94",
 	warning = "#F3EA98",
 	info = "#8DE6F7",
-	hint = "#9ca0b0"
+	hint = "#9ca0b0",
+	lualine_b1 = "#cfb07f",
 }
 
 return M[Opts.color_mode]

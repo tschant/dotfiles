@@ -1,4 +1,5 @@
 local colors = require("utils.colors")
+local icons = require("utils.icons")
 local winbar = {}
 
 local function get_winbar_path()
@@ -28,7 +29,7 @@ winbar.eval = function()
 	local buff_name = home_replaced == "" and default_name or home_replaced
 	local is_changed = vim.fn.getbufinfo("%")[1].changed
 	if is_changed == 1 then
-		buff_name =  buff_name .. "  "
+		buff_name =  buff_name .. " " .. icons.unsaved
 		vim.cmd("hi TabLineSel guifg=" .. colors.error .. " guibg=" .. colors.bg2)
 	else
 		vim.cmd("hi TabLineSel guifg=" .. colors.white .. " guibg=" .. colors.bg2)
