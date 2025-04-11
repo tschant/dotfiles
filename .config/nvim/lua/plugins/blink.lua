@@ -114,8 +114,7 @@ return {
 					"lsp",
 					"path",
 					"buffer",
-					"dadbod"					--[[ , "emoji" ]]
-,
+					"dadbod",
 					"nerdfont",
 					"dictionary",
 				},

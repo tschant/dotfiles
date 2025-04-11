@@ -104,6 +104,9 @@ case "$1" in
 "zoom.us" | "Zoom")
   icon_result=󰕧
   ;;
+"Font Book")
+  icon_result=
+  ;;
 *)
   icon_result=󰘔
   ;;
