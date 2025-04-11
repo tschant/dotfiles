@@ -112,11 +112,11 @@ return {
 			sources = {
 				default = { "lsp", "path", "buffer", "dadbod", "emoji", "nerdfont", "dictionary" },
 				providers = {
-          nerdfont = {
-            name = "nerdfont",
-            module = "blink.compat.source",
-            score_offset = 90,
-          },
+					nerdfont = {
+						name = "nerdfont",
+						module = "blink.compat.source",
+						score_offset = 90,
+					},
 					lsp = {
 						name = "lsp",
 						enabled = true,
