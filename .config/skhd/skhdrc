@@ -18,12 +18,12 @@ ctrl + alt - a ; app_mode
 app_mode < ctrl + alt - a ; default
 app_mode < escape ; default
 
-app_mode < ctrl - t : open -a "wezterm"; skhd -k "escape";
-app_mode < ctrl - s : open -a "Slack" ; skhd -k "escape";
-app_mode < ctrl - f : open -a "Firefox Developer Edition" ; skhd -k "escape";
-app_mode < ctrl - z : open -a "zoom.us" ; skhd -k "escape";
-app_mode < ctrl - d : open -a "Docker Desktop" ; skhd -k "escape";
-app_mode < ctrl - g : open -a "Finder" ; skhd -k "escape";
+app_mode < t : open -a "wezterm"; skhd -k "escape";
+app_mode < s : open -a "Slack" ; skhd -k "escape";
+app_mode < f : open -a "Firefox Developer Edition" ; skhd -k "escape";
+app_mode < z : open -a "zoom.us" ; skhd -k "escape";
+app_mode < d : open -a "Docker Desktop" ; skhd -k "escape";
+app_mode < g : open -a "Finder" ; skhd -k "escape";
 
 # Navigation
 alt - h : yabai -m window --focus west
