@@ -110,13 +110,16 @@ return {
 				enabled = true,
 			},
 			sources = {
-				default = { "lsp", "path", "buffer", "dadbod", "emoji", "nerdfont", "dictionary" },
+				default = {
+					"lsp",
+					"path",
+					"buffer",
+					"dadbod"					--[[ , "emoji" ]]
+,
+					"nerdfont",
+					"dictionary",
+				},
 				providers = {
-					nerdfont = {
-						name = "nerdfont",
-						module = "blink.compat.source",
-						score_offset = 90,
-					},
 					lsp = {
 						name = "lsp",
 						enabled = true,
@@ -155,7 +158,12 @@ return {
 						-- min_keyword_length = 2,
 						score_offset = 85,
 					},
-					-- https://github.com/moyiz/blink-emoji.nvim
+					nerdfont = {
+						name = "nerdfont",
+						module = "blink.compat.source",
+						min_keyword_length = 2,
+						score_offset = 90,
+					},
 					emoji = {
 						module = "blink-emoji",
 						name = "Emoji",
