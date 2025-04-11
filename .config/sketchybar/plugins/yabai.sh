@@ -48,6 +48,7 @@ windows_on_spaces () {
 
 			for ((i=0; i<$app_count; i++)); do
 				app=`echo "$windows" | jq -r '.['"$i"'].app'`
+        echo $app
         icon_strip+=" $($HOME/.config/sketchybar/plugins/icon_map.sh "$app")"
 			done
 

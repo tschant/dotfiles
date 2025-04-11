@@ -1,0 +1,15 @@
+return {
+	dir = "~/.config/nvim/lua/custom/markview.nvim/",
+	-- "OXY2DEV/markview.nvim",
+	name = "markview",
+	enabled = false,
+	lazy = true,
+	ft = "markdown",
+	config = function()
+		require("markview").setup({
+			preview = {
+				icon_provider = "devicons", -- "mini" or "devicons"
+			},
+		})
+	end,
+}

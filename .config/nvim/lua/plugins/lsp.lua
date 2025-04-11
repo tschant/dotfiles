@@ -7,7 +7,7 @@ local servers = {
 	eslint = {
 		cmd = { "eslint_d" },
 	},
-	gopls = {
+	--[[ gopls = {
 		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 		settings = {
 			gopls = {
@@ -38,7 +38,7 @@ local servers = {
 			usePlaceholders = true,
 		},
 		filetypes = { "go", "gomod" },
-	},
+	}, ]]
 	html = { init_options = { provideFormatter = false } },
 	jdtls = {},
 	jsonls = {
@@ -148,7 +148,7 @@ return {
 		local lspconfig = require("lspconfig")
 		local util = require("lspconfig/util")
 		-- local cmp_lsp = require("cmp_nvim_lsp")
-		servers.gopls.root_dir = util.root_pattern("go.work", "go.mod", ".git")
+		-- servers.gopls.root_dir = util.root_pattern("go.work", "go.mod", ".git")
 
 		-- local capabilities = cmp_lsp.default_capabilities()
 		--[[ capabilities.textDocument.colorProvider = {
