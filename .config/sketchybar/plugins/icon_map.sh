@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 case "$1" in
 "Messages")
   icon_result=
@@ -28,6 +30,9 @@ case "$1" in
   ;;
 "Numbers" | "Microsoft Excel")
   icon_result=
+  ;;
+"Docker" | "Docker Desktop")
+  icon_result=󰡨
   ;;
 "Default")
   icon_result=󰘔
@@ -82,6 +87,9 @@ case "$1" in
   ;;
 "Reminders")
   icon_result=
+  ;;
+"QuickTime Player")
+  icon_result=
   ;;
 "Preview" | "Skim" | "zathura")
   icon_result=
