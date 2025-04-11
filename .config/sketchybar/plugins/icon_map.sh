@@ -44,7 +44,7 @@ case "$1" in
 "Sequel Ace" | "Sequel Pro" | "DataGrip")
   icon_result=
   ;;
-"System Preferences")
+"System Preferences" | "System Settings")
   icon_result=
   ;;
 "Discord" | "Discord Canary" | "Discord PTB")
@@ -86,7 +86,7 @@ case "$1" in
 "Preview" | "Skim" | "zathura")
   icon_result=
   ;;
-"1Password 7")
+"1Password 7" | "1Password")
   icon_result= # ":one_password:"
   ;;
 "Code" | "Code - Insiders")
@@ -97,6 +97,12 @@ case "$1" in
   ;;
 "Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "WezTerm")
   icon_result= # ":terminal:"
+  ;;
+"Synergy" | "synergy-core")
+  icon_result=⛶
+  ;;
+"zoom.us" | "Zoom")
+  icon_result=󰕧
   ;;
 *)
   icon_result=󰘔
