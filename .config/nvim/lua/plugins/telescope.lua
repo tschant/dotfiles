@@ -38,7 +38,6 @@ local M = {
 		"nvim-telescope/telescope-fzy-native.nvim",
 		"nvim-telescope/telescope-media-files.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
-		"nvim-telescope/telescope-frecency.nvim",
 	},
 	cmd = "Telescope",
 }
@@ -94,6 +93,7 @@ M.config = function()
 			},
 			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 			path_display = { "truncate" },
+			preview = { filesize_limit = 0.5, }, -- MB
 			dynamic_preview_title = true,
 			winblend = 0,
 			border = {},
@@ -159,11 +159,24 @@ M.config = function()
 			},
 		},
 		pickers = {
+			--[[ git_files = {
+				find_command = {
+					"rg",
+					"--files",
+					"--hidden",
+					"--sortr=modified",
+					"--glob",
+					"!**/.git/*",
+					"--glob",
+					"!**/node_modules/*",
+				},
+			}, ]]
 			find_files = {
 				find_command = {
 					"rg",
 					"--files",
 					"--hidden",
+					"--sortr=modified",
 					"--glob",
 					"!**/.git/*",
 					"--glob",
@@ -176,7 +189,6 @@ M.config = function()
 	telescope.load_extension("media_files")
 	telescope.load_extension("harpoon")
 	telescope.load_extension("ui-select")
-	telescope.load_extension("frecency")
 	telescope.load_extension("possession")
 
 	vim.api.nvim_create_autocmd("WinLeave", {

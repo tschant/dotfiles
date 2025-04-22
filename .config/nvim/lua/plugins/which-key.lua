@@ -310,8 +310,8 @@ M.config = function()
 		{ "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
 		{ "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
 		{ "<leader>wL", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-		{ "<C-w>z", ":lua require('windows.commands').maximize()<CR>", desc = "maximize windows"},
-		{ "<C-w>=", ":lua require('windows.commands').equalize()<CR>", desc = "equalize windows"},
+		{ "<C-w>z", ":lua require('windows.commands').maximize()<CR>", desc = "maximize windows" },
+		{ "<C-w>=", ":lua require('windows.commands').equalize()<CR>", desc = "equalize windows" },
 	})
 
 	-- Buffer
@@ -332,7 +332,7 @@ M.config = function()
 	wk.add({
 		{ "<leader>f", group = "Telescope" },
 		{ "<leader>fF", util.telescope("files"), desc = "find files (root dir)" },
-		{ "<leader>ff", ":Telescope frecency workspace=CWD<CR>", desc = "find files (cwd)" },
+		{ "<leader>ff", util.telescope("find_files", { cwd = false }), desc = "find files (cwd)" },
 		{ "<leader>fG", util.telescope("live_grep", { grep_open_files = true }), desc = "grep open files" },
 		{
 			"<leader>fg",

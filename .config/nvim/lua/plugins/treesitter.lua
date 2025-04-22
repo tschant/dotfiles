@@ -13,7 +13,6 @@ return {
 		event = "BufReadPost",
 		dependencies = {
 			"ziontee113/syntax-tree-surfer",
-			"windwp/nvim-ts-autotag",
 			"peitalin/vim-jsx-typescript",
 		},
 		config = function()
@@ -81,12 +80,6 @@ return {
 					return utils.disable_filesize_limit(buf)
 				end, ]]
 				},
-				autotag = {
-					enable = true,
-					--[[ disable = function(_, buf)
-					return utils.disable_filesize_limit(buf)
-				end, ]]
-				},
 			})
 		end,
 	},
@@ -102,7 +95,6 @@ return {
 				["htmlangular"] = "html",
 			},
 		},
-
 		ft = { "html", "htmlangular", "typescript", "typescriptreact", "vue" },
 		main = "nvim-ts-autotag",
 		event = "BufRead",
