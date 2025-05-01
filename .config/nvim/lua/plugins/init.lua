@@ -11,7 +11,15 @@ return {
 
 	-- General pluginscomment
 	{ "jake-stewart/multicursor.nvim", config = true },
-	
+	{
+		"hamidi-dev/kaleidosearch.nvim",
+		dependencies = {
+			"tpope/vim-repeat",
+			"stevearc/dressing.nvim",
+		},
+		config = true,
+	},
+
 	{
 		"wurli/visimatch.nvim",
 		event = "BufRead",

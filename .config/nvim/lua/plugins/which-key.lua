@@ -636,6 +636,44 @@ M.config = function()
 		},
 	})
 
+	wk.add({
+		{ "<leader>/", group = "Search" },
+		{
+			"<leader>//",
+			function()
+				require("kaleidosearch").prompt_and_search()
+			end,
+			desc = "Search word",
+			mode = "n",
+		},
+		{
+			"<leader>/n",
+			function()
+				require("kaleidosearch").prompt_and_search()
+			end,
+			desc = "Search word",
+			mode = "n",
+		},
+		{
+			"<leader>/*",
+			function()
+				require("kaleidosearch").add_word_under_cursor()
+			end,
+			desc = "Search word under cursor",
+			mode = "n",
+		},
+		{
+			"<leader>/c",
+			function()
+				require("kaleidosearch").clear_all_highlights()
+				vim.api.nvim_command("set hlsearch")
+				vim.api.nvim_command("nohl")
+			end,
+			desc = "Clear search",
+			mode = "n",
+		},
+	})
+
 	-- Harpoon + Portal
 	wk.add({
 		{ "<leader>'", group = "Harpoon+Portal" },
