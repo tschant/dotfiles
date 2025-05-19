@@ -1,4 +1,5 @@
 local utils = require("utils.extra")
+
 local servers = {
 	bashls = {},
 	cssls = {},

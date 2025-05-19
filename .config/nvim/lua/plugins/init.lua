@@ -1,7 +1,4 @@
 return {
-	-- Window splitting
-	"beauwilliams/focus.nvim",
-
 	-- Markdown
 	{ "iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md" },
 
@@ -67,27 +64,6 @@ return {
 	},
 
 	-- Multi-line plugins
-	--[[ {
-		"anuvyklack/pretty-fold.nvim",
-		branch = "master",
-		event = "BufRead",
-		dependencies = 'anuvyklack/nvim-keymap-amend',
-		config = function()
-			require("pretty-fold").setup({
-				keep_indentation = false,
-				fill_char = '━',
-				sections = {
-					left = {
-						function() return string.rep('>', vim.v.foldlevel) end,
-						' ', 'number_of_folded_lines', ':', 'content', 'percentage', ' ┣━━',
-					},
-					right = {
-						'┫'
-					}
-				}
-			})
-		end
-	}, ]]
 	{
 		"anuvyklack/fold-preview.nvim",
 		branch = "main",
@@ -148,10 +124,6 @@ return {
 				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
 			})
 		end,
-	},
-	{
-		"mrjones2014/smart-splits.nvim",
-		config = true,
 	},
 	{
 		"akinsho/toggleterm.nvim",
