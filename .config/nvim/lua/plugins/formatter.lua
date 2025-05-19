@@ -11,7 +11,7 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "isort", "black" },
+				python = { "ruff_format", "ruff_check", "ruff_organize_imports" },
 				css = { "biome", "prettierd", "prettier", stop_after_first = true },
 				scss = { "prettierd", "prettier", stop_after_first = true },
 				less = { "prettierd", "prettier", stop_after_first = true },

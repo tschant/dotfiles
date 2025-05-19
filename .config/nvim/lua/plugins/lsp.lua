@@ -49,7 +49,34 @@ local servers = {
 			},
 		},
 	},
-	pyright = {},
+	pyright = { disableOrganizeImports = true },
+	ruff = {
+		init_options = {
+			configuration = {
+				lint = {
+					ignore = { "E203", "E266", "E501", "W503", "F403", "F401" },
+					select = { "B", "C", "E", "F", "W", "T4", "B9", "T001" },
+					mccabe = {
+						["max-complexity"] = 18,
+					},
+				},
+			},
+			settings = {
+				lineLength = 100,
+				configurationPreference = "editorFirst",
+				organizeImports = true,
+				showSyntaxErrors = true,
+				logLevel = "info",
+				fixAll = true,
+				codeAction = {
+					lint = {
+						enable = true,
+						preview = true,
+					},
+				},
+			},
+		},
+	},
 	rust_analyzer = {},
 	stylelint_lsp = { autostart = false },
 	lua_ls = {
@@ -94,14 +121,14 @@ local servers = {
 	biome = {},
 	ts_ls = {
 		-- cmd = { "typescript-language-server", "--stdio" },
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-    },
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
 		settings = {
 			javascript = {
 				inlayHints = {
@@ -146,7 +173,7 @@ return {
 		})
 
 		local lspconfig = require("lspconfig")
-		local util = require("lspconfig/util")
+		-- local util = require("lspconfig/util")
 		-- local cmp_lsp = require("cmp_nvim_lsp")
 		-- servers.gopls.root_dir = util.root_pattern("go.work", "go.mod", ".git")
 
@@ -156,7 +183,7 @@ return {
 		} ]]
 
 		local setup_server = function(server, config)
-			local capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+			local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 			config = vim.tbl_deep_extend("force", {
 				-- on_attach = on_attach,
 				capabilities = capabilities,
