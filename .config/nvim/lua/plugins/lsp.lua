@@ -199,35 +199,55 @@ return {
 		end
 
 		-- Stop lsp diagnostics from showing virtual text
+		local icons = require("utils.icons")
 		vim.diagnostic.config({
 			virtual_text = { current_line = true, severity = { min = "WARN", max = "ERROR" } }, -- {spacing = 6, severity = "error"},
 			-- virtual_lines = { current_line = true, severity = { min = "ERROR" } },
 			update_in_insert = false,
 			underline = true,
-			signs = true,
+			signs = {
+				active = true,
+				text = {
+					[vim.diagnostic.severity.ERROR] = icons.error,
+					[vim.diagnostic.severity.WARN] = icons.warn,
+					[vim.diagnostic.severity.INFO] = icons.info,
+					[vim.diagnostic.severity.HINT] = icons.hint,
+				},
+				texthl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+					[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+					[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+				},
+				numhl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+					[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+					[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+				},
+			},
 		})
 
-		local icons = require("utils.icons")
-		vim.fn.sign_define("DiagnosticSignError", {
-			texthl = "DiagnosticSignError",
-			text = icons.error,
-			numhl = "DiagnosticSignError",
-		})
-		vim.fn.sign_define("DiagnosticSignWarn", {
-			texthl = "DiagnosticSignWarn",
-			text = icons.warn,
-			numhl = "DiagnosticSignWarn",
-		})
-		vim.fn.sign_define("DiagnosticSignInfo", {
-			texthl = "DiagnosticSignInfo",
-			text = icons.info,
-			numhl = "DiagnosticSignInfo",
-		})
-		vim.fn.sign_define("DiagnosticSignHint", {
-			texthl = "DiagnosticSignHint",
-			text = icons.hint,
-			numhl = "DiagnosticSignHint",
-		})
+		-- vim.fn.sign_define("DiagnosticSignError", {
+		-- 	texthl = "DiagnosticSignError",
+		-- 	text = icons.error,
+		-- 	numhl = "DiagnosticSignError",
+		-- })
+		-- vim.fn.sign_define("DiagnosticSignWarn", {
+		-- 	texthl = "DiagnosticSignWarn",
+		-- 	text = icons.warn,
+		-- 	numhl = "DiagnosticSignWarn",
+		-- })
+		-- vim.fn.sign_define("DiagnosticSignInfo", {
+		-- 	texthl = "DiagnosticSignInfo",
+		-- 	text = icons.info,
+		-- 	numhl = "DiagnosticSignInfo",
+		-- })
+		-- vim.fn.sign_define("DiagnosticSignHint", {
+		-- 	texthl = "DiagnosticSignHint",
+		-- 	text = icons.hint,
+		-- 	numhl = "DiagnosticSignHint",
+		-- })
 
 		-- suppress error messages from lang servers
 		-- vim.notify = function(msg, log_level, _)

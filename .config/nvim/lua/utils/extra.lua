@@ -187,7 +187,7 @@ function utils.get_name_from_group(bufnum, lnum, group)
 	return cur_sign["name"]
 end
 
-function utils.make_hl_statuscolum(group, sym)
+function utils.make_hl_statuscolumn(group, sym)
 	return table.concat({ "%#", group, "#", sym, "%*" })
 end
 
@@ -260,6 +260,17 @@ function utils.get_table_keys(t)
 		keys[n] = k
 	end
 	return keys
+end
+
+function utils.title_case(str)
+	local result = string.gsub( str, "(%a)([%w_']*)",
+		function(first, rest)
+			return first:upper() .. rest:lower()
+		end
+	)
+	return result
+	-- return string.gsub(" "..str, "%W%l", string.upper):sub(2)
+	-- return str:gsub("(%l)(%w*)", function(a,b) return string.upper(a)..b end)
 end
 
 function utils.dump_table(table)
