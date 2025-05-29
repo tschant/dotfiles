@@ -7,39 +7,10 @@ local servers = {
 	dockerls = {},
 	eslint = {
 		cmd = { "eslint_d" },
-	},
-	--[[ gopls = {
-		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 		settings = {
-			gopls = {
-				analyses = {
-					nilness = true,
-					shadow = true,
-					unusewrites = true,
-					unusedparams = true,
-					unreachable = true,
-				},
-				codelenses = {
-					generate = true,
-					gc_details = true,
-					test = true,
-					tidy = true,
-				},
-				usePlaceholders = true,
-				completeUnimported = true,
-				staticcheck = true,
-				matcher = "Fuzzy",
-				diagnosticsDelay = "500ms",
-				experimentalPostfixCompletions = true,
-				symbolMatcher = "fuzzy",
-				gofumpt = true,
-			},
+			workingDirectory = { mode = 'auto' },
 		},
-		init_options = {
-			usePlaceholders = true,
-		},
-		filetypes = { "go", "gomod" },
-	}, ]]
+	},
 	html = { init_options = { provideFormatter = false } },
 	jdtls = {},
 	jsonls = {
@@ -119,7 +90,6 @@ local servers = {
 	},
 	terraformls = {},
 	tflint = {},
-	biome = {},
 	ts_ls = {
 		-- cmd = { "typescript-language-server", "--stdio" },
 		filetypes = {
@@ -174,19 +144,10 @@ return {
 		})
 
 		local lspconfig = require("lspconfig")
-		-- local util = require("lspconfig/util")
-		-- local cmp_lsp = require("cmp_nvim_lsp")
-		-- servers.gopls.root_dir = util.root_pattern("go.work", "go.mod", ".git")
-
-		-- local capabilities = cmp_lsp.default_capabilities()
-		--[[ capabilities.textDocument.colorProvider = {
-			dynamicRegistration = true,
-		} ]]
 
 		local setup_server = function(server, config)
 			local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 			config = vim.tbl_deep_extend("force", {
-				-- on_attach = on_attach,
 				capabilities = capabilities,
 				flags = { debounce_text_changes = 150 },
 			}, config)
@@ -227,38 +188,5 @@ return {
 				},
 			},
 		})
-
-		-- vim.fn.sign_define("DiagnosticSignError", {
-		-- 	texthl = "DiagnosticSignError",
-		-- 	text = icons.error,
-		-- 	numhl = "DiagnosticSignError",
-		-- })
-		-- vim.fn.sign_define("DiagnosticSignWarn", {
-		-- 	texthl = "DiagnosticSignWarn",
-		-- 	text = icons.warn,
-		-- 	numhl = "DiagnosticSignWarn",
-		-- })
-		-- vim.fn.sign_define("DiagnosticSignInfo", {
-		-- 	texthl = "DiagnosticSignInfo",
-		-- 	text = icons.info,
-		-- 	numhl = "DiagnosticSignInfo",
-		-- })
-		-- vim.fn.sign_define("DiagnosticSignHint", {
-		-- 	texthl = "DiagnosticSignHint",
-		-- 	text = icons.hint,
-		-- 	numhl = "DiagnosticSignHint",
-		-- })
-
-		-- suppress error messages from lang servers
-		-- vim.notify = function(msg, log_level, _)
-		-- 	if msg:match("exit code") then
-		-- 		return
-		-- 	end
-		-- 	if log_level == vim.log.levels.ERROR then
-		-- 		vim.api.nvim_err_writeln(msg)
-		-- 	else
-		-- 		vim.api.nvim_echo({ { msg } }, true, {})
-		-- 	end
-		-- end
 	end,
 }
