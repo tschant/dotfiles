@@ -1,0 +1,17 @@
+return {
+	bashls = require("servers.bashls"),
+	cssls = require("servers.cssls"),
+	dockerls = require("servers.dockerls"),
+	eslint = require("servers.eslint"),
+	html = require("servers.html"),
+	jsonls = require("servers.jsonls"),
+	pyright = require("servers.pyright"),
+	ruff = require("servers.ruff"),
+	stylelint_lsp = { autostart = false },
+	lua_ls = require("servers.lua_ls"),
+	tailwindcss = require("servers.tailwindcss"),
+	terraformls = require("servers.terraformls"),
+	tflint = require("servers.tflint"),
+	yamlls = require("servers.yamlls"),
+	-- ts_ls = require("servers.ts_ls"),
+}

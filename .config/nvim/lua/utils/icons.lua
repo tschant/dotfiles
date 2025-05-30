@@ -25,4 +25,6 @@ icons.diag_signs = {
 	DiagnosticSignOk = icons.ok
 }
 
+icons.spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+
 return icons
