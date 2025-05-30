@@ -5,46 +5,32 @@ function utils.setColorScheme(Theme)
 	cmd("colorscheme " .. Theme)
 
 	-- Use terminal background color instead of colorscheme
-	cmd("hi Normal ctermbg=none guibg=none")
-	cmd("hi NormalNC ctermbg=none guibg=#262626")
-	cmd("hi SignColumn ctermbg=none guibg=none")
-	cmd("hi FoldColumn ctermbg=none guibg=none")
-	cmd("hi FocusedLine ctermbg=none guibg=none guifg=#0088aa")
+	vim.api.nvim_set_hl(0, "Normal", { ctermbg = "none", bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalNC", { ctermbg = "none", bg = "#262626" })
+	vim.api.nvim_set_hl(0, "SignColumn", { ctermbg = "none", bg = "none" })
+	vim.api.nvim_set_hl(0, "FoldColumn", { ctermbg = "none", bg = "none" })
+	vim.api.nvim_set_hl(0, "FocusedLine", { ctermbg = "none", bg = "none", fg = "#0088aa" })
+	vim.api.nvim_set_hl(0, "LineNR", { ctermbg = "none", bg = "none" })
+	vim.api.nvim_set_hl(0, "Whitespace", { fg = "#323232" })
 
-	cmd("hi link NeominimapSearchLine IncSearch")
-	cmd("hi link NeominimapSearchSign IncSearch")
-
-	-- cmd "hi StatusColumnBorder guifg=SignColumn guibg=SignColumn"
-	-- cmd "hi StatusColumnGitSigns guifg=SignColumn guibg=SignColumn"
+	vim.api.nvim_set_hl(0, "NeominimapSearchLine", { link = "IncSearch" })
+	vim.api.nvim_set_hl(0, "NeominimapSearchSign", { link = "IncSearch" })
 
 	-- highlights --
-	cmd("hi EndOfBuffer guifg=#525252 guibg=NONE")
-	-- cmd("hi gitcommitOverflow guifg=#525252 guibg=NONE")
-	-- cmd("hi gitcommitTrailers guifg=#525252 guibg=NONE")
-	-- cmd("hi Visual guibg=#525252")
+	vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#525252", bg = "NONE" })
 
 	-- -- git signs
-	local colors = require("utils.colors")
-	cmd("hi DiffAdd guifg=" .. colors.green .. " guibg = none")
-	cmd("hi DiffChange guifg =" .. colors.blue .. " guibg = none")
-	cmd("hi DiffModified guifg =" .. colors.orange .. " guibg = none")
-	cmd("hi DiffDeleted guifg =" .. colors.red .. " guibg = none")
-	cmd("hi DiagnosticError guifg =" .. colors.error .. " guibg = none")
-	cmd("hi DiagnosticWarn guifg =" .. colors.warning .. " guibg = none")
-	cmd("hi DiagnosticInfo guifg =" .. colors.info .. " guibg = none")
-	cmd("hi DiagnosticHint guifg =" .. colors.hint .. " guibg = none")
+	-- local colors = require("utils.colors")
+	-- vim.api.nvim_set_hl(0, "DiffAdd", { fg = colors.green, bg = "none" })
+	-- vim.api.nvim_set_hl(0, "DiffChange", { fg = colors.blue, bg = "none" })
+	-- vim.api.nvim_set_hl(0, "DiffModified", { fg = colors.orange, bg = "none" })
+	-- vim.api.nvim_set_hl(0, "DiffDeleted", { fg = colors.red, bg = "none" })
+	-- vim.api.nvim_set_hl(0, "DiagnosticError", { fg = colors.error, bg = "none" })
+	-- vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = colors.warning, bg = "none" })
+	-- vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = colors.info, bg = "none" })
+	-- vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = colors.hint, bg = "none" })
 
-	-- cmd("hi BufferCurrentADDED guifg=" .. colors.green)
-	-- cmd("hi BufferCurrentCHANGED guifg =" .. colors.blue)
-	-- cmd("hi BufferCurrentMod guifg =" .. colors.orange)
-	-- cmd("hi BufferCurrentDELETED guifg =" .. colors.red)
-	-- cmd("hi BufferCurrentERROR guifg =" .. colors.error)
-	-- cmd("hi BufferCurrentWARN guifg =" .. colors.warning)
-	-- cmd("hi BufferCurrentINFO guifg =" .. colors.info)
-	-- cmd("hi BufferCurrentHINT guifg =" .. colors.hint)
-
-	cmd("hi NotifyBackground guifg = none guibg=#000000")
+	vim.api.nvim_set_hl(0, "NotifyBackground", { fg = "none", bg = "#000000" })
 end
-
 
 return utils

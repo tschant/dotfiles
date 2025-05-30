@@ -1,10 +1,15 @@
-vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#381111" })
-vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#613e1a" })
-vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#636218" })
-vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#2a3834" })
-vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#184b63" })
-vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#492a63" })
--- vim.api.nvim_set_hl(0, "RainbowCyan", { fg =   "" })
+local colors = require "utils.colors"
+vim.api.nvim_set_hl(0, "SnacksIndent0", { fg = "#222222" })
+vim.api.nvim_set_hl(0, "SnacksIndent1", { fg = "#323232" })
+vim.api.nvim_set_hl(0, "SnacksIndent2", { fg = "#424242" })
+vim.api.nvim_set_hl(0, "SnacksIndent3", { fg = "#525252" })
+vim.api.nvim_set_hl(0, "SnacksIndent4", { fg = "#626262" })
+vim.api.nvim_set_hl(0, "SnacksIndent5", { fg = "#727272" })
+vim.api.nvim_set_hl(0, "SnacksIndent6", { fg = "#828282" })
+vim.api.nvim_set_hl(0, "SnacksIndent7", { fg = "#929292" })
+vim.api.nvim_set_hl(0, "SnacksIndent8", { fg = "#a2a2a2" })
+vim.api.nvim_set_hl(0, "SnacksIndent9", { fg = "#b2b2b2" })
+vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = colors.lightgrey })
 
 vim.opt.list = true
 vim.opt.listchars = {
@@ -24,29 +29,31 @@ return {
 	enabled = true,
 	indent = {
 		priority = 1,
-		enabled = true, -- enable indent guides
+		enabled = true,
 		char = "│",
-		only_scope = false, -- only show indent guides of the scope
-		only_current = false, -- only show indent guides in the current window
+		only_scope = true,
+		only_current = false,
 		hl = {
-			"RainbowRed",
-			"RainbowYellow",
-			"RainbowBlue",
-			"RainbowOrange",
-			"RainbowGreen",
-			"RainbowViolet",
-			-- "RainbowCyan",
+			"SnacksIndent0",
+			"SnacksIndent1",
+			"SnacksIndent2",
+			"SnacksIndent3",
+			"SnacksIndent4",
+			"SnacksIndent5",
+			"SnacksIndent6",
+			"SnacksIndent7",
+			"SnacksIndent8",
+			"SnacksIndent9",
 		},
 	},
 	animate = { enabled = false },
-	---@class snacks.indent.Scope.Config: snacks.scope.Config
 	scope = {
-		enabled = true, -- enable highlighting the current scope
+		enabled = true,
 		priority = 200,
 		char = "│",
-		underline = false, -- underline the start of the scope
-		only_current = false, -- only show scope in the current window
-		hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
+		underline = false,
+		only_current = false,
+		hl = "SnacksIndentScope",
 	},
 	chunk = {
 		enabled = true,
@@ -60,14 +67,6 @@ return {
 			corner_top = "╭",
 			corner_bottom = "╰",
 			arrow = "┤",
-
-			-- corner_top = "┌",
-			-- corner_bottom = "└",
-			-- -- corner_top = "╭",
-			-- -- corner_bottom = "╰",
-			-- horizontal = "─",
-			-- vertical = "│",
-			-- arrow = ">",
 		},
 	},
 	-- filter for buffers to enable indent guides
