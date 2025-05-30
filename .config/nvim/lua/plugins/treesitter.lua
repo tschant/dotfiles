@@ -5,7 +5,10 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 		event = "BufReadPre",
 		enabled = true,
-		opts = { mode = "cursor" },
+		opts = {
+			mode = "cursor",
+			max_lines = "15%",
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
