@@ -1,12 +1,17 @@
 return {
 	capabilities = require("servers.utils").capabilities(),
-	disableOrganizeImports = true,
 	settings = {
+		pyright = {
+			-- Using Ruff's import organizer
+			disableOrganizeImports = true,
+		},
 		basedpyright = {
+			disableOrganizeImports = true,
 			analysis = {
+				-- pythonPath = os.getenv('HOME') .. "/.pyenv/shims/python",
 				diagnosticMode = "openFilesOnly",
-				typeCheckingMode = "off",
-				extraPaths = {"~/git/api"},
+				useTypingExtensions = true,
+				typeCheckingMode = "basic",
 				inlayHints = {
 					callArgumentNames = true,
 				},

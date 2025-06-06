@@ -754,7 +754,6 @@ M.config = function()
 		},
 	})
 	for c = 1, 5 do
-		print(c)
 		wk.add({
 			{
 				"<C-" .. c .. ">",
