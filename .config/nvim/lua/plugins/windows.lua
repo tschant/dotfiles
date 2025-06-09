@@ -11,11 +11,33 @@ return {
 			vim.o.equalalways = false
 			require("windows").setup()
 		end,
+		keys = {
+			{ "<C-w>z", ":lua require('windows.commands').maximize()<CR>", desc = "maximize windows" },
+			{ "<C-w>=", ":lua require('windows.commands').equalize()<CR>", desc = "equalize windows" },
+		},
 	},
 
 	{
 		"mrjones2014/smart-splits.nvim",
 		config = true,
+		keys = {
+			{ "<C-h>", ":lua require('smart-splits').move_cursor_left()<CR>", desc = "Window left" },
+			{ "<C-j>", ":lua require('smart-splits').move_cursor_down()<CR>", desc = "Window down" },
+			{ "<C-k>", ":lua require('smart-splits').move_cursor_up()<CR>", desc = "Window up" },
+			{ "<C-l>", ":lua require('smart-splits').move_cursor_right()<CR>", desc = "Window right" },
+			{ "<leader>wH", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+			{ "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+			{ "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+			{ "<leader>wL", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+		},
 	},
-	{ "beauwilliams/focus.nvim" },
+	{
+		"beauwilliams/focus.nvim",
+		keys = {
+			{ "<leader>sh", ":lua require'focus'.split_command('h')<CR>", desc = "Focus Left" },
+			{ "<leader>sj", ":lua require'focus'.split_command('j')<CR>", desc = "Focus Down" },
+			{ "<leader>sk", ":lua require'focus'.split_command('k')<CR>", desc = "Focus Up" },
+			{ "<leader>sl", ":lua require'focus'.split_command('l')<CR>", desc = "Focus Right" },
+		},
+	},
 }

@@ -1,14 +1,14 @@
 return {
 	"folke/noice.nvim",
 	dependencies = {
-		{"MunifTanjim/nui.nvim", branch = "main"},
+		{ "MunifTanjim/nui.nvim", branch = "main" },
 		"rcarriga/nvim-notify",
 	},
 	config = function()
-		require('notify').setup({
+		require("notify").setup({
 			background_color = "#000000",
 		})
-		require('noice').setup({
+		require("noice").setup({
 			renader = "minimal",
 			stages = "static",
 			views = {
@@ -20,10 +20,10 @@ return {
 						col = 0,
 					},
 					timeout = 10000,
-				}
+				},
 			},
 			cmdline = {
-				view = "cmdline"
+				view = "cmdline",
 			},
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -49,9 +49,14 @@ return {
 				view = "notify",
 			},
 			messages = {
-				view = "mini"
-			}
+				view = "mini",
+			},
 		})
 	end,
 	event = "VeryLazy",
+	keys = {
+		{ "<leader>nd", ":lua require('noice').cmd('dismiss')<cr>", desc = "Dismiss notifications" },
+		{ "<leader>nh", ":lua require('noice').cmd('telescope')<cr>", desc = "History notifications" },
+		{ "<leader>nl", ":lua require('noice').cmd('last')<cr>", desc = "Last notifications" },
+	},
 }

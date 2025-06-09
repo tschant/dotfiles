@@ -1,6 +1,7 @@
 local M = {
 	"mbbill/undotree",
-	event = "BufReadPost"
+	event = "BufReadPost",
+	keys = { { "<leader>u", ":UndotreeToggle<CR>", desc = "undo tree" } },
 }
 
 M.config = function()

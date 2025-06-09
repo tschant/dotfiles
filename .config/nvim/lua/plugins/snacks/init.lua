@@ -21,4 +21,14 @@ return {
 		statuscolumn = { enabled = false },
 		terminal = { enabled = false },
 	},
+	keys = {
+		{ "<leader><Home>", ":lua Snacks.dashboard()<CR>", desc = "Dashboard" },
+		{
+			"<C-q>",
+			function()
+				Snacks.bufdelete.delete()
+			end,
+			desc = "Close buffer",
+		},
+	},
 }

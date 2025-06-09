@@ -8,20 +8,7 @@ return {
 
 	-- General pluginscomment
 	{ "jake-stewart/multicursor.nvim", config = true },
-	{
-		"hamidi-dev/kaleidosearch.nvim",
-		dependencies = {
-			"tpope/vim-repeat",
-			"stevearc/dressing.nvim",
-		},
-		config = true,
-	},
 
-	{
-		"wurli/visimatch.nvim",
-		event = "BufRead",
-		opts = {},
-	},
 	{
 		"NMAC427/guess-indent.nvim",
 		event = "BufRead",
@@ -35,6 +22,15 @@ return {
 		"numToStr/Comment.nvim",
 		event = "BufReadPre",
 		config = true,
+		keys = {
+			{
+				"<c-_>",
+				':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',
+				desc = "Comment line",
+				mode = { "x" },
+			},
+			{ "<C-_>", ':lua require("Comment.api").toggle_current_linewise()<CR>', desc = "ctrl-/" },
+		},
 	},
 	{
 		"kylechui/nvim-surround",
@@ -58,10 +54,6 @@ return {
 		end,
 	},
 	-- {"ggandor/lightspeed.nvim", event = "BufReadPre"},
-	{
-		"phaazon/hop.nvim",
-		config = true,
-	},
 
 	-- Multi-line plugins
 	{
@@ -125,13 +117,6 @@ return {
 			})
 		end,
 	},
-	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-		config = true,
-	},
-	{ "nvim-pack/nvim-spectre" },
-
 	-- Measure startuptime
 	{
 		"dstein64/vim-startuptime",

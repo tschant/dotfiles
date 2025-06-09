@@ -3,6 +3,13 @@ return {
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"gf",
+				":lua require('conform').format({ async = true, lsp_fallback = true })<CR>",
+				desc = "LSP Format file",
+			},
+		},
 		opts = {
 			formatters = {
 				biome = {
@@ -20,17 +27,17 @@ return {
 				javascript = {
 					-- "biome",
 					"eslint_d",
-					"prettierd"
+					"prettierd",
 				},
 				typescript = {
 					-- "biome",
 					"eslint_d",
-					"prettierd"
+					"prettierd",
 				},
 				typescriptreact = {
 					-- "biome",
 					"eslint_d",
-					"prettierd"
+					"prettierd",
 				},
 				go = { "gofumpt" },
 				json = { "biome", "jq" },
