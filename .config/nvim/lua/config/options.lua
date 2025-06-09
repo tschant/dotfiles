@@ -3,6 +3,7 @@ require("utils.colors")
 local cmd = vim.cmd
 
 vim.g.mapleader = ","
+vim.g.maplocalleader = "\\"
 -- Global
 u.opt("o", "incsearch", true)
 u.opt("o", "ignorecase", true)

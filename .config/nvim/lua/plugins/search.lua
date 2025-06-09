@@ -3,19 +3,24 @@ return {
 		"MagicDuck/grug-far.nvim",
 		-- Note (lazy loading): grug-far.lua defers all it's requires so it's lazy by default
 		-- additional lazy config to defer loading is not really needed...
-		config = function()
-			-- optional setup call to override plugin options
-			-- alternatively you can set options with vim.g.grug_far = { ... }
-			require("grug-far").setup({
-				-- options, see Configuration section below
-				-- there are no required options atm
-			})
-		end,
+		opts = {
+			showCompactInputs = true,
+			showInputsTopPadding = true,
+			showInputsBottomPadding = true,
+		},
+		config = true,
 		keys = {
 			{
 				"<leader>/r",
 				"<cmd>lua require('grug-far').open({ prefills = { paths = vim.fn.expand('%') } })<cr>",
 				desc = "Search/Replace",
+				mode = {"n"},
+			},
+			{
+				"<leader>/r",
+				"<cmd>lua require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>'),  paths = vim.fn.expand('%') }  })<cr>",
+				desc = "Search/Replace",
+				mode = {"x"},
 			},
 		},
 	},
@@ -54,7 +59,7 @@ return {
 					require("kaleidosearch").toggle_word_or_selection()
 				end,
 				desc = "Search word under cursor",
-				mode = {"x", "n"},
+				mode = { "x", "n" },
 			},
 			{
 				"<leader>/c",
