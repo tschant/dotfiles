@@ -47,24 +47,27 @@ def get_events():
         url = (urls + [None])[0]
         if url is not None and 'meet' in url: url += '?authuser=0'
 
-        timerange = splat[-1].replace('at ', '')
-        startEndTime = timerange.split(' - ')
-        starttime = startEndTime[0]
-        endtime = startEndTime[1] if len(startEndTime) > 1 else startEndTime[0].split(" ")[-1]
-        not_parsed_endtime=str(' '.join(starttime.split(" ")[:-2]) + ' ' + endtime).replace("\x1b[39m", "").replace("\x1b[33m", "")
-        endtime = datetime.datetime.strptime(not_parsed_endtime, datetime_format_v2)
-        starttime = datetime.datetime.strptime(starttime, datetime_format)
+        try:
+            timerange = splat[-1].replace('at ', '')
+            startEndTime = timerange.split(' - ')
+            starttime = startEndTime[0]
+            endtime = startEndTime[1] if len(startEndTime) > 1 else startEndTime[0].split(" ")[-1]
+            not_parsed_endtime=str(' '.join(starttime.split(" ")[:-2]) + ' ' + endtime).replace("\x1b[39m", "").replace("\x1b[33m", "")
+            endtime = datetime.datetime.strptime(not_parsed_endtime, datetime_format_v2)
+            starttime = datetime.datetime.strptime(starttime, datetime_format)
 
-        endtime = endtime.replace(year=starttime.year)
-        ongoing = starttime <= now <= endtime
-        if ongoing:
-            diff = endtime-now
-        else:
-            diff = starttime-now
+            endtime = endtime.replace(year=starttime.year)
+            ongoing = starttime <= now <= endtime
+            if ongoing:
+                diff = endtime-now
+            else:
+                diff = starttime-now
 
-        time = ' '.join(timerange.split()[3:])
+            time = ' '.join(timerange.split()[3:])
 
-        events.append(Event(title, diff, ongoing, time, url))
+            events.append(Event(title, diff, ongoing, time, url))
+        except Exception:
+            continue
     return events
 
 def generate_main_text(events):
