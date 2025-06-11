@@ -1,15 +1,57 @@
+local existing_term
 return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
 	config = true,
 	keys = {
+		{ "<esc>", [[<C-\><C-n>]], desc = "Escape insert mode", mode = "t" },
+		{ "jk", [[<C-\><C-n>]], desc = "Escape insert mode", mode = "t" },
+		{ "<C-h>", [[<Cmd>wincmd h<CR>]], mode = "t", buffer = 0 },
+		{ "<C-j>", [[<Cmd>wincmd j<CR>]], mode = "t", buffer = 0 },
+		{ "<C-k>", [[<Cmd>wincmd k<CR>]], mode = "t", buffer = 0 },
+		{ "<C-l>", [[<Cmd>wincmd l<CR>]], mode = "t", buffer = 0 },
+		{
+			"<C-w><C-o>",
+			function()
+				if existing_term ~= nil then
+					existing_term:toggle()
+					if existing_term.direction == "horizontal" then
+						existing_term:toggle(20, "float")
+					else
+						existing_term:toggle(20, "horizontal")
+					end
+				end
+			end,
+			desc = "Toggle float or horizontal",
+			mode = "t",
+		},
 		{
 			"<F2>",
 			'<C-\\><C-n><cmd>lua require("toggleterm").toggle()<CR>',
+			function()
+				if existing_term ~= nil then
+					existing_term:toggle()
+				end
+			end,
 			desc = "Toggle floating terminal",
 			mode = "t",
 		},
-		{ "<F2>", '<cmd>lua require("toggleterm").toggle()<CR>', desc = "Toggle floating terminal" },
+		{
+			"<F2>",
+			function()
+				local Terminal = require("toggleterm.terminal").Terminal
+				if existing_term == nil then
+					existing_term = Terminal:new({
+						on_open = function()
+							vim.cmd("startinsert!")
+						end,
+					})
+				end
+
+				existing_term:toggle()
+			end,
+			desc = "Toggle floating terminal",
+		},
 		{
 			"<F3>",
 			function()
@@ -18,7 +60,7 @@ return {
 					ft = "term_lazygit",
 					cmd = "lazygit",
 					direction = "float",
-					on_open = function(term)
+					on_open = function()
 						vim.cmd("startinsert!")
 						vim.api.nvim_buf_set_keymap(
 							term.bufnr,
@@ -29,7 +71,7 @@ return {
 						)
 					end,
 					-- function to run on closing the terminal
-					on_close = function(term)
+					on_close = function()
 						vim.cmd("startinsert!")
 					end,
 				})
@@ -53,5 +95,6 @@ return {
 			end,
 			desc = "Open htop",
 		},
+		{ "<leader>et", ":lua require('toggleterm').toggle()<CR>", desc = "Terminal" },
 	},
 }

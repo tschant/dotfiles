@@ -25,10 +25,17 @@ return {
 			{ "<C-j>", ":lua require('smart-splits').move_cursor_down()<CR>", desc = "Window down" },
 			{ "<C-k>", ":lua require('smart-splits').move_cursor_up()<CR>", desc = "Window up" },
 			{ "<C-l>", ":lua require('smart-splits').move_cursor_right()<CR>", desc = "Window right" },
-			{ "<leader>wH", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-			{ "<leader>wJ", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-			{ "<leader>wK", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
-			{ "<leader>wL", ":lua require('smart-splits').start_resize_mode()<CR>", desc = "start resize mode" },
+			{
+				"<leader>w<space>",
+				function()
+					require("which-key").show({ keys = "<leader>w", loop = true })
+				end,
+				desc = "Window",
+			},
+			{ "<leader>wH", ":lua require('smart-splits').resize_left()<CR>", desc = "resize left" },
+			{ "<leader>wJ", ":lua require('smart-splits').resize_down()<CR>", desc = "resize down" },
+			{ "<leader>wK", ":lua require('smart-splits').resize_up()<CR>", desc = "resize up" },
+			{ "<leader>wL", ":lua require('smart-splits').resize_right()<CR>", desc = "resize right" },
 		},
 	},
 	{

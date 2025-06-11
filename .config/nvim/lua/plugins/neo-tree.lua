@@ -14,6 +14,40 @@ return {
 			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 			{ "MunifTanjim/nui.nvim", branch = "main" },
 		},
+		keys = {
+			{
+				"<leader>eb",
+				":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
+				desc = "Buffers tree",
+			},
+			{
+				"<leader>ec",
+				":lua require('neo-tree.command').execute({action = 'close'})<CR>",
+				desc = "Close all neo-tree",
+			},
+			{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
+			{
+				"<leader>ee",
+				":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'float', toggle = true})<CR>",
+				desc = "File tree",
+			},
+			{
+				"<leader>eg",
+				":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'bottom', toggle = true})<CR>",
+				desc = "Git Status",
+			},
+			{
+				"<leader>ex",
+				":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>",
+				desc = "LSP/Diag",
+			},
+			{
+				"<leader>bb",
+				-- "<cmd>Telescope buffers<CR>",
+				":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
+				desc = "List Buffer",
+			},
+		},
 		opts = {
 			sources = {
 				"filesystem",
@@ -200,42 +234,6 @@ return {
 				group_empty_dirs = true, -- when true, empty directories will be grouped together
 				show_unloaded = true, -- show diagnostics from unloaded buffers
 			},
-		},
-	},
-
-	keys = {
-		{
-			"<leader>eb",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
-			desc = "Buffers tree",
-		},
-		{
-			"<leader>ec",
-			":lua require('neo-tree.command').execute({action = 'close'})<CR>",
-			desc = "Close all neo-tree",
-		},
-		{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
-		{
-			"<leader>ee",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'filesystem', reveal = true, position = 'float', toggle = true})<CR>",
-			desc = "File tree",
-		},
-		{
-			"<leader>eg",
-			":lua require('neo-tree.command').execute({action = 'show', source = 'git_status', reveal = true, position = 'bottom', toggle = true})<CR>",
-			desc = "Git Status",
-		},
-		{ "<leader>et", ":lua require('toggleterm').toggle()<CR>", desc = "Terminal" },
-		{
-			"<leader>ex",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>",
-			desc = "LSP/Diag",
-		},
-		{
-			"<leader>bb",
-			-- "<cmd>Telescope buffers<CR>",
-			":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
-			desc = "List Buffer",
 		},
 	},
 }
