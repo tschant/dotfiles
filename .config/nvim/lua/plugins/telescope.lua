@@ -103,34 +103,6 @@ return {
 		{ "<leader>gb", ":Telescope git_branches<CR>", desc = "git branches" },
 		{ "<leader>gc", ":Telescope git_commits<CR>", desc = "git commits" },
 		{ "<leader>gf", ":Telescope git_files<CR>", desc = "git files" },
-		{
-			"<leader>gg",
-			function()
-				local term = require("toggleterm.terminal").Terminal
-				local lazygit = term:new({
-					ft = "term_lazygit",
-					cmd = "lazygit",
-					direction = "float",
-					on_open = function()
-						vim.cmd("startinsert!")
-						vim.api.nvim_buf_set_keymap(
-							term.bufnr,
-							"n",
-							"q",
-							"<cmd>close<CR>",
-							{ noremap = true, silent = true }
-						)
-					end,
-					-- function to run on closing the terminal
-					on_close = function()
-						vim.cmd("startinsert!")
-					end,
-				})
-
-				lazygit:toggle()
-			end,
-			desc = "Lazy git",
-		},
 		{ "<leader>gs", ":Telescope git_status<CR>", desc = "git status" },
 	},
 	config = function()

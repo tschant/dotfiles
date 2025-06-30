@@ -82,12 +82,12 @@ return {
 			end,
 			desc = "Open htop",
 		},
-		{
+		--[[ {
 			"<leader>gg",
 			function()
 				lazygit:toggle()
 			end,
 			desc = "Lazy git",
-		},
+		}, ]]
 	},
 }
