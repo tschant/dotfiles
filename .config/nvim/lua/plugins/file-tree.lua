@@ -1,8 +1,70 @@
+-- local colors = require("utils.colors")
 vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
 return {
+	--[[ {
+		"refractalize/oil-git-status.nvim",
+		dependencies = { "stevearc/oil.nvim" },
+		config = true,
+	}, ]]
+	{
+		"stevearc/oil.nvim",
+		dependencies = { "kyazdani42/nvim-web-devicons", "refractalize/oil-git-status.nvim" },
+
+		cmd = "Oil",
+		opts = {
+			default_file_explorer = true,
+			delete_to_trash = true,
+			skip_confirm_for_simple_edits = false,
+			columns = {
+				"icon",
+			},
+			view_options = {
+				show_hidden = true,
+				is_always_hidden = function(name, _)
+					return name == ".."--[[  or name == ".git" ]]
+				end,
+			},
+			win_options = {
+				wrap = true,
+				cursorcolumn = false,
+			},
+			watch_for_changes = true,
+			use_default_keymaps = true,
+			show_hidden = true,
+			keymaps = {
+				["g?"] = { "actions.show_help", mode = "n" },
+				["<CR>"] = "actions.select",
+				["<C-s>"] = { "actions.select", opts = { vertical = true } },
+				["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+				["<C-t>"] = { "actions.select", opts = { tab = true } },
+				["<C-p>"] = "actions.preview",
+				["<C-c>"] = { "actions.close", mode = "n" },
+				["q"] = { "actions.close", mode = "n" },
+				["<ESC>"] = { "actions.close", mode = "n" },
+				["<C-l>"] = "actions.refresh",
+				["-"] = { "actions.parent", mode = "n" },
+				["<BS>"] = { "actions.parent", mode = "n" },
+				["_"] = { "actions.open_cwd", mode = "n" },
+				["`"] = { "actions.cd", mode = "n" },
+				["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+				["gs"] = { "actions.change_sort", mode = "n" },
+				["gx"] = "actions.open_external",
+				["g."] = { "actions.toggle_hidden", mode = "n" },
+				["g\\"] = { "actions.toggle_trash", mode = "n" },
+			},
+		},
+		keys = {
+			{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
+			{ "<leader>ee", ":lua require('oil').open()<CR>", desc = "Open filetree" },
+		},
+	},
+}
+
+--[[ return {
 	{
 		"mrbjarksen/neo-tree-diagnostics.nvim",
 		dependencies = { "nvim-neo-tree/neo-tree.nvim" },
@@ -40,12 +102,6 @@ return {
 				"<leader>ex",
 				":lua require('neo-tree.command').execute({action = 'focus', source = 'diagnostics', reveal = true, position = 'bottom', toggle = true})<CR>",
 				desc = "LSP/Diag",
-			},
-			{
-				"<leader>bb",
-				-- "<cmd>Telescope buffers<CR>",
-				":lua require('neo-tree.command').execute({action = 'focus', source = 'buffers', reveal = true, position = 'float', toggle = true})<CR>",
-				desc = "List Buffer",
 			},
 		},
 		opts = {
@@ -236,4 +292,4 @@ return {
 			},
 		},
 	},
-}
+} ]]

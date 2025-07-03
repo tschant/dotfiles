@@ -36,6 +36,7 @@ return {
 			},
 		},
 		config = true,
+		enabled = false,
 		keys = {
 			{
 				"<leader>//",
