@@ -5,14 +5,10 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 return {
-	--[[ {
-		"refractalize/oil-git-status.nvim",
-		dependencies = { "stevearc/oil.nvim" },
-		config = true,
-	}, ]]
+	{ "benomahony/oil-git.nvim", dependencies = { "stevearc/oil.nvim" }, cmd = "Oil" },
 	{
 		"stevearc/oil.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", "refractalize/oil-git-status.nvim" },
+		dependencies = { "kyazdani42/nvim-web-devicons", "benomahony/oil-git.nvim" },
 
 		cmd = "Oil",
 		opts = {
@@ -44,7 +40,7 @@ return {
 				["<C-p>"] = "actions.preview",
 				["<C-c>"] = { "actions.close", mode = "n" },
 				["q"] = { "actions.close", mode = "n" },
-				["<ESC>"] = { "actions.close", mode = "n" },
+				-- ["<ESC>"] = { "actions.close", mode = "n" },
 				["<C-l>"] = "actions.refresh",
 				["-"] = { "actions.parent", mode = "n" },
 				["<BS>"] = { "actions.parent", mode = "n" },
@@ -59,7 +55,7 @@ return {
 		},
 		keys = {
 			{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
-			{ "<leader>ee", ":lua require('oil').open()<CR>", desc = "Open filetree" },
+			{ "<leader>ee", ":Oil<CR>", desc = "Open filetree" },
 		},
 	},
 }
