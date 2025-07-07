@@ -1,3 +1,10 @@
+-- local function read_system_prompt(filepath)
+--   local lines = vim.fn.readfile(filepath)
+--   return table.concat(lines, "\n")
+-- end
+-- local system_prompt_path = vim.fn.expand("~/.config/nvim/prompts/avante_system_prompt.txt")
+-- local system_prompt = read_system_prompt(system_prompt_path)
+
 return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
@@ -6,14 +13,17 @@ return {
 		-- add any opts here
 		-- for example
 		provider = "ollama",
-		ollama = {
-			__inherited_from = "openai",
-			api_key_name = "",
-			endpoint = "http://192.168.86.48:7869",
-			model = "qwen2.5-coder:7b",
-			timeout = 30000,
-			disable_tools = true,
+		providers = {
+			ollama = {
+				api_key_name = "",
+				endpoint = "http://192.168.86.48:7869",
+				-- model = "qwen2.5-coder:7b",
+				model = "codellama:7b",
+				timeout = 30000,
+				disable_tools = true,
+			},
 		},
+		-- system_prompt = system_prompt,
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make",
