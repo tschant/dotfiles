@@ -5,9 +5,9 @@ return {
 	eslint = require("servers.eslint"),
 	html = require("servers.html"),
 	jsonls = require("servers.jsonls"),
+	-- hausify = require("servers.hausify"),
 	basedpyright = require("servers.basedpyright"),
 	ruff = require("servers.ruff"),
-	-- ty = require("servers.ty"),
 	stylelint_lsp = { autostart = false },
 	lua_ls = require("servers.lua_ls"),
 	tailwindcss = require("servers.tailwindcss"),
@@ -15,4 +15,5 @@ return {
 	tflint = require("servers.tflint"),
 	yamlls = require("servers.yamlls"),
 	-- ts_ls = require("servers.ts_ls"),
+	-- ty = require("servers.ty"),
 }
