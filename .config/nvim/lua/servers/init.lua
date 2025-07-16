@@ -6,7 +6,7 @@ return {
 	html = require("servers.html"),
 	jsonls = require("servers.jsonls"),
 	-- hausify = require("servers.hausify"),
-	basedpyright = require("servers.basedpyright"),
+	-- basedpyright = require("servers.basedpyright"),
 	ruff = require("servers.ruff"),
 	stylelint_lsp = { autostart = false },
 	lua_ls = require("servers.lua_ls"),

@@ -22,7 +22,8 @@ return {
 		require("lspconfig.configs").hausify = hausify
 		servers.hausify = hausify
 		for server, config in pairs(servers) do
-			lspconfig[server].setup(config)
+			vim.lsp.config(server, config)
+			vim.lsp.enable(server)
 		end
 	end,
 }
