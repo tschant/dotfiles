@@ -5,10 +5,10 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 return {
-	{ "benomahony/oil-git.nvim", dependencies = { "stevearc/oil.nvim" }, cmd = "Oil" },
+	{ "benomahony/oil-git.nvim", dependencies = { "stevearc/oil.nvim" }, cmd = "Oil", enabled = false },
 	{
 		"stevearc/oil.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", "benomahony/oil-git.nvim" },
+		dependencies = { "kyazdani42/nvim-web-devicons"--[[ , "benomahony/oil-git.nvim" ]] },
 
 		cmd = "Oil",
 		opts = {
