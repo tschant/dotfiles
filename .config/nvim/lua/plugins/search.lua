@@ -34,6 +34,7 @@ return {
 	},
 	{
 		"folke/flash.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		opts = {
 			modes = { search = { enabled = true } },
@@ -155,8 +156,7 @@ return {
 		},
 	},
 	{
-		"phaazon/hop.nvim",
-		enabled = false,
+		"smoka7/hop.nvim",
 		config = true,
 		keys = {
 			{
@@ -221,6 +221,20 @@ return {
 					})
 				end,
 				desc = "Hop to char backward (after char)",
+			},
+			{
+				"<leader>//",
+				function()
+					require("hop").hint_patterns()
+				end,
+				desc = "Hop based on pattern",
+			},
+			{
+				"<leader>/*",
+				function()
+					require("hop").hint_patterns({}, vim.fn.expand("<cword>"))
+				end,
+				desc = "Hop to word under cursor",
 			},
 		},
 	},
