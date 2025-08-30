@@ -2,7 +2,9 @@ local cmd = vim.cmd
 local utils = {}
 
 function utils.setColorScheme(Theme)
-	cmd("colorscheme " .. Theme)
+	if Theme then
+		cmd("colorscheme " .. Theme)
+	end
 
 	-- Use terminal background color instead of colorscheme
 	vim.api.nvim_set_hl(0, "Normal", { ctermbg = "none", bg = "none" })

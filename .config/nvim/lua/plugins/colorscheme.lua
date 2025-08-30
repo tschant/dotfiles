@@ -43,22 +43,22 @@ return {
 		end,
 	},
 	{
-		"kyza0d/xeno.nvim",
+		"jesseleite/nvim-noirbuddy",
+		dependencies = {
+			{ "tjdevries/colorbuddy.nvim", branch = "master" },
+		},
 		lazy = false,
 		priority = 1000,
 		opts = {
-			transparent = true,
-			contrast = 0.1,
+			preset = "slate",
+			colors = {
+				primary = "#6EE2FF",
+				-- secondary = "#267FB5",
+			},
 		},
 		config = function(_, opts)
-			local theme_name = "xeno-theme"
-			local xeno = require("xeno")
-			xeno.config(opts)
-			xeno.new_theme(theme_name, {
-				base = "#1E1E1E",
-				accent = "#2f79ec",
-			})
-			config_load(theme_name)
+			require("noirbuddy").setup(opts)
+			config_load(--[[ "noirbuddy" ]])
 		end,
 	},
 	-- unused
