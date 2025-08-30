@@ -145,6 +145,9 @@ return {
 				cancel_snipe = "<esc>",
 				close_buffer = "D",
 			},
+			ui = {
+				persist_tags = false,
+			},
 			-- If you want the letters not to change, leave the sorting at default
 			sort = "last",
 		},

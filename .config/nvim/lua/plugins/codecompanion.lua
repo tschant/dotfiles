@@ -6,34 +6,59 @@
 -- local system_prompt = read_system_prompt(system_prompt_path)
 
 return {
-	"yetone/avante.nvim",
-	event = "VeryLazy",
-	version = false, -- Never set this value to "*"! Never!
-	opts = {
-		-- add any opts here
-		-- for example
-		provider = "ollama",
-		providers = {
-			ollama = {
-				api_key_name = "",
-				endpoint = "http://192.168.86.48:7869",
-				-- model = "qwen2.5-coder:7b",
-				model = "codellama:7b",
-				timeout = 30000,
-				disable_tools = true,
+	{
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		version = false, -- Never set this value to "*"! Never!
+		opts = {
+			-- add any opts here
+			-- for example
+			provider = "ollama",
+			providers = {
+				ollama = {
+					api_key_name = "",
+					endpoint = "http://192.168.86.48:7869",
+					-- model = "qwen2.5-coder:7b",
+					model = "codellama:7b",
+					timeout = 30000,
+					disable_tools = true,
+				},
+			},
+			-- system_prompt = system_prompt,
+		},
+		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+		build = "make",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+	{
+		"xTacobaco/cursor-agent.nvim",
+		cmd = { 'CursorAgent', 'CursorAgentSelection', 'CursorAgentBuffer' },
+		keys = {
+			{
+				"<leader>Ca", "<CMD>CursorAgent<CR>",
+				desc = "Toggle Cursor Agent",
+				mode = "n",
+			},
+			{
+				"<leader>Ca",
+				"<CMD>CursorAgentSelection<CR>",
+				desc = "Toggle Cursor Agent with selection",
+				mode = "v",
+			},
+			{
+				"<leader>CA",
+				"<CMD>CursorAgentBuffer<CR>",
+				desc = "Toggle Cursor Agent with buffer",
+				mode = "n",
 			},
 		},
-		-- system_prompt = system_prompt,
-	},
-	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-	build = "make",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter",
-		"stevearc/dressing.nvim",
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
-		"nvim-telescope/telescope.nvim",
-		"nvim-tree/nvim-web-devicons",
 	},
 }
 --[[ return {

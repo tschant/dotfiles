@@ -20,12 +20,12 @@ return {
 		end,
 	},
 	{
-		lazy = false,
-		priority = 1000,
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"zenbones-theme/zenbones.nvim",
 		dependencies = { "rktjmp/lush.nvim", branch = "main" },
 		config = function()
-			local colors_name = "forestbones"
+			local colors_name = "rosebones"
 			-- vim.g[colors_name .. "_compat"] = 1
 			vim.g[colors_name] = {
 				darkness = "stark",
@@ -40,6 +40,25 @@ return {
 				-- colorize_diagnostic_underline_text = true,
 			}
 			config_load(colors_name)
+		end,
+	},
+	{
+		"kyza0d/xeno.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			transparent = true,
+			contrast = 0.1,
+		},
+		config = function(_, opts)
+			local theme_name = "xeno-theme"
+			local xeno = require("xeno")
+			xeno.config(opts)
+			xeno.new_theme(theme_name, {
+				base = "#1E1E1E",
+				accent = "#2f79ec",
+			})
+			config_load(theme_name)
 		end,
 	},
 	-- unused

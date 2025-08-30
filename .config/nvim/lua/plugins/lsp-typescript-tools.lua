@@ -14,7 +14,7 @@ return {
 				"add_missing_imports",
 				"remove_unused",
 			},
-			publish_diagnostic_on = "change",
+			publish_diagnostic_on = "insert_leave",
 			tsserver_plugins = {
 				"@styled/typescript-styled-plugin",
 			},
