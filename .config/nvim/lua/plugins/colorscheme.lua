@@ -53,7 +53,7 @@ return {
 			preset = "slate",
 			colors = {
 				primary = "#6EE2FF",
-				-- secondary = "#267FB5",
+				secondary = "#76b5c5",
 			},
 		},
 		config = function(_, opts)
