@@ -1,5 +1,4 @@
 local util = require("utils.core")
-local u = require("utils.extra")
 local telescope_custom_actions = {}
 
 function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
@@ -32,6 +31,7 @@ function telescope_custom_actions.multi_selection_open(prompt_bufnr)
 end
 
 return {
+	enabled = true,
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		"nvim-lua/popup.nvim",

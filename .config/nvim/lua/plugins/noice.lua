@@ -56,7 +56,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{ "<leader>nd", ":lua require('noice').cmd('dismiss')<cr>", desc = "Dismiss notifications" },
-		{ "<leader>nh", ":lua require('noice').cmd('telescope')<cr>", desc = "History notifications" },
+		{ "<leader>nh", ":lua require('noice').cmd('history')<cr>", desc = "History notifications" },
 		{ "<leader>nl", ":lua require('noice').cmd('last')<cr>", desc = "Last notifications" },
 	},
 }

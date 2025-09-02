@@ -142,7 +142,7 @@ return {
 				dictionary = "12345",
 			},
 			navigate = {
-				cancel_snipe = "<esc>",
+				cancel_snipe = { "<esc>", "q" },
 				close_buffer = "D",
 			},
 			ui = {
