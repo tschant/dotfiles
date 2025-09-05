@@ -34,7 +34,6 @@ return {
 			"chrisgrieser/cmp-nerdfont",
 			"moyiz/blink-emoji.nvim",
 			"Kaiser-Yang/blink-cmp-dictionary",
-			"Kaiser-Yang/blink-cmp-avante",
 		},
 		opts = {
 			completion = {
@@ -113,7 +112,6 @@ return {
 			sources = {
 				default = {
 					"lsp",
-					-- "avante",
 					"path",
 					"buffer",
 					"dadbod",
@@ -128,14 +126,6 @@ return {
 						-- min_keyword_length = 2,
 						score_offset = 90,
 					},
-					--[[ avante = {
-						module = "blink-cmp-avante",
-						name = "Avante",
-						score_offset = 85,
-						opts = {
-							-- options for blink-cmp-avante
-						},
-					}, ]]
 					path = {
 						name = "Path",
 						module = "blink.cmp.sources.path",
