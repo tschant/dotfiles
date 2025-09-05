@@ -1,22 +1,18 @@
 return {
-	enabled = false,
+	enabled = true,
 	layout = {
 		-- preset = "vertical",
 		preview = true,
 	},
+	matcher = { frecency = true },
 	win = {
 		input = {
 			keys = {
-				["<CR>"] = "confirm",
-				["<C-CR>"] = "multi_open", -- custom multi-open
-				["<TAB>"] = "toggle",
-				["<C-TAB>"] = { "toggle", "down" },
-				["<S-TAB>"] = { "toggle", "up" },
+				["<CR>"] = { "confirm", mode = { "n", "x", "i" } },
+				["<S-Tab>"] = { "select_and_prev", mode = { "n", "x", "i" } },
+				["<Tab>"] = { "select_and_next", mode = { "n", "x", "i" } },
 				["<C-j>"] = "down",
 				["<C-k>"] = "up",
-				["<C-v>"] = { "multi_open", "vsplit" },
-				["<C-h>"] = { "multi_open", "split" },
-				["<C-t>"] = { "multi_open", "tab" },
 				["<esc>"] = "close",
 				["<C-e>"] = "preview_down",
 				["<C-u>"] = "preview_up",

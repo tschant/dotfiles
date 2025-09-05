@@ -31,7 +31,7 @@ function telescope_custom_actions.multi_selection_open(prompt_bufnr)
 end
 
 return {
-	enabled = true,
+	enabled = false,
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		"nvim-lua/popup.nvim",

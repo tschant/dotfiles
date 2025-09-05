@@ -15,6 +15,8 @@ function utils.setColorScheme(Theme)
 	vim.api.nvim_set_hl(0, "LineNR", { ctermbg = "none", bg = "none" })
 	vim.api.nvim_set_hl(0, "Whitespace", { fg = "#323232" })
 
+	vim.api.nvim_set_hl(0, "NonText", { fg = "#575757" })
+
 	vim.api.nvim_set_hl(0, "NeominimapSearchLine", { link = "IncSearch" })
 	vim.api.nvim_set_hl(0, "NeominimapSearchSign", { link = "IncSearch" })
 
