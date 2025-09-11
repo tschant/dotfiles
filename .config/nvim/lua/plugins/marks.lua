@@ -1,8 +1,47 @@
+local function save_mark()
+	local char = vim.fn.getcharstr()
+	-- Handle ESC, Ctrl-C, etc.
+	if char == "" or vim.startswith(char, "<") then
+		return
+	end
+	local grapple = require("grapple")
+	local filepath = vim.api.nvim_buf_get_name(0)
+	local filename = vim.fn.fnamemodify(filepath, ":t")
+	if grapple.exists({ name = char, buffer = 0 }) then
+		grapple.untag({ name = char })
+		vim.notify("Unmarked " .. filename .. " as " .. char)
+	else
+		grapple.tag({ name = char })
+		vim.notify("Marked " .. filename .. " as " .. char)
+	end
+end
+
+local function open_mark()
+	local char = vim.fn.getcharstr()
+	-- Handle ESC, Ctrl-C, etc.
+	if char == "" or vim.startswith(char, "<") then
+		return
+	end
+	local grapple = require("grapple")
+	if char == "'" then
+		grapple.toggle_tags()
+		return
+	end
+	grapple.select({ name = char })
+end
+
 return {
+	{
+		"cbochs/grapple.nvim",
+		keys = {
+			{ "m", save_mark, noremap = true, silent = true },
+			{ "'", open_mark, noremap = true, silent = true },
+		},
+	},
 	{
 		"cbochs/portal.nvim",
 		dependencies = {
-			"ThePrimeagen/harpoon",
+			"cbochs/grapple.nvim",
 		},
 		config = true,
 		opts = {
@@ -59,76 +98,8 @@ return {
 				':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
 				desc = "Portal Back",
 			},
-			--[[ {
-			"<leader>'i",
-			':lua require("portal.builtin").jumplist.tunnel({direction = "forward"})<CR>',
-			desc = "Portal Forward",
-		},
-		{
-			"<leader>'o",
-			':lua require("portal.builtin").jumplist.tunnel({direction = "backward"})<CR>',
-			desc = "Portal Back",
-		}, ]]
 			{ "<leader>'q", ':lua require("portal.builtin").quickfix.tunnel({})<CR>', desc = "Portal Quickfix" },
 		},
-	},
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		keys = {
-			{
-				"<leader>'D",
-				function()
-					require("harpoon"):list():clear()
-				end,
-				desc = "Clear list",
-			},
-			{
-				"<leader>'m",
-				function()
-					require("harpoon"):list():add()
-				end,
-				desc = "Add file",
-			},
-			{
-				"<leader>'n",
-				function()
-					require("harpoon"):list():remove()
-				end,
-				desc = "Remove file",
-			},
-			{
-				"<leader>''",
-				function()
-					local harpoon = require("harpoon")
-					harpoon.ui:toggle_quick_menu(harpoon:list())
-				end,
-				desc = "Quick menu",
-			},
-			{
-				"<leader>'l",
-				function()
-					local harpoon = require("harpoon")
-					harpoon.ui:toggle_quick_menu(harpoon:list())
-				end,
-				desc = "Quick menu",
-			},
-		},
-		config = function()
-			local wk = require("which-key")
-			for c = 1, 5 do
-				wk.add({
-					{
-						"<C-" .. c .. ">",
-						function()
-							require("harpoon"):list():select(c)
-						end,
-						desc = "Harpoon " .. c,
-					},
-				})
-			end
-		end,
 	},
 	{
 		"leath-dub/snipe.nvim",
@@ -160,37 +131,6 @@ return {
 				end,
 				desc = "Open Snipe buffer menu",
 			},
-		},
-	},
-	{
-		"fnune/recall.nvim",
-		opts = {},
-		keys = {
-			{ "mm", "<cmd>RecallToggle<cr>", mode = "n", silent = true },
-			{ "mn", "<cmd>RecallNext<cr>", mode = "n", silent = true },
-			{ "mp", "<cmd>RecallPrevious<cr>", mode = "n", silent = true },
-			{ "mc", "<cmd>RecallClear<cr>", mode = "n", silent = true },
-			{ "ml", "<cmd>Telescope recall<cr>", mode = "n", silent = true },
-			--[[
-				-- mx              Set mark x
-				-- m,              Set the next available alphabetical (lowercase) mark
-				-- m;              Toggle the next available mark at the current line
-				-- dmx             Delete mark x
-				-- dm-             Delete all marks on the current line
-				-- dm<space>       Delete all marks in the current buffer
-				-- m]              Move to next mark
-				-- m[              Move to previous mark
-				-- m:              Preview mark. This will prompt you for a specific mark to
-				--                 preview; press <cr> to preview the next mark.
-				--
-				-- m[0-9]          Add a bookmark from bookmark group[0-9].
-				-- dm[0-9]         Delete all bookmarks from bookmark group[0-9].
-				-- m}              Move to the next bookmark having the same type as the bookmark under
-				--                 the cursor. Works across buffers.
-				-- m{              Move to the previous bookmark having the same type as the bookmark under
-				--                 the cursor. Works across buffers.
-				-- dm=             Delete the bookmark under the cursor.
-			--]]
 		},
 	},
 	{
