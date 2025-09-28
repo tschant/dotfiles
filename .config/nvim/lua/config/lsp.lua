@@ -1,5 +1,5 @@
 local icons = require("utils.icons")
-local spinner = icons.spinner
+-- local spinner = icons.spinner
 
 vim.diagnostic.config({
 	virtual_text = { current_line = true, severity = { min = "WARN", max = "ERROR" } }, -- {spacing = 6, severity = "error"},

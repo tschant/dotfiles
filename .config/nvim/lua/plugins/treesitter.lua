@@ -32,9 +32,6 @@ return {
 				},
 				indent = {
 					enable = true,
-					--[[ disable = function(_, buf)
-					return utils.disable_filesize_limit(buf)
-				end, ]]
 				},
 				playground = {
 					enable = false,
@@ -44,9 +41,6 @@ return {
 				},
 				rainbow = {
 					enable = true,
-					--[[ disable = function(_, buf)
-					return utils.disable_filesize_limit(buf)
-				end, ]]
 				},
 			})
 		end,

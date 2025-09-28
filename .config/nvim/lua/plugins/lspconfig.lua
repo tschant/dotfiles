@@ -1,6 +1,6 @@
 local utils = require("utils.extra")
 local servers = require("servers")
-local hausify = require("servers.hausify")
+local kulala_ls = require("servers.kulala_ls")
 
 return {
 	"neovim/nvim-lspconfig",
@@ -18,9 +18,8 @@ return {
 		})
 
 		-- Custom servers:
-		local lspconfig = require("lspconfig")
-		require("lspconfig.configs").hausify = hausify
-		servers.hausify = hausify
+		require("lspconfig.configs").kulala_ls = kulala_ls
+		servers.kulala_ls = kulala_ls
 		for server, config in pairs(servers) do
 			vim.lsp.config(server, config)
 			vim.lsp.enable(server)

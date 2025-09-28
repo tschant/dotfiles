@@ -16,9 +16,15 @@ return {
 					biome = {
 						require_cwd = true,
 					},
+					kulala = {
+						command = "kulala-fmt",
+						args = { "format", "$FILENAME" },
+						stdin = false,
+					},
 				},
 				formatters_by_ft = {
 					lua = { "stylua" },
+					http = { "kulala" },
 					python = (function()
 						-- Make sure cwd is always the project root to the file, so that
 						-- the right config file (pyproject.toml, .style.yapf, etc.) is picked up
