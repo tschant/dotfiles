@@ -5,7 +5,6 @@ function config_load(theme)
 end
 
 return {
-
 	{
 		--[[ lazy = false,
 		priority = 1000, ]]
@@ -20,12 +19,12 @@ return {
 		end,
 	},
 	{
-		--[[ lazy = false,
-		priority = 1000, ]]
+		lazy = false,
+		priority = 1000,
 		"zenbones-theme/zenbones.nvim",
 		dependencies = { "rktjmp/lush.nvim", branch = "main" },
 		config = function()
-			local colors_name = "rosebones"
+			local colors_name = "zenbones"
 			-- vim.g[colors_name .. "_compat"] = 1
 			vim.g[colors_name] = {
 				darkness = "stark",
@@ -47,8 +46,8 @@ return {
 		dependencies = {
 			{ "tjdevries/colorbuddy.nvim", branch = "master" },
 		},
-		lazy = false,
-		priority = 1000,
+		--[[ lazy = false,
+		priority = 1000, ]]
 		opts = {
 			preset = "slate",
 			colors = {

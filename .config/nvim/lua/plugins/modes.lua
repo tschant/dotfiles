@@ -2,6 +2,7 @@ local colors = require("utils.colors")
 return {
 	"mvllow/modes.nvim",
 	event = "VeryLazy",
+	enabled = false,
 	config = function()
 		require("modes").setup({
 			colors = {
