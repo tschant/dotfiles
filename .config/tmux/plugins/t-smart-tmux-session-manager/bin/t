@@ -1,5 +1,5 @@
 #!/bin/bash
-# cSpell:words elif
+# cSpell:words
 
 if [ "$1" = "-h" ] || [ "$1" == "--help" ]; then
 	printf "\n"
@@ -31,13 +31,13 @@ elif [ $# -eq 0 ]; then
 	VPN_BINDING="ctrl-v:change-prompt(VPN> )+reload(ls -1 $ovpn_configs_path | sed 's/\(.*\)\.ovpn/VPN \1/')"
 	if [ "$TMUX" = "" ]; then       # if not currently in tmux
 		if tmux info &>/dev/null; then # if tmux is running
-			ZOXIDE_RESULT=$( (tmux list-sessions -F '#S' && zoxide query -l) | fzf --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING"  --bind "$SSH_BINDING" --bind "$VPN_BINDING"  --header "$HEADER")
+			ZOXIDE_RESULT=$( (tmux list-sessions -F '#S' && zoxide query -l) | fzf --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING" --bind "$SSH_BINDING" --bind "$VPN_BINDING" --header "$HEADER")
 		else # tmux is not running
 			ZOXIDE_RESULT=$(zoxide query -l | fzf --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING" --bind "$SSH_BINDING" --bind "$VPN_BINDING" --header "$HEADER")
 		fi
 	else # currently in tmux
 		TMUX_AND_ZOXIDE_SESSION="$(tmux list-sessions -F '#S' && zoxide query -l && (cat "$HOME/.ssh/config" | grep 'Host .*') && (ls -1 "$HOME/.local/share/openvpn/configs" | sed 's/\(.*\)\.ovpn/VPN \1/'))"
-		ZOXIDE_RESULT=$( echo "$TMUX_AND_ZOXIDE_SESSION" | fzf-tmux -p --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING" --bind "$SSH_BINDING" --bind "$VPN_BINDING" --header "$HEADER")
+		ZOXIDE_RESULT=$(echo "$TMUX_AND_ZOXIDE_SESSION" | fzf --tmux --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING" --bind "$SSH_BINDING" --bind "$VPN_BINDING" --header "$HEADER")
 	fi
 else
 	ZOXIDE_RESULT=$(zoxide query "$1")
@@ -61,15 +61,15 @@ else
 fi
 
 SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$") # find existing session
-if [ "$TMUX" = "" ]; then             # if not currently in tmux
-	if [ "$SESSION" = "" ]; then         # session does not exist
-		cd "$ZOXIDE_RESULT" || exit 1       # jump to directory
-		tmux new-session -s "$SESSION_NAME" # create session and attach
-	else                                 # session exists
-		tmux attach -t "$SESSION"           # attach to session
+if [ "$TMUX" = "" ]; then                                      # if not currently in tmux
+	if [ "$SESSION" = "" ]; then                                  # session does not exist
+		cd "$ZOXIDE_RESULT" || exit 1                                # jump to directory
+		tmux new-session -s "$SESSION_NAME"                          # create session and attach
+	else                                                          # session exists
+		tmux attach -t "$SESSION"                                    # attach to session
 	fi
-else                                     # currently in tmux
-	if [ "$SESSION" = "" ]; then            # session does not exist
+else                          # currently in tmux
+	if [ "$SESSION" = "" ]; then # session does not exist
 		if [ "$HOST" = "" ] && [ "$VPN" = "" ]; then
 			cd "$ZOXIDE_RESULT" || exit 1          # jump to directory
 			tmux new-session -d -s "$SESSION_NAME" # create session
@@ -80,11 +80,11 @@ else                                     # currently in tmux
 			tmux new-session -d -s "$SESSION_NAME" "sudo $OPENVPN_EX --auth-retry interact --config $VPN_CONFIG --auth-user-pass $VPN_CREDS"
 		fi
 
-		tmux switch-client -t "$SESSION_NAME"  # attach to session
+		tmux switch-client -t "$SESSION_NAME" # attach to session
 		# if [ "$HOST" != "" ]; then
 		# 	tmux send-keys -t "$SESSION_NAME" "ssh $HOST" Enter
 		# fi
-	else                                    # session exists
-		tmux switch-client -t "$SESSION"       # switch to session
+	else                              # session exists
+		tmux switch-client -t "$SESSION" # switch to session
 	fi
 fi

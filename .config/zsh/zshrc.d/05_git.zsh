@@ -2,6 +2,7 @@ alias ,s="git status" \
 	,l="git log" \
 	,f="git fetch --all" \
 	,c="git checkout" \
+	,wt="git worktree" \
 	,stash="git stash" \
 	,glog="git glog" \
 	,show="git show" \
