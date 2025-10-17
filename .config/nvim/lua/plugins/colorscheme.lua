@@ -19,8 +19,19 @@ return {
 		end,
 	},
 	{
+		"KijitoraFinch/nanode.nvim",
 		lazy = false,
 		priority = 1000,
+		config = function()
+			require("nanode").setup({
+				transparent = true,
+			})
+			config_load("nanode")
+		end,
+	},
+	{
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"zenbones-theme/zenbones.nvim",
 		dependencies = { "rktjmp/lush.nvim", branch = "main" },
 		config = function()
