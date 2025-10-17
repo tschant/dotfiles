@@ -2,7 +2,7 @@ font-family = Maple Mono
 font-style = Maple Mono
 font-size = 12
 
-# Disable ligatures and configure font features
+mouse-scroll-multiplier = 1
 
 theme = ayu-dark
 background-opacity = 0.93

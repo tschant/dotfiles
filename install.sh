@@ -10,6 +10,7 @@ mkdir -p $HOME/.config
 [[ ! -d $HOME/.config/zsh ]] && ln -s $(pwd)/.config/zsh $HOME/.config/zsh
 [[ ! -d $HOME/.config/tmux ]] && ln -s $(pwd)/.config/tmux $HOME/.config/tmux
 [[ ! -d $HOME/.config/navi ]] && ln -s $(pwd)/.config/navi $HOME/.config/navi
+[[ ! -d $HOME/.config/ghostty ]] && ln -s $(pwd)/.config/ghostty $HOME/.config/ghostty
 
 [[ ! -e $HOME/.zshenv ]] && ln -s $(pwd)/.zshenv $HOME/.zshenv
 [[ ! -e $HOME/.vimrc ]] && ln -s $(pwd)/.vimrc $HOME/.vimrc

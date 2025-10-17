@@ -10,4 +10,6 @@ brew install lazygit
 brew install switchaudio-osx
 brew install go
 brew install nvm
+brew install tmux
+brew install --cask ghostty
 
