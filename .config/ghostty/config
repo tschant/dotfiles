@@ -42,6 +42,7 @@ macos-auto-secure-input = false
 
 # Hot keys
 # Toggle the "quick" terminal globally from the top
+# NOTE: global is MacOS only feature
 keybind = global:cmd+backquote=toggle_quick_terminal
 
 # Delete the whole line
