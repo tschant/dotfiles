@@ -2,7 +2,7 @@ return {
 	bashls = require("servers.bashls"),
 	cssls = require("servers.cssls"),
 	dockerls = require("servers.dockerls"),
-	eslint = require("servers.eslint"),
+	-- eslint = require("servers.eslint"),
 	html = require("servers.html"),
 	jsonls = require("servers.jsonls"),
 	-- kulala_ls = require("servers.kulala_ls"),

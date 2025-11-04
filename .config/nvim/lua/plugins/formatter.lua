@@ -49,18 +49,21 @@ return {
 					markdown = { "prettierd", "prettier", stop_after_first = true },
 					javascript = {
 						-- "biome",
+						"eslint",
 						"eslint_d",
 						"prettierd",
 						"prettier",
 					},
 					typescript = {
 						-- "biome",
+						"eslint",
 						"eslint_d",
 						"prettierd",
 						"prettier",
 					},
 					typescriptreact = {
 						-- "biome",
+						"eslint",
 						"eslint_d",
 						"prettierd",
 						"prettier",
