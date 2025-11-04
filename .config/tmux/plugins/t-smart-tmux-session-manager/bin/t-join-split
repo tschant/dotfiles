@@ -1,0 +1,111 @@
+#!/bin/bash
+# t-join-split - helper for joining panes and splitting panes into sessions
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+	printf "\n"
+	printf "\033[1m  t-join-split - join and split panes with sessions\033[0m\n"
+	printf "\033[37m  Part of t-smart-tmux-session-manager\n"
+	printf "\n"
+	printf "\033[32m  Join a pane from another session\n"
+	printf "\033[34m      t-join-split -j\n"
+	printf "\n"
+	printf "\033[32m  Split current pane into new session\n"
+	printf "\033[34m      t-join-split -s\n"
+	printf "\n"
+	printf "\033[32m  Show help\n"
+	printf "\033[34m      t-join-split -h\n"
+	printf "\033[34m      t-join-split --help\n"
+	printf "\n"
+	exit 0
+fi
+
+# Check if running inside tmux
+if [ "$TMUX" = "" ]; then
+	echo "Error: t-join-split must be run inside tmux"
+	exit 1
+fi
+
+# Join pane function
+join_pane() {
+	# Get current pane to exclude it from list
+	CURRENT_PANE=$(tmux display-message -p "#{session_name}:#{window_index}.#{pane_index}")
+
+	# List all panes with session names, excluding current pane
+	PANE_LIST=$(tmux list-panes -a -F "#{session_name}:#{window_index}.#{pane_index}  [#{session_name}]" | grep -v "^$CURRENT_PANE ")
+
+	if [ "$PANE_LIST" = "" ]; then
+		echo "No other panes available to join"
+		exit 1
+	fi
+
+	# Use fzf to select pane
+	SELECTED_PANE=$(echo "$PANE_LIST" | fzf --tmux --reverse --prompt "Select pane to join> ")
+
+	if [ "$SELECTED_PANE" = "" ]; then
+		exit # Silent exit on cancel
+	fi
+
+	# Extract pane identifier (first field)
+	PANE_ID=$(echo "$SELECTED_PANE" | awk '{print $1}')
+
+	# Join pane horizontally
+	tmux join-pane -h -s "$PANE_ID"
+}
+
+# Split pane function
+split_pane() {
+	# Get current working directory
+	CURRENT_PATH=$(tmux display-message -p "#{pane_current_path}")
+
+	# Generate session name from directory basename (following t script pattern)
+	DIR_NAME=$(basename "$CURRENT_PATH")
+	SESSION_NAME=$(echo "$DIR_NAME" | sed 's|'\"$HOME\"'|~|' | tr ' ' '_' | tr '.' '_' | tr ':' '_')
+
+	# Handle empty or problematic session names
+	if [ "$SESSION_NAME" = "" ] || [ "$SESSION_NAME" = "~" ]; then
+		SESSION_NAME="home"
+	fi
+
+	# Check if session exists, append number if needed
+	EXISTING_SESSION=$(tmux list-sessions -F '#S' 2>/dev/null | grep "^$SESSION_NAME$")
+
+	if [ "$EXISTING_SESSION" != "" ]; then
+		COUNTER=2
+		while tmux list-sessions -F '#S' 2>/dev/null | grep -q "^${SESSION_NAME}_${COUNTER}$"; do
+			COUNTER=$((COUNTER + 1))
+		done
+		SESSION_NAME="${SESSION_NAME}_${COUNTER}"
+	fi
+
+	# Check if this is the last pane in the session
+	PANE_COUNT=$(tmux list-panes | wc -l)
+	if [ "$PANE_COUNT" -eq 1 ]; then
+		echo "Error: Cannot break the last pane in a session"
+		exit 1
+	fi
+
+	# Break pane into new session
+	# First, break the pane into a new window in current session
+	tmux break-pane -d -P -F "#{session_name}:#{window_index}"
+	# Get the new window reference
+	NEW_WINDOW=$(tmux list-windows -F "#{window_index}" | tail -1)
+	# Move that window to a new session
+	tmux move-window -s ":$NEW_WINDOW" -t "$SESSION_NAME:"
+
+	# Auto-switch to new session
+	tmux switch-client -t "$SESSION_NAME"
+}
+
+# Parse command line arguments
+case "$1" in
+	-j)
+		join_pane
+		;;
+	-s)
+		split_pane
+		;;
+	*)
+		echo "Error: Invalid flag. Use -j (join) or -s (split), or -h for help"
+		exit 1
+		;;
+esac
