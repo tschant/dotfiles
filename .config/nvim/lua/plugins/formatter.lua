@@ -50,21 +50,21 @@ return {
 					javascript = {
 						-- "biome",
 						"eslint",
-						"eslint_d",
+						-- "eslint_d",
 						"prettierd",
 						"prettier",
 					},
 					typescript = {
 						-- "biome",
 						"eslint",
-						"eslint_d",
+						-- "eslint_d",
 						"prettierd",
 						"prettier",
 					},
 					typescriptreact = {
 						-- "biome",
 						"eslint",
-						"eslint_d",
+						-- "eslint_d",
 						"prettierd",
 						"prettier",
 					},
@@ -106,7 +106,7 @@ return {
 
 					-- Linters
 					null_ls.builtins.diagnostics.alex,
-					require("none-ls.diagnostics.eslint_d"),
+					-- require("none-ls.diagnostics.eslint_d"),
 					null_ls.builtins.diagnostics.golangci_lint,
 					null_ls.builtins.diagnostics.tidy,
 					null_ls.builtins.diagnostics.pmd.with({

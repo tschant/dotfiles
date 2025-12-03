@@ -5,7 +5,7 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	event = "BufReadPre",
-	enabled = true,
+	enabled = false,
 	opts = {
 		settings = {
 			-- code_lens = "references_only",
