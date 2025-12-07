@@ -1,303 +1,114 @@
-format = """
-$username\
-$hostname\
-$kubernetes\
-$directory\
-${custom.git_host}\
-${custom.git_branch}\
-$git_commit\
-$git_state\
-$git_status\
-$hg_branch\
-$docker_context\
-$package\
-$env_var\
-$line_break\
-$jobs\
-$character"""
+#--------[ LORENS OSMAN ]--------#
 
-right_format = """
-$cmake\
-$crystal\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$helm\
-$java\
-$julia\
-$kotlin\
-$lua\
-$nim\
-$nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
-$python\
-$red\
-$ruby\
-$rust\
-$swift\
-$terraform\
-$vlang\
-$vagrant\
-$zig\
-$nix_shell\
-$conda\
-$aws\
-$gcloud\
-$openstack\
+
+#--------[ starship_theLine ]
+
+format = """
+${custom.user}\
+[━━](fg:black bold)\
+${custom.dir}\
+[━━](fg:black bold)\
+${custom.git}\
+[━━](fg:black bold)\
+${custom.time}\
+$fill\
+$line_break\
+$username\
+[ ](fg:black bold)\
+${custom.directory}\
+[ ](fg:black bold)\
+$git_branch\
+[ ](fg:black bold)\
+$time\
 $cmd_duration\
-$time
+$line_break\
+$character
 """
-"$schema" = 'https://starship.rs/config-schema.json'
-add_newline = false
-command_timeout = 3_000 # 3s timeout for commands, git takes a bit
+
+
+#--------[CUSTOM COMMANDS]
+
+[custom.directory]
+description = "Replace the default directory command"
+command = """echo "${PWD/$HOME/~}" """
+style = "fg:bright-green "
+format = "[  󰉋 $output]($style)"
+when = "true"
+
+[custom.dir]
+description = "the line above custom directory "
+command = """echo $(pwd | sed "s|$HOME|~|") | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' """
+style = "fg:bright-green"
+format = "[━━$output]($style)"
+when = "true"
+
+[custom.user]
+description = "the line above username"
+command = "echo $USER  2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' "
+style = "blue bold"
+format = "[$output]($style)"
+when = "true"
+
+[custom.git]
+description = "the line above branch name"
+command = "git rev-parse --abbrev-ref HEAD 2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]'| awk '{print $0 \"━━\"}'"
+when = "git rev-parse --abbrev-ref HEAD 2>/dev/null"
+shell = ["bash", "--noprofile", "--norc"]
+style = "fg:yellow"
+format = "[$output]($style)"
+
+
+[custom.time]
+description = "the line above time"
+command = "date +%H:%M:%S  2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' | awk '{print $0 \"━\"}'"
+style = "red bold"
+format = "[$output]($style)"
+when = "true"
+
+[custom.cmd_duration]
+description = "the line above duration NOT IMPLEMENTED"
+command = "date +%H:%M:%S  2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' | awk '{print $0 \"━\"}'"
+style = "red bold"
+format = "[$output]($style)"
+when = "true"
+
+
+#--------[COMMANDS]
+
+[username]
+style_user = 'blue bold'
+style_root = 'black bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[fill]
+symbol="━"
+style = "fg:black bold"
+
+[line_break]
+disabled = false
 
 [character]
-success_symbol = "[❯](bright-green)"
-error_symbol = "[❯](bright-red)"
+success_symbol ='[ ❯](bold green)'
+error_symbol ='[✖ ](bold red)'
 
 [cmd_duration]
-format = '\[[⏱ $duration]($style)\]'
+format = '[ \($duration\)]($style)'
+style = "fg:bright-red"
 show_notifications = false
 min_time_to_notify = 2_000
 
-[directory]
-read_only = " "
-truncation_length = 5
-truncation_symbol = "./"
-
-[custom.git_host]
-command = """
-URL=$(command git ls-remote --get-url 2> /dev/null)
-if [[ "$URL" =~ "github" ]]; then
-    ICON=" "
-elif [[ "$URL" =~ "gitlab" ]]; then
-    ICON=" "
-elif [[ "$URL" =~ "git" ]];then
-    ICON=" "
-else
-    ICON=" "
-    URL="localhost"
-fi
-for PATTERN in "https" "http" "git" "://" "@" "github" "gitlab" ".com" ":"; do
-    [[ "$URL" == "$PATTERN"* ]] && URL="${URL##$PATTERN}"
-done
-for PATTERN in "/" ".git"; do
-    [[ "$URL" == *"$PATTERN" ]] && URL="${URL%%$PATTERN}"
-done
-printf "%s%s" "$ICON" "$URL"
-"""
-directories = [".git"]
-when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
-shell = ["bash","--norc","--noprofile"]
-style = "bright-yellow bold"
-format = " [$output]($style)"
-[custom.git_branch]
-command = """
-BRANCH="$(command git branch --show-current 2> /dev/null)"
-if [[ -z "$BRANCH" ]]; then 
-	BRANCH=$(command git status | head -1 | sed 's/HEAD //')
-else
-	BRANCH=" $BRANCH"
-fi 
-printf "%s" "$BRANCH"
-"""
-directories = [".git"]
-when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
-shell = ["bash","--norc","--noprofile"]
-style = "bold purple"
-symbol = " "
-format = "|[$output]($style)"
-[git_branch]
-format = '|[$symbol$branch]($style) '
-symbol = ' '
-disabled = true
-[git_commit]
-disabled = true
-commit_hash_length = 7
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\)'
-[git_status]
-format = '(|[$all_status$ahead_behind]($style)) '
-conflicted = '\[ [$count](bright-white bold)\]'
-ahead = '\[[﯁ ](bright-blue)[$count](bright-white bold)\]'
-behind = '\[[﮾ ](white)[$count](bright-white bold)\]'
-diverged = '\[[ ](purple)|[ ﯁ ](bright-blue)[$ahead_count](bright-white bold)[ ﮾ ](white)[$behind_count](bright-white)\]'
-untracked = '\[ [$count](bright-white bold)\]'
-stashed = '\[[](yellow) [$count](bright-white bold)\]'
-modified = '\[[ ](bright-yellow)[$count](bright-white bold)\]'
-staged = '\[[ ](bright-green)[$count](bright-white bold)\]'
-renamed = '\[[ ](bright-cyan) [$count](bright-white bold)\]'
-deleted = '\[ [$count](bright-white bold)\]'
-
 [time]
 format = "[  $time]($style)"
+style = "fg:red bold"
 disabled = false
 
-[username]
-format = "[$user]($style)"
-[hostname]
-format = '@[$hostname]($style) '
+#--------[GIT COMMANDS]
 
-[aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-# symbol = 'aws '
-[bun]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'bun '
-[c]
-format = '\[[$symbol($version(-$name))]($style)\]'
-# symbol = 'c '
-[cmake]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'cmake '
-[cobol]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'cobol '
-[conda]
-format = '\[[$symbol$environment]($style)\]'
-# symbol = 'conda '
-[crystal]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'cr '
-[daml]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'daml '
-[dart]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'dart '
-[deno]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'deno '
-[docker_context]
-format = '\[[$symbol$context]($style)\]'
-# symbol = 'docker '
-[dotnet]
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
-# symbol = '.NET '
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
-# symbol = 'exs '
-[elm]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'elm '
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'erl '
-[gcloud]
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
-[golang]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'go '
-[guix_shell]
-format = '\[[$symbol]($style)\]'
-# symbol = 'guix '
-[haskell]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'hask '
-[haxe]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'haxe '
-[helm]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'helm '
-[hg_branch]
-format = '\[[$symbol$branch]($style)\]'
-[java]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'java '
-[julia]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'jul '
-[kotlin]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'kotl '
-[kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-# symbol = 'kube '
-[lua]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'lua '
-[memory_usage]
-format = '\[$symbol[$ram( | $swap)]($style)\]'
-# symbol = 'mem '
-[meson]
-format = '\[[$symbol$project]($style)\]'
-# symbol = 'meson '
-[nim]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'nim '
-[nix_shell]
-format = '\[[$symbol$state( \($name\))]($style)\]'
-# symbol = 'nix '
-[nodejs]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'nodejs '
-[ocaml]
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-# symbol = 'ml '
-[opa]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'ops '
-[openstack]
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-[os]
-format = '\[[$symbol]($style)\]'
-[package]
-format = '\[[$symbol$version]($style)\]'
-# symbol = 'pkg '
-[perl]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'perl '
-[php]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'php '
-[pulumi]
-format = '\[[$symbol$stack]($style)\]'
-# symbol = 'pulumi '
-[purescript]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'purs '
-[python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-# symbol = 'py '
-[raku]
-format = '\[[$symbol($version-$vm_version)]($style)\]'
-# symbol = 'raku '
-[red]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'red '
-[ruby]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'ruby '
-[rust]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'rust '
-[scala]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'scala '
-[spack]
-format = '\[[$symbol$environment]($style)\]'
-# symbol = 'spack '
-[swift]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'swift '
-[terraform]
-format = '\[[$symbol$version]($style)\]'
-# symbol = 'tf '
-[vagrant]
-format = '\[[$symbol($version)]($style)\]'
-[vlang]
-format = '\[[$symbol($version)]($style)\]'
-[zig]
-format = '\[[$symbol($version)]($style)\]'
-# symbol = 'zig '
-
+[git_branch]
+symbol = " "
+style = "bold fg:yellow"
+format = "[  $symbol$branch(:$remote_branch) ]($style)"
 
 

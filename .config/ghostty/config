@@ -2,7 +2,7 @@ font-family = Maple Mono
 font-style = Maple Mono
 font-size = 12
 
-mouse-scroll-multiplier = 1
+mouse-scroll-multiplier = 0.5
 
 theme = ayu-dark
 background-opacity = 0.93
