@@ -22,6 +22,7 @@ $git_branch\
 $time\
 $cmd_duration\
 $line_break\
+$jobs\
 $character
 """
 
@@ -51,7 +52,7 @@ when = "true"
 
 [custom.git]
 description = "the line above branch name"
-command = "git rev-parse --abbrev-ref HEAD 2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]'| awk '{print $0 \"━━\"}'"
+command = "branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); remote=$(git rev-parse --abbrev-ref @{u} 2>/dev/null | sed 's|.*/||'); [ -n \"$remote\" ] && [ \"$branch\" != \"$remote\" ] && branch=\"$branch:$remote\"; echo \"$branch\" | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' | awk '{print $0 \"━━\"}'"
 when = "git rev-parse --abbrev-ref HEAD 2>/dev/null"
 shell = ["bash", "--noprofile", "--norc"]
 style = "fg:yellow"
