@@ -4,84 +4,20 @@
 #--------[ starship_theLine ]
 
 format = """
-${custom.user}\
-[━━](fg:black bold)\
-${custom.dir}\
-[━━](fg:black bold)\
-${custom.git}\
-[━━](fg:black bold)\
-${custom.time}\
-$fill\
-$line_break\
-$username\
-[ ](fg:black bold)\
+$env_var\
+${os}\
+${username}${hostname}\
+[ ](fg:dark-gray bold)\
 ${custom.directory}\
-[ ](fg:black bold)\
+[ ](fg:gray bold)\
 $git_branch\
-[ ](fg:black bold)\
-$time\
+$fill\
 $cmd_duration\
+$time\
 $line_break\
 $jobs\
 $character
 """
-
-
-#--------[CUSTOM COMMANDS]
-
-[custom.directory]
-description = "Replace the default directory command"
-command = """echo "${PWD/$HOME/~}" """
-style = "fg:bright-green "
-format = "[  󰉋 $output]($style)"
-when = "true"
-
-[custom.dir]
-description = "the line above custom directory "
-command = """echo $(pwd | sed "s|$HOME|~|") | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' """
-style = "fg:bright-green"
-format = "[━━$output]($style)"
-when = "true"
-
-[custom.user]
-description = "the line above username"
-command = "echo $USER  2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' "
-style = "blue bold"
-format = "[$output]($style)"
-when = "true"
-
-[custom.git]
-description = "the line above branch name"
-command = "branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); remote=$(git rev-parse --abbrev-ref @{u} 2>/dev/null | sed 's|.*/||'); [ -n \"$remote\" ] && [ \"$branch\" != \"$remote\" ] && branch=\"$branch:$remote\"; echo \"$branch\" | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' | awk '{print $0 \"━━\"}'"
-when = "git rev-parse --abbrev-ref HEAD 2>/dev/null"
-shell = ["bash", "--noprofile", "--norc"]
-style = "fg:yellow"
-format = "[$output]($style)"
-
-
-[custom.time]
-description = "the line above time"
-command = "date +%H:%M:%S  2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' | awk '{print $0 \"━\"}'"
-style = "red bold"
-format = "[$output]($style)"
-when = "true"
-
-[custom.cmd_duration]
-description = "the line above duration NOT IMPLEMENTED"
-command = "date +%H:%M:%S  2>/dev/null | wc -m | tr -d '\\n' | xargs -I {} seq -s '━' {} | tr -d '[:digit:]' | awk '{print $0 \"━\"}'"
-style = "red bold"
-format = "[$output]($style)"
-when = "true"
-
-
-#--------[COMMANDS]
-
-[username]
-style_user = 'blue bold'
-style_root = 'black bold'
-format = '[$user]($style)'
-disabled = false
-show_always = true
 
 [fill]
 symbol="━"
@@ -90,9 +26,46 @@ style = "fg:black bold"
 [line_break]
 disabled = false
 
+[env_var]
+symbol = "╭╴"
+variable = 'SHELL'
+format = "[$symbol](grey)"
+disabled = false
+
 [character]
-success_symbol ='[ ❯](bold green)'
-error_symbol ='[✖ ](bold red)'
+success_symbol ='[╰](white)[❯](green)'
+error_symbol ='[╰](white)[](bold red)'
+
+[os]
+format = '[$symbol](white) '   
+disabled = false
+
+[os.symbols]
+Windows = '[](blue)'
+Arch = '[󰣇](blue)'
+Ubuntu = '[](orange)'
+Macos = '[󰀵](white)'
+Unknown = '[󰠥](red)'
+
+[custom.directory]
+description = "Replace the default directory command"
+command = """echo "${PWD/$HOME/~}" """
+style = "fg:bright-green "
+format = "[ 󰉋 $output]($style)"
+when = "true"
+
+[username]
+style_user = 'blue bold'
+style_root = 'black bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = true
+format = '@[$hostname](bold blue)'
+trim_at = '.local'
+disabled = false
 
 [cmd_duration]
 format = '[ \($duration\)]($style)'
@@ -105,11 +78,9 @@ format = "[  $time]($style)"
 style = "fg:red bold"
 disabled = false
 
-#--------[GIT COMMANDS]
-
 [git_branch]
 symbol = " "
 style = "bold fg:yellow"
-format = "[  $symbol$branch(:$remote_branch) ]($style)"
+format = "[ $symbol$branch(:$remote_branch) ]($style)"
 
 
