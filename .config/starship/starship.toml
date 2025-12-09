@@ -43,9 +43,10 @@ disabled = false
 [os.symbols]
 Windows = '[](blue)'
 Arch = '[󰣇](blue)'
-Ubuntu = '[](orange)'
+Ubuntu = '[](yellow)'
 Macos = '[󰀵](white)'
-Unknown = '[󰠥](red)'
+Popos = '[](blue)'
+Unknown = '[](red)'
 
 [custom.directory]
 description = "Replace the default directory command"
