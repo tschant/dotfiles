@@ -9,13 +9,12 @@ ${os}\
 ${username}${hostname}\
 [ ](fg:dark-gray bold)\
 ${custom.directory}\
-[ ](fg:gray bold)\
 $git_branch\
+$jobs\
 $fill\
 $cmd_duration\
 $time\
 $line_break\
-$jobs\
 $character
 """
 
@@ -34,7 +33,11 @@ disabled = false
 
 [character]
 success_symbol ='[╰](white)[❯](green)'
-error_symbol ='[╰](white)[](bold red)'
+error_symbol ='[╰](white)[❯](red)'
+
+[jobs]
+symbol = ""
+style = "bold purple"
 
 [os]
 format = '[$symbol](white) '   
@@ -56,15 +59,15 @@ format = "[ 󰉋 $output]($style)"
 when = "true"
 
 [username]
-style_user = 'blue bold'
-style_root = 'black bold'
+style_user = 'blue'
+style_root = 'black'
 format = '[$user]($style)'
 disabled = false
 show_always = true
 
 [hostname]
 ssh_only = true
-format = '@[$hostname](bold blue)'
+format = '@[$hostname](blue)'
 trim_at = '.local'
 disabled = false
 
@@ -81,7 +84,7 @@ disabled = false
 
 [git_branch]
 symbol = " "
-style = "bold fg:yellow"
-format = "[ $symbol$branch(:$remote_branch) ]($style)"
+style = "fg:yellow"
+format = "[ ](fg:gray bold)[ $symbol$branch(:$remote_branch) ]($style)"
 
 
