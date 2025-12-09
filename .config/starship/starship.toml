@@ -45,7 +45,7 @@ Windows = '[](blue)'
 Arch = '[󰣇](blue)'
 Ubuntu = '[](yellow)'
 Macos = '[󰀵](white)'
-Popos = '[](blue)'
+Pop = '[](blue)'
 Unknown = '[](red)'
 
 [custom.directory]
