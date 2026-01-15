@@ -60,7 +60,7 @@ _G.StatusColumn = {
 			local cur_sign_nm = utils.get_name_from_group(bufnr, lnum, "gitsigns_vimfn_signs_")
 			local text = pad_line_num(lnum, max_lines)
 
-			cur_sign_nm = cur_sign_nm and cur_sign_nm or "NonText"
+			cur_sign_nm = cur_sign_nm and cur_sign_nm or "LineNr"
 			if current_mode == "i" then
 				text = pad_line_num(lnum, max_lines)
 			else
@@ -75,7 +75,7 @@ _G.StatusColumn = {
 		marks = function(bufnr)
 			local lnum = vim.v.lnum
 			local cur_sign_nm = utils.get_name_from_group(bufnr, lnum, "gitsigns_vimfn_signs_")
-			cur_sign_nm = cur_sign_nm and cur_sign_nm or "NonText"
+			cur_sign_nm = cur_sign_nm and cur_sign_nm or "LineNr"
 			for _, data in ipairs(vim.fn.getmarklist(bufnr)) do
 				local mark = data.mark:sub(2, 3)
 				local _, mark_line = unpack(data.pos)
@@ -122,7 +122,7 @@ _G.StatusColumn = {
 			elseif lnum == curr_lnum then
 				return utils.make_hl_statuscolumn("FocusedLine", icons.gitsigns_bar)
 			else
-				return utils.make_hl_statuscolumn("NonText", icons.gitsigns_bar)
+				return utils.make_hl_statuscolumn("LineNr", icons.gitsigns_bar)
 			end
 		end,
 
@@ -139,9 +139,11 @@ _G.StatusColumn = {
 
 	sections = {
 		sign_column = {
+			[[%#LineNr#]],
 			[[%s]],
 		},
 		line_number = {
+			[[%#LineNr#]],
 			[[%{%v:lua.StatusColumn.display.line(bufnr())%}]],
 			-- [[%=%{v:lua.StatusColumn.display.line()}]]
 		},

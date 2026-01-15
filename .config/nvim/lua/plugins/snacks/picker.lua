@@ -3,6 +3,9 @@ return {
 	layout = {
 		-- preset = "vertical",
 		preview = true,
+		formatters = {
+			truncate = "left",
+		},
 	},
 	matcher = { frecency = true },
 	win = {

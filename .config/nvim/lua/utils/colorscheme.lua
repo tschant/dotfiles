@@ -7,21 +7,21 @@ function utils.setColorScheme(Theme)
 	end
 
 	-- Use terminal background color instead of colorscheme
-	vim.api.nvim_set_hl(0, "Normal", { ctermbg = "none", bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalNC", { ctermbg = "none", bg = "#262626" })
-	vim.api.nvim_set_hl(0, "SignColumn", { ctermbg = "none", bg = "none" })
-	vim.api.nvim_set_hl(0, "FoldColumn", { ctermbg = "none", bg = "none" })
-	vim.api.nvim_set_hl(0, "FocusedLine", { ctermbg = "none", bg = "none", fg = "#0088aa" })
-	vim.api.nvim_set_hl(0, "LineNR", { ctermbg = "none", bg = "none" })
-	vim.api.nvim_set_hl(0, "Whitespace", { fg = "#323232" })
+	-- vim.api.nvim_set_hl(0, "Normal", { ctermbg = "none", bg = "none" })
+	-- vim.api.nvim_set_hl(0, "NormalNC", { ctermbg = "none", bg = "#262626" })
+	-- vim.api.nvim_set_hl(0, "SignColumn", { ctermbg = "none", bg = "none" })
+	-- vim.api.nvim_set_hl(0, "FoldColumn", { ctermbg = "none", bg = "none" })
+	-- vim.api.nvim_set_hl(0, "FocusedLine", { ctermbg = "none", bg = "none", fg = "#0088aa" })
+	-- vim.api.nvim_set_hl(0, "LineNR", { ctermbg = "none", bg = "none" })
+	-- vim.api.nvim_set_hl(0, "Whitespace", { fg = "#323232" })
 
-	vim.api.nvim_set_hl(0, "NonText", { fg = "#575757" })
+	-- vim.api.nvim_set_hl(0, "NonText", { fg = "#575757" })
 
-	vim.api.nvim_set_hl(0, "NeominimapSearchLine", { link = "IncSearch" })
-	vim.api.nvim_set_hl(0, "NeominimapSearchSign", { link = "IncSearch" })
+	-- vim.api.nvim_set_hl(0, "NeominimapSearchLine", { link = "IncSearch" })
+	-- vim.api.nvim_set_hl(0, "NeominimapSearchSign", { link = "IncSearch" })
 
 	-- highlights --
-	vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#525252", bg = "NONE" })
+	-- vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#525252", bg = "NONE" })
 
 	-- -- git signs
 	-- local colors = require("utils.colors")

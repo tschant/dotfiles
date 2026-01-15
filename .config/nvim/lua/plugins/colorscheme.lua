@@ -6,6 +6,29 @@ end
 
 return {
 	{
+		lazy = false,
+		priority = 1000,
+		"oskarnurm/koda.nvim",
+		config = function()
+			require("koda").setup({
+				transparent = true,
+				colors = {},
+			})
+			config_load("koda")
+		end,
+	},
+	{
+		--[[ lazy = false,
+		priority = 1000, ]]
+		"KijitoraFinch/nanode.nvim",
+		config = function()
+			require("nanode").setup({
+				transparent = true,
+			})
+			config_load("nanode")
+		end,
+	},
+	{
 		--[[ lazy = false,
 		priority = 1000, ]]
 		"rebelot/kanagawa.nvim",
@@ -16,17 +39,6 @@ return {
 				theme = "wave",
 			})
 			config_load(colors_name)
-		end,
-	},
-	{
-		"KijitoraFinch/nanode.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("nanode").setup({
-				transparent = true,
-			})
-			config_load("nanode")
 		end,
 	},
 	{
@@ -53,12 +65,12 @@ return {
 		end,
 	},
 	{
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"jesseleite/nvim-noirbuddy",
 		dependencies = {
 			{ "tjdevries/colorbuddy.nvim", branch = "master" },
 		},
-		--[[ lazy = false,
-		priority = 1000, ]]
 		opts = {
 			preset = "slate",
 			colors = {
