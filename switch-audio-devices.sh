@@ -1,7 +1,7 @@
 CURR_AUDIO=$(SwitchAudioSource -c)
 DEVICE="MacBook Pro Speakers"
 if [[ "$CURR_AUDIO" = "MacBook Pro Speakers" ]]; then
-	DEVICE="Corsair VOID Wireless Gaming Dongle"
+	DEVICE="beyerdynamic AVENTHO 300"
 fi
 
 SwitchAudioSource -s "$DEVICE"
