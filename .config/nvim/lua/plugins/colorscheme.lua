@@ -6,8 +6,21 @@ end
 
 return {
 	{
-		lazy = false,
-		priority = 1000,
+		"vague-theme/vague.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other plugins
+		config = function()
+			-- NOTE: you do not need to call setup if you don't want to.
+			require("vague").setup({
+				-- optional configuration here
+				transparent = true,
+			})
+			config_load("vague")
+		end,
+	},
+	{
+		--[[ lazy = false,
+		priority = 1000, ]]
 		"oskarnurm/koda.nvim",
 		config = function()
 			require("koda").setup({
@@ -38,29 +51,6 @@ return {
 				transparent = true,
 				theme = "wave",
 			})
-			config_load(colors_name)
-		end,
-	},
-	{
-		--[[ lazy = false,
-		priority = 1000, ]]
-		"zenbones-theme/zenbones.nvim",
-		dependencies = { "rktjmp/lush.nvim", branch = "main" },
-		config = function()
-			local colors_name = "zenbones"
-			-- vim.g[colors_name .. "_compat"] = 1
-			vim.g[colors_name] = {
-				darkness = "stark",
-				-- dim_noncurrent_window = true,
-				-- solid_vert_split = true,
-				solid_line_nr = true,
-				-- darken_non_text = 30,
-				-- italic_comments = false,
-				transparent_background = true,
-				-- lighten_cursor_line = 20,
-				-- darken_cursor_line = 20,
-				-- colorize_diagnostic_underline_text = true,
-			}
 			config_load(colors_name)
 		end,
 	},

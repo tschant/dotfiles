@@ -38,6 +38,28 @@ M.config = function()
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 		},
+		tabline = {
+			lualine_a = {
+				{
+					"tabs",
+					mode = 1,
+					path = 3,
+					tabs_color = {
+						active = function()
+							return { fg = colors.cyan, bg = colors.bg2 }
+						end,
+						inactive = function()
+							return { fg = colors.grey, bg = colors.bg }
+						end,
+					},
+				},
+			},
+			lualine_b = {},
+			lualine_c = {},
+			lualine_x = {},
+			lualine_y = {},
+			lualine_z = {},
+		},
 		sections = {
 			lualine_a = {
 				{

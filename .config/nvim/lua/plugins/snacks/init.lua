@@ -19,7 +19,7 @@ return {
 		input = { enabled = false },
 		notifier = { enabled = false },
 		statuscolumn = { enabled = false },
-		terminal = { enabled = false },
+		terminal = { enabled = true },
 	},
 	keys = {
         { "<leader><Home>", ":lua Snacks.dashboard()<CR>", desc = "Dashboard" },
