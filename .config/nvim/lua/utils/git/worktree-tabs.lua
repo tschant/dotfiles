@@ -255,7 +255,7 @@ function M.delete_worktree()
 			else
 				choice = vim.fn.confirm(
 					"Delete worktree '" .. (wt.branch or wt.path) .. "'?",
-					"&Delete worktree\n&Delete worktree + branch\n&Cancel",
+					"Delete &worktree\nDelete worktree + &branch\n&Cancel",
 					3
 				)
 				if choice == 0 or choice == 3 then

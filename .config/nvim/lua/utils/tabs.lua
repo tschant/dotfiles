@@ -109,6 +109,75 @@ function M.get_tab_cwd(tabnr)
 	return vim.fn.getcwd(-1, tabnr)
 end
 
+---Show picker to list and switch tabs
+function M.pick_tab()
+	local tabpages = vim.api.nvim_list_tabpages()
+	local current_tabnr = vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage())
+
+	if #tabpages <= 1 then
+		vim.notify("Only one tab open", vim.log.levels.INFO)
+		return
+	end
+
+	local items = {}
+	for tabnr, tabpage in ipairs(tabpages) do
+		local cwd = M.get_tab_cwd(tabnr) or ""
+		local display_path = M.shorten_path(vim.fn.fnamemodify(cwd, ":~"))
+
+		-- Get git branch if available
+		local branch = ""
+		if cwd ~= "" then
+			branch = vim.trim(vim.fn.system("git -C " .. vim.fn.shellescape(cwd) .. " branch --show-current 2>/dev/null"))
+		end
+
+		local is_current = tabnr == current_tabnr
+
+		table.insert(items, {
+			text = display_path,
+			file = cwd,
+			value = {
+				tabnr = tabnr,
+				tabpage = tabpage,
+				cwd = cwd,
+				branch = branch,
+				is_current = is_current,
+			},
+		})
+	end
+
+	Snacks.picker.pick({
+		source = "tabs",
+		title = "Switch Tab",
+		items = items,
+		format = function(item, ctx)
+			local tab = item.value
+			local ret = {}
+			-- Tab number
+			table.insert(ret, { string.format("%d ", tab.tabnr), "SnacksPickerIdx" })
+			-- Path
+			local path_hl = tab.is_current and "SnacksPickerSpecial" or "SnacksPickerLabel"
+			table.insert(ret, { M.shorten_path(vim.fn.fnamemodify(tab.cwd, ":~")), path_hl })
+			-- Branch indicator
+			if tab.branch ~= "" and tab.branch ~= "main" and tab.branch ~= "master" then
+				table.insert(ret, { " [" .. tab.branch .. "]", "SnacksPickerComment" })
+			end
+			-- Current indicator
+			if tab.is_current then
+				table.insert(ret, { " (current)", "SnacksPickerComment" })
+			end
+			return ret
+		end,
+		actions = {
+			confirm = function(picker, item)
+				picker:close()
+				if item and item.value then
+					vim.cmd("tabnext " .. item.value.tabnr)
+				end
+			end,
+		},
+	})
+end
+
 ---Setup autocommands for tab management
 function M.setup_autocmds()
 	vim.api.nvim_create_autocmd("SessionLoadPost", {
@@ -134,6 +203,7 @@ end
 
 ---Lazy.nvim compatible keymaps table
 M.keys = {
+	{ "<leader>tl", function() M.pick_tab() end, desc = "List tabs" },
 	{ "<leader>tn", function() M.new_tab_workspace() end, desc = "New tab + workspace" },
 	{ "<leader>tc", function() M.close_tab() end, desc = "Close tab" },
 	{ "<leader>t]", "<Cmd>tabnext<CR>", desc = "Next tab" },
