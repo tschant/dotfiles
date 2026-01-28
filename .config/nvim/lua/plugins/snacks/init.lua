@@ -119,5 +119,16 @@ return {
         { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git diff" },
         { "<leader>gf", function() Snacks.picker.git_files() end, desc = "Git files" },
         { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git status" },
+
+        -- Git Worktrees
+        { "<leader>gwt", function() require("utils.git.worktree-tabs").pick_worktree({ new_tab = true }) end, desc = "Open worktree in tab" },
+        { "<leader>gwn", function() require("utils.git.worktree-tabs").create_worktree_with_tab() end, desc = "New worktree" },
+        { "<leader>gwd", function() require("utils.git.worktree-tabs").delete_worktree() end, desc = "Delete worktree" },
+        { "<leader>gwx", function() require("utils.git.worktree-tabs").close_worktree_tab() end, desc = "Close worktree tab" },
+
+        -- Patches
+        { "<leader>gpc", function() require("utils.git.worktree-patch").create_patch() end, desc = "Create patch from changes" },
+        { "<leader>gpa", function() require("utils.git.worktree-patch").apply_patch() end, desc = "Apply patch from worktree" },
+        { "<leader>gpr", function() require("utils.git.worktree-patch").revert_patch() end, desc = "Revert patch" },
     },
 }
