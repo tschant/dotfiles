@@ -80,7 +80,7 @@ return {
 			{ "<leader>ss", ":setlocal foldmethod=expr<CR>", desc = "Fold Expression/Syntax" },
 
 			-- Buffer
-			{ "<leader>bn", "<cmd>tabnew<CR>", desc = "New buffer" },
+			-- { "<leader>bn", "<cmd>tabnew<CR>", desc = "New buffer" },
 			{
 				"<leader>q",
 				function()

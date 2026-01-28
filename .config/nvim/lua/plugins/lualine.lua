@@ -28,7 +28,7 @@ local mode_colors = {
 local M = {
 	"nvim-lualine/lualine.nvim",
 	requires = { "nvim-tree/nvim-web-devicons", opt = true },
-	event = "BufReadPre",
+	lazy = false,
 }
 
 M.config = function()
@@ -39,11 +39,15 @@ M.config = function()
 			section_separators = { left = "", right = "" },
 		},
 		tabline = {
-			lualine_a = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = {},
+			lualine_x = {},
+			lualine_y = {},
+			lualine_z = {
 				{
 					"tabs",
 					mode = 1,
-					path = 3,
 					tabs_color = {
 						active = function()
 							return { fg = colors.cyan, bg = colors.bg2 }
@@ -54,11 +58,6 @@ M.config = function()
 					},
 				},
 			},
-			lualine_b = {},
-			lualine_c = {},
-			lualine_x = {},
-			lualine_y = {},
-			lualine_z = {},
 		},
 		sections = {
 			lualine_a = {
