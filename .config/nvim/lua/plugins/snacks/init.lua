@@ -19,7 +19,7 @@ return {
 		input = { enabled = false },
 		notifier = { enabled = false },
 		statuscolumn = { enabled = false },
-		terminal = { enabled = true },
+		terminal = require("plugins.snacks.terminal").opts,
 	},
 	keys = {
         { "<leader><Home>", ":lua Snacks.dashboard()<CR>", desc = "Dashboard" },
@@ -130,5 +130,47 @@ return {
         { "<leader>gpc", function() require("utils.git.worktree-patch").create_patch() end, desc = "Create patch from changes" },
         { "<leader>gpa", function() require("utils.git.worktree-patch").apply_patch() end, desc = "Apply patch from worktree" },
         { "<leader>gpr", function() require("utils.git.worktree-patch").revert_patch() end, desc = "Revert patch" },
+
+        -- Terminal (per-tab management)
+        { "jk", [[<C-\><C-n>]], desc = "Escape insert mode", mode = "t" },
+        { "<C-h>", [[<Cmd>wincmd h<CR>]], mode = "t" },
+        { "<C-j>", [[<Cmd>wincmd j<CR>]], mode = "t" },
+        { "<C-k>", [[<Cmd>wincmd k<CR>]], mode = "t" },
+        { "<C-l>", [[<Cmd>wincmd l<CR>]], mode = "t" },
+        {
+            "<C-w><C-o>",
+            function()
+                require("plugins.snacks.terminal").toggle_layout()
+            end,
+            desc = "Toggle terminal float/bottom",
+            mode = "t",
+        },
+        {
+            "<F2>",
+            function()
+                local term = require("plugins.snacks.terminal")
+                term.toggle_per_tab(term.State.terminals, nil, "bottom")
+            end,
+            desc = "Toggle terminal (per-tab)",
+            mode = { "n", "t" },
+        },
+        {
+            "<F3>",
+            function()
+                local term = require("plugins.snacks.terminal")
+                term.toggle_per_tab(term.State.lazygits, "lazygit", "float")
+            end,
+            desc = "Lazygit (per-tab)",
+            mode = { "n", "t" },
+        },
+        {
+            "<F4>",
+            function()
+                local term = require("plugins.snacks.terminal")
+                term.toggle_global('[ -x "$(command -v btop)" ] && btop || htop', "float")
+            end,
+            desc = "Btop/htop (global)",
+            mode = { "n", "t" },
+        },
     },
 }
