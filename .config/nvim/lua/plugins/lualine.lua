@@ -39,15 +39,22 @@ M.config = function()
 			section_separators = { left = "", right = "" },
 		},
 		tabline = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = {},
-			lualine_x = {},
-			lualine_y = {},
+			lualine_a = {
+				{
+					"filename",
+
+					fmt = function(str)
+						return "(" .. tostring(#vim.fn.getbufinfo({ buflisted = 1 })) .. ") " .. str
+					end,
+					path = 3,
+					shorting_target = 0,
+				},
+			},
 			lualine_z = {
 				{
 					"tabs",
 					mode = 1,
+					tab_max_length = 0,
 					tabs_color = {
 						active = function()
 							return { fg = colors.cyan, bg = colors.bg2 }

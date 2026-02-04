@@ -10,7 +10,7 @@ Opts = {
 	list = true,
 	listchars = true,
 	language = "en,cjk",
-	winbar = "%{%v:lua.require'config.winbar'.eval()%}",
+	-- winbar = "%{%v:lua.require'config.winbar'.eval()%}",
 	encoding = "utf-8",
 }
 

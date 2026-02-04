@@ -30,7 +30,7 @@ function M.rename_current_tab()
 	-- Try to detect git branch for worktree indication
 	local branch = vim.fn.system("git -C " .. vim.fn.shellescape(cwd) .. " branch --show-current 2>/dev/null")
 	branch = vim.trim(branch)
-	if branch ~= "" and branch ~= "main" and branch ~= "master" then
+	if branch ~= "" then
 		tab_label = tab_label .. " [" .. branch .. "]"
 	end
 
@@ -127,7 +127,8 @@ function M.pick_tab()
 		-- Get git branch if available
 		local branch = ""
 		if cwd ~= "" then
-			branch = vim.trim(vim.fn.system("git -C " .. vim.fn.shellescape(cwd) .. " branch --show-current 2>/dev/null"))
+			branch =
+				vim.trim(vim.fn.system("git -C " .. vim.fn.shellescape(cwd) .. " branch --show-current 2>/dev/null"))
 		end
 
 		local is_current = tabnr == current_tabnr
@@ -152,16 +153,12 @@ function M.pick_tab()
 		format = function(item, ctx)
 			local tab = item.value
 			local ret = {}
-			-- Tab number
 			table.insert(ret, { string.format("%d ", tab.tabnr), "SnacksPickerIdx" })
-			-- Path
 			local path_hl = tab.is_current and "SnacksPickerSpecial" or "SnacksPickerLabel"
 			table.insert(ret, { M.shorten_path(vim.fn.fnamemodify(tab.cwd, ":~")), path_hl })
-			-- Branch indicator
-			if tab.branch ~= "" and tab.branch ~= "main" and tab.branch ~= "master" then
+			if tab.branch ~= "" then
 				table.insert(ret, { " [" .. tab.branch .. "]", "SnacksPickerComment" })
 			end
-			-- Current indicator
 			if tab.is_current then
 				table.insert(ret, { " (current)", "SnacksPickerComment" })
 			end
@@ -180,32 +177,48 @@ end
 
 ---Setup autocommands for tab management
 function M.setup_autocmds()
+	local group = vim.api.nvim_create_augroup("TabManagement", { clear = true })
+
 	vim.api.nvim_create_autocmd("SessionLoadPost", {
+		group = group,
 		callback = M.rename_all_tabs,
 		desc = "Rename all lualine tabs after session load",
 	})
 	vim.api.nvim_create_autocmd("VimEnter", {
+		group = group,
 		callback = M.rename_current_tab,
 		desc = "Rename tab to working directory on startup",
 	})
-end
-
----Setup keymaps for tab management
-function M.setup_keymaps()
-	local opts = { noremap = true, silent = true }
-	vim.keymap.set("n", "<leader>tn", M.new_tab_workspace, vim.tbl_extend("force", opts, { desc = "New tab + workspace" }))
-	vim.keymap.set("n", "<leader>tc", M.close_tab, vim.tbl_extend("force", opts, { desc = "Close tab" }))
-	vim.keymap.set("n", "<leader>t]", "<Cmd>tabnext<CR>", vim.tbl_extend("force", opts, { desc = "Next tab" }))
-	vim.keymap.set("n", "<leader>t[", "<Cmd>tabprev<CR>", vim.tbl_extend("force", opts, { desc = "Previous tab" }))
-	vim.keymap.set({ "n", "v", "t" }, "<C-PageUp>", "<Cmd>tabnext<CR>", vim.tbl_extend("force", opts, { desc = "Next tab" }))
-	vim.keymap.set({ "n", "v", "t" }, "<C-PageDown>", "<Cmd>tabprev<CR>", vim.tbl_extend("force", opts, { desc = "Previous tab" }))
+	vim.api.nvim_create_autocmd("TabEnter", {
+		group = group,
+		callback = M.rename_current_tab,
+		desc = "Refresh tab title when switching tabs",
+	})
 end
 
 ---Lazy.nvim compatible keymaps table
 M.keys = {
-	{ "<leader>tl", function() M.pick_tab() end, desc = "List tabs" },
-	{ "<leader>tn", function() M.new_tab_workspace() end, desc = "New tab + workspace" },
-	{ "<leader>tc", function() M.close_tab() end, desc = "Close tab" },
+	{
+		"<leader>tl",
+		function()
+			M.pick_tab()
+		end,
+		desc = "List tabs",
+	},
+	{
+		"<leader>tn",
+		function()
+			M.new_tab_workspace()
+		end,
+		desc = "New tab + workspace",
+	},
+	{
+		"<leader>tc",
+		function()
+			M.close_tab()
+		end,
+		desc = "Close tab",
+	},
 	{ "<leader>t]", "<Cmd>tabnext<CR>", desc = "Next tab" },
 	{ "<leader>t[", "<Cmd>tabprev<CR>", desc = "Previous tab" },
 	{ "<C-PageUp>", "<Cmd>tabnext<CR>", mode = { "n", "v", "t" }, desc = "Next tab" },
