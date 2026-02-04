@@ -12,7 +12,7 @@ export AWS_PROFILE=default
 
 export EDITOR=nvim
 [[ -d /home/linuxbrew/ ]] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-[[ -d /opt/homebrew/bin/ ]] && export PATH="$PATH:/opt/homebrew/bin/"
+[[ -d /opt/homebrew/bin/ ]] && export PATH="/opt/homebrew/bin/:$PATH"
 
 if [[ -d /home/tarryn/.spicetify ]]; then 
 	export PATH="$PATH:$HOME/.spicetify"
