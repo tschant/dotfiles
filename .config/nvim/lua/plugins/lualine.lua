@@ -42,12 +42,18 @@ M.config = function()
 			lualine_a = {
 				{
 					"filename",
-
 					fmt = function(str)
 						return "(" .. tostring(#vim.fn.getbufinfo({ buflisted = 1 })) .. ") " .. str
 					end,
 					path = 3,
 					shorting_target = 0,
+					separator = { right = "" },
+					color = function()
+						if vim.bo.modified then
+							return { fg = colors.error, bg = colors.bg2 }
+						end
+						return { fg = colors.white, bg = colors.bg2 }
+					end,
 				},
 			},
 			lualine_z = {
@@ -55,9 +61,10 @@ M.config = function()
 					"tabs",
 					mode = 1,
 					tab_max_length = 0,
+					symbols = { modified = '' },
 					tabs_color = {
 						active = function()
-							return { fg = colors.cyan, bg = colors.bg2 }
+							return { fg = colors.white, bg = colors.bg2 }
 						end,
 						inactive = function()
 							return { fg = colors.grey, bg = colors.bg }
