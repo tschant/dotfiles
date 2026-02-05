@@ -7,5 +7,5 @@ sketchybar --add item wifi right                        \
 											icon.padding_right=5              \
 											label.align=right                 \
 											label.font="$FONT:Regular:14.0"   \
-											update_freq=30                    \
+											update_freq=10                    \
 											script="$PLUGIN_DIR/wifi.sh"
