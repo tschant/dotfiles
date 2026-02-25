@@ -7,8 +7,8 @@ end
 return {
 	{
 		"vague-theme/vague.nvim",
-		--[[ lazy = false,
-		priority = 1000, ]]
+		lazy = false,
+		priority = 1000,
 		config = function()
 			require("vague").setup({
 				transparent = true,
@@ -18,8 +18,8 @@ return {
 	},
 	{
 		"oskarnurm/koda.nvim",
-		lazy = false,
-		priority = 1000,
+		--[[ lazy = false,
+		priority = 1000, ]]
 		config = function()
 			require("koda").setup({
 				transparent = true,

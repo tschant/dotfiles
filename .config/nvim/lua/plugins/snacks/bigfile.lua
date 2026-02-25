@@ -1,7 +1,7 @@
 return {
 	enabled = true,
 	notify = true, -- show notification when big file detected
-	size = 2 * 1024 * 1024, -- 1.5MB
+	size = 0.75 * 1024 * 1024, -- 0.75MB
 	line_length = 1000, -- average line length (useful for minified files)
 	setup = function(ctx)
 		if vim.fn.exists(":NoMatchParen") ~= 0 then

@@ -2,6 +2,7 @@ local u = require("utils.extra")
 return {
 	"jedrzejboczar/possession.nvim",
 	requires = { "nvim-lua/plenary.nvim" },
+	enabled = false,
 	lazy = false,
 	-- cmd = { "PossessionLoadCwd", "PossessionLoad" },
 	-- event = "VeryLazy",
