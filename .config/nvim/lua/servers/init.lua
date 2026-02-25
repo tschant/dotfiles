@@ -1,5 +1,5 @@
 return {
-	bashls = require("servers.bashls"),
+	-- bashls = require("servers.bashls"),
 	cssls = require("servers.cssls"),
 	dockerls = require("servers.dockerls"),
 	html = require("servers.html"),

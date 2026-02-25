@@ -35,22 +35,35 @@ return {
 	{
 		"kylechui/nvim-surround",
 		event = "BufReadPre",
+		init = function()
+			-- Disable all default keymaps (v4 requirement)
+			vim.g.nvim_surround_no_mappings = true
+		end,
+		keys = {
+			-- Insert mode
+			{ "<C-g>s", "<Plug>(nvim-surround-insert)", mode = "i", desc = "Add surround (insert)" },
+			{ "<C-g>S", "<Plug>(nvim-surround-insert-line)", mode = "i", desc = "Add surround on new lines (insert)" },
+
+			-- Normal mode - add surround
+			{ "<leader>ys", "<Plug>(nvim-surround-normal)", desc = "Add surround around motion" },
+			{ "<leader>yss", "<Plug>(nvim-surround-normal-cur)", desc = "Add surround around line" },
+			{ "<leader>yS", "<Plug>(nvim-surround-normal-line)", desc = "Add surround around motion (new lines)" },
+			{ "<leader>ySS", "<Plug>(nvim-surround-normal-cur-line)", desc = "Add surround around line (new lines)" },
+
+			-- Visual mode
+			{ "<leader>S", "<Plug>(nvim-surround-visual)", mode = "x", desc = "Add surround around selection" },
+			{ "<leader>gS", "<Plug>(nvim-surround-visual-line)", mode = "x", desc = "Add surround around selection (new lines)" },
+
+			-- Delete surround
+			{ "<leader>ds", "<Plug>(nvim-surround-delete)", desc = "Delete surround" },
+
+			-- Change surround
+			{ "<leader>cs", "<Plug>(nvim-surround-change)", desc = "Change surround" },
+			{ "<leader>cS", "<Plug>(nvim-surround-change-line)", desc = "Change surround (new lines)" },
+		},
 		config = function()
-			require("nvim-surround").setup({
-				keymaps = {
-					insert = "<C-g>s",
-					insert_line = "<C-g>S",
-					normal = "<leader>ys",
-					normal_cur = "<leader>yss",
-					normal_line = "<leader>yS",
-					normal_cur_line = "<leader>ySS",
-					visual = "<leader>S",
-					visual_line = "<leader>gS",
-					delete = "<leader>ds",
-					change = "<leader>cs",
-					change_line = "<leader>cS",
-				},
-			})
+			-- Call setup for any other configuration (if needed)
+			require("nvim-surround").setup({})
 		end,
 	},
 	-- {"ggandor/lightspeed.nvim", event = "BufReadPre"},
