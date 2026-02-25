@@ -83,43 +83,4 @@ return {
 			})
 		end,
 	},
-	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
-	},
-	{
-		"nvimtools/none-ls.nvim",
-		event = "BufReadPre",
-		dependencies = {
-			"jay-babu/mason-null-ls.nvim",
-			"nvimtools/none-ls-extras.nvim",
-		},
-		config = function()
-			local null_ls = require("null-ls")
-			null_ls.setup({
-				sources = {
-					-- Formatters
-					null_ls.builtins.formatting.google_java_format,
-
-					-- Linters
-					null_ls.builtins.diagnostics.alex,
-					-- require("none-ls.diagnostics.eslint_d"),
-					null_ls.builtins.diagnostics.golangci_lint,
-					null_ls.builtins.diagnostics.tidy,
-					null_ls.builtins.diagnostics.pmd.with({
-						extra_args = { "-R", "rulesets/java/quickstart.xml" },
-						--"~/.local/bin/pmd-bin-6.53.0/rulesets/eclipse-formatter-settings.xml"}
-					}),
-					null_ls.builtins.diagnostics.yamllint,
-				},
-			})
-
-			require("mason-null-ls").setup({
-				ensure_installed = nil,
-				automatic_installation = true,
-				automatic_setup = true,
-			})
-		end,
-	},
 }
