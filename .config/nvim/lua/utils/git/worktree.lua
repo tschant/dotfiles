@@ -217,4 +217,112 @@ function M.delete_branch(branch, force)
 	return true, nil
 end
 
+---@class CommitDifference
+---@field ahead number Commits ahead of base
+---@field behind number Commits behind base
+---@field is_diverged boolean Branches have diverged
+---@field merge_base string Common ancestor commit
+
+---Compare commits between branches
+---@param branch1 string First branch (or commit hash)
+---@param branch2 string Second branch (comparison base)
+---@param path? string Optional repo path
+---@return CommitDifference|nil
+function M.get_commit_difference(branch1, branch2, path)
+	path = path or vim.fn.getcwd()
+	local esc_path = vim.fn.shellescape(path)
+
+	-- Get ahead/behind counts
+	local cmd = string.format(
+		"git -C %s rev-list --left-right --count %s...%s 2>/dev/null",
+		esc_path,
+		vim.fn.shellescape(branch1),
+		vim.fn.shellescape(branch2)
+	)
+	local result = vim.fn.system(cmd)
+	if vim.v.shell_error ~= 0 then
+		return nil
+	end
+
+	-- Parse "5	3" format (ahead, behind)
+	local ahead, behind = result:match("^(%d+)%s+(%d+)")
+	if not ahead or not behind then
+		return nil
+	end
+
+	ahead = tonumber(ahead) or 0
+	behind = tonumber(behind) or 0
+
+	-- Get merge-base
+	local merge_base_cmd = string.format(
+		"git -C %s merge-base %s %s 2>/dev/null",
+		esc_path,
+		vim.fn.shellescape(branch1),
+		vim.fn.shellescape(branch2)
+	)
+	local merge_base = vim.fn.system(merge_base_cmd)
+	if vim.v.shell_error ~= 0 then
+		-- Branches may be orphans (no common ancestor)
+		return nil
+	end
+
+	return {
+		ahead = ahead,
+		behind = behind,
+		is_diverged = ahead > 0 and behind > 0,
+		merge_base = vim.trim(merge_base),
+	}
+end
+
+---Check if worktree has commits not in base branch
+---@param worktree_path string
+---@param base_branch? string Base branch (default: "main" or "master")
+---@return boolean
+function M.worktree_has_committed_changes(worktree_path, base_branch)
+	-- Get worktree's current branch or commit
+	local branch_cmd = string.format(
+		"git -C %s rev-parse --abbrev-ref HEAD 2>/dev/null",
+		vim.fn.shellescape(worktree_path)
+	)
+	local worktree_branch = vim.trim(vim.fn.system(branch_cmd))
+
+	-- Handle detached HEAD
+	if worktree_branch == "HEAD" or vim.v.shell_error ~= 0 then
+		-- Use commit hash instead
+		local commit_cmd = string.format(
+			"git -C %s rev-parse HEAD 2>/dev/null",
+			vim.fn.shellescape(worktree_path)
+		)
+		worktree_branch = vim.trim(vim.fn.system(commit_cmd))
+		if vim.v.shell_error ~= 0 then
+			return false
+		end
+	end
+
+	-- Determine base branch if not provided
+	if not base_branch then
+		-- Check for main or master
+		local main_exists = vim.fn.system(
+			string.format("git -C %s show-ref --verify --quiet refs/heads/main", vim.fn.shellescape(worktree_path))
+		)
+		if vim.v.shell_error == 0 then
+			base_branch = "main"
+		else
+			local master_exists = vim.fn.system(
+				string.format("git -C %s show-ref --verify --quiet refs/heads/master", vim.fn.shellescape(worktree_path))
+			)
+			if vim.v.shell_error == 0 then
+				base_branch = "master"
+			else
+				-- No default branch found
+				return false
+			end
+		end
+	end
+
+	-- Get commit difference
+	local diff = M.get_commit_difference(worktree_branch, base_branch, worktree_path)
+	return diff ~= nil and diff.ahead > 0
+end
+
 return M
