@@ -42,7 +42,7 @@ return {
 		{ pane = 2, icon = " ", title = "Recent Files", cwd = true, section = "recent_files",  padding = 1 },
 		{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
 		{ pane = 2, icon = "󰬮 ", title = "Sessions", section = "session", indent = 2, padding = 1 },
-		{ section = "terminal", cmd = "curl -s -m 3 https://vtip.43z.one/", padding = 1, width = 125, height = 1, ttl = 10 },
+		-- { section = "terminal", cmd = "curl -s -m 3 https://vtip.43z.one/", padding = 1, width = 125, height = 1, ttl = 10 },
 		{ section = "startup" },
 	},
 }

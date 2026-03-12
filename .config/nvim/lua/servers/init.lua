@@ -5,6 +5,7 @@ return {
 	html = require("servers.html"),
 	jsonls = require("servers.jsonls"),
 	ruff = require("servers.ruff"),
+	pyrefly = require("servers.pyrefly"),
 	stylelint_lsp = { autostart = false },
 	lua_ls = require("servers.lua_ls"),
 	tailwindcss = require("servers.tailwindcss"),
