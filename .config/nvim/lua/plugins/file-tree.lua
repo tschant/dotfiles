@@ -54,7 +54,6 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>ed", ":DBUIToggle<CR>", desc = "Open DBUI" },
 			{ "<leader>ee", ":Oil<CR>", desc = "Open filetree" },
 		},
 	},

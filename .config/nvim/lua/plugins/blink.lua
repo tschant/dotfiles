@@ -114,7 +114,7 @@ return {
 					"lsp",
 					"path",
 					"buffer",
-					"dadbod",
+					"dadbod_grip",
 					"nerdfont",
 					"dictionary",
 				},
@@ -149,14 +149,7 @@ return {
 						-- min_keyword_length = 2,
 						score_offset = 15,
 					},
-					-- Example on how to configure dadbod found in the main repo
-					-- https://github.com/kristijanhusak/vim-dadbod-completion
-					dadbod = {
-						name = "Dadbod",
-						module = "vim_dadbod_completion.blink",
-						-- min_keyword_length = 2,
-						score_offset = 85,
-					},
+					dadbod_grip = { name = "Grip SQL", module = "dadbod-grip.completion.blink" },
 					nerdfont = {
 						name = "nerdfont",
 						module = "blink.compat.source",

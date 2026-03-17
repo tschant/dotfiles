@@ -66,7 +66,25 @@ return {
 				desc = "Output the current syntax/highlight group",
 				mode = "n",
 			},
-			{ "<leader>y'", ":let @+=expand('%')<CR>", desc = "Copy file path from PWD", mode = "n" },
+			{ '<leader>y"', ":let @+=expand('%')<CR>", desc = "Copy file path from PWD", mode = "n" },
+			{ "<leader>y'",
+				function()
+					local link = require("utils.git.github").get_github_link()
+					local val  = link or vim.fn.expand("%")
+					vim.fn.setreg("+", val)
+					vim.notify(val, vim.log.levels.INFO)
+				end,
+				desc = "Copy GitHub link (or file path)", mode = "n" },
+			{ "<leader>y'",
+				function()
+					local line1 = vim.fn.line("'<")
+					local line2 = vim.fn.line("'>")
+					local link = require("utils.git.github").get_github_link({ line1 = line1, line2 = line2 })
+					local val  = link or vim.fn.expand("%")
+					vim.fn.setreg("+", val)
+					vim.notify(val, vim.log.levels.INFO)
+				end,
+				desc = "Copy GitHub link with lines", mode = "x" },
 			{ "y", '"+y', desc = "Copy to OS buffer", mode = { "x" } },
 			{ "<leader>pp", '"0p', desc = "Paste from yank register", mode = { "n", "x" } },
 
