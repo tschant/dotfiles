@@ -47,6 +47,8 @@ keybind = global:cmd+backquote=toggle_quick_terminal
 
 # Delete the whole line
 keybind = super+backspace=text:\x15s
+# t-smart-tmux-session-manager
+keybind = ctrl+shift+s=text:\x1bS
 # Insert newline
 
 command = ~/.config/ghostty/ghostty_tmux.sh
