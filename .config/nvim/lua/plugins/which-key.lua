@@ -53,6 +53,8 @@ return {
 		})
 
 		wk.add({
+			{ "<Space>", ":", desc = "Command", noremap = true },
+			-- { ":", ",", desc = "Reverse command", noremap = true },
 			{ "Q", "<Nop>", desc = "no-op", mode = "n" },
 			{ "jk", "<esc>", desc = "Escape insert mode", mode = "i" },
 			{ "n", "nzz", desc = "Next + center", mode = "n" },
