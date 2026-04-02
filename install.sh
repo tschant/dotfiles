@@ -11,6 +11,7 @@ mkdir -p $HOME/.config
 [[ ! -d $HOME/.config/tmux ]] && ln -s $(pwd)/.config/tmux $HOME/.config/tmux
 [[ ! -d $HOME/.config/navi ]] && ln -s $(pwd)/.config/navi $HOME/.config/navi
 [[ ! -d $HOME/.config/ghostty ]] && ln -s $(pwd)/.config/ghostty $HOME/.config/ghostty
+[[ ! -d $HOME/.config/yazi ]] && ln -s $(pwd)/.config/yazi $HOME/.config/yazi
 
 [[ ! -e $HOME/.zshenv ]] && ln -s $(pwd)/.zshenv $HOME/.zshenv
 [[ ! -e $HOME/.vimrc ]] && ln -s $(pwd)/.vimrc $HOME/.vimrc
@@ -77,4 +78,5 @@ echo "Need to install manually:"
 ! [ -x "$(command -v cargo)" ] && echo "rust|cargo"
 ! [ -x "$(command -v lazygit)" ] && echo "lazygit"
 ! [ -x "$(command -v sketchybar)" ] && echo "sketchybar"
+! [ -x "$(command -v yazi)" ] && echo "yazi"
 

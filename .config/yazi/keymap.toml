@@ -1,0 +1,4 @@
+[mgr]
+prepend_keymap = [
+  { on = "<S-t>", run = "shell -- $HOME/.config/yazi/scripts/tmux-session.sh %h", desc = "Open in tmux session" },
+]
