@@ -100,9 +100,9 @@ function Provider.open(cmd, env, config, focus)
 		return
 	end
 
-	if not tab_client then
-		State.connecting = tab_id
-	end
+	-- Clear any stale client state and mark as connecting for this tab
+	State.clients[tab_id] = nil
+	State.connecting = tab_id
 
 	local terminal = Terminal.new(cmd, env, config, focus)
 
@@ -347,12 +347,13 @@ function State.patch_on_disconnect()
 			end
 		end
 
-		local current_tab = vim.api.nvim_get_current_tabpage()
-		local our_client_id = State.clients[current_tab]
-
-		if our_client_id == client.id then
-			State.clients[current_tab] = nil
-			-- terminal will be cleaned up in its on_close hook
+		-- Find which tab owns this client (don't assume current_tab)
+		for tid, cid in pairs(State.clients) do
+			if cid == client.id then
+				State.clients[tid] = nil
+				-- terminal will be cleaned up in its on_close hook
+				break
+			end
 		end
 	end
 
