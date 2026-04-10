@@ -1,42 +1,17 @@
-local function save_mark()
-	local char = vim.fn.getcharstr()
-	-- Handle ESC, Ctrl-C, etc.
-	if char == "" or vim.startswith(char, "<") then
-		return
-	end
-	local grapple = require("grapple")
-	local filepath = vim.api.nvim_buf_get_name(0)
-	local filename = vim.fn.fnamemodify(filepath, ":t")
-	if grapple.exists({ name = char, buffer = 0 }) then
-		grapple.untag({ name = char })
-		vim.notify("Unmarked " .. filename .. " as " .. char)
-	else
-		grapple.tag({ name = char })
-		vim.notify("Marked " .. filename .. " as " .. char)
-	end
-end
-
-local function open_mark()
-	local char = vim.fn.getcharstr()
-	-- Handle ESC, Ctrl-C, etc.
-	if char == "" or vim.startswith(char, "<") then
-		return
-	end
-	local grapple = require("grapple")
-	if char == "'" then
-		grapple.toggle_tags()
-		return
-	end
-	grapple.select({ name = char })
-end
-
 return {
 	{
-		"cbochs/grapple.nvim",
-		keys = {
-			{ "m", save_mark, noremap = true, silent = true },
-			{ "'", open_mark, noremap = true, silent = true },
+		"otavioschwanck/arrow.nvim",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
 		},
+		opts = {
+			show_icons = true,
+			buffer_leader_key = "<leader>m",
+		},
+		keys = {
+			{ ";",         ":lua require('arrow.ui').openMenu()<CR>",        { noremap = true, silent = true, nowait = true, desc = "Arrow File Mappings" } },
+			{ "<leader>m", ":lua require('arrow.buffer_ui').openMenu()<CR>", { noremap = true, silent = true, nowait = true, desc = "Arrow Buffer Mappings" } }
+		}
 	},
 	{
 		"cbochs/portal.nvim",
