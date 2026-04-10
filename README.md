@@ -20,6 +20,8 @@
 
 ## MacOS
 
+- [Dynamic Wallpaper](docs/dynamic-wallpaper.md) — time-based wallpaper changer via cron + dwall
+
 
 ## Pop_os!
 
