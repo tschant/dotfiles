@@ -1,15 +1,21 @@
 #!/bin/bash
 
 mkdir -p $HOME/.config
-[[ ! -d $HOME/.config/alacritty ]] && ln -s $(pwd)/.config/alacritty $HOME/.config/alacritty
+#### UNUSED Utils
+# [[ ! -d $HOME/.config/alacritty ]] && ln -s $(pwd)/.config/alacritty $HOME/.config/alacritty
+# [[ ! -d $HOME/.config/kitty ]] && ln -s $(pwd)/.config/kitty $HOME/.config/kitty
+# [[ ! -d $HOME/.config/navi ]] && ln -s $(pwd)/.config/navi $HOME/.config/navi
+# [[ ! -d $HOME/.config/ranger ]] && ln -s $(pwd)/.config/ranger $HOME/.config/ranger
+# if [[ ! -d $HOME/.config/wezterm ]]; then
+# 	ln -s $(pwd)/.config/wezterm $HOME/.config/wezterm
+# 	git clone https://github.com/danielcopper/wezterm-session-manager.git ~/.config/wezterm/wezterm-session-manager
+# fi
+
 [[ ! -d $HOME/.config/cava ]] && ln -s $(pwd)/.config/cava $HOME/.config/cava
-[[ ! -d $HOME/.config/kitty ]] && ln -s $(pwd)/.config/kitty $HOME/.config/kitty
 [[ ! -d $HOME/.config/nvim ]] && ln -s $(pwd)/.config/nvim $HOME/.config/nvim
-[[ ! -d $HOME/.config/ranger ]] && ln -s $(pwd)/.config/ranger $HOME/.config/ranger
 [[ ! -d $HOME/.config/spotify-tui ]] && ln -s $(pwd)/.config/spotify-tui $HOME/.config/spotify-tui
 [[ ! -d $HOME/.config/zsh ]] && ln -s $(pwd)/.config/zsh $HOME/.config/zsh
 [[ ! -d $HOME/.config/tmux ]] && ln -s $(pwd)/.config/tmux $HOME/.config/tmux
-[[ ! -d $HOME/.config/navi ]] && ln -s $(pwd)/.config/navi $HOME/.config/navi
 [[ ! -d $HOME/.config/ghostty ]] && ln -s $(pwd)/.config/ghostty $HOME/.config/ghostty
 [[ ! -d $HOME/.config/yazi ]] && ln -s $(pwd)/.config/yazi $HOME/.config/yazi
 
@@ -20,23 +26,19 @@ mkdir -p $HOME/.config
 [[ ! -e $HOME/.tmux.conf ]] && ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
 [[ ! -e $HOME/.config/starship.toml ]] && ln -s $(pwd)/.config/starship/starship.toml $HOME/.config/starship.toml
 
-if [[ ! -d $HOME/.config/wezterm ]]; then
-	ln -s $(pwd)/.config/wezterm $HOME/.config/wezterm
-	git clone https://github.com/danielcopper/wezterm-session-manager.git ~/.config/wezterm/wezterm-session-manager
-fi
 
 OS_NAME=$(uname -a)
 if [[ "$OS_NAME" =~ "Linux" ]]; then
 	echo "Linux OS Detected"
-	[[ ! -e $HOME/.config/alacritty/key-bindings.yml ]] && ln -s $(pwd)/.config/alacritty/key-bindings.linux.yml $HOME/.config/alacritty/key-bindings.yml
-	[[ ! -e $HOME/.config/alacritty/os-overrides.yml ]] && ln -s $(pwd)/.config/alacritty/os-overrides.linux.yml $HOME/.config/alacritty/os-overrides.yml
+	# [[ ! -e $HOME/.config/alacritty/key-bindings.yml ]] && ln -s $(pwd)/.config/alacritty/key-bindings.linux.yml $HOME/.config/alacritty/key-bindings.yml
+	# [[ ! -e $HOME/.config/alacritty/os-overrides.yml ]] && ln -s $(pwd)/.config/alacritty/os-overrides.linux.yml $HOME/.config/alacritty/os-overrides.yml
 	[[ ! -d $HOME/.config/polybar ]] && ln -s $(pwd)/.config/polybar $HOME/.config/polybar
 	[[ ! -d $HOME/.config/rofi ]] && ln -s $(pwd)/.config/rofi $HOME/.config/rofi
 elif [[ "$OS_NAME" =~ "Darwin" ]]; then
 	echo "Mac OS Detected"
 	mkdir -p $HOME/.local/bin/
-	[[ ! -e $HOME/.config/alacritty/key-bindings.yml ]] && ln -s $(pwd)/.config/alacritty/key-bindings.mac.yml $HOME/.config/alacritty/key-bindings.yml
-	[[ ! -e $HOME/.config/alacritty/os-overrides.yml ]] && ln -s $(pwd)/.config/alacritty/os-overrides.mac.yml $HOME/.config/alacritty/os-overrides.yml
+	# [[ ! -e $HOME/.config/alacritty/key-bindings.yml ]] && ln -s $(pwd)/.config/alacritty/key-bindings.mac.yml $HOME/.config/alacritty/key-bindings.yml
+	# [[ ! -e $HOME/.config/alacritty/os-overrides.yml ]] && ln -s $(pwd)/.config/alacritty/os-overrides.mac.yml $HOME/.config/alacritty/os-overrides.yml
 	if [[ ! -d $HOME/.config/sketchybar ]]; then
 		ln -s $(pwd)/.config/sketchybar $HOME/.config/sketchybar
 		ln -s $(pwd)/.config/sketchybar/set_yabai_mode.sh $HOME/.local/bin/set_yabai_mode.sh
@@ -59,14 +61,6 @@ if [ -x "$(command -v curl)" ]; then
 	! [ -x "$(command -v bun)" ] && curl -fsSL https://bun.sh/install | bash
 fi
 
-if [ -x "$(command -v bun)" ]; then
-	bun add --global typescript
-	bun add --global typescript-language-server
-	bun add --global tailwindcss-language-server
-	bun add --global tldr
-fi
-
-
 echo "Need to install manually:"
 ! [ -x "$(command -v tmux)" ] && echo "tmux"
 ! [ -x "$(command -v fzf)" ] && echo "fzf"
@@ -80,3 +74,4 @@ echo "Need to install manually:"
 ! [ -x "$(command -v sketchybar)" ] && echo "sketchybar"
 ! [ -x "$(command -v yazi)" ] && echo "yazi"
 
+# 	git clone --depth 1 https://github.com/be5invis/Iosevka.git
